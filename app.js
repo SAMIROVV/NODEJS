@@ -79,7 +79,7 @@ app.get('/GT_RT', (req, res) => {
 
 //🌷AUTOCOMPLETE
 
-app.get('/GT_AC', (req, res) => {
+app.get('/GTAC', (req, res) => {
   googleTrends.autoComplete ({keyword: req.query.keyword, hl: req.query.language})
         .then(function(results){
         res
