@@ -8,7 +8,7 @@ const app = express();
 
 //🌷INTEREST BY REGIONS
 
-app.get('/IBR', (req, res) => {
+app.get('/GT_IBR', (req, res) => {
   googleTrends.interestByRegion ({keyword: req.query.keyword})
         .then(function(results){
         res
@@ -25,7 +25,7 @@ app.get('/IBR', (req, res) => {
 
 //🌷INTEREST OVER TIME
 
-app.get('/IOT', (req, res) => {
+app.get('/GT_IOT', (req, res) => {
   googleTrends.interestOverTime ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000))})
         .then(function(results){
         res
@@ -43,7 +43,7 @@ app.get('/IOT', (req, res) => {
 
 //🌷RELATED QUERIES
 
-app.get('/RQ', (req, res) => {
+app.get('/GT_RQ', (req, res) => {
   googleTrends.relatedQueries ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000))})
         .then(function(results){
         res
@@ -61,7 +61,7 @@ app.get('/RQ', (req, res) => {
 
 //🌷RELATED TOPICS
 
-app.get('/RT', (req, res) => {
+app.get('/GT_RT', (req, res) => {
   googleTrends.relatedTopics ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000))})
         .then(function(results){
         res
@@ -79,7 +79,7 @@ app.get('/RT', (req, res) => {
 
 //🌷AUTOCOMPLETE
 
-app.get('/AC', (req, res) => {
+app.get('/GT_AC', (req, res) => {
   googleTrends.autoComplete ({keyword: req.query.keyword})
         .then(function(results){
         res
@@ -97,7 +97,7 @@ app.get('/AC', (req, res) => {
 
 //🌷DAILY  TRENDS
 
-app.get('/DT', (req, res) => {
+app.get('/GT_DT', (req, res) => {
   googleTrends.dailyTrends ({geo: req.query.geo})
         .then(function(results){
         res
@@ -115,7 +115,7 @@ app.get('/DT', (req, res) => {
 
 //🌷REAL TIME TRENDS
 
-app.get('/RTT', (req, res) => {
+app.get('/GT_RTT', (req, res) => {
   googleTrends.realTimeTrends ({geo: req.query.geo})
         .then(function(results){
         res
@@ -158,7 +158,7 @@ scrape({
 
 //🌷YOUTUBE SCRAPE SEARCH
 
-app.get('/YTSEARCH1', (req, res) => {
+app.get('/YTSEARCH', (req, res) => {
 const simpleYT = require('simpleyt')
 
 simpleYT(req.query.keyword, {
