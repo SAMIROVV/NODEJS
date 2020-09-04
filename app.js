@@ -118,7 +118,7 @@ app.get('/GTDT', (req, res) => {
 //🌷REAL TIME TRENDS
 
 app.get('/GTRTT', (req, res) => {
-  googleTrends.realTimeTrends ({geo: req.query.geo})
+  googleTrends.realTimeTrends ({geo: req.query.geo, hl: req.query.language, category: req.query.category})
         .then(function(results){
         res
             .status(200)
