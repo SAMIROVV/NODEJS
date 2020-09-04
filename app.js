@@ -5,6 +5,8 @@ const googleTrends = require('google-trends-api');
 const app = express();
 
 
+//GT IS GOOGLE TRENDS
+
 
 //🌷INTEREST BY REGIONS
 
@@ -97,8 +99,8 @@ app.get('/GTAC', (req, res) => {
 
 //🌷DAILY  TRENDS
 
-app.get('/GT_DT', (req, res) => {
-  googleTrends.dailyTrends ({geo: req.query.geo})
+app.get('/GTDT', (req, res) => {
+  googleTrends.dailyTrends ({geo: req.query.geo, hl: req.query.language, trendDate: new Date(Date.now() - (req.query.time * 60 * 60 * 1000))})
         .then(function(results){
         res
             .status(200)
@@ -115,7 +117,7 @@ app.get('/GT_DT', (req, res) => {
 
 //🌷REAL TIME TRENDS
 
-app.get('/GT_RTT', (req, res) => {
+app.get('/GTRTT', (req, res) => {
   googleTrends.realTimeTrends ({geo: req.query.geo})
         .then(function(results){
         res
