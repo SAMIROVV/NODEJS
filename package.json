@@ -18,6 +18,7 @@
     "website-scraper": "^4.2.2",
     "axios": "^0.19.0",
     "simpleyt": "^1.0.5",
-    "scrapman": "^2.3.1"
+    "scrapman": "^2.3.1",
+    "google-trends-api-with-category": "^4.1.1"
     
   }}
