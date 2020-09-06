@@ -187,14 +187,16 @@ simpleYT(req.query.keyword, {
 app.get('/Scrap', (req, res) => {
 
 	var scrapman = require("scrapman")
-scrapman.load(req.query.url, function(results){
-    res
+scrapman.load(req.query.url)
+    .then(function(results){
+        res
             .status(200)
             .header('Content-Type', 'application/json')
             .send(results)
             .end();
         console.log('These results are awesome', results);
-});
+      });
+	
   
 
 
