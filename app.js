@@ -10,7 +10,7 @@ const app = express();
 
 //🌷INTEREST BY REGIONS
 
-app.get('/GT_IBR', (req, res) => {
+app.get('/GTIBR', (req, res) => {
   googleTrends.interestByRegion ({keyword: req.query.keyword})
         .then(function(results){
         res
@@ -27,7 +27,7 @@ app.get('/GT_IBR', (req, res) => {
 
 //🌷INTEREST OVER TIME
 
-app.get('/GT_IOT', (req, res) => {
+app.get('/GTIOT', (req, res) => {
   googleTrends.interestOverTime ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000))})
         .then(function(results){
         res
@@ -45,7 +45,7 @@ app.get('/GT_IOT', (req, res) => {
 
 //🌷RELATED QUERIES
 
-app.get('/GT_RQ', (req, res) => {
+app.get('/GTRQ', (req, res) => {
   googleTrends.relatedQueries ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000))})
         .then(function(results){
         res
@@ -63,7 +63,7 @@ app.get('/GT_RQ', (req, res) => {
 
 //🌷RELATED TOPICS
 
-app.get('/GT_RT', (req, res) => {
+app.get('/GTRT', (req, res) => {
   googleTrends.relatedTopics ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000))})
         .then(function(results){
         res
@@ -188,8 +188,12 @@ app.get('/Scrap', (req, res) => {
 
 	var scrapman = require("scrapman")
 scrapman.load(req.query.url, function(results){
-    //results contains the HTML obtained from the url
-    console.log(results);
+    res
+            .status(200)
+            .header('Content-Type', 'application/json')
+            .send(results)
+            .end();
+        console.log('These results are awesome', results);
 });
   
 
