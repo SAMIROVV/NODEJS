@@ -1,8 +1,7 @@
 'use strict';
 
 const express = require('express');
-//const googleTrends = require('google-trends-api');
-const googleTrends = require('mf-google-trends-api');
+const googleTrends = require('google-trends-api');
 const app = express();
 
 
@@ -13,8 +12,8 @@ const app = express();
 //🌷INTEREST BY REGIONS
 
 app.get('/GTIBR', (req, res) => {
-  //googleTrends.interestByRegion ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, resolution:req.query.resolution, hl: req.query.language, category: req.query.category})
-googleTrends.interestByRegion ({keyword: req.query.keyword})
+  googleTrends.interestByRegion ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, resolution:req.query.resolution, hl: req.query.language, category: req.query.category})
+//googleTrends.interestByRegion ({keyword: req.query.keyword})
         .then(function(results){
         res
             .status(200)
@@ -58,8 +57,8 @@ app.get('/GTIOT', (req, res) => {
 //🌷RELATED QUERIES
 
 app.get('/GTRQ', (req, res) => {
-  //googleTrends.relatedQueries ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category})
-        googleTrends.relatedQueries ({keyword: req.query.keyword})
+  googleTrends.relatedQueries ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category})
+        //googleTrends.relatedQueries ({keyword: req.query.keyword})
 	  .then(function(results){
         res
             .status(200)
