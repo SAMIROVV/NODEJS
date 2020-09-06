@@ -11,7 +11,8 @@ const app = express();
 //🌷INTEREST BY REGIONS
 
 app.get('/GTIBR', (req, res) => {
-  googleTrends.interestByRegion ({keyword: req.query.keyword})
+  googleTrends.interestByRegion ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, resolution:req.query.resolution, hl: req.query.language, category: req.query.category})
+
         .then(function(results){
         res
             .status(200)
@@ -32,7 +33,8 @@ app.get('/GTIBR', (req, res) => {
 //🌷INTEREST OVER TIME
 
 app.get('/GTIOT', (req, res) => {
-  googleTrends.interestOverTime ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000))})
+  googleTrends.interestOverTime ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category})
+
         .then(function(results){
         res
             .status(200)
@@ -54,7 +56,7 @@ app.get('/GTIOT', (req, res) => {
 //🌷RELATED QUERIES
 
 app.get('/GTRQ', (req, res) => {
-  googleTrends.relatedQueries ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000))})
+  googleTrends.relatedQueries ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category})
         .then(function(results){
         res
             .status(200)
@@ -76,7 +78,8 @@ app.get('/GTRQ', (req, res) => {
 //🌷RELATED TOPICS
 
 app.get('/GTRT', (req, res) => {
-  googleTrends.relatedTopics ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000))})
+  googleTrends.relatedTopics ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category})
+
         .then(function(results){
         res
             .status(200)
