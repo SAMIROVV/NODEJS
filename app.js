@@ -60,7 +60,7 @@ app.get('/GTRQ', (req, res) => {
         .then(function(results){
         res
             .status(200)
-            //.header('Content-Type', 'application/json')
+            .header('Content-Type', 'application/json')
             .send(results)
             .end();
         console.log('These results are awesome', results);
