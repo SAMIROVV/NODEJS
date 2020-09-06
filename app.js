@@ -1,8 +1,8 @@
 'use strict';
 
 const express = require('express');
-const googleTrends = require('google-trends-api-with-category');
-//const googleTrends = require('mf-google-trends-api');
+//const googleTrends = require('google-trends-api');
+const googleTrends = require('mf-google-trends-api');
 const app = express();
 
 
