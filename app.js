@@ -19,7 +19,7 @@ app.get('/GTIBR', (req, res) => {
             .send(results)
             .end();
         console.log('These results are awesome', results);
-      });
+      })
 	
 	.catch((err) => {
   console.log(err);
@@ -40,7 +40,7 @@ app.get('/GTIOT', (req, res) => {
             .send(results)
             .end();
         console.log('These results are awesome', results);
-      });
+      })
 	
 	.catch((err) => {
   console.log(err);
@@ -62,7 +62,7 @@ app.get('/GTRQ', (req, res) => {
             .send(results)
             .end();
         console.log('These results are awesome', results);
-      });
+      })
         
 	.catch((err) => {
   console.log(err);
@@ -84,7 +84,7 @@ app.get('/GTRT', (req, res) => {
             .send(results)
             .end();
         console.log('These results are awesome', results);
-      });
+      })
 	
 	.catch((err) => {
   console.log(err);
@@ -107,7 +107,7 @@ app.get('/GTAC', (req, res) => {
             .send(results)
             .end();
         console.log('These results are awesome', results);
-      });
+      })
 	
 	.catch((err) => {
   console.log(err);
