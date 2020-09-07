@@ -216,17 +216,19 @@ const cheerio = require('cheerio');
 
 axios.get(req.query.url)
 	
-		.then(function(results){const $ = cheerio.load(results);
-        res
+		
+	
+	.then(({ data }) => {
+  const $ = cheerio.load(data);
+  res
             .status(200)
-            .header('Content-Type', 'application/json')
+            //.header('Content-Type', 'application/json')
 	
-            .send(results)
+            .send(data)
             .end();
-        console.log('These results are awesome', results);
-      });
-	
-	
+        console.log('These results are awesome', data);
+  
+});
 	
 
 });
