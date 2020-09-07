@@ -186,7 +186,7 @@ scrape({
 
 //🌷YOUTUBE SCRAPE SEARCH
 
-app.get('/YTSEARCH', (req, res) => {
+app.get('/YTSEARCH1', (req, res) => {
 const simpleYT = require('simpleyt')
 
 simpleYT(req.query.keyword, {
@@ -208,9 +208,28 @@ simpleYT(req.query.keyword, {
 
 
 
+//🌷YOUTUBE SCRAPE SEARCH
 
+app.get('/YTSEARCH2', (req, res) => {
+const axios = require('axios');
+const cheerio = require('cheerio');
 
+axios.get(req.query.url)
+	
+		.then(function(results){const $ = cheerio.load(results);
+        res
+            .status(200)
+            .header('Content-Type', 'application/json')
+	
+            .send(results)
+            .end();
+        console.log('These results are awesome', results);
+      });
+	
+	
+	
 
+});
 
 
 //🌷Start the server
