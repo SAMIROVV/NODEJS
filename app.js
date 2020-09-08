@@ -161,10 +161,8 @@ app.get('/GTRTT', (req, res) => {
 
 //🌷Fetch Json
 const scrape = require('website-scraper');
-app.get(('/scraper'),(req, res) => {
+app.get(('/Scrape1'),(req, res) => {
 const url = 'https://trends.google.com/trends/api/explore?hl=en-GB&tz=-60&req={"comparisonItem":[{"keyword":"banana","geo":"US","time":"today+12-m"},{"keyword":"boy","geo":"US","time":"today+12-m"},{"keyword":"sexy","geo":"US","time":"today+12-m"},{"keyword":"star","geo":"US","time":"today+12-m"},{"keyword":"mom","geo":"US","time":"today+12-m"}],"category":0,"property":""}&tz=-60';
-
-	
 	
 scrape({
   urls: [url],
@@ -182,6 +180,32 @@ scrape({
 
 });
 
+
+
+//🌷Website SCRAPER
+
+app.get('/Scrap2', (req, res) => {
+const axios = require('axios');
+const cheerio = require('cheerio');
+
+axios.get(req.query.url)
+	
+		
+	
+	.then(({ data }) => {
+  const $ = cheerio.load(data);
+  res
+            .status(200)
+            .header('Content-Type', 'application/json')
+	
+            .send(data)
+            .end();
+        console.log('These results are awesome', data);
+  
+});
+	
+
+});
 
 
 //🌷YOUTUBE SCRAPE SEARCH
