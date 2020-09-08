@@ -184,7 +184,7 @@ scrape({
 
 //🌷Website SCRAPER
 
-app.get('/Scrap2', (req, res) => {
+app.get('/Scrape2', (req, res) => {
 const axios = require('axios');
 const cheerio = require('cheerio');
 
@@ -229,7 +229,6 @@ simpleYT(req.query.keyword, {
       });
 	
 });
-
 
 
 //🌷YOUTUBE SCRAPE SEARCH
