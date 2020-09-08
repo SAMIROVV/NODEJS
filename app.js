@@ -166,7 +166,7 @@ const url = 'https://trends.google.com/trends/api/explore?hl=en-GB&tz=-60&req={"
 	
 scrape({
   urls: [url],
-  directory: '/app'
+  directory: '/app/routes'
 })  
 	
 	.then(function(results){
