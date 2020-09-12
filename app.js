@@ -218,7 +218,7 @@ simpleYT(req.query.keyword, {
     // Available filters: video, playlist
  //https://ytapi.cf/search/girl
     
-}))
+})
             .header('Content-Type', 'application/json')
             .send(results)
             .end();
@@ -257,7 +257,7 @@ axios.get(req.query.url)
 //🌷YOUTUBE SCRAPE SEARCH
 app.get('/YTSEARCH3', (req, res) => {
 const phantomJsCloud = require("phantomjscloud")
-var browser = new phantomJsCloud.BrowserApi()
+var browser = new phantomJsCloud.BrowserApi(req.query.key)
         
         browser.requestSingle({ url: req.query.url, renderType: "plainText" })
 	
