@@ -166,7 +166,7 @@ const url = 'https://trends.google.com/trends/api/explore?hl=en-GB&tz=-60&req={"
 	
 scrape({
   urls: [url],
-  directory: 'https://nodejs1server1.herokuapp.com/Scrape1'
+  directory: '/app'
 })  
 	
 	.then(function(results){
