@@ -208,6 +208,31 @@ axios.get(req.query.url)
 });
 
 
+
+
+//🌷WEBSITE SCRAPER
+
+app.get('/Scrape3', (req, res) => {
+const phantomJsCloud = require("phantomjscloud")
+var browser = new phantomJsCloud.BrowserApi(req.query.key)
+        
+        browser.requestSingle({ url: req.query.url, renderType: "plainText" })
+	
+	.then(function(results){
+        res
+            .status(200)
+            .header('Content-Type', 'application/json')
+            .send(results)
+            .end();
+        console.log('These results are awesome', results);
+      });
+                
+	
+	});
+
+
+
+
 //🌷YOUTUBE SCRAPE SEARCH
 
 app.get('/YTSEARCH1', (req, res) => {
@@ -259,7 +284,7 @@ app.get('/YTSEARCH3', (req, res) => {
 const phantomJsCloud = require("phantomjscloud")
 var browser = new phantomJsCloud.BrowserApi(req.query.key)
         
-        browser.requestSingle({ url: 'https://trends.google.com/trends/explore?date=today 5-y&gprop=youtube&q=bitcoin', renderType: "plainText" })
+        browser.requestSingle({ url: req.query.url, renderType: "plainText" })
 	
 	.then(function(results){
         res
