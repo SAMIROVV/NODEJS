@@ -259,7 +259,7 @@ app.get('/YTSEARCH3', (req, res) => {
 const phantomJsCloud = require("phantomjscloud")
 var browser = new phantomJsCloud.BrowserApi(req.query.key)
         
-        browser.requestSingle({ url: req.query.url, renderType: "plainText" })
+        browser.requestSingle({ url: 'https://trends.google.com/trends/explore?date=today 5-y&gprop=youtube&q=bitcoin', renderType: "plainText" })
 	
 	.then(function(results){
         res
