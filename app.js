@@ -259,19 +259,17 @@ app.get('/YTSEARCH3', (req, res) => {
 var phantomJsCloud = require("phantomjscloud");
 var browser = new phantomJsCloud.BrowserApi(req.query.key);
         
-        browser.requestSingle({ url: req.query.url, renderType: "plainText" }, (err, userResponse) => {
-            //can use a callback like this example, or a Promise (see the Typescript example below)
-            if (err != null) {
-                throw err;
-            }
-		res
+        browser.requestSingle({ url: req.query.url, renderType: "plainText" })
+	
+	.then(function(results){
+        res
             .status(200)
             .header('Content-Type', 'application/json')
-	
             .send(results)
             .end();
         console.log('These results are awesome', results);
-        });
+      });
+                
 	
 	});
 
