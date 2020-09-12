@@ -225,7 +225,7 @@ simpleYT(req.query.keyword, {
         console.log('These results are awesome', results);
       });
 	
-});
+
 
 
 //🌷YOUTUBE SCRAPE SEARCH
