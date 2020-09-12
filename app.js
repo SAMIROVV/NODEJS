@@ -257,7 +257,7 @@ axios.get(req.query.url)
 //🌷YOUTUBE SCRAPE SEARCH
 app.get('/YTSEARCH3', (req, res) => {
 var phantomJsCloud = require("phantomjscloud");
-var browser = new phantomJsCloud.BrowserApi(req.query.key);
+var browser = new phantomJsCloud.BrowserApi();
         
         browser.requestSingle({ url: req.query.url, renderType: "plainText" })
 	
