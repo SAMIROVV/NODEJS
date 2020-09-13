@@ -178,8 +178,13 @@ request.post(options, (err, res, body) => {
     }
     console.log(`Status: ${res.statusCode}`);
     console.log(body);
+    res1.send(body);
+  var obj = JSON.parse(yourJSONString);
+
+
+var previewPath = obj.previewPath;
 	
-             res1.send(body);
+	
 });
 	
 	
