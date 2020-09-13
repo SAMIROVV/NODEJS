@@ -172,14 +172,14 @@ const options = {
 	
 };
 
-request.post(options, (err, res, body1) => {
+request.post(options, (err, res, body) => {
     if (err) {
         return console.log(err);
     }
     //console.log(`Status: ${res.statusCode}`);
     //console.log(body);
     //res1.send(body);
-var jsonData = body1;	
+var jsonData = res.body;	
   var jsonObj = JSON.parse(jsonData);
 console.log(jsonObj.previewPath);
 res1.send(jsonObj.previewPath);	
