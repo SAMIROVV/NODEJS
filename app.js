@@ -1,5 +1,6 @@
 'use strict';
 
+
 const express = require('express');
 const googleTrends = require('google-trends-api');
 const app = express();
