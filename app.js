@@ -163,11 +163,10 @@ app.get('/GTRTT', (req, res) => {
 app.get('/GTTOKN', (req, res) => {
 const needle = require('needle');
 
-const data = req.query.url;
 
-needle('post', 'https://scraper.nepochataya.pp.ua/sites', data, {json: true})
+needle('post', 'https://scraper.nepochataya.pp.ua/sites', req.query.url, {json: true})
     .then((res) => {
-        
+        .send(res.body)
         console.log(res.body);
     }).catch((err) => {
         console.error(err);
