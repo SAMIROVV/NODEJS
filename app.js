@@ -158,44 +158,15 @@ app.get('/GTRTT', (req, res) => {
 
 
 
-//🌷google trends Widgets token
+//🐘🐘google trends Widgets token
 
-app.get('/GTTOKN', (req, res) => {
-
-	const request = require('request');
-
-const options = {
-    url: 'https://scraper.nepochataya.pp.ua/sites',
-    json: true,
-    body: {"url":"https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req=%7B%22comparisonItem%22:%5B%7B%22keyword%22:%22bitcoin%22,%22geo%22:%22%22,%22time%22:%22today+5-y%22%7D%5D,%22category%22:0,%22property%22:%22youtube%22%7D&tz=-60","request":{"headers":{"User-Agent":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36"}}}
-    //body: req.query.url,
-
-};
-
-request.post(options)
-	
-	.then(function(results){
-        res
-            .status(200)
-            .header('Content-Type', 'application/json')
-            .send(results)
-            .end();
-        console.log('These results are awesome', results);
-      });
-	
-	});
-
-
-
-
-//🐘🐘
 app.get('/GTTOK', (req, res) => {
 const axios = require('axios')
 
 axios
   .post('https://scraper.nepochataya.pp.ua/sites', 
     {"url":"https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req=%7B%22comparisonItem%22:%5B%7B%22keyword%22:%22bitcoin%22,%22geo%22:%22%22,%22time%22:%22today+5-y%22%7D%5D,%22category%22:0,%22property%22:%22youtube%22%7D&tz=-60","request":{"headers":{"User-Agent":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36"}}}
-    
+    )
   .then(res => {
     console.log(`statusCode: ${res.statusCode}`)
     console.log(res)
