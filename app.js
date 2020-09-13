@@ -158,6 +158,29 @@ app.get('/GTRTT', (req, res) => {
 
 
 
+//🌷google trends Widgets token
+
+app.get('/GTTOKN', (req, res) => {
+const needle = require('needle');
+
+const data = req.query.url;
+
+needle('post', 'https://scraper.nepochataya.pp.ua/sites', data, {json: true})
+    .then((res) => {
+        
+        res
+            .status(200)
+            .header('Content-Type', 'application/json')
+            .send(results)
+            .end();
+        console.log('These results are awesome', results);
+    }).catch((err) => {
+        console.error(err);
+    });
+	
+	});
+
+
 
 //🌷Fetch Json
 const scrape = require('website-scraper');
