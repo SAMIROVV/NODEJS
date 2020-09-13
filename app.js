@@ -179,6 +179,7 @@ request.post(options, (err, res, body) => {
     //console.log(`Status: ${res.statusCode}`);
     //console.log(body);
     //res1.send(body);
+var jsonData = body;	
   var jsonObj = JSON.parse(body);
 console.log(jsonObj.previewPath);
 res1.send(jsonObj.previewPath);	
