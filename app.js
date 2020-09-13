@@ -166,14 +166,9 @@ const needle = require('needle');
 const data = req.query.url;
 
 needle('post', 'https://scraper.nepochataya.pp.ua/sites', data, {json: true})
-    .then(function(results){
+    .then((res) => {
         
-        res
-            .status(200)
-            .header('Content-Type', 'application/json')
-            .send(results)
-            .end();
-        console.log('These results are awesome', results);
+        console.log(res.body);
     }).catch((err) => {
         console.error(err);
     });
