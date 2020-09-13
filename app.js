@@ -166,7 +166,7 @@ const needle = require('needle');
 const data = req.query.url;
 
 needle('post', 'https://scraper.nepochataya.pp.ua/sites', data, {json: true})
-    .then((res) => {
+    .then(function(results){
         
         res
             .status(200)
