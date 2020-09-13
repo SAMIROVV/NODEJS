@@ -176,10 +176,7 @@ request.post(options, (err, res, body) => {
     }
     console.log(`Status: ${res.statusCode}`);
     console.log(body);
-	res
-            
-            .header('Content-Type', 'application/json')
-            .send(body)
+	
 	
 });
 	
