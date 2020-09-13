@@ -22,6 +22,7 @@
     "google-trends-api-with-category": "^4.1.1",
     "mf-google-trends-api": "^1.0.5",
     "cheerio": "^0.22.0",
-    "phantomjscloud": "^3.5.5"
+    "phantomjscloud": "^3.5.5",
+    "needle": "^2.5.2"
     
   }}
