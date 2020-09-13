@@ -172,20 +172,16 @@ const options = {
 
 };
 
-request.post(options, (err, res, body) => {
-    if (err) {
-        return console.log(err);
-    }
-    res
-            //.status(200)
-            //.header('Content-Type', 'application/json')
-            .send(body)
-    console.log(body);
+request.post(options)
 	
-	
-	
-});
-	
+	.then(function(results){
+        res
+            .status(200)
+            .header('Content-Type', 'application/json')
+            .send(results)
+            .end();
+        console.log('These results are awesome', results);
+      });
 	
 	});
 
