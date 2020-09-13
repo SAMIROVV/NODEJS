@@ -160,7 +160,7 @@ app.get('/GTRTT', (req, res) => {
 
 //🐘🐘google trends Widgets token
 
-app.get('/GTTOKN', (req, res1) => {
+app.get('/GTTOKN', (req, res) => {
 
 	const request = require('request');
 
@@ -177,8 +177,8 @@ request.post(options, (err, res, body) => {
     }
     console.log(`Status: ${res.statusCode}`);
     console.log(body);
-	res1
-             .send(body)
+	
+             //.send(body)
 });
 	
 	
