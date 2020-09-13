@@ -160,21 +160,35 @@ app.get('/GTRTT', (req, res) => {
 
 //🐘🐘google trends Widgets token
 
-app.get('/GTTOK', (req, res) => {
-const axios = require('axios')
+app.get('/GTTOKN', (req, res) => {
 
-axios
-  .post('https://scraper.nepochataya.pp.ua/sites', 
-    {"url":"https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req=%7B%22comparisonItem%22:%5B%7B%22keyword%22:%22bitcoin%22,%22geo%22:%22%22,%22time%22:%22today+5-y%22%7D%5D,%22category%22:0,%22property%22:%22youtube%22%7D&tz=-60","request":{"headers":{"User-Agent":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36"}}}
-    )
-  .then(res => {
-    console.log(`statusCode: ${res.statusCode}`)
-    console.log(res)
-	send(res)
-  })
-  .catch(error => {
-    console.error(error)
-  })
+	const request = require('request');
+
+const options = {
+    url: 'https://scraper.nepochataya.pp.ua/sites',
+    json: true,
+    //body: {"url":"https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req=%7B%22comparisonItem%22:%5B%7B%22keyword%22:%22bitcoin%22,%22geo%22:%22%22,%22time%22:%22today+5-y%22%7D%5D,%22category%22:0,%22property%22:%22youtube%22%7D&tz=-60","request":{"headers":{"User-Agent":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36"}}}
+    
+};
+
+request.post(options, (err, res, req.query.url) => {
+    if (err) {
+        return console.log(err);
+    }
+    console.log(`Status: ${res.statusCode}`);
+    console.log(body);
+});
+	
+	
+	
+	
+	
+	
+	
+	
+  
+    
+  
 
 });
 
