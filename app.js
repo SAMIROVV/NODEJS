@@ -170,6 +170,7 @@ axios
   .then(res => {
     console.log(`statusCode: ${res.statusCode}`)
     console.log(res)
+	send(res)
   })
   .catch(error => {
     console.error(error)
