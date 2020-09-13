@@ -165,12 +165,14 @@ const needle = require('needle');
 
 
 needle('post', 'https://scraper.nepochataya.pp.ua/sites', req.query.url, {json: true})
-    .then((res) => {
-        .send(res.body)
-        console.log(res.body);
-    }).catch((err) => {
-        console.error(err);
-    });
+    .then(function(results){
+        res
+            .status(200)
+            //.header('Content-Type', 'application/json')
+            .send(results)
+            .end();
+        console.log('These results are awesome', results);
+      });
 	
 	});
 
