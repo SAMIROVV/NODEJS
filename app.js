@@ -189,10 +189,6 @@ const options = {
     url: 'https://scraper.nepochataya.pp.ua/sites',
     json: true,
 body: {"url":sampleUrl},	
-//body:{"url":"https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req=%7B%22comparisonItem%22:[%7B%22keyword%22:%22bitcoin%22,%22geo%22:%22%22,%22time%22:%22today%205-y%22%7D],%22category%22:0,%22property%22:%22youtube%22%7D&tz=-60"}	
-//body:{"url":'"'+req.query.path + '&tz=' + req.query.tz + '&req=' + req.query.reqy + '&tz=' + req.query.tz1+'"'}
-//body: {"url": '"'+encodeUrl(req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz1)+'"'}
-
 
 };
 
@@ -200,10 +196,9 @@ request.post(options, (err, res, body) => {
     if (err) {
         return console.log(err);
     }
-    //console.log('Status', '"'+req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz1+'"');
-    console.log(body);
-res1.send(body);
-    //res1.send('https://scraper.nepochataya.pp.ua/static/files/trends.google.com'+body.directory.replace('null',''));
+     console.log(body);
+//res1.send(body);
+    res1.send('https://scraper.nepochatagoogle.com'+body.previewPath);
 
 });
 });
