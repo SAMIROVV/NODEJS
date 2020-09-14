@@ -161,17 +161,39 @@ app.get('/GTRTT', (req, res) => {
 
 //🐘🐘google trends Widgets token
 
-app.get('/SCRAPE1', (req, res1) => {
-var encodeUrl = require('encodeurl')
+app.get('/SCRAPE1', (req1, res1) => {
+//var encodeUrl = require('encodeurl')
 	const request = require('request');
+	const url = require('url'); 
+  
+//creating and initializing urlObject 
+var urlObject={ 
+        protocol: 'https', 
+        hostname: 'trends.google.com/', 
+        pathname: 'trends/api/explore', 
+        query: { 
+                hl: req1.query.hl, 
+                tz: req1.query.tz,
+		req: req1.query.req,
+		tz: req1.query.tz1         
+		
+        }
+        
+    } 
+  
+var sampleUrl=url.format(urlObject); 
+	
+	
 
 const options = {
     url: 'https://scraper.nepochataya.pp.ua/sites',
     json: true,
-//body:req.query.waw,	
+body: {"url":sampleUrl},	
 //body:{"url":"https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req=%7B%22comparisonItem%22:[%7B%22keyword%22:%22bitcoin%22,%22geo%22:%22%22,%22time%22:%22today%205-y%22%7D],%22category%22:0,%22property%22:%22youtube%22%7D&tz=-60"}	
-   body:{"url":'"'+req.query.path + '&tz=' + req.query.tz + '&req=' + req.query.reqy + '&tz=' + req.query.tz1+'"'}
+//body:{"url":'"'+req.query.path + '&tz=' + req.query.tz + '&req=' + req.query.reqy + '&tz=' + req.query.tz1+'"'}
 //body: {"url": '"'+encodeUrl(req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz1)+'"'}
+
+
 };
 
 request.post(options, (err, res, body) => {
