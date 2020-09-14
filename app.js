@@ -210,7 +210,7 @@ axios.get('https://scraper.nepochataya.pp.ua'+body.previewPath)
             .status(200)
             .header('Content-Type', 'application/json')
 	
-            .send(data)
+            .send(data.request)
             .end();
         //console.log('These results are awesome', data);
   
