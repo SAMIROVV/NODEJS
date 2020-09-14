@@ -206,14 +206,16 @@ axios.get('https://scraper.nepochataya.pp.ua'+body.previewPath)
 	
 	.then(({ data }) => {
   const $ = cheerio.load(data);
+	var obj = JSON.parse(data);
+	
+	
   res1
             .status(200)
             .header('Content-Type', 'application/json')
 	
-            .send(data.request)
+            .send(obj.token)
             .end();
-        //console.log('These results are awesome', data);
-  
+          
 });
 	
 	
