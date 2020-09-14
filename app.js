@@ -198,7 +198,26 @@ request.post(options, (err, res, body) => {
     }
      console.log(body);
 //res1.send(body);
-    res1.send('https://scraper.nepochatagoogle.com'+body.previewPath);
+    //res1.send('https://scraper.nepochataya.pp.ua'+body.previewPath);
+	
+const axios = require('axios');	
+const cheerio = require('cheerio');
+axios.get('https://scraper.nepochataya.pp.ua'+body.previewPath)
+	
+	.then(({ data }) => {
+  const $ = cheerio.load(data);
+  res
+            .status(200)
+            .header('Content-Type', 'application/json')
+	
+            .send(data)
+            .end();
+        //console.log('These results are awesome', data);
+  
+});
+	
+	
+	
 
 });
 });
