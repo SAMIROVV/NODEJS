@@ -181,7 +181,7 @@ request.post(options, (err, res, body) => {
     console.log(body);
 	console.log(req.query);
 	
-    res1.send(body.previewPath);
+    //res1.send(body.previewPath);
 
 });
 	
