@@ -168,8 +168,7 @@ app.get('/SCRAPE1', (req, res1) => {
 const options = {
     url: 'https://scraper.nepochataya.pp.ua/sites',
     json: true,
-    //body: {"url":"https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req=%7B%22comparisonItem%22:%5B%7B%22keyword%22:%22bitcoin%22,%22geo%22:%22%22,%22time%22:%22today+5-y%22%7D%5D,%22category%22:0,%22property%22:%22youtube%22%7D&tz=-60"}
-body: {"url": '"'+req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz1+'"'}
+    body: {"url": '"'+req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz1+'"'}
 
 };
 
@@ -178,12 +177,32 @@ request.post(options, (err, res, body) => {
         return console.log(err);
     }
     //console.log(`Status: ${res.statusCode}`);
-    console.log(body);
-console.log('resultttts', req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz);
-		 
+    //console.log(body);
+    //console.log('resultttts', req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz);		 			
+    //res1.send('https://scraper.nepochataya.pp.ua'+body.previewPath);
+	
+	const axios = require('axios');
+const cheerio = require('cheerio');
+
+axios.get('https://scraper.nepochataya.pp.ua'+body.previewPath)
+	
 		
 	
-    res1.send(body.previewPath);
+	.then(({ data }) => {
+  const $ = cheerio.load(data);
+  res
+            .status(200)
+            .header('Content-Type', 'application/json')
+	
+            .send(data)
+            .end();
+        console.log('These results are awesome', data);
+  
+});
+	
+	
+	
+	
 
 });
 	
