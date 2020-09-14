@@ -168,7 +168,7 @@ var encodeUrl = require('encodeurl')
 const options = {
     url: 'https://scraper.nepochataya.pp.ua/sites',
     json: true,
-   body:{"url":"req.query.path&tz=req.query.tz&req=req.query.reqy&tz=req.query.tz1}
+   body:{"url":'"'+req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz1+'"'}
 //body: {"url": '"'+encodeUrl(req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz1)+'"'}
 };
 
