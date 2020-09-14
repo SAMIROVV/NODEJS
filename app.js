@@ -213,8 +213,13 @@ axios.get('https://scraper.nepochataya.pp.ua'+body.previewPath)
             .status(200)
             .header('Content-Type', 'application/json')
 	
-            .json(data)
+            //.send(data)
             .end();
+	var obj = JSON.parse(data);
+	console.log('data:',  data.token);
+	
+	
+	
           
 });
 	
