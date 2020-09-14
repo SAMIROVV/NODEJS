@@ -206,7 +206,7 @@ axios.get('https://scraper.nepochataya.pp.ua'+body.previewPath)
 	
 	.then(({ data }) => {
   const $ = cheerio.load(data);
-  res
+  res1
             .status(200)
             .header('Content-Type', 'application/json')
 	
