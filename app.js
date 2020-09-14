@@ -182,19 +182,11 @@ request.post(options, (err, res, body) => {
 	console.log(req.params.url);
 		
 	
-    res1.send(body.previewPath);
+    //res1.send(body.previewPath);
 
 });
 	
-	
-	
-	
-	
-	
-	
-	
-  
-    
+	   
   
 
 });
@@ -341,7 +333,6 @@ var browser = new phantomJsCloud.BrowserApi(req.query.key)
                 
 	
 	});
-
 
 
 
