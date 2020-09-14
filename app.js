@@ -162,7 +162,7 @@ app.get('/GTRTT', (req, res) => {
 //🐘🐘google trends Widgets token
 
 app.get('/SCRAPE1', (req, res1) => {
-var encodeUrl = require('encodeurl')
+//var encodeUrl = require('encodeurl')
 	const request = require('request');
 
 const options = {
@@ -176,7 +176,7 @@ request.post(options, (err, res, body) => {
     if (err) {
         return console.log(err);
     }
-    console.log('Status', encodeUrl(req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz1));
+    console.log('Status', '"'+req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz1+'"');
     console.log(body);
 res1.send(body);
     //res1.send('https://scraper.nepochataya.pp.ua/static/files/trends.google.com'+body.directory.replace('null',''));
