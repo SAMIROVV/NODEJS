@@ -161,7 +161,7 @@ app.get('/GTRTT', (req, res) => {
 
 //🐘🐘google trends Widgets token
 
-app.get('/SCRAPE1/:url', (req, res1) => {
+app.get('/SCRAPE1', (req, res1) => {
 
 	const request = require('request');
 
