@@ -162,75 +162,58 @@ app.get('/GTRTT', (req, res) => {
 //🐘🐘google trends Widgets token
 
 app.get('/SCRAPE1', (req1, res1) => {
-//var encodeUrl = require('encodeurl')
+
 	const request = require('request');
 	const url = require('url'); 
+        var urlObject={ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/explore', query: {hl: req1.query.hl, tz: req1.query.tz, req: req1.query.req, tz: req1.query.tz1   }} 
   
-//creating and initializing urlObject 
-var urlObject={ 
-        protocol: 'https', 
-        hostname: 'trends.google.com/', 
-        pathname: 'trends/api/explore', 
-        query: { 
-                hl: req1.query.hl, 
-                tz: req1.query.tz,
-		req: req1.query.req,
-		tz: req1.query.tz1         
-		
-        }
-        
-    } 
-  
-var sampleUrl=url.format(urlObject); 
+        var sampleUrl=url.format(urlObject); 
 	
 	
 
 const options = {
     url: 'https://scraper.nepochataya.pp.ua/sites',
     json: true,
-body: {"url":sampleUrl},	
-
+    body: {"url":sampleUrl},	
 };
 
 request.post(options, (err, res, body) => {
     if (err) {
         return console.log(err);
     }
-     console.log(body);
+  
+const options2 = {
+    url: 'https://scraper.nepochataya.pp.ua'+body.previewPath,
+    json: true,
+    
+};	
+	
+	
+request(options2, (err2, res2, body2) => {
+    if (err2) {
+        return console.log(err2);
+    }
+     
+	res1.send(body2.token)
+
+	
+	
+});
+	
+	
+	
+	
+
+	
+	
+});
+});
+
+//console.log(body);
 //res1.send(body);
-    //res1.send('https://scraper.nepochataya.pp.ua'+body.previewPath);
+//res1.send('https://scraper.nepochataya.pp.ua'+body.previewPath);
+//axios.get('https://scraper.nepochataya.pp.ua'+body.previewPath)
 	
-const axios = require('axios');	
-const cheerio = require('cheerio');
-axios.get('https://scraper.nepochataya.pp.ua'+body.previewPath)
-	
-//.then(({ data }) => {
-	.then(function(data){
-  const $ = cheerio.load(data);
-var obj = JSON.parse(data);
-	console.log('data:',  obj.token);	
-	
-	
-  res1
-            .status(200)
-            .header('Content-Type', 'application/json')
-	
-            //.send(data)
-            .end();
-	
-	
-	
-	
-          
-});
-	
-	
-	
-
-});
-});
-
-
 
 
 
