@@ -179,7 +179,7 @@ request.post(options, (err, res, body) => {
     //console.log(`Status: ${res.statusCode}`);
     //console.log(body);
     //console.log('resultttts', req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz);		 			
-    //res1.send('https://scraper.nepochataya.pp.ua'+body.previewPath);
+    res1.send('https://scraper.nepochataya.pp.ua'+body.previewPath);
 	
 	const axios = require('axios');
 const cheerio = require('cheerio');
