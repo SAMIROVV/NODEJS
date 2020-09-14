@@ -194,8 +194,8 @@ request(options2, (err, res, body) => {
         return console.log(err);
     }
      
-	res1.send(body.token);
-	consol.log(body);
+	res1.send(body);
+	console.log(body);
 
 	
 	
