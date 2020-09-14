@@ -162,7 +162,7 @@ app.get('/GTRTT', (req, res) => {
 //🐘🐘google trends Widgets token
 
 app.get('/SCRAPE1', (req, res1) => {
-//var encodeUrl = require('encodeurl')
+var encodeUrl = require('encodeurl')
 	const request = require('request');
 
 const options = {
