@@ -162,21 +162,20 @@ app.get('/GTRTT', (req, res) => {
 //🐘🐘google trends Widgets token
 
 app.get('/SCRAPE1', (req, res1) => {
-
+var encodeUrl = require('encodeurl')
 	const request = require('request');
 
 const options = {
     url: 'https://scraper.nepochataya.pp.ua/sites',
     json: true,
-    body: {"url": '"'+req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz1+',"request":{"headers":{"User-Agent":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36"}}"'}
-
+    body: {"url": '"'+encodeUrl(req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz1)+'"'}
 };
 
 request.post(options, (err, res, body) => {
     if (err) {
         return console.log(err);
     }
-    console.log('Status', req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz1+',"request":{"headers":{"User-Agent":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36"}}');
+    console.log('Status', encodeUrl(req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz1));
     console.log(body);		
     res1.send('https://scraper.nepochataya.pp.ua/static/files/trends.google.com'+body.directory.replace('null',''));
 
