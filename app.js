@@ -179,14 +179,12 @@ request.post(options, (err, res, body) => {
     //console.log(`Status: ${res.statusCode}`);
     //console.log(body);		
     res1.send('https://scraper.nepochataya.pp.ua/static/files/trends.google.com-'+body.directory.replace('null',''));
-var url = ''https://scraper.nepochataya.pp.ua/static/files/trends.google.com-'+body.directory.replace('null','')'
+var url = 'https://scraper.nepochataya.pp.ua/static/files/trends.google.com-'+body.directory.replace('null','')
 	
 	const axios = require('axios');
 const cheerio = require('cheerio');
 
-axios.get('https://scraper.nepochataya.pp.ua/static/files/trends.google.com'+body.directory.replace('null',''))
-	
-		
+axios.get(url)
 	
 	.then(({ data }) => {
   const $ = cheerio.load(data);
