@@ -194,7 +194,7 @@ request(options2, (err, res, body) => {
     if (err) {
         return console.log(err);
     }
-     var obj = JSON.parse(body.replace(')]}','').replace(/\W/g, ''));
+     var obj = JSON.parse(body.replace(')]}/'/',''));
      //var mm = obj.mm;
 	res1.send(obj);
 //console.log(obj.token);
