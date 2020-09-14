@@ -177,9 +177,8 @@ request.post(options, (err, res, body) => {
         return console.log(err);
     }
     //console.log(`Status: ${res.statusCode}`);
-    //console.log(body);
-    //console.log('resultttts', req.query.path+'&tz='+req.query.tz+'&req='+req.query.reqy+'&tz='+req.query.tz);		 			
-    //res1.send('https://scraper.nepochataya.pp.ua/static/files/trends.google.com-'+body.directory.replace('null',''));
+    //console.log(body);		
+    res1.send('https://scraper.nepochataya.pp.ua/static/files/trends.google.com-'+body.directory.replace('null',''));
 	
 	const axios = require('axios');
 const cheerio = require('cheerio');
