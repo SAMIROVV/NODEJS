@@ -178,35 +178,9 @@ request.post(options, (err, res, body) => {
     }
     //console.log(`Status: ${res.statusCode}`);
     //console.log(body);		
-    //res1.send('https://scraper.nepochataya.pp.ua/static/files/trends.google.com-'+body.directory.replace('null',''));
-var url = 'https://scraper.nepochataya.pp.ua/static/files/trends.google.com-'+body.directory.replace('null','')
-	
-	const axios = require('axios');
-const cheerio = require('cheerio');
-
-axios.get(url)
-	
-	.then(({ data }) => {
-  const $ = cheerio.load(data);
-  res
-            .status(200)
-            .header('Content-Type', 'application/json')
-	
-            .send(data)
-            .end();
-        console.log('These results are awesome', data);
-  
-});
-	
-	
-	
-	
+    res1.send('https://scraper.nepochataya.pp.ua/static/files/trends.google.com-'+body.directory.replace('null',''));
 
 });
-	
-	   
-  
-
 });
 
 
