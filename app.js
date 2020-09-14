@@ -179,7 +179,7 @@ request.post(options, (err, res, body) => {
     }
     //console.log(`Status: ${res.statusCode}`);
     console.log(body);
-	console.log(req.query.url);
+	console.log(req.params.url);
 	
     res1.send(body.previewPath);
 
