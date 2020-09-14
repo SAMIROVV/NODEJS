@@ -189,12 +189,13 @@ const options2 = {
 };	
 	
 	
-request(options2, (err2, res2, body2) => {
-    if (err2) {
-        return console.log(err2);
+request(options2, (err, res, body) => {
+    if (err) {
+        return console.log(err);
     }
      
-	res1.send(body2.token)
+	res1.send(body.token);
+	consol.log(body);
 
 	
 	
@@ -209,7 +210,7 @@ request(options2, (err2, res2, body2) => {
 });
 });
 
-//console.log(body);
+//consol.log(body);
 //res1.send(body);
 //res1.send('https://scraper.nepochataya.pp.ua'+body.previewPath);
 //axios.get('https://scraper.nepochataya.pp.ua'+body.previewPath)
