@@ -32,6 +32,7 @@ app.get('/GTIBR', (req, res) => {
 
 
 
+
 //🌷INTEREST OVER TIME
 
 app.get('/GTIOT', (req, res) => {
@@ -193,7 +194,7 @@ request(options2, (err, res, body) => {
     if (err) {
         return console.log(err);
     }
-     var obj = JSON.parse(body);
+     var obj = JSON.parse(body.replace(')]}'',''));
      //var mm = obj.mm;
 	res1.send(obj);
 //console.log(obj.token);
