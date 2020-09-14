@@ -204,9 +204,11 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 axios.get('https://scraper.nepochataya.pp.ua'+body.previewPath)
 	
-	.then(({ data }) => {
+//.then(({ data }) => {
+	.then(function(data){
   const $ = cheerio.load(data);
-	
+var obj = JSON.parse(data);
+	console.log('data:',  obj.token);	
 	
 	
   res1
@@ -215,8 +217,7 @@ axios.get('https://scraper.nepochataya.pp.ua'+body.previewPath)
 	
             //.send(data)
             .end();
-	var obj = JSON.parse(data);
-	console.log('data:',  data.token);
+	
 	
 	
 	
