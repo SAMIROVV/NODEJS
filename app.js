@@ -206,7 +206,7 @@ axios.get('https://scraper.nepochataya.pp.ua'+body.previewPath)
 	
 	.then(({ data }) => {
   const $ = cheerio.load(data);
-	var obj = JSON.parse(data);
+	var obj = JSON.parse($);
 	
 	
   res1
