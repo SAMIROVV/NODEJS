@@ -164,7 +164,7 @@ app.get('/GTRTT', (req, res) => {
 
 app.get('/SCRAPE1', (req1, res1) => {
 
-	const request = require('request');
+	const Request = require('request');
 	const url = require('url'); 
         var urlObject={ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/explore', query: {hl: req1.query.hl, tz: req1.query.tz, req: req1.query.req, tz: req1.query.tz1   }} 
   
@@ -178,7 +178,7 @@ const options = {
     body: {"url":sampleUrl},	
 };
 
-request.post(options, (err, res, body) => {
+Request.post(options, (err, res, body) => {
     if (err) {
         return console.log(err);
     }
@@ -188,7 +188,7 @@ const options2 = {
     json: true,    
 };
 	
-request(options2, (err, res, body) => {
+Request(options2, (err, res, body) => {
     if (err) {
         return console.log(err);
     }     
