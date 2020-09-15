@@ -195,9 +195,9 @@ Request(options2, (err, res, body) => {
 	
 res1.send(body.replace(')]}','').replace(/'/g, ''));  
 	
-body.replace(')]}','').replace(/'/g, '').request.forEach(x => {
-  console.log(x.token, x.id);
-});
+
+  console.log(body.replace(')]}','').replace(/'/g, '').widgets[*].token);
+
 	
 
 	
