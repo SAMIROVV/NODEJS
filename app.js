@@ -205,7 +205,7 @@ Request(options3, (err, res, body) => {
         return console.log(err);
     }     	
 	
-	res1.send(Urlts)
+	res1.send(Urlts+'&'+obj.widgets[0].request+'&tz=-60')
 console.log(Urlts);
 console.log(obj.widgets[0].token);
 });
