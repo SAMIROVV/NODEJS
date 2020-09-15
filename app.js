@@ -185,44 +185,22 @@ request.post(options, (err, res, body) => {
   
 const options2 = {
     url: 'https://scraper.nepochataya.pp.ua'+body.previewPath,
-    json: true,
-    
-};	
-	
+    json: true,    
+};
 	
 request(options2, (err, res, body) => {
     if (err) {
         return console.log(err);
-    }
-     //var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
-  
-	
-	
-       
+    }     
 	
 res1.send(body.replace(')]}','').replace(/'/g, ''))
 	
-//console.log(return objectValue['token']);
+console.log(body.replace(')]}','').replace(/'/g, '').widgets.request.token);
 
-	
-	
-});
-	
-	
-	
-	
-
-	
 	
 });
 });
-
-//consol.log(body);
-//res1.send(body);
-//res1.send('https://scraper.nepochataya.pp.ua'+body.previewPath);
-//axios.get('https://scraper.nepochataya.pp.ua'+body.previewPath)
-	
-
+});
 
 
 //🌷Fetch Json
