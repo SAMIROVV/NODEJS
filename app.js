@@ -196,7 +196,7 @@ Request(options2, (err, res, body) => {
 res1.send(body.replace(')]}','').replace(/'/g, ''));  
 	
 
-  console.log(body.replace(')]}','').replace(/'/g, '').widgets[].token);
+  console.log(body.replace(')]}','').replace(/'/g, '').widgets.token);
 
 	
 
