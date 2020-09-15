@@ -209,7 +209,7 @@ Request(options3, (err, res, body) => {
 	
 	res1.send(widgetrequest)
 console.log(Urlts);
-console.log(widgetrequest);
+console.log(obj.widgets[0].token);
 });
 	
 	
