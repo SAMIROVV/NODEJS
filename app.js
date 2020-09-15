@@ -167,8 +167,8 @@ app.get('/SCRAPE1', (req1, res1) => {
 	const Request = require('request');
 	const url = require('url'); 
         var urlObject={ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/explore', query: {hl: req1.query.hl, tz: req1.query.tz, req: req1.query.req, tz: req1.query.tz1   }} 
-  
         var sampleUrl=url.format(urlObject); 
+	
 const options = {
     url: 'https://scraper.nepochataya.pp.ua/sites',
     json: true,
@@ -191,10 +191,9 @@ Request(options2, (err, res, body) => {
     }     
 	
 res1.send(body.replace(')]}','').replace(/'/g, ''));  
-//var obj = JSON.parse(json);
 var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));  
 
-  console.log(obj.widgets[0].id);
+  console.log(obj.widgets[0].request);
 
 	
 
