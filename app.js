@@ -197,7 +197,7 @@ request(options2, (err, res, body) => {
      var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
      //var mm = obj.mm;
 	res1.send(obj);
-//console.log(obj.token);
+console.log(obj.token);
 
 	
 	
