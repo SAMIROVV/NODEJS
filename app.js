@@ -193,9 +193,12 @@ request(options2, (err, res, body) => {
         return console.log(err);
     }     
 	
-res1.send(body.replace(')]}','').replace(/'/g, ''))
+res1.send(body.replace(')]}','').replace(/'/g, ''));  
 	
-console.log(body.replace(')]}','').replace(/'/g, '').token);
+body.replace(')]}','').replace(/'/g, '').widgets.request.forEach(x => {
+  console.log(x.token, x.id);
+});
+	
 
 	
 });
