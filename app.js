@@ -194,11 +194,16 @@ request(options2, (err, res, body) => {
     if (err) {
         return console.log(err);
     }
-     //var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
-     	
+     var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
+  
+	
+	var string = JSON.stringify(obj);
+       var objectValue = JSON.parse(string);
+       return objectValue['token'];
+	
 res1.send(body.replace(')]}','').replace(/'/g, ''))
 	
-console.log(stringify(body.replace(')]}','').replace(/'/g, ''))["token"]);
+console.log(objectValue['token']);
 
 	
 	
