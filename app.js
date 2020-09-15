@@ -193,9 +193,9 @@ request(options2, (err, res, body) => {
         return console.log(err);
     }     
 	
-res1.send(body.replace(')]}','').replace(/'/g, '').widgets.request.token)
+res1.send(body.replace(')]}','').replace(/'/g, '').widgets.token)
 	
-console.log(body.replace(')]}','').replace(/'/g, '').widgets.request.token);
+console.log(body.replace(')]}','').replace(/'/g, '').widgets.token);
 
 	
 });
