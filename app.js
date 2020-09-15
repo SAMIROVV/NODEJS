@@ -207,7 +207,7 @@ Request(options3, (err, res, body) => {
         return console.log(err);
     }     	
 	
-	res1.send(Urlts)
+	res1.send(widgetrequest)
 console.log(Urlts);
 console.log(widgetrequest);
 });
