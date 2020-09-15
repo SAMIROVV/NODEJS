@@ -195,7 +195,7 @@ Request(options2, (err, res, body) => {
 	
 res1.send(body.replace(')]}','').replace(/'/g, ''));  
 //var obj = JSON.parse(json);
-var obj = body.replace(')]}','').replace(/'/g, '');  
+var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));  
 
   console.log(obj.widgets.token);
 
