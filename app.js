@@ -194,9 +194,9 @@ Request(options2, (err, res, body) => {
     }     
 	
 res1.send(body.replace(')]}','').replace(/'/g, ''));  
-	
+//var obj = JSON.parse(json);	
 
-  console.log(body.replace(')]}','').replace(/'/g, '').widgets.token);
+  console.log(JSON.parse(body.replace(')]}','').replace(/'/g, '')).widgets.token);
 
 	
 
