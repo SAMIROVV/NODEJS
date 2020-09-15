@@ -198,7 +198,7 @@ request(options2, (err, res, body) => {
      	
 res1.send(body.replace(')]}','').replace(/'/g, ''))
 	
-console.log(body.replace(')]}','').replace(/'/g, '')["token"]);
+console.log(stringify(body.replace(')]}','').replace(/'/g, ''))["token"]);
 
 	
 	
