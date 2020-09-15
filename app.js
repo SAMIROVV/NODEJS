@@ -193,7 +193,8 @@ Request(options2, (err, res, body) => {
 //res1.send(body.replace(')]}','').replace(/'/g, ''));  
 var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));  
 //console.log(obj.widgets[0].request);
-var urltimeserie={ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req1.query.hl, tz: req1.query.tz, req: obj.widgets[0].request, token: obj.widgets[0].token, tz: req1.query.tz1}} 
+var widgetrequest = obj.widgets[0].request;
+var urltimeserie={ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req1.query.hl, tz: req1.query.tz, req: widgetrequest, token: obj.widgets[0].token, tz: req1.query.tz}} 
 var Urlts=url.format(urltimeserie); 
 
 	
@@ -208,6 +209,7 @@ Request(options3, (err, res, body) => {
 	
 	res1.send(Urlts)
 console.log(Urlts);
+console.log(widgetrequest);
 });
 	
 	
