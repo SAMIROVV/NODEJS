@@ -199,11 +199,11 @@ request(options2, (err, res, body) => {
 	
 	var string = JSON.stringify(obj);
        var objectValue = JSON.parse(string);
-       return objectValue['token'];
+       
 	
 res1.send(body.replace(')]}','').replace(/'/g, ''))
 	
-console.log(objectValue['token']);
+console.log(return objectValue['token']);
 
 	
 	
