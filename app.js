@@ -194,9 +194,10 @@ Request(options2, (err, res, body) => {
     }     
 	
 res1.send(body.replace(')]}','').replace(/'/g, ''));  
-//var obj = JSON.parse(json);	
+//var obj = JSON.parse(json);
+var obj = body.replace(')]}','').replace(/'/g, '');  
 
-  console.log(body.replace(')]}','').replace(/'/g, '').widgets[0].token);
+  console.log(obj.widgets[0].token);
 
 	
 
