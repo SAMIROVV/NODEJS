@@ -197,7 +197,7 @@ res1.send(body.replace(')]}','').replace(/'/g, ''));
 //var obj = JSON.parse(json);
 var obj = body.replace(')]}','').replace(/'/g, '');  
 
-  console.log(obj.widgets[0].token);
+  console.log(obj.widgets.token);
 
 	
 
