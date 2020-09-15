@@ -193,8 +193,8 @@ Request(options2, (err, res, body) => {
 //res1.send(body.replace(')]}','').replace(/'/g, ''));  
 var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));  
 //console.log(obj.widgets[0].request);
-var urltimeserie={ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req1.query.hl, tz: req1.query.tz} }; 
-var Urlts = url.format(urltimeserie)+'&'+JSON.parse(body.replace(')]}','').replace(/'/g, '')).widgets[0].request+'&tz=-60';
+var urltimeserie = { protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req1.query.hl, tz: req1.query.tz} }; 
+var Urlts = url.format(urltimeserie)+'&req='+JSON.parse(obj.widgets[0]).request+'&tz=-60';
 		  	
 	
 	const options3 = {
