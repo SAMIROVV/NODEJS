@@ -196,9 +196,9 @@ request(options2, (err, res, body) => {
     }
      var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
      	
-res1.send(alert(obj.token))
+res1.send(body.replace(')]}','').replace(/'/g, '').request)
 
-//console.log(obj.token);
+console.log(body.token);
 
 	
 	
