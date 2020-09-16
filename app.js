@@ -177,8 +177,8 @@ Request.post(options, (err, res, body) => {
 var resy= 	url.format({
     //protocol: req.protocol,
     //host: req.get('host'),
-    pathname: req.originalUrl,
-	search: req.search
+    //pathname: req.originalUrl,
+	search: req.query.search,
   });
 	
 	res3.send(resy);
