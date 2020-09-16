@@ -17,7 +17,7 @@ const Request = require('request');
      
 var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 	if(type === 'URL' || type === 'GTEXPLORE'){res0.send(body);}
-	if(type === 'GTTS'){res0.send(JSON.parse(body));}	
+	if(type === 'GTTS'){res0.send(body.widgets[0].token);}	
 			
 });		
 });
