@@ -13,9 +13,11 @@ const url = require('url');
 const Request = require('request');
   
 	Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":url.format({ pathname: req0.originalUrl }).replace('/SCRAPER1%3F','')}}, (err, res, body) => {
-    	res0.send(body);
+	Request({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
+	res0.send(body);
 	
 	
+});
 	});
 
 
@@ -46,10 +48,7 @@ Request.post(options, (err, res, body) => {
   
 
 	
-const options2 = {
-    url: 'https://scraper.nepochataya.pp.ua'+body.previewPath,
-    json: true,    
-};
+const options2 = {url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}  ;
 	
 Request(options2, (err, res, body) => {
     if (err) {
