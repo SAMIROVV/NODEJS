@@ -176,7 +176,7 @@ var resy= 	url.format({
     //protocol: req.protocol,
     //host: req.get('host'),
     //pathname: req.originalUrl,
-search: req.search
+search: req.searchParams.get('pat')
   });
 	
 res3.send(resy.replace('/SCRAPER1%3F',''));
