@@ -183,8 +183,8 @@ Request.post(options, (err, res, body) => {
     }
   
 console.log('first',req1.query);
-	console.log('second',JSON.stringify(req1.query));
-	
+console.log('second',JSON.stringify(req1.query));
+res1.send(req1.query)	
 	
 	
 const options2 = {
