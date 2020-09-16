@@ -164,7 +164,7 @@ app.get('/SCRAPER1', (req, res3) => {
 const url = require('url'); 
 	const Request = require('request');
      	var Url=req.query;
-        const options = {url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":Url}};
+        const options = {url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":url.format({ pathname: req.originalUrl }).replace('/SCRAPER1%3F','')}};
 
 Request.post(options, (err, res, body) => {
     if (err) { return console.log(err); }
@@ -172,10 +172,9 @@ Request.post(options, (err, res, body) => {
 
 	
 	
-var resy= 	url.format({ pathname: req.originalUrl }).replace('/SCRAPER1%3F','');
+//var resy= 	url.format({ pathname: req.originalUrl }).replace('/SCRAPER1%3F','');
 	
-//res3.send(resy.replace('/SCRAPER1%3F',''));
-	res3.send(resy);
+	res3.send(body);
 	
 	
 	});
