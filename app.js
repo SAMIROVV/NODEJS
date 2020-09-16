@@ -11,10 +11,9 @@ const app = express();
 app.get('/SCRAPER1', (req0, res0) => {
 const url = require('url'); 
 const Request = require('request');
-//const options1 = {url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":url.format({ pathname: req.originalUrl }).replace('/SCRAPER1%3F','')}};
   
 	Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":url.format({ pathname: req0.originalUrl }).replace('/SCRAPER1%3F','')}}, (err, res, body) => {
-    if (err) { return console.log(err); }
+    //if (err) { return console.log(err); }
  
 	res0.send(body);
 	
