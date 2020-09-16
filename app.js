@@ -160,12 +160,12 @@ app.get('/GTRTT', (req, res) => {
 
 //🐘🐘google trends Widgets token
 
-app.get('/SCRAPE21', (req1, res1) => {
+app.get('/SCRAPE21', (req, res) => {
 
 	const Request = require('request');
 	const url = require('url'); 
        
-	var Url=req1.query;
+	var Url=req.query;
 const options = {
     url: 'https://scraper.nepochataya.pp.ua/sites',
     json: true,
@@ -179,13 +179,11 @@ Request.post(options, (err, res, body) => {
         return console.log(err);
     }
   
-console.log('first',req1.query);
+console.log('first',req.query);
 //console.log('second',JSON.stringify(req1.query));
-res1
-            
-            
-            
-            .header('Content-Type', 'application/json')
+res
+                       
+           
 .send(body);
 	
 	});});
