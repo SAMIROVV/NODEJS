@@ -181,7 +181,7 @@ var resy= 	url.format({
 //search: req.search,
   });
 	
-	res3.send(resy);
+	res3.send(resy.replace('/SCRAPER1?',''));
 	console.log('first',resy);
 	
 	});
