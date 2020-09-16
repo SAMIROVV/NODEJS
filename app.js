@@ -18,8 +18,8 @@ const Request = require('request');
 	
 Request({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
     
-res0.send(JSON.parse(body.replace(')]}','').replace(/'/g, '').replace(',','')));
-//res0.send(body);
+//res0.send(JSON.parse(body.replace(')]}','').replace(/'/g, '').replace(',','')));
+res0.send(body);
 });
 		
 		
