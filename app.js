@@ -15,6 +15,7 @@ const Request = require('request');
 	Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?','')  }}, (err, res, body) => {	
         Request({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
 		
+              var tz = req0.query.tz;
               var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));       
               var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 		
@@ -22,7 +23,7 @@ const Request = require('request');
 		res0.send(body);}
 		
 	if(type === 'GTTS'){
-                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token} }), json: true,}, (err, res, body) => {  
+                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} }), json: true,}, (err, res, body) => {  
                 res0.send(body);});}
 		
 		
