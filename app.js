@@ -182,6 +182,11 @@ Request.post(options, (err, res, body) => {
         return console.log(err);
     }
   
+console.log('first',req1.query);
+	console.log('second',JSON.stringify(req1.query));
+	
+	
+	
 const options2 = {
     url: 'https://scraper.nepochataya.pp.ua'+body.previewPath,
     json: true,    
