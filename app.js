@@ -173,7 +173,7 @@ const options = {
     url: 'https://scraper.nepochataya.pp.ua/sites',
     json: true,
     //body: {"url":sampleUrl},	
-body: {"url":JSON.stringify(req1.query)},
+body: {"url":req1.query},
 
 };
 
