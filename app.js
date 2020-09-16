@@ -20,10 +20,9 @@ var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split(
 	if(type === 'GTTS'){
 		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));  
                 var urltimeserie = { protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token} }; 
-         Request({url:url.format(urltimeserie), json: true,}, (err, res, body) => { res0.send(body);       });
+         Request({url:url.format(urltimeserie), json: true,}, (err, res, body) => { res0.send(body);       });}
 		
-//res0.send(body.widgets[0].token);}	
-			
+//res0.send(body.widgets[0].token);}				
 });		
 });
 });
