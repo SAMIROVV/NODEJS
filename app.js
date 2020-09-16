@@ -170,7 +170,7 @@ Request.post(options, (err, res, body) => {
     if (err) { return console.log(err); }
   
 console.log('first',req.query);
-res3.send(body);
+res3.send(req.query);
 	
 	});
 
@@ -209,12 +209,11 @@ app.get('/SCRAPE1', (req1, res1) => {
 	const url = require('url'); 
         var urlObject={ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/explore', query: {hl: req1.query.hl, tz: req1.query.tz, req: req1.query.req, tz: req1.query.tz1   }} 
         var sampleUrl=url.format(urlObject); 
-	var Urle=req1.query;
+	
 const options = {
     url: 'https://scraper.nepochataya.pp.ua/sites',
     json: true,
-    //body: {"url":sampleUrl},	
-body: {"url":Urle},
+    body: {"url":sampleUrl},	
 
 };
 
@@ -223,15 +222,7 @@ Request.post(options, (err, res, body) => {
         return console.log(err);
     }
   
-console.log('first',req1.query);
-//console.log('second',JSON.stringify(req1.query));
-res1
-            //.status(200)
-            
-            
-            .header('Content-Type', 'application/json')
-.send(req1.query);
-	
+
 	
 const options2 = {
     url: 'https://scraper.nepochataya.pp.ua'+body.previewPath,
