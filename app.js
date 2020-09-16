@@ -8,15 +8,15 @@ const app = express();
 
 //🔴AMAZING SCRAPER WITH NEPOCHATAYA
 
-app.get('/SCRAPER1', (req, res) => {
+app.get('/SCRAPER1', (req0, res0) => {
 const url = require('url'); 
 const Request = require('request');
 //const options1 = {url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":url.format({ pathname: req.originalUrl }).replace('/SCRAPER1%3F','')}};
   
-	Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":url.format({ pathname: req.originalUrl }).replace('/SCRAPER1%3F','')}}, (err, res, body) => {
+	Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":url.format({ pathname: req0.originalUrl }).replace('/SCRAPER1%3F','')}}, (err, res, body) => {
     if (err) { return console.log(err); }
  
-	res.send(body);
+	res0.send(body);
 	
 	
 	});
