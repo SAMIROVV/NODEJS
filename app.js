@@ -218,7 +218,7 @@ app.get('/SCRAPE1', (req1, res1) => {
 const options = {
     url: 'https://scraper.nepochataya.pp.ua/sites',
     json: true,
-    body: {"url":url.format({ pathname: req.originalUrl }).replace('/SCRAPER1%3F','')},	
+    body: {"url":url.format({ pathname: req1.originalUrl }).replace('/SCRAPER1%3F','')},	
 
 };
 
