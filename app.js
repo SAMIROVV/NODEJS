@@ -184,12 +184,12 @@ Request.post(options, (err, res, body) => {
   
 console.log('first',req1.query);
 //console.log('second',JSON.stringify(req1.query));
-//res1
+res1
             //.status(200)
             
             
-            //.header('Content-Type', 'application/json')
-//.send(req1.query);
+            .header('Content-Type', 'application/json')
+.send(req1.query);
 	
 	
 const options2 = {
