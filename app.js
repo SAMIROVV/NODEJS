@@ -16,7 +16,8 @@ const Request = require('request');
         Request({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
 		
               var tz = req0.query.tz;
-              var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));       
+              //var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
+		var obj = body.replace(')]}','').replace(/'/g, '');
               var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 		
 	if(type === 'URL' || type === 'GTEXPLORE'){
