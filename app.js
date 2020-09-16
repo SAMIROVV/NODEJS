@@ -14,15 +14,22 @@ const Request = require('request');
   
 	Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?','')  }}, (err, res, body) => {	
         Request({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
-     
-var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
-	if(type === 'URL' || type === 'GTEXPLORE'){res0.send(body);}
-	if(type === 'GTTS'){
-		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));  
-                var urltimeserie = { protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token} }; 
-         Request({url:url.format(urltimeserie), json: true,}, (err, res, body) => { res0.send(body);       });}
 		
-//res0.send(body.widgets[0].token);}				
+              var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));       
+              var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
+		
+	if(type === 'URL' || type === 'GTEXPLORE'){
+		res0.send(body);}
+		
+	if(type === 'GTTS'){
+                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token} })+'&tz='+req0.query.tz, json: true,}, (err, res, body) => {  
+                res0.send(body);});}
+		
+		
+		
+		
+		
+			
 });		
 });
 });
