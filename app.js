@@ -3,7 +3,91 @@
 
 const express = require('express');
 const googleTrends = require('google-trends-api');
-const app = express();
+const app = express(); 
+
+
+//🔴AMAZING SCRAPER WITH NEPOCHATAYA
+
+app.get('/SCRAPER1', (req, res) => {
+const url = require('url'); 
+const Request = require('request');
+//const options1 = {url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":url.format({ pathname: req.originalUrl }).replace('/SCRAPER1%3F','')}};
+  
+	Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":url.format({ pathname: req.originalUrl }).replace('/SCRAPER1%3F','')}}, (err, res, body) => {
+    if (err) { return console.log(err); }
+ 
+	res.send(body);
+	
+	
+	});
+
+
+});
+	
+
+
+//🐘🐘google trends Widgets token
+
+app.get('/SCRAPE1', (req1, res1) => {
+
+	const Request = require('request');
+	const url = require('url'); 
+        //var urlObject={ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/explore', query: {hl: req1.query.hl, tz: req1.query.tz, req: req1.query.req, tz: req1.query.tz1   }} 
+        //var sampleUrl=url.format(urlObject); 
+	
+const options = {
+    url: 'https://scraper.nepochataya.pp.ua/sites',
+    json: true,
+    body: {"url":url.format({ pathname: req1.originalUrl }).replace('/SCRAPER1%3F','')},	
+
+};
+
+Request.post(options, (err, res, body) => {
+    if (err) {
+        return console.log(err);
+    }
+  
+
+	
+const options2 = {
+    url: 'https://scraper.nepochataya.pp.ua'+body.previewPath,
+    json: true,    
+};
+	
+Request(options2, (err, res, body) => {
+    if (err) {
+        return console.log(err);
+    }     
+	
+
+var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));  
+var urltimeserie = { protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req1.query.hl, tz: req1.query.tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: req1.query.tz1} }; 
+var Urlts = url.format(urltimeserie);
+		  	
+	
+	const options3 = {
+    url: Urlts,
+    json: true,    
+};	
+Request(options3, (err, res, body) => {
+    if (err) {
+        return console.log(err);
+    }     	
+	
+	res1.send(JSON.parse(body.replace(')]}','').replace(/'/g, '').replace(',','')))
+console.log(req1.query);
+});
+	
+	
+	
+});
+});
+});
+
+
+
+
+
 
 
 
@@ -158,111 +242,9 @@ app.get('/GTRTT', (req, res) => {
 });
 
 
-//🐘🐘google trends Widgets token
-
-app.get('/SCRAPER1', (req, res3) => {
-const url = require('url'); 
-	const Request = require('request');
-     	var Url=req.query;
-        const options = {url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":url.format({ pathname: req.originalUrl }).replace('/SCRAPER1%3F','')}};
-
-Request.post(options, (err, res, body) => {
-    if (err) { return console.log(err); }
-  
-
-	
-	
-//var resy= 	url.format({ pathname: req.originalUrl }).replace('/SCRAPER1%3F','');
-	
-	res3.send(body);
-	
-	
-	});
-
-
-});
-	
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//🐘🐘google trends Widgets token
-
-app.get('/SCRAPE1', (req1, res1) => {
-
-	const Request = require('request');
-	const url = require('url'); 
-        //var urlObject={ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/explore', query: {hl: req1.query.hl, tz: req1.query.tz, req: req1.query.req, tz: req1.query.tz1   }} 
-        //var sampleUrl=url.format(urlObject); 
-	
-const options = {
-    url: 'https://scraper.nepochataya.pp.ua/sites',
-    json: true,
-    body: {"url":url.format({ pathname: req1.originalUrl }).replace('/SCRAPER1%3F','')},	
-
-};
-
-Request.post(options, (err, res, body) => {
-    if (err) {
-        return console.log(err);
-    }
-  
-
-	
-const options2 = {
-    url: 'https://scraper.nepochataya.pp.ua'+body.previewPath,
-    json: true,    
-};
-	
-Request(options2, (err, res, body) => {
-    if (err) {
-        return console.log(err);
-    }     
-	
-
-var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));  
-var urltimeserie = { protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req1.query.hl, tz: req1.query.tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: req1.query.tz1} }; 
-var Urlts = url.format(urltimeserie);
-		  	
-	
-	const options3 = {
-    url: Urlts,
-    json: true,    
-};	
-Request(options3, (err, res, body) => {
-    if (err) {
-        return console.log(err);
-    }     	
-	
-	res1.send(JSON.parse(body.replace(')]}','').replace(/'/g, '').replace(',','')))
-console.log(req1.query);
-});
-	
-	
-	
-});
-});
-});
 
 
 //🌷Fetch Json
