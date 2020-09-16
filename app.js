@@ -169,9 +169,7 @@ const url = require('url');
 Request.post(options, (err, res, body) => {
     if (err) { return console.log(err); }
   
-//console.log('first',req.query);
-	
-//res3.send(Url);
+
 	
 	
 var resy= 	url.format({
@@ -181,7 +179,7 @@ var resy= 	url.format({
 //search: req.search,
   });
 	
-	res3.send(resy.replace('/SCRAPER1?',''));
+	res3.send(resy.replace('/SCRAPER1',''));
 	console.log('first',resy);
 	
 	});
