@@ -13,14 +13,14 @@ const url = require('url');
 const Request = require('request');
   
 	Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":url.format({ pathname: req0.originalUrl }).replace('/SCRAPER1%3F','')}}, (err, res, body) => {
-        if (err) {return console.log(err); }
-		const options2 = {url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}  ;
+        res0.send('https://scraper.nepochataya.pp.ua'+body.previewPath);
+//const options2 = {url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}  ;
 	
-Request(options2, (err, res, body) => {
-    if (err) {return console.log(err); }     
+//Request(options2, (err, res, body) => {
+    //if (err) {return console.log(err); }     
 //res0.send(JSON.parse(body.replace(')]}','').replace(/'/g, '').replace(',','')));
-res0.send(body);
-});
+//res0.send(body);
+//});
 		
 		
 		
