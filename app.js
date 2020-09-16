@@ -175,8 +175,8 @@ Request.post(options, (err, res, body) => {
 	
 	
 var resy= 	url.format({
-    protocol: req.protocol,
-    host: req.get('host'),
+    //protocol: req.protocol,
+    //host: req.get('host'),
     pathname: req.originalUrl
   });
 	
