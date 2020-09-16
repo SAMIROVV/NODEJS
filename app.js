@@ -16,7 +16,7 @@ const Request = require('request');
         Request({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
     
 //res0.send(JSON.parse(body.replace(')]}','').replace(/'/g, '').replace(',','')));
-res0.send(url.format({ pathname: req0.get('host') }));
+res0.send(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("/")[0]);
 });
 		
 		
