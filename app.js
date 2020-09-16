@@ -170,7 +170,7 @@ Request.post(options, (err, res, body) => {
     if (err) { return console.log(err); }
   
 console.log('first',req.query);
-res3.send(req.query);
+res3.send(JSON.parse(Url));
 	
 	});
 
