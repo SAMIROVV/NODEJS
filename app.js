@@ -30,10 +30,10 @@ const Request = require('request');
                 res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}
 		
 	if(type === 'GTGEO'){
-                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[1].request), token: obj.widgets[1]} }), json: true,}, (err, res, body) => {  
-                res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}
+                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[1].request), token: obj.widgets[1].token} }), json: true,}, (err, res, body) => {  
+                res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));
 console.log('req', JSON.stringify(obj.widgets[1].request));console.log('token',JSON.stringify(obj.widgets[1].token);console.log('token2',JSON.stringify(obj.widgets.token[1]);		
-		
+	});}	
 		
 		
 		
