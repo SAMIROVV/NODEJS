@@ -16,7 +16,7 @@ const Request = require('request');
         Request({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
      
 var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
-		if(type === 'URL' || type === 'GTEXPLORE'){res0.send(type);}
+		if(type === 'URL' || type === 'GTEXPLORE'){res0.send(body);}
 		
 			
 });		
