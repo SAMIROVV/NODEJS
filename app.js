@@ -206,7 +206,7 @@ Request(options3, (err, res, body) => {
     }     	
 	
 	res1.send(JSON.parse(body.replace(')]}','').replace(/'/g, '').replace(',','')))
-console.log(url.search(app));
+console.log(req1.query);
 });
 	
 	
