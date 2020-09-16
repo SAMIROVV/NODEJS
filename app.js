@@ -181,7 +181,7 @@ var resy= 	url.format({
   });
 	
 	res3.send(resy);
-	console.log('first',resy;
+	console.log('first',resy);
 	
 	});
 
