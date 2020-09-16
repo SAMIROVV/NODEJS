@@ -175,9 +175,9 @@ Request.post(options, (err, res, body) => {
 	
 	
 var resy= 	url.format({
-    protocol: req.query.protocol,
-    host: req.query.get('host'),
-    pathname: req.query.originalUrl
+    protocol: req.protocol,
+    host: req.get('host'),
+    pathname: req.originalUrl
   });
 	
 	res3.send(resy);
