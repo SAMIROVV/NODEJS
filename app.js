@@ -18,7 +18,8 @@ const Request = require('request');
 	
 Request(options2, (err, res, body) => {
     if (err) {return console.log(err); }     
-	res0.send(JSON.parse(body.replace(')]}','').replace(/'/g, '').replace(',','')));
+//res0.send(JSON.parse(body.replace(')]}','').replace(/'/g, '').replace(',','')));
+res0.send(body);
 });
 		
 		
