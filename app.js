@@ -158,6 +158,60 @@ app.get('/GTRTT', (req, res) => {
 });
 
 
+//🐘🐘google trends Widgets token
+
+app.get('/SCRAPE21', (req1, res1) => {
+
+	const Request = require('request');
+	const url = require('url'); 
+       
+	var Url=req1.query;
+const options = {
+    url: 'https://scraper.nepochataya.pp.ua/sites',
+    json: true,
+    //body: {"url":sampleUrl},	
+body: {"url":Url},
+
+};
+
+Request.post(options, (err, res, body) => {
+    if (err) {
+        return console.log(err);
+    }
+  
+console.log('first',req1.query);
+//console.log('second',JSON.stringify(req1.query));
+res1
+            
+            
+            
+            .header('Content-Type', 'application/json')
+.send(body);
+	
+	});
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //🐘🐘google trends Widgets token
