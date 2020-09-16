@@ -160,7 +160,7 @@ app.get('/GTRTT', (req, res) => {
 
 //🐘🐘google trends Widgets token
 
-app.get('/SCRAPER1/:id', (req, res3) => {
+app.get('/SCRAPER1?', (req, res3) => {
 
 	const Request = require('request');
      	var Url=req.query;
@@ -169,7 +169,7 @@ app.get('/SCRAPER1/:id', (req, res3) => {
 Request.post(options, (err, res, body) => {
     if (err) { return console.log(err); }
   
-console.log('first',req.params.id);console.log('second',req.query.id);
+console.log('first',req.query);
 	
 res3.send(Url);
 	
