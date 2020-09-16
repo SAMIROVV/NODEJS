@@ -166,14 +166,14 @@ app.get('/SCRAPE1', (req1, res1) => {
 
 	const Request = require('request');
 	const url = require('url'); 
-        //var urlObject={ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/explore', query: {hl: req1.query.hl, tz: req1.query.tz, req: req1.query.req, tz: req1.query.tz1   }} 
-        //var sampleUrl=url.format(urlObject); 
+        var urlObject={ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/explore', query: {hl: req1.query.hl, tz: req1.query.tz, req: req1.query.req, tz: req1.query.tz1   }} 
+        var sampleUrl=url.format(urlObject); 
 	
 const options = {
     url: 'https://scraper.nepochataya.pp.ua/sites',
     json: true,
-    //body: {"url":sampleUrl},	
-body: {"url":req1.query},
+    body: {"url":sampleUrl},	
+//body: {"url":req1.query},
 
 };
 
