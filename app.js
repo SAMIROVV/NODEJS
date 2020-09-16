@@ -161,7 +161,7 @@ app.get('/GTRTT', (req, res) => {
 //🐘🐘google trends Widgets token
 
 app.get('/SCRAPER1?', (req, res3) => {
-
+const url = require('url'); 
 	const Request = require('request');
      	var Url=req.query;
         const options = {url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":Url}};
@@ -171,7 +171,17 @@ Request.post(options, (err, res, body) => {
   
 console.log('first',req.query);
 	
-res3.send(Url);
+//res3.send(Url);
+	
+	
+	url.format({
+    protocol: req.protocol,
+    host: req.get('host'),
+    pathname: req.originalUrl
+  });
+	
+	res3.send(url.format);
+	
 	
 	});
 
