@@ -22,7 +22,7 @@ const Request = require('request');
 		res0.send(body);}
 		
 	if(type === 'GTTS'){
-                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token} })+'&tz='+req0.query.tz, json: true,}, (err, res, body) => {  
+                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token} }), json: true,}, (err, res, body) => {  
                 res0.send(body);});}
 		
 		
