@@ -29,7 +29,7 @@ const Request = require('request');
 	if(type === 'GTTS'){
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} }), json: true,}, (err, res, body) => {  
                 if (err) {res0.send(body);}
-                else{ res0.send(JSON.parse(body.replace(')]}','').replace(/'/g, '')  ));});}}
+                else{ res0.send(JSON.parse(body.replace(')]}','').replace(/'/g, '')  ))};});}
 		
 		
 		
