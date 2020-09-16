@@ -15,7 +15,7 @@ const Request = require('request');
 	Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURI(url.format({ pathname: req0.originalUrl })).replace('/SCRAPER1%3F','').replace('%3F','')}}, (err, res, body) => {
        //res0.send(url.format({ pathname: req0.originalUrl }).replace('/SCRAPER1%3F','').replace('%3F','?'));
 //res0.send('https://scraper.nepochataya.pp.ua'+body.previewPath);
-res0.send(decodeURI(url.format({ pathname: req0.originalUrl })));
+res0.send(decodeURI(encodeUrl(url.format({ pathname: req0.originalUrl }))));
 //const options2 = {url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}  ;
 	
 //Request(options2, (err, res, body) => {
