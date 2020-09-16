@@ -175,11 +175,11 @@ Request.post(options, (err, res, body) => {
 var resy= 	url.format({
     //protocol: req.protocol,
     //host: req.get('host'),
-    pathname: req.originalUrl
-//search: req.search,
+    //pathname: req.originalUrl,
+search: req.SearchParams
   });
 	
-	res3.send(resy.replace('/SCRAPER1',''));
+res3.send(resy.replace('/SCRAPER1%3F',''));
 	console.log('first',resy);
 	
 	});
