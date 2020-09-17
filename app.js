@@ -27,17 +27,17 @@ const Request = require('request');
 		
 	if(type === 'SCPGTACM'){
 		res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
+	
+	if(type === 'SCPGTDTR'){
+		res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
+		
+		
+	if(type === 'SCPGTRTT'){
+		res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
 		
 	if(type === 'SCPGTEXPLORE'){
 		res0.send(body.replace(')]}','').replace(/'/g, ''));}	
 		
-		
-	if(type === 'SCPGTDTR'){
-		res0.send(body.replace(')]}','').replace(/'/g, ''));}	
-		
-		
-	if(type === 'SCPGTRTT'){
-		res0.send(body.replace(')]}','').replace(/'/g, ''));}	
 		
 		
 		
