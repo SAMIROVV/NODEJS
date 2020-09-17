@@ -22,7 +22,7 @@ const Request = require('request');
               var tz = req0.query.tz;
               var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 		
-	if(type === 'SCPURL'){
+	if(type === 'SCPURL' || type === ''){
 		res0.send(body);}
 		
 	if(type === 'SCPGTACM'){
