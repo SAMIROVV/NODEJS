@@ -127,7 +127,7 @@ const url = require('url');
 const Request = require('request');
   
 	Request.post({url: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?',''), json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1] }}, (err, res, body) => {	
-        res0.status(200).header('Content-Type', 'application/json').send(data).end();
+        res0.header('Content-Type', 'application/json').send(body).end();
         });});
 
 
