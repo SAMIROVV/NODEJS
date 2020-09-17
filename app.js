@@ -38,7 +38,7 @@ const Request = require('request');
                 res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
 		
 	if(type === 'GTTPC'){
-                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[1].request), token: obj.widgets[1].token} }), json: true,}, (err, res, body) => {  
+                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }), json: true,}, (err, res, body) => {  
                 res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
 		
 		
