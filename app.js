@@ -39,8 +39,8 @@ const Request = require('request');
 		
 	if(type === 'GTQRY'){
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }), json: true,}, (err, res, body) => {  
-                res0.send(JSON.stringify(obj.widgets[3].request));
-		res0.send(obj.widgets[3].token);
+                //res0.send(JSON.stringify(obj.widgets[3].request));
+		res0.send(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }));
 		});}	
 		
 	if(type === 'test'){	
