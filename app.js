@@ -23,7 +23,7 @@ const Request = require('request');
               var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 		
 	if(type === 'SCPURL' || type === ''){
-		res0.send(body);}
+		res0.header('Content-Type', 'application/json').send(body);}
 		
 	if(type === 'SCPGTACM'){
 		res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
