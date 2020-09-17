@@ -6,9 +6,9 @@ const app = express();
 
 
 //🔴 AMAZING SCRAPER WITH NEPOCHATAYA 
-    //for google trends autocomplete link  ===  https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60☆SCPGTACM
-    //for google trends dailytrends  link  ===  https://trends.google.com/trends/api/dailytrends?hl=en-US&tz=-60&geo=AU&ns=15☆SCPGTDTR
-    //for google real timerends      link  ===  https://trends.google.com/trends/api/realtimetrends?hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0☆SCPGTRTT
+    //for google trends autocomplete link  ===  https://nodejs1server1.herokuapp.com/SCRAPER1?https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60☆SCPGTACM
+    //for google trends dailytrends  link  ===  https://nodejs1server1.herokuapp.com/SCRAPER1?https://trends.google.com/trends/api/dailytrends?hl=en-US&tz=-60&geo=AU&ns=15☆SCPGTDTR
+    //for google real timerends      link  ===  https://nodejs1server1.herokuapp.com/SCRAPER1?https://trends.google.com/trends/api/realtimetrends?hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0☆SCPGTRTT
     //for google trends all          link  ===  https://nodejs1server1.herokuapp.com/SCRAPER1?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆SCPGTQRY
     //for other websites             link  ===  https://nodejs1server1.herokuapp.com/SCRAPER1?url☆SCPURL
 
@@ -70,34 +70,19 @@ const Request = require('request');
 
 
 
-//🔵 SCRAPER NORMAL
-    //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER2?url
-app.get('/SCRAPER2', (req0, res0) => {
-const url = require('url'); 
-const Request = require('request');
-  
-                Request({url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).replace('/SCRAPER2?','')  }, (err, res, body) => {	
-                res0.header('Content-Type', 'application/json').send(body).end();  
-});
-});
 
 
-
-
-
-
-
-//🔴 GOOGLE TRENDS SCRAPER
-    //for SCPGTTS  Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTTS
-    //for SCPGTGEO Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?keyword=bitcoin&startTime=400&endTime=10&geo=&&resolution=&hl=en&category=0&engine=youtube%E2%98%86SCPGGEO
-    //for SCPGTTPC Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTTPC
-    //for SCPGTQRY Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTQRY
-    //for SCPGTACM Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?keyword=bitcoin&hl=en&engine=youtube%E2%98%86SCPGTACM
-    //for SCPGTDTR Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?geo=US&hl=en&time=400&engine=youtube%E2%98%86SCPGTDTR
-    //for SCPGTRTT Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?geo=US&hl=en&category=&engine=youtube%E2%98%86SCPGTRTT
+//🔴 GOOGLE TRENDS SCRAPER API
+    //for SCPGTTS  Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER2?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTTS
+    //for SCPGTGEO Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER2?keyword=bitcoin&startTime=400&endTime=10&geo=&&resolution=&hl=en&category=0&engine=youtube%E2%98%86SCPGGEO
+    //for SCPGTTPC Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER2?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTTPC
+    //for SCPGTQRY Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER2?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTQRY
+    //for SCPGTACM Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER2?keyword=bitcoin&hl=en&engine=youtube%E2%98%86SCPGTACM
+    //for SCPGTDTR Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER2?geo=US&hl=en&time=400&engine=youtube%E2%98%86SCPGTDTR
+    //for SCPGTRTT Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER2?geo=US&hl=en&category=&engine=youtube%E2%98%86SCPGTRTT
     
 
-app.get('/SCRAPER3', (req, res) => {
+app.get('/SCRAPER2', (req, res) => {
 const googleTrends = require('google-trends-api');
 const url = require('url');
 var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("☆")[1];
@@ -133,76 +118,88 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 
 
 
-//🌷Fetch Json
-const scrape = require('website-scraper');
-app.get(('/SCRAPE2'),(req, res) => {
-const url = 'https://trends.google.com/trends/api/explore?hl=en-GB&tz=-60&req={"comparisonItem":[{"keyword":"banana","geo":"US","time":"today+12-m"},{"keyword":"boy","geo":"US","time":"today+12-m"},{"keyword":"sexy","geo":"US","time":"today+12-m"},{"keyword":"star","geo":"US","time":"today+12-m"},{"keyword":"mom","geo":"US","time":"today+12-m"}],"category":0,"property":""}&tz=-60';
-	
-scrape({
-  urls: [url],
-  directory: '/app'
-})  
-	
-	.then(function(results){
-        res
-            .status(200)
-            .header('Content-Type', 'application/json')
-            .send(results)
-            .end();
-        console.log('These results are awesome', results);
-      });
 
+//🔵 SCRAPER NORMAL WITH REQUEST
+    //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?url
+
+app.get('/SCRAPER3', (req0, res0) => {
+const url = require('url'); 
+const Request = require('request');
+  
+                Request({url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).replace('/SCRAPER2?','')  }, (err, res, body) => {	
+                res0.header('Content-Type', 'application/json').send(body).end();  
+});
 });
 
 
 
-//🌷Website SCRAPER
 
-app.get('/SCRAPE3', (req, res) => {
+
+
+
+
+//🔵 SCRAPER NORMAL WITH AXIOS
+   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER4?url
+
+app.get('/SCRAPER4', (req, res) => {
 const axios = require('axios');
 const cheerio = require('cheerio');
 
 axios.get(req.query.url)
-	
-		
-	
 	.then(({ data }) => {
   const $ = cheerio.load(data);
-  res
-            .status(200)
-            .header('Content-Type', 'application/json')
-	
-            .send(data)
-            .end();
-        console.log('These results are awesome', data);
-  
-});
-	
-
-});
+  res.status(200).header('Content-Type', 'application/json').send(data).end();
+        });});
 
 
 
 
-//🌷WEBSITE SCRAPER
 
-app.get('/SCRAPE4', (req, res) => {
+
+
+
+//🔵 SCRAPER NORMAL WITH phantomjscloud
+   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER5?url
+
+app.get('/SCRAPER5', (req, res) => {
 const phantomJsCloud = require("phantomjscloud")
 var browser = new phantomJsCloud.BrowserApi(req.query.key)
         
-        browser.requestSingle({ url: req.query.url, renderType: "plainText" })
+browser.requestSingle({ url: req.query.url, renderType: "plainText" })
+         .then(({ data }) => {
+    res.status(200).header('Content-Type', 'application/json').send(data).end();
+        });});
+
+
+
+
+
+
+
+
+
+//🔵 SCRAPER NORMAL WITH phantomjscloud
+   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER6?url
+
+const scrape = require('website-scraper');
+app.get(('/SCRAPER6'),(req, res) => {
+const url = 'https://trends.google.com/trends/api/explore?hl=en-GB&tz=-60&req={"comparisonItem":[{"keyword":"banana","geo":"US","time":"today+12-m"},{"keyword":"boy","geo":"US","time":"today+12-m"},{"keyword":"sexy","geo":"US","time":"today+12-m"},{"keyword":"star","geo":"US","time":"today+12-m"},{"keyword":"mom","geo":"US","time":"today+12-m"}],"category":0,"property":""}&tz=-60';
 	
-	.then(function(results){
-        res
-            .status(200)
-            .header('Content-Type', 'application/json')
-            .send(results)
-            .end();
-        console.log('These results are awesome', results);
-      });
+scrape({urls: [url],  directory: '/app'})  	
+	.then(({ data }) => {
+    res.status(200).header('Content-Type', 'application/json').send(data).end();
+        });});
+
+
+
+
+
+
+
+
                 
 	
-	});
+
 
 
 
