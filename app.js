@@ -215,11 +215,12 @@ const Request = require('request');
 
 
 //❤ SCRAPER WITH AXIOS.POST
-   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER7?https://☆https://
+   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER8?https://☆https://
 
 app.get('/SCRAPER8', (req0, res0) => {
 const axios = require('axios')
-
+const url = require('url');
+	
 axios.post({url: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER8?',''), json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1] }}, (err, res, body) => {	
         res0.header('Content-Type', 'application/json').send(body).end();
         });});
