@@ -119,15 +119,20 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 
 
 
-//🔵 SCRAPER NORMAL REQUEST.POST
-   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?url☆contenturl
+
+//🔴 AMAZING SCRAPER WITH COUNTWORDSFREE     
+   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?https://countwordsfree.com/loadweb☆https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"},{"keyword":"girls","geo":"","time":"today+5-y"},{"keyword":"boy","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60
 
 app.get('/SCRAPER3', (req0, res0) => {
 const url = require('url'); 
 const Request = require('request');
   
 	Request.post({url: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?',''), json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1] }}, (err, res, body) => {	
-        res0.header('Content-Type', 'application/json').send(body).end();
+        
+		
+		
+		
+		res0.send(body).end();
         });});
 
 
@@ -197,7 +202,16 @@ scrape({urls: [decodeURIComponent(url.format({ pathname: req0.originalUrl })).sp
 
 
 
-                
+   //🔵 SCRAPER NORMAL REQUEST.POST
+   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER7?url☆contenturl
+
+app.get('/SCRAPER7', (req0, res0) => {
+const url = require('url'); 
+const Request = require('request');
+  
+	Request.post({url: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER7?',''), json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1] }}, (err, res, body) => {	
+        res0.header('Content-Type', 'application/json').send(body).end();
+        });});             
 	
 
 
