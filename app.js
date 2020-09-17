@@ -68,7 +68,7 @@ const Request = require('request');
 
 
 
-/🔴 GOOGLE TRENDS SCRAPER
+//🔴 GOOGLE TRENDS SCRAPER
     //for SCPGTTS Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&property=youtube%E2%98%86SCPGTTS
 
 app.get('/SCRAPER3', (req, res) => {
