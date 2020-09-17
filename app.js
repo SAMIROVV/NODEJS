@@ -132,7 +132,7 @@ const Request = require('request');
 		
 		
 		
-		res0.send(JSON.stringify(body)).end();
+		res0.send(JSON.stringify(body).replace(Math.floor(Date.now() / 1000)+'tfr','')).end();
         });});
 
 
