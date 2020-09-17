@@ -74,8 +74,8 @@ const Request = require('request');
     //for SCPGTTPC Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTTPC
     //for SCPGTQRY Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTQRY
     //for SCPGTACM Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?keyword=bitcoin&hl=en&engine=youtube%E2%98%86SCPGTACM
-    //for SCPGTDTR Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?geo=&hl=en&time=400&engine=youtube%E2%98%86SCPGTDTR
-    //for SCPGTRTT Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?keyword=geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTRTT
+    //for SCPGTDTR Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?geo=US&hl=en&time=400&engine=youtube%E2%98%86SCPGTDTR
+    //for SCPGTRTT Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?geo=US&hl=en&category=&engine=youtube%E2%98%86SCPGTRTT
     
 
 app.get('/SCRAPER3', (req, res) => {
