@@ -132,7 +132,7 @@ const Request = require('request');
 		
 		
 		
-		res0.send(JSON.stringify(body)).end();
+		res0.send(body).end();
         });});
 
 
@@ -203,7 +203,7 @@ scrape({urls: [decodeURIComponent(url.format({ pathname: req0.originalUrl })).sp
 
 
    //🔵 SCRAPER NORMAL REQUEST.POST
-   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER7?url☆contenturl
+   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER7?https://☆https://
 
 app.get('/SCRAPER7', (req0, res0) => {
 const url = require('url'); 
