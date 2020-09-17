@@ -132,7 +132,7 @@ const Request = require('request');
 		
 		
 		
-		res0.send(JSON.parse(body)).end();
+		res0.header('Content-Type', 'application/json').send(JSON.parse(body)).end();
         });});
 
 
