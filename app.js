@@ -164,8 +164,9 @@ axios.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 app.get('/SCRAPER5', (req0, res0) => {
 const phantomJsCloud = require("phantomjscloud")
 const url = require('url'); 
-var browser = new phantomJsCloud.BrowserApi(req0.query.key)
 var key = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆key=")[1];     
+var browser = new phantomJsCloud.BrowserApi(key)
+
 	
 browser.requestSingle({ url: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER5?',''), renderType: "plainText" }, (err, res, body) => {	
                 res0.header('Content-Type', 'application/json').send(body).end();  
