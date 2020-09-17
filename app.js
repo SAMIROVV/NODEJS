@@ -1,5 +1,5 @@
 'use strict';
-
+                                                      //🔥🔥🔥🔥🔥🔥      TO SCRAPE WEBSITEZ ESPECIALLY GOOGLE TRENDS      🔥🔥🔥🔥🔥🔥//
 
 const express = require('express');
 const app = express(); 
@@ -121,13 +121,13 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 
 
 //🔴 AMAZING SCRAPER WITH COUNTWORDSFREE     
-   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?https://countwordsfree.com/loadweb☆https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"},{"keyword":"girls","geo":"","time":"today+5-y"},{"keyword":"boy","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60
+  //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?https://countwordsfree.com/loadweb☆https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"},{"keyword":"girls","geo":"","time":"today+5-y"},{"keyword":"boy","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60
 
 app.get('/SCRAPER3', (req0, res0) => {
 const url = require('url'); 
 const Request = require('request');
   
-	Request.put({url: 'https://countwordsfree.com/loadweb', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','') }}, (err, res, body) => {	
+	Request.post({url: 'https://countwordsfree.com/loadweb', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','') }}, (err, res, body) => {	
         
 		
 		
@@ -138,8 +138,7 @@ const Request = require('request');
 
 
 
-
-
+                                         //🔥🔥🔥🔥🔥🔥      TO SCRAPE WEBSITEZ USING GET REQUEST     🔥🔥🔥🔥🔥🔥//
 
 
 
@@ -197,12 +196,11 @@ scrape({urls: [decodeURIComponent(url.format({ pathname: req0.originalUrl })).sp
 
 
 
+                                //🔥🔥🔥🔥🔥🔥      TO SCRAPE WEBSITEZ USING POST REQUEST     🔥🔥🔥🔥🔥🔥//
 
 
 
-
-
-   //🔵 SCRAPER NORMAL REQUEST.POST
+//❤ SCRAPER WITH REQUEST.POST
    //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER7?https://☆https://
 
 app.get('/SCRAPER7', (req0, res0) => {
@@ -213,6 +211,20 @@ const Request = require('request');
         res0.header('Content-Type', 'application/json').send(body).end();
         });});             
 	
+
+
+
+//❤ SCRAPER WITH AXIOS.POST
+   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER7?https://☆https://
+
+app.get('/SCRAPER8', (req0, res0) => {
+const axios = require('axios')
+
+axios.post({url: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER8?',''), json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1] }}, (err, res, body) => {	
+        res0.header('Content-Type', 'application/json').send(body).end();
+        });});
+
+
 
 
 
