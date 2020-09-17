@@ -127,7 +127,7 @@ app.get('/SCRAPER3', (req0, res0) => {
 const url = require('url'); 
 const Request = require('request');
   
-	Request.post({url: 'https://countwordsfree.com/loadweb', json: false, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','') }}, (err, res, body) => {	
+	Request.post({url: 'https://countwordsfree.com/loadweb', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','') }}, (err, res, body) => {	
         
 		
 		
