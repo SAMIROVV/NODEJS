@@ -132,7 +132,7 @@ const Request = require('request');
 		
 		
 		
-		res0.send(JSON.parse(body)).end();
+		res0.send(JSON.stringify(body)).end();
         });});
 
 
