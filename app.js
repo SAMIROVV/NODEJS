@@ -126,7 +126,7 @@ app.get('/SCRAPER3', (req0, res0) => {
 const url = require('url'); 
 const Request = require('request');
   
-                Request({url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).replace('/SCRAPER2?','')  }, (err, res, body) => {	
+                Request({url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).replace('/SCRAPER3?','')  }, (err, res, body) => {	
                 res0.header('Content-Type', 'application/json').send(body).end();  
 });
 });
@@ -141,14 +141,14 @@ const Request = require('request');
 //🔵 SCRAPER NORMAL WITH AXIOS
    //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER4?url
 
-app.get('/SCRAPER4', (req, res) => {
+app.get('/SCRAPER4', (req0, res0) => {
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-axios.get(req.query.url)
+axios.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?',''))
 	.then(({ data }) => {
   const $ = cheerio.load(data);
-  res.status(200).header('Content-Type', 'application/json').send(data).end();
+  res0.status(200).header('Content-Type', 'application/json').send(data).end();
         });});
 
 
@@ -161,13 +161,13 @@ axios.get(req.query.url)
 //🔵 SCRAPER NORMAL WITH phantomjscloud
    //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER5?url
 
-app.get('/SCRAPER5', (req, res) => {
+app.get('/SCRAPER5', (req0, res0) => {
 const phantomJsCloud = require("phantomjscloud")
-var browser = new phantomJsCloud.BrowserApi(req.query.key)
+var browser = new phantomJsCloud.BrowserApi(req0.query.key)
         
-browser.requestSingle({ url: req.query.url, renderType: "plainText" })
+browser.requestSingle({ url: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER5?',''), renderType: "plainText" })
          .then(({ data }) => {
-    res.status(200).header('Content-Type', 'application/json').send(data).end();
+    res0.status(200).header('Content-Type', 'application/json').send(data).end();
         });});
 
 
