@@ -6,6 +6,7 @@ const app = express();
 
 
 //🔴 AMAZING SCRAPER WITH NEPOCHATAYA 
+    //for google trends autocomplete link  ===  https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60
     //for google trends  link  ===  https://nodejs1server1.herokuapp.com/SCRAPER1?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆GTQRY
     //for other websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER1?url☆URL
 
@@ -21,6 +22,9 @@ const Request = require('request');
 		
 	if(type === 'SCPURL'){
 		res0.send(body);}
+		
+	if(type === 'SCPGTACM'){
+		res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
 		
 	if(type === 'SCPGTEXPLORE'){
 		res0.send(body.replace(')]}','').replace(/'/g, ''));}	
