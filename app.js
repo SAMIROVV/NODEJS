@@ -41,8 +41,9 @@ const Request = require('request');
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }), json: true,}, (err, res, body) => {  
                 res0.send(JSON.stringify(obj.widgets[3].request));});}	
 		
-		
-		
+	if(type === 'test'){	
+	Request({url: dedeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?',''),json: true,  }, (err, res, body) => {	
+        	res0.send(body);});}	
 		
 			
 });		
