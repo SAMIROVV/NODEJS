@@ -6,7 +6,7 @@ const app = express();
 
 
 //🔴 AMAZING SCRAPER WITH NEPOCHATAYA 
-    //for google trends link  ===  https://nodejs1server1.herokuapp.com/SCRAPER1?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆GTQRY
+    //for google trends  link  ===  https://nodejs1server1.herokuapp.com/SCRAPER1?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆GTQRY
     //for other websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER1?url☆URL
 
 app.get('/SCRAPER1', (req0, res0) => {
@@ -69,7 +69,10 @@ const Request = require('request');
 
 
 //🔴 GOOGLE TRENDS SCRAPER
-    //for SCPGTTS Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&property=youtube%E2%98%86SCPGTTS
+    //for SCPGTTS  Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&property=youtube%E2%98%86SCPGTTS
+    //for SCPGTGEO Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?keyword=bitcoin&startTime=400&endTime=10&geo=&&resolution=&hl=en&category=0&property=youtube%E2%98%86SCPGGEO
+    //for SCPGTTPC Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&property=youtube%E2%98%86SCPGTTPC
+    //for SCPGTQRY Link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&property=youtube%E2%98%86SCPGTQRY
 
 app.get('/SCRAPER3', (req, res) => {
 const googleTrends = require('google-trends-api');
@@ -77,13 +80,19 @@ const url = require('url');
 var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("☆")[1];
 		
 
-	if(type === 'SCPGTTS') {}
+	if(type === 'SCPGTTS'){googleTrends.interestOverTime ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category, property: req.query.engine})
+           .then(function(results){res.header('Content-Type', 'application/json').send(results).end();});}
 	
-	if(type === 'SCPGTGEO'){ }
+	if(type === 'SCPGTGEO'){ .interestByRegion ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, resolution:req.query.resolution, hl: req.query.language, category: req.query.category, property: req.query.engine})
+           .then(function(results){ res.header('Content-Type', 'application/json').send(results).end();});}
+
+	if(type === 'SCPGTTPC'){ googleTrends.relatedTopics ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category ,property: req.query.engine})
+           .then(function(results){ res.header('Content-Type', 'application/json').send(results).end();});}
 	
-	if(type === 'SCPGTTPC'){ }
-		
-	if(type === 'SCPGTQRY'){  }
+	if(type === 'SCPGTQRY'){ googleTrends.relatedQueries ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category, property: req.query.engine})
+           .then(function(results){ res.header('Content-Type', 'application/json').send(results).end();}); }
+
+
 });
 
 
@@ -97,7 +106,7 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 //🌷INTEREST BY REGIONS
 
 app.get('/GTIBR', (req, res) => {
-  googleTrends.interestByRegion ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, resolution:req.query.resolution, hl: req.query.language, category: req.query.category, property: req.query.engine, resolution: req.query.resolution})
+  .interestByRegion ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, resolution:req.query.resolution, hl: req.query.language, category: req.query.category, property: req.query.engine, resolution: req.query.resolution})
 
         .then(function(results){
         res
@@ -143,7 +152,7 @@ app.get('/GTIOT', (req, res) => {
 //🌷RELATED QUERIES
 
 app.get('/GTRQ', (req, res) => {
-  .relatedQueries ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category, property: req.query.engine})
+  googleTrends.relatedQueries ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category, property: req.query.engine})
         //googleTrends.relatedQueries ({keyword: req.query.keyword})
 	  .then(function(results){
         res
