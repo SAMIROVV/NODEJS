@@ -132,7 +132,7 @@ const Request = require('request');
 		
 		
 		
-		res0.send(JSON.stringify(body).replace(Math.round(new Date().getTime()/1000)+'fgd','')).end();
+		res0.send(body).end();
         });});
 
 
