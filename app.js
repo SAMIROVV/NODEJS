@@ -6,9 +6,11 @@ const app = express();
 
 
 //🔴 AMAZING SCRAPER WITH NEPOCHATAYA 
-    //for google trends autocomplete link  ===  https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60
-    //for google trends  link  ===  https://nodejs1server1.herokuapp.com/SCRAPER1?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆GTQRY
-    //for other websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER1?url☆URL
+    //for google trends autocomplete link  ===  https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60☆SCPGTACM
+    //for google trends dailytrends  link  ===  https://trends.google.com/trends/api/dailytrends?hl=en-US&tz=-60&geo=AU&ns=15☆SCPGTDTR
+    //for google real timerends      link  ===  https://trends.google.com/trends/api/realtimetrends?hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0☆SCPGTRTT
+    //for google trends all          link  ===  https://nodejs1server1.herokuapp.com/SCRAPER1?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆SCPGTQRY
+    //for other websites             link  ===  https://nodejs1server1.herokuapp.com/SCRAPER1?url☆SCPURL
 
 app.get('/SCRAPER1', (req0, res0) => {
 const url = require('url'); 
@@ -27,6 +29,14 @@ const Request = require('request');
 		res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
 		
 	if(type === 'SCPGTEXPLORE'){
+		res0.send(body.replace(')]}','').replace(/'/g, ''));}	
+		
+		
+	if(type === 'SCPGTDTR'){
+		res0.send(body.replace(')]}','').replace(/'/g, ''));}	
+		
+		
+	if(type === 'SCPGTRTT'){
 		res0.send(body.replace(')]}','').replace(/'/g, ''));}	
 		
 		
