@@ -119,17 +119,17 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 
 
 
-//🔵 SCRAPER NORMAL WITH REQUEST
-    //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?url
+//🔵 SCRAPER NORMAL REQUEST.POST
+   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?url☆contenturl
 
 app.get('/SCRAPER3', (req0, res0) => {
 const url = require('url'); 
 const Request = require('request');
   
-                Request({url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).replace('/SCRAPER3?','')  }, (err, res, body) => {	
-                res0.header('Content-Type', 'application/json').send(body).end();  
-});
-});
+	Request.post({url: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?',''), json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1] }}, (err, res, body) => {	
+        res0.status(200).header('Content-Type', 'application/json').send(data).end();
+        });});
+
 
 
 
@@ -154,30 +154,26 @@ axios.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 
 
 
-
-
-
-
-//🔵 SCRAPER NORMAL WITH phantomjscloud
-   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER5?key=ak-kp4pm-4ratb-4fwrm-z85g5-wbmj3&url
+		
+		
+		
+		
+//🔵 SCRAPER NORMAL WITH REQUEST
+    //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER5?url
 
 app.get('/SCRAPER5', (req0, res0) => {
-const phantomJsCloud = require("phantomjscloud")
 const url = require('url'); 
-var key = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆key=")[1];     
-var browser = new phantomJsCloud.BrowserApi(key)
-
-	
-browser.requestSingle({ url: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER5?',''), renderType: "plainText" }, (err, res, body) => {	
+const Request = require('request');
+  
+                Request({url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).replace('/SCRAPER5?','')  }, (err, res, body) => {	
                 res0.header('Content-Type', 'application/json').send(body).end();  
 });
 });
-         
 
 
 
-
-
+		
+		
 
 
 
