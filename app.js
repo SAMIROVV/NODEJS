@@ -144,7 +144,7 @@ const Request = require('request');
 app.get('/SCRAPER4', (req0, res0) => {
 const axios = require('axios');
 const cheerio = require('cheerio');
-
+const url = require('url'); 
 axios.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?',''))
 	.then(({ data }) => {
   const $ = cheerio.load(data);
@@ -159,12 +159,13 @@ axios.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 
 
 //🔵 SCRAPER NORMAL WITH phantomjscloud
-   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER5?url
+   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER5?key=ak-kp4pm-4ratb-4fwrm-z85g5-wbmj3&url
 
 app.get('/SCRAPER5', (req0, res0) => {
 const phantomJsCloud = require("phantomjscloud")
+const url = require('url'); 
 var browser = new phantomJsCloud.BrowserApi(req0.query.key)
-        
+       
 browser.requestSingle({ url: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER5?',''), renderType: "plainText" })
          .then(({ data }) => {
     res0.status(200).header('Content-Type', 'application/json').send(data).end();
@@ -178,16 +179,16 @@ browser.requestSingle({ url: decodeURIComponent(url.format({ pathname: req0.orig
 
 
 
-//🔵 SCRAPER NORMAL WITH phantomjscloud
+//🔵 SCRAPER NORMAL WITH WEBSITE_SCRAPER
    //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER6?url
 
+app.get(('/SCRAPER6'),(req0, res0) => {
 const scrape = require('website-scraper');
-app.get(('/SCRAPER6'),(req, res) => {
-const url = 'https://trends.google.com/trends/api/explore?hl=en-GB&tz=-60&req={"comparisonItem":[{"keyword":"banana","geo":"US","time":"today+12-m"},{"keyword":"boy","geo":"US","time":"today+12-m"},{"keyword":"sexy","geo":"US","time":"today+12-m"},{"keyword":"star","geo":"US","time":"today+12-m"},{"keyword":"mom","geo":"US","time":"today+12-m"}],"category":0,"property":""}&tz=-60';
-	
-scrape({urls: [url],  directory: '/app'})  	
+const url = require('url'); 
+
+scrape({urls: [decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER6?','')],  directory: '/app'})  	
 	.then(({ data }) => {
-    res.status(200).header('Content-Type', 'application/json').send(data).end();
+    res0.status(200).header('Content-Type', 'application/json').send(data).end();
         });});
 
 
