@@ -166,10 +166,11 @@ const phantomJsCloud = require("phantomjscloud")
 const url = require('url'); 
 var browser = new phantomJsCloud.BrowserApi(req0.query.key)
        
-browser.requestSingle({ url: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER5?',''), renderType: "plainText" })
-         .then(({ data }) => {
-    res0.status(200).header('Content-Type', 'application/json').send(data).end();
-        });});
+browser.requestSingle({ url: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER5?',''), renderType: "plainText" }), (err, res, body) => {	
+                res0.header('Content-Type', 'application/json').send(body).end();  
+});
+});
+         
 
 
 
