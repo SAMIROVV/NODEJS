@@ -76,8 +76,6 @@ const googleTrends = require('google-trends-api');
 const url = require('url');
 var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("☆")[1];
 		
-//if(type === 'SCPGTTS'){ googleTrends.interestOverTime ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category, property: req.query.engine})
-           //.then(function(results){ res.header('Content-Type', 'application/json').send(results).end();});}
 
 	if(type === 'SCPGTTS') {}
 	
