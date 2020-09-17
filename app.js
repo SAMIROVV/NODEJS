@@ -38,10 +38,8 @@ const Request = require('request');
                 res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
 		
 	if(type === 'GTQRY'){
-                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }), json: true,}, (err, res, body) => {  
-                //res0.send(JSON.stringify(obj.widgets[3].request));
-		res0.send(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }));
-		});}	
+                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }), json: true,}, (err, res, body) => {  
+                res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}		
 		
 	if(type === 'test'){	
 	Request({url: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?',''),json: true,  }, (err, res, body) => {	
