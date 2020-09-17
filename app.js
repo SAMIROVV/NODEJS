@@ -29,21 +29,25 @@ const Request = require('request');
 	if(type === 'SCPGTEXPLORE'){
 		res0.send(body.replace(')]}','').replace(/'/g, ''));}	
 		
-		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
+		
 		
 	if(type === 'SCPGTTS'){
+		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} }), json: true,}, (err, res, body) => {  
                 res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}
 		
 	if(type === 'SCPGTGEO'){
+		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[1].request), token: obj.widgets[1].token} }), json: true,}, (err, res, body) => {  
                 res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
 		
 	if(type === 'SCPGTTPC'){
+		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[2].request), token: obj.widgets[2].token} }), json: true,}, (err, res, body) => {  
                 res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
 		
 	if(type === 'SCPGTQRY'){
+		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }), json: true,}, (err, res, body) => {  
                 res0.send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}		
 		
