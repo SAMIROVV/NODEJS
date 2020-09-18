@@ -24,6 +24,7 @@
     "cheerio": "^0.22.0",
     "phantomjscloud": "^3.5.5",
     "needle": "^2.5.2",
-    "website-scraper-existing-directory": "^0.1.0"
+    "website-scraper-existing-directory": "^0.1.0",
+    "@fwd/scraper": "^1.0.6"
     
   }}
