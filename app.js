@@ -183,7 +183,7 @@ const Request = require('request');
    //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER6?url
 
 app.get(('/SCRAPER6'),(req0, res0) => {
-const scrape = require('website-scraper');
+const scrape = require('@fwd/scraper');
 const url = require('url');
 	
 const options = {
