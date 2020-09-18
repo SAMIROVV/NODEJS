@@ -188,12 +188,19 @@ const Request = require('request');
 app.get(('/SCRAPER6'),(req0, res0) => {
 const scrape = require('website-scraper');
 const url = require('url'); 
-
-    scrape({urls: [decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER6?','')], directory: url.format({protocol: req0.protocol,   host: req0.get('host'),    pathname: req0.originalUrl})};)
+	
+	
+scrape({ urls: [decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER6?','')], directory: url.format({protocol: req0.protocol,   host: req0.get('host'),    pathname: req0.originalUrl})})
 	.then(({ data }) => {
-    res0.status(200).header('Content-Type', 'application/json').send(data).end();
-        });});
+  res0.status(200).header('Content-Type', 'application/json').send(data).end();
+        });
+	
+	
+});
+	
+	
 
+    
 
 
     	
