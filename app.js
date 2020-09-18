@@ -164,7 +164,7 @@ axios.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 
 app.get('/SCRAPER5', (req0, res0) => {
 const url = require('url'); 
-const Request = require('request');
+const Request = require('cloudscraper');
   
                 Request({url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).replace('/SCRAPER5?','')  }, (err, res, body) => {	
                 res0.header('Content-Type', 'application/json').send(body).end();  
@@ -183,7 +183,7 @@ const Request = require('request');
    //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER6?url
 
 app.get(('/SCRAPER6'),(req0, res0) => {
-const scrape = require('@fwd/scraper');
+const scrape = require('website-scraper');
 const url = require('url');
 	
 const options = {
