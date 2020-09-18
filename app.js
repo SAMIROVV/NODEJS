@@ -185,19 +185,41 @@ const Request = require('request');
 app.get(('/SCRAPER6'),(req0, res0) => {
 const scrape = require('website-scraper');
 const url = require('url');
-//const SaveToExistingDirectoryPlugin = require('website-scraper-existing-directory');
 	
 const options = {
   urls: [decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER6?','')],
-  directory: decodeURIComponent(url.format({protocol: 'https',   host: req0.get('host'),    pathname: req0.originalUrl}))
-//plugins: [ new SaveToExistingDirectoryPlugin() ]	
+  directory: decodeURIComponent(url.format({protocol: 'https',   host: req0.get('host'),    pathname: req0.originalUrl}))	
 };
 	
 	
 	scrape(options, (err, res, body) => {	
    //console.log(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER6?',''));console.log('directory', decodeURIComponent(url.format({protocol: 'https',   host: req0.get('host'),    pathname: req0.originalUrl})));
-//res0.header('Content-Type', 'application/json').send(body).end();  
-		return Promise.resolve(body); 
+        //res0.header('Content-Type', 'application/json').send(body).end();  
+		
+		
+		registerAction('afterResponse', ({response}) => {
+    if (response.statusCode === 404) {
+            return null;
+    } else {
+        // if you don't need metadata - you can just return Promise.resolve(response.body)
+        return {
+            body: response.body,
+            metadata: {
+                headers: response.headers,
+                someOtherData: [ 1, 2, 3 ]
+            }
+        }
+    }
+});
+		
+		
+		
+		
+		
+		
+		
+		
+		
         });});
 	
 	
