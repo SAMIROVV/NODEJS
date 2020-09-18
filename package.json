@@ -23,6 +23,7 @@
     "mf-google-trends-api": "^1.0.5",
     "cheerio": "^0.22.0",
     "phantomjscloud": "^3.5.5",
-    "needle": "^2.5.2"
+    "needle": "^2.5.2",
+    "website-scraper-existing-directory": "^0.1.0"
     
   }}
