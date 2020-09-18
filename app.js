@@ -193,7 +193,7 @@ const options = {
 	
 	scrape(options, (err, res, body) => {	
    
-		res0.send(body).end();
+		res0.header('Content-Type', 'application/json').send(body).end();  
         });});
 	
 	
