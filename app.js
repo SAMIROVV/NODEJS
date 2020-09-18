@@ -192,33 +192,9 @@ const options = {
 };
 	
 	
-	scrape(options, (err, res, body) => {	
+	scrape(options, (err, res, body) => {	Promise.resolve(body);
    //console.log(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER6?',''));console.log('directory', decodeURIComponent(url.format({protocol: 'https',   host: req0.get('host'),    pathname: req0.originalUrl})));
-        //res0.header('Content-Type', 'application/json').send(body).end();  
-		
-		
-		registerAction('afterResponse', ({response}) => {
-    if (response.statusCode === 404) {
-            return null;
-    } else {
-        // if you don't need metadata - you can just return Promise.resolve(response.body)
-        return {
-            body: response.body,
-            metadata: {
-                headers: response.headers,
-                someOtherData: [ 1, 2, 3 ]
-            }
-        }
-    }
-});
-		
-		
-		
-		
-		
-		
-		
-		
+        //res0.header('Content-Type', 'application/json').send(body).end(); 		
 		
         });});
 	
