@@ -184,10 +184,13 @@ const Request = require('request');
 
 app.get(('/SCRAPER6'),(req0, res0) => {
 const scrape = require('website-scraper');
-const url = require('url'); 
+const url = require('url');
+const SaveToExistingDirectoryPlugin = require('website-scraper-existing-directory');
+	
 const options = {
   urls: [decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER6?','')],
   directory: decodeURIComponent(url.format({protocol: 'https',   host: req0.get('host'),    pathname: req0.originalUrl}))
+plugins: [ new SaveToExistingDirectoryPlugin() ]	
 };
 	
 	
