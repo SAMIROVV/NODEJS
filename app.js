@@ -140,7 +140,7 @@ const Request = require('request');
 		
 	if(type === 'SCPURL' || type === ''){
 		var obj = JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, '');
-                res0.header('Content-Type', 'application/json').send(obj.widgets[0]);}
+                res0.header('Content-Type', 'application/json').send(JSON.parse(obj).widgets[0]);}
 		
 	if(type === 'SCPGTACM'){
 		res0.header('Content-Type', 'application/json').send(JSON.stringify(body).replace(/\\/g, ''));}
