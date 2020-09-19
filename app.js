@@ -265,7 +265,7 @@ const options = {
 //🔵
 app.get('/SCRAPER9', (req0, res0) => {
 const url = require('url'); 
-const Request = require('request');
+const Request1 = require('request');
 const options = {
       method: 'GET',
       host: 'trends.google.com',
@@ -281,7 +281,7 @@ const options = {
 
    
 
-     Request(options)
+     Request1(options)
     .then((results) => {
       //const parsedResults = parseResults(results);
 	    res0.send(results);
