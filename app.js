@@ -281,7 +281,7 @@ const options = {
 
    
 
-    return Request(options)
+     Request(options)
     .then((results) => {
       //const parsedResults = parseResults(results);
 	    res0.send(results);
