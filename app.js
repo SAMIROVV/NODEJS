@@ -285,7 +285,7 @@ const options = {
 
 
 //❤ SCRAPER WITH REQUEST.POST
-   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER7?https://☆https://
+   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER7?pathname☆https://☆https://
 
 app.get('/SCRAPER7', (req0, res0) => {
 const url = require('url'); 
