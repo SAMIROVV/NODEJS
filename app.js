@@ -273,7 +273,7 @@ const options = {
       qs: {
         hl: req0.query.hl,
         req: '{%22comparisonItem%22:[{%22keyword%22:%22bitcoin%22,%22geo%22:%22%22,%22time%22:%22today+5-y%22}],%22category%22:0,%22property%22:%22youtube%22}'
-        tz: ''-60,
+        tz: '-60',
       },
     };
 
