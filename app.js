@@ -285,14 +285,14 @@ const options = {
 
 
 //❤ SCRAPER WITH REQUEST.POST
-   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER7?pathname☆https://☆https://
+   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER7?https://☆https://
 
 app.get('/SCRAPER7', (req0, res0) => {
 const url = require('url'); 
 const Request = require('request');
-var path = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER7?','')
+
   
-	Request.post({path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1].replace('/SCRAPER7?',''), json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[2] }}, (err, res, body) => {	
+	Request.post({path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER7?',''), json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1] }}, (err, res, body) => {	
         res0.header('Content-Type', 'application/json').send(body).end();
         });});             
 	
