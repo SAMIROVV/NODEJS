@@ -129,7 +129,7 @@ const Request = require('request');
   
 	Request.post({url: 'https://countwordsfree.com/loadweb', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','') }}, (err, res, body) => {	
    
-		res0.send(JSON.stringify(body)).end();
+		res0.json(body).end();
         });});
 
 
@@ -195,7 +195,7 @@ const options = {
 	
 	scrape(options, (err, res, body) => {	
    //console.log(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER6?',''));console.log('directory', decodeURIComponent(url.format({protocol: 'https',   host: req0.get('host'),    pathname: req0.originalUrl})));
-        res0.view(body).end(); 		
+        res0.json(body).end(); 		
 	
        });
 });
