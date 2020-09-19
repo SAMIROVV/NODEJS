@@ -383,24 +383,6 @@ axios.get(req.query.url)
 });
 
 
-//🌷YOUTUBE SCRAPE SEARCH
-app.get('/YTSEARCH3', (req, res) => {
-const phantomJsCloud = require("phantomjscloud")
-var browser = new phantomJsCloud.BrowserApi(req.query.key)
-        
-        browser.requestSingle({ url: req.query.url, renderType: "plainText" })
-	
-	.then(function(results){
-        res
-            .status(200)
-            .header('Content-Type', 'application/json')
-            .send(results)
-            .end();
-        console.log('These results are awesome', results);
-      });
-                
-	
-	});
 
 
 
