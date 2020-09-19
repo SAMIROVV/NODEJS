@@ -142,7 +142,7 @@ const Request = require('request');
 //var obj1 = JSON.parse(body).replace(/\\/g, '');
 //var obj = JSON.parse(obj1)
                 //res0.send(JSON.parse(obj1.replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, '')));}
-		res0.header('Content-Type', 'application/json').send(JSON.stringify(body).replace(/\\/g, ''));}
+                res0.header('Content-Type', 'application/json').send(JSON.stringify(body).replace(/\\/g, ''));}
 		
 	if(type === 'SCPGTACM'){
 		res0.header('Content-Type', 'application/json').send(JSON.stringify(body).replace(/\\/g, ''));}
