@@ -252,22 +252,41 @@ const url = require('url');
 const options = {
   urls: [decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER6?','')],
   directory: decodeURIComponent(url.format({protocol: 'https',   host: req0.get('host'),    pathname: req0.originalUrl}))
-
 };
 	
 	
-	scrape(options, (err, res, body) => {	
-   //console.log(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER6?',''));console.log('directory', decodeURIComponent(url.format({protocol: 'https',   host: req0.get('host'),    pathname: req0.originalUrl})));
-        res0.json(body).end(); 		
-	
-       });
+	scrape(options, (err, res, body) => {res0.json(body).end();});
 });
 	
 	
 
 
 
+//🔵
+app.get('/SCRAPER9', (req0, res0) => {
+const url = require('url'); 
+const Request = require('request');
+const options = {
+      method: 'GET',
+      host: 'trends.google.com',
+      path: '/trends/api/explore',
+      qs: {
+        hl: req0.query.hl,
+        req: '{%22comparisonItem%22:[{%22keyword%22:%22bitcoin%22,%22geo%22:%22%22,%22time%22:%22today+5-y%22}],%22category%22:0,%22property%22:%22youtube%22}'
+        tz: ''-60,
+      },
+    };
 
+   
+
+    return Request(options)
+    .then((results) => {
+      //const parsedResults = parseResults(results);
+	    res0.send(results);
+	    
+	    });
+});
+	    
 
 	
 
