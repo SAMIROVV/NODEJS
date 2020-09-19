@@ -129,7 +129,7 @@ const Request = require('request');
   
 	Request.post({url: 'https://countwordsfree.com/loadweb', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','') }}, (err, res, body) => {	
    
-		res0.send(JSON.stringify(body).replace(/\\/g, ''));
+		res0.send(JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}',''));
         });});
 
 
