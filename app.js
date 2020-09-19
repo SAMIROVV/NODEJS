@@ -139,11 +139,10 @@ const Request = require('request');
         var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 		
 	if(type === 'SCPURL' || type === ''){
-//var obj1 = JSON.parse(body).replace(/\\/g, '');
-//var obj = JSON.parse(obj1)
+        var obj = JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, '');
                 //res0.send(JSON.parse(obj1.replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, '')));}
-                JSON.parse(JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, ''));
-		
+                res0.header('Content-Type', 'application/json').send(obj);}
+});
 	if(type === 'SCPGTACM'){
 		res0.header('Content-Type', 'application/json').send(JSON.stringify(body).replace(/\\/g, ''));}
 	
@@ -161,22 +160,22 @@ const Request = require('request');
 		
 		
 	if(type === 'SCPGTTS'){
-		var obj = JSON.parse(JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, ''));
+		var obj = JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, '');
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} }), json: true,}, (err, res, body) => {  
                 res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}
 		
 	if(type === 'SCPGTGEO'){
-		var obj = JSON.parse(JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, ''));
+		var obj = JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, '');
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[1].request), token: obj.widgets[1].token} }), json: true,}, (err, res, body) => {  
                 res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
 		
 	if(type === 'SCPGTTPC'){
-		var obj = JSON.parse(JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, ''));
+		var obj = JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, '');
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[2].request), token: obj.widgets[2].token} }), json: true,}, (err, res, body) => {  
                 res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
 		
 	if(type === 'SCPGTQRY'){
-		var obj = JSON.parse(JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, ''));
+		var obj = JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, '');
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }), json: true,}, (err, res, body) => {  
                 res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}		
 		
