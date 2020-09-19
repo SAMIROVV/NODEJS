@@ -139,7 +139,8 @@ const Request = require('request');
         var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 		
 	if(type === 'SCPURL' || type === ''){
-		var obj = JSON.parse(JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, ''));
+		var obj1 = JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, '');
+		var obj = JSON.parse(obj1)
                 res0.send(obj);}
 		
 	if(type === 'SCPGTACM'){
