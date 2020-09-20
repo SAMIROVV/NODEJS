@@ -229,17 +229,25 @@ app.get('/SCRAPER5', (req0, res0) => {
 const url = require('url'); 
 const request = require('request');
 const https = require('https');
+
 const options = {
       method: 'GET',
       host: 'trends.google.com',
       path: '/trends/api/explore',
-      req: JSON.stringify({
+      qs: {
+        hl: req0.query.hl,
+        req: JSON.stringify({
           comparisonItem: '[{"keyword":"bitcoin","geo":"","time":"today+5-y"}]',
           category: '0',
           property: 'youtube',
         }),
-	tz: '-60',
-      }
+        tz: '-60',
+      },
+    };
+
+
+
+
     
                 //Request({url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).replace('/SCRAPER5?','')  }
 https.request(options, (err, res, body) => {	
