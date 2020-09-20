@@ -227,9 +227,8 @@ axios.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 
 app.get('/SCRAPER5', (req0, res0) => {
 const url = require('url'); 
-//const Request = require('request');
+const request = require('request');
 const https = require('https');
-import request from './request';
 const options = {
       method: 'GET',
       host: 'trends.google.com',
