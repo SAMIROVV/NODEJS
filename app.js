@@ -252,6 +252,7 @@ var req = http.get(options2, function(res) {
   }).on('end', function() {
     var body = Buffer.concat(bodyChunks);
     console.log('BODtt: ' + body);
+	  res0.send(body)
     // ...and/or process the entire body here.
   })
 });
