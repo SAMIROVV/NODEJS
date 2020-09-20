@@ -243,6 +243,7 @@ const options = {
                 //Request({url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).replace('/SCRAPER5?','')  }
 Request(options, (err, res, body) => {	
                 res0.header('Content-Type', 'application/json').send(body).end();  
+console.log(options);
 });
 });
 
