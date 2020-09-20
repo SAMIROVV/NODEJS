@@ -228,8 +228,20 @@ axios.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 app.get('/SCRAPER5', (req0, res0) => {
 const url = require('url'); 
 const Request = require('request');
-  
-                Request({url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).replace('/SCRAPER5?','')  }, (err, res, body) => {	
+const options = {
+      method: 'GET',
+      host: 'trends.google.com',
+      path: '/trends/api/explore',
+      req: JSON.stringify({
+          comparisonItem: '[{"keyword":"bitcoin","geo":"","time":"today+5-y"}]',
+          category: '0',
+          property: 'youtube',
+        }),
+	tz: '-60',
+      }
+    
+                //Request({url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).replace('/SCRAPER5?','')  }
+Request(options, (err, res, body) => {	
                 res0.header('Content-Type', 'application/json').send(body).end();  
 });
 });
@@ -262,37 +274,6 @@ const options = {
 
 
 
-//🔵
-app.get('/SCRAPER9', (req0, res0) => {
-const url = require('url'); 
-//const Request1 = require('request');
-const options = {
-      method: 'GET',
-      host: 'trends.google.com',
-      path: '/trends/api/explore',
-      req: JSON.stringify({
-          comparisonItem: '[{"keyword":"bitcoin","geo":"","time":"today+5-y"}]',
-          category: '0',
-          property: 'youtube',
-        }),
-	tz: '-60',
-      },
-    
-
-   
-
-     Request(options)
-    .then((results) => {
-      //const parsedResults = parseResults(results);
-	    res0.send(results);
-	    
-	    });
-});
-	    
-
-	
-
-    
 
 
     	
@@ -382,6 +363,28 @@ axios.get(req.query.url)
 
 });
 
+
+
+
+
+//🌷YOUTUBE SCRAPE SEARCH
+app.get('/YTSEARCH3', (req, res) => {
+const phantomJsCloud = require("phantomjscloud")
+var browser = new phantomJsCloud.BrowserApi(req.query.key)
+        
+        browser.requestSingle({ url: req.query.url, renderType: "plainText" })
+	
+	.then(function(results){
+        res
+            .status(200)
+            .header('Content-Type', 'application/json')
+            .send(results)
+            .end();
+        console.log('These results are awesome', results);
+      });
+                
+	
+	});
 
 
 
