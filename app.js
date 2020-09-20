@@ -229,7 +229,7 @@ app.get('/SCRAPER5', (req0, res0) => {
 const url = require('url'); 
 //const Request = require('request');
 const https = require('https');
-import request from './requestmine';
+import request from './request';
 const options = {
       method: 'GET',
       host: 'trends.google.com',
