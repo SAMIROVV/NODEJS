@@ -32,7 +32,7 @@ https.get(options2, (res) => {
     var tz = req0.query.tz;         
 	
 	if(type === 'SCPGTEXPLORE'){
-		res0.header('Content-Type', 'application/json').send(data.replace(')]}','').replace(/'/g, ''));}
+		res0.header('Content-Type', 'application/json').send(data.replace(')]}','').replace(/'/g, ''));console.log(JSON.parse(data.slice(4)))}
 	    
 	    
         if(type === 'SCPGTTS'){		
