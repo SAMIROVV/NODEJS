@@ -36,10 +36,12 @@ https.get(options2, (res) => {
 		res0.header('Content-Type', 'application/json').send(data.replace(')]}','').replace(/'/g, ''));}
 	    
 	    
-        if(type === 'SCPGTTS'){	
-                https.get({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(JSON.parse(data.slice(4)).widgets[0].request), token: JSON.parse(data.slice(4)).widgets[0].token,tz: tz} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}            
-    
+        if(type === 'SCPGTTS'){
+		const Request = require('request');
+                var obj = JSON.parse(data.replace(')]}','').replace(/'/g, ''));
+                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} }), json: true,}, (err, res, body) => {  
+                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}
+		    
     
     
     });}) });
