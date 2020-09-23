@@ -13,14 +13,14 @@ const app = express();
 app.get('/SCRAPER0', (req0, res0) => {
     const https = require('https');
     const url = require('url'); 
-    var urlObject = hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?https://trends.google.com',''),method: 'GET',
+    var urlObject = {hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?https://trends.google.com',''),method: 'GET'},
 
-https.get({urlObject}, (res) => {
+https.get(urlObject, (res) => {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
     var cookie = res.headers['set-cookie'][0].split(';')[0];    
-    var options2 = {hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?https://trends.google.com',''), method: 'GET', headers: {'cookie': cookie} };
+    var options2 = {urlObject, headers: {'cookie': cookie} };
        
 https.get(options2, (res) => {
     let data = '';
