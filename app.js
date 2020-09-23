@@ -1,4 +1,4 @@
-'use strict';
+p'use strict';
                                                       //🔴♼♼♼♼♼      TO SCRAPE WEBSITEZ ESPECIALLY GOOGLE TRENDS      ♼♼♼♼♼🔴//
 
 const express = require('express');
@@ -44,7 +44,7 @@ https.get(options2, (res) => {
                 var options3 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} })  
                 
 	
-                https.get(option3, (res) => {  
+                https.get(options3, (res) => {  
                 //res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));
 		let data = '';
     res.on('data', (chunk) => {data += chunk; });
