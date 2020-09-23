@@ -23,11 +23,19 @@ https.get(options2, (res) => {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
-             //console.log(JSON.parse(data.slice(4)).widgets[1].token);          console.log(JSON.parse(data.slice(4)).widgets[1].request);   });}) });
+             console.log(JSON.parse(data.slice(4)).widgets[1].token);          
+	    console.log(JSON.parse(data.slice(4)).widgets[1].request);
+    
     var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 		
 	if(type === 'SCPURL' || type === ''){
 		res0.header('Content-Type', 'application/json').send(data);}
+    
+    
+    
+    
+    });}) });
+    
 
 
 })
