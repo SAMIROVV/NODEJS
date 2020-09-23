@@ -41,8 +41,16 @@ https.get(options2, (res) => {
 //const fetch = require('node-fetch');
 		
                 var obj = JSON.parse(data.replace(')]}','').replace(/'/g, ''));
-                https.get({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} })}, (res, body) => {  
-                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}
+                https.get({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} })}, (res) => {  
+                //res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));
+		let data = '';
+    res.on('data', (chunk) => {data += chunk; });
+    res.on('end', () => {res0.header('Content-Type', 'application/json').send(data.replace(')]}','').replace(/'/g, '').replace(',',''));});
+		
+		
+		});
+	
+	}
 		    
     
     
