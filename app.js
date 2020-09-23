@@ -40,8 +40,11 @@ https.get(options2, (res) => {
 		
 //const fetch = require('node-fetch');
 		
-                var obj = JSON.parse(data.replace(')]}','').replace(/'/g, ''));
-                https.get({ hostname: 'trends.google.com', path: '/trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} }, (res) => {  
+                var obj = JSON.parse(data.replace(')]}','').replace(/'/g, ''));   
+                var options3 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} })  
+                
+	
+                https.get(option3, (res) => {  
                 //res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));
 		let data = '';
     res.on('data', (chunk) => {data += chunk; });
