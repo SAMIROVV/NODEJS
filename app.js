@@ -40,7 +40,7 @@ https.get(options2, (res) => {
                 https.get(options3, (res) => {  
 		let data = '';
                   res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4))      );});});}
+                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(data.replace(')]}','').replace(/'/g, '').replace(',',''));});});}
 		    
     
     
