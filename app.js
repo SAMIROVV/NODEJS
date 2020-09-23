@@ -41,7 +41,7 @@ https.get(options2, (res) => {
 //const fetch = require('node-fetch');
 		
                 var obj = JSON.parse(data.replace(')]}','').replace(/'/g, ''));   
-                var options3 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} })  
+                var options3 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(JSON.parse(data.slice(4)).widgets[0].request), token: JSON.parse(data.slice(4)).widgets[0].token,tz: tz} })  
                 
 	
                 https.get(options3, (res) => {  
