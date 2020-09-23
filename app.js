@@ -35,7 +35,7 @@ https.get(options2, (res) => {
     var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 	    
 	if(type === 'SCPGTACM'){
-		res0.header('Content-Type', 'application/json').send(data.replace(')]}','').replace(/'/g, '').replace(',',''));}
+                res0.header('Content-Type', 'application/json').send(data.replace(')]}',''));}
 	
 	if(type === 'SCPGTDTR'){
 		res0.header('Content-Type', 'application/json').send(data.replace(')]}','').replace(/'/g, '').replace(',',''));}
