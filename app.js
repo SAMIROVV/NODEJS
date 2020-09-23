@@ -8,9 +8,9 @@ const app = express();
 //💔 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN
 
 app.get('/SCRAPER1', (req0, res0) => {
-const https = require('https');
-const url = require('url'); 
-var options1 = {hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?https://trends.google.com',''),method: 'GET',};
+    const https = require('https');
+    const url = require('url'); 
+    var options1 = {hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?https://trends.google.com',''),method: 'GET',};
 
 https.get(options1, (res) => {
     let data = '';
@@ -23,9 +23,34 @@ https.get(options2, (res) => {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
-             console.log(JSON.parse(data.slice(4)).widgets[1].token);          console.log(JSON.parse(data.slice(4)).widgets[1].request);   });}) });})
+             //console.log(JSON.parse(data.slice(4)).widgets[1].token);          console.log(JSON.parse(data.slice(4)).widgets[1].request);   });}) });
+    var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
+		
+	if(type === 'SCPURL' || type === ''){
+		res0.header('Content-Type', 'application/json').send(data);}
+
+
+})
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
