@@ -25,3 +25,15 @@ https.get(options2, (res) => {
              console.log(JSON.parse(data.slice(4)).widgets[1].token);          console.log(JSON.parse(data.slice(4)).widgets[1].request);   });}) });})
 
 });
+
+
+
+//💔Start the server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
+});
+
+	
+	module.exports = app;
