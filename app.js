@@ -10,7 +10,7 @@ const app = express();
 app.get('/SCRAPER1', (req0, res0) => {
 const https = require('https');
 const url = require('url'); 
-var options1 = {hostname: 'https://trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?https://trends.google.com',''),method: 'GET',};
+var options1 = {hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?https://trends.google.com',''),method: 'GET',};
 
 https.get(options1, (res) => {
     let data = '';
