@@ -31,15 +31,15 @@ https.get(options2, (res) => {
 	
 	    
 	if(type === 'SCPGTDTR'){
-		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
+		res0.header('Content-Type', 'application/json').send(data.replace(')]}','').replace(/'/g, '').replace(',',''));}
 		
 		
 	if(type === 'SCPGTRTT'){
-		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
+		res0.header('Content-Type', 'application/json').send(data.replace(')]}','').replace(/'/g, '').replace(',',''));}
 	    
 		
 	if(type === 'SCPGTEXPLORE' || type === ''){
-		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, ''));}	
+		res0.header('Content-Type', 'application/json').send(data.replace(')]}','').replace(/'/g, ''));}	
     
     
     
