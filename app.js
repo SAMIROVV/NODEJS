@@ -10,12 +10,12 @@ const app = express();
     //link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆SCPGTQRY
 
 
-app.get('/SCRAPER1', (req0, res0) => {
+app.get('/SCRAPER0', (req0, res0) => {
     const https = require('https');
     const url = require('url'); 
-    var options1 = {hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?https://trends.google.com',''),method: 'GET',};
+    var urlObject = hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?https://trends.google.com',''),method: 'GET',
 
-https.get(options1, (res) => {
+https.get({urlObject}, (res) => {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
