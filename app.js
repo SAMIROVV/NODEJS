@@ -28,8 +28,18 @@ https.get(options2, (res) => {
     
     var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 		
-	if(type === 'SCPURL' || type === ''){
-		res0.header('Content-Type', 'application/json').send(data);}
+	
+	    
+	if(type === 'SCPGTDTR'){
+		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
+		
+		
+	if(type === 'SCPGTRTT'){
+		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
+	    
+		
+	if(type === 'SCPGTEXPLORE' || type === ''){
+		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, ''));}	
     
     
     
