@@ -1,4 +1,4 @@
-p'use strict';
+'use strict';
                                                       //🔴♼♼♼♼♼      TO SCRAPE WEBSITEZ ESPECIALLY GOOGLE TRENDS      ♼♼♼♼♼🔴//
 
 const express = require('express');
