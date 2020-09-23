@@ -37,7 +37,7 @@ https.get(options2, (res) => {
 	    
 	    
         if(type === 'SCPGTTS'){	
-                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(JSON.parse(data.slice(4)).widgets[0].request), token: JSON.parse(data.slice(4)).widgets[0].token,tz: tz} }), json: true,}, (err, res, body) => {  
+                https.get({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(JSON.parse(data.slice(4)).widgets[0].request), token: JSON.parse(data.slice(4)).widgets[0].token,tz: tz} }), json: true,}, (err, res, body) => {  
                 res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}            
     
     
