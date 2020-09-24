@@ -33,8 +33,7 @@ https.get(options2, (res) => {
 	
 	if(type === 'SCPGTEXPLORE'){
 //res0.header('Content-Type', 'application/json').send(data.replace(')]}','').replace(/'/g, ''));console.log(JSON.parse(data.slice(4)))}
-	 
-		let reformattedArray = JSON.parse(data.slice(4)).widgets.map(obj => {let rObj = {}   rObj[obj.token] = obj.id})
+	 var reformattedArray = JSON.parse(data.slice(4)).widgets.map(obj => {let rObj = {},   rObj[obj.token] = obj.id})
 		
 		
 		
