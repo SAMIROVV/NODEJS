@@ -34,7 +34,7 @@ https.get(options2, (res) => {
 	if(type === 'SCPGTEXPLORE'){
 //res0.header('Content-Type', 'application/json').send(data.replace(')]}','').replace(/'/g, ''));console.log(JSON.parse(data.slice(4)))}
 	 
-		res0.send(JSON.parse(data).widgets)};   
+		res0.send(JSON.parse(data.slice(4)).widgets)};   
 	    
         if(type === 'SCPGTTS'){		
                 var options3 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(JSON.parse(data.slice(4)).widgets[0].request), token: JSON.parse(data.slice(4)).widgets[0].token,tz: tz} })  
