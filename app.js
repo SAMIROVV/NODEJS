@@ -24,8 +24,8 @@ app.get('/SCRAPER0', (req0, res0) => {
                 https.get(options0  , (res) => {  
                 let data = '';
                   res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {//res0.header('Content-Type', 'application/json').send(data);
-				      res0.send(options0)});});}  
+                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(data);
+				      });});}  
 	    
 	
 	
