@@ -53,7 +53,7 @@ https.get(options2, (res) => {
 	    
 	if(type === 'SCPGTEXPLORE' || type === ''){
 		
-console.log(JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.token+'/'+item.id}))
+console.log(JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id+'■'+item.request+'■'+item.token}))
 		
 		
 		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets);};   
