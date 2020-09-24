@@ -19,11 +19,13 @@ app.get('/SCRAPER0', (req0, res0) => {
     var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
 	
 //TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
-	if(type === 'SCPGTACM'  || type === 'SCPGTDTR'  || type === 'SCPGTRTT'){		
-                https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','')  , (res) => {  
+	if(type === 'SCPGTACM'  || type === 'SCPGTDTR'  || type === 'SCPGTRTT'){
+ var options0 =decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','');
+                https.get(options0  , (res) => {  
                 let data = '';
                   res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(data);});});}  
+                  res.on('end', () => {//res0.header('Content-Type', 'application/json').send(data);
+				      res0.send(options0)});});}  
 	    
 	
 	
