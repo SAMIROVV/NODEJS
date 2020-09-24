@@ -34,6 +34,7 @@ https.get(options2, (res) => {
 	if(type === 'SCPGTEXPLORE'){
 	
 		res0.send(JSON.parse(data.slice(4)).widgets);
+console.log(JSON.parse(data.slice(4)).widgets.map((item) => { item.id , item.token }));
 		
 		
 	};   
@@ -52,7 +53,6 @@ https.get(options2, (res) => {
     });
     });
     });
-
 
 
 
