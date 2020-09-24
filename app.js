@@ -19,7 +19,7 @@ app.get('/SCRAPER0', (req0, res0) => {
     var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
 	
 //TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
-	if(type === 'SCPGTACM'){		
+	if(type === 'SCPGTACM'  || type === 'SCPGTDTR'  || type === 'SCPGTRTT'){		
                 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','')  , (res) => {  
                 let data = '';
                   res.on('data', (chunk) => {data += chunk; });
@@ -31,7 +31,7 @@ app.get('/SCRAPER0', (req0, res0) => {
 
 	
 //TO SCRAPE GTRENDS GTRENDS EXPLORE & TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES	
-	
+else{
     var options1 = {hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET',  };
        
 https.get(options1, (res) => {
@@ -94,6 +94,7 @@ https.get(options2, (res) => {
     }); 
     });
     });
+};
     });
 
 
