@@ -52,6 +52,20 @@ https.get(options2, (res) => {
     
 	    
 	if(type === 'SCPGTEXPLORE' || type === ''){
+		var widgets = JSON.parse(data.slice(4)).ArrayOf("widgets");
+		var numEmployees = widgets.Size;
+    var i = 0;
+    while (i < numEmployees) {
+
+        // empObj: JsonObject
+        var empObj = widgets.ObjectAt(i);
+
+        console.log("employee[" + i + "] = " + empObj.StringOf("token") + " " + empObj.StringOf("id"));
+
+        i = i+1;
+    }
+		
+		
 		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets);console.log(JSON.parse(data.slice(4)).widgets[].token);};   
 	    
 	    
