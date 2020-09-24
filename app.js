@@ -32,14 +32,7 @@ https.get(options2, (res) => {
     var tz = req0.query.tz;         
 	
 	if(type === 'SCPGTEXPLORE'){
-	
-		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets);
-console.log(JSON.parse(data.slice(4)).widgets.map((item) => { item.id , item.token }));
-for(i = 0; i < JSON.parse(data.slice(4)).widgets.length; i++){
-   console.log("Id is :" + JSON.parse(data.slice(4)).widgets[i].id+"token is : " + JSON.parse(data.slice(4)).widgets[i].token);
-}		
-		
-	};   
+		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets);};   
 	    
         if(type === 'SCPGTTS'){		
                 var options3 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(JSON.parse(data.slice(4)).widgets[0].request), token: JSON.parse(data.slice(4)).widgets[0].token,tz: tz} })  
