@@ -7,8 +7,11 @@ const app = express();
 
 //💔 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN
 
-    //link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆SCPGTQRY
-
+    //for Ggle trends(TS/GEO/TPC/QRY) link ===  https://nodejsgithub.herokuapp.com/SCRAPER0?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆SCPGTQRY
+    //for google trends autocomplete link  ===  https://nodejsgithub.herokuapp.com/SCRAPER0?https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60☆SCPGTACM
+    //for google trends dailytrends  link  ===  https://nodejsgithub.herokuapp.com/SCRAPER0?https://trends.google.com/trends/api/dailytrends?hl=en-US&tz=-60&geo=AU&ns=15☆SCPGTDTR
+    //for google real timerends      link  ===  https://nodejsgithub.herokuapp.com/SCRAPER0?https://trends.google.com/trends/api/realtimetrends?hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0☆SCPGTRTT
+  
 
 app.get('/SCRAPER0', (req0, res0) => {
     const https = require('https');
@@ -65,6 +68,16 @@ https.get(options2, (res) => {
                 let data = '';
                   res.on('data', (chunk) => {data += chunk; });
                   res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));});});}
+	    
+	 
+	 if(type === 'SCPGTACM'){		
+                var options7 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','')  
+                https.get(options7, (res) => {  
+                let data = '';
+                  res.on('data', (chunk) => {data += chunk; });
+                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(data);});});}  
+	    
+	    
 	    
 	    
     
