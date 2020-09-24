@@ -55,7 +55,7 @@ https.get(options2, (res) => {
 		
 console.log(JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id+'■'+item.request+'■'+item.token}))
 console.log(JSON.parse(data.slice(4)).widgets.filter(function(o){    return (o.id === 'GEO_MAP')}));
-console.log(JSON.parse(data.slice(4)).widgets.filter(el => el.toLowerCase().indexOf('GEO'.toLowerCase()) !== -1)    );
+console.log(JSON.parse(data.slice(4)).widgets.filter(el => el.indexOf('GEO') !== -1)    );
 
 
 		
