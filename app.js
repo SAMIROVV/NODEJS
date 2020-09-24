@@ -56,9 +56,15 @@ https.get(options2, (res) => {
                 https.get(options5, (res) => {  
                 let data = '';
                   res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {//res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));
-				       res0.send(options5);
-				       });});}
+                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));});});}
+	    
+	    
+	if(type === 'SCPGTQRY'){		
+                var options6 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: JSON.stringify(JSON.parse(data.slice(4)).widgets[3].request), token: JSON.parse(data.slice(4)).widgets[3].token,tz: req0.query.tz[0]} })  
+                https.get(options6, (res) => {  
+                let data = '';
+                  res.on('data', (chunk) => {data += chunk; });
+                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));});});}
 	    
 	    
     
