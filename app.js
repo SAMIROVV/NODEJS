@@ -34,9 +34,7 @@ https.get(options2, (res) => {
 	if(type === 'SCPGTEXPLORE'){
 	
 		res0.send(JSON.parse(data.slice(4)).widgets);
-		for(i = 0; i < data.slice(4).widgets.length; i++){
-   console.log("Id is :" + data.slice(4).widgets[i].id+"token : " + data.slice(4).widgets[i].token);
-}
+		
 		
 	};   
 	    
