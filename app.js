@@ -51,7 +51,7 @@ https.get(options2, (res) => {
     
     
 	    
-	if(type === 'SCPGTEXPLORE'){
+	if(type === 'SCPGTEXPLORE' || type === ''){
 		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets);};   
 	    
 	    
