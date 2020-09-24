@@ -36,14 +36,14 @@ https.get(options2, (res) => {
 	    
         if(type === 'SCPGTTS'){		
                 var options3 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(JSON.parse(data.slice(4)).widgets[0].request), token: JSON.parse(data.slice(4)).widgets[0].token,tz: tz} })  
-                https.get(options3, (res,data) => {  
+                https.get(options3, (res) => {  
                 let data = '';
                   res.on('data', (chunk) => {data += chunk; });
                   res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));    });});}
 		    
         if(type === 'SCPGTGEO'){		
                 var options4 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(JSON.parse(data.slice(4)).widgets[1].request), token: JSON.parse(data.slice(4)).widgets[1].token,tz: tz} })  
-                https.get(options4, (res,data) => {  
+                https.get(options4, (res) => {  
                 let data = '';
                   res.on('data', (chunk) => {data += chunk; });
                   res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));    });});}
