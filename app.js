@@ -57,7 +57,7 @@ console.log(JSON.parse(data.slice(4)).widgets.map(function (item) {  return item
 console.log(JSON.parse(data.slice(4)).widgets.filter(function(o){    return (o.id === 'GEO_MAP')}));
 console.log(JSON.parse(data.slice(4)).widgets.filter(function(o){    return (o.id.includes('GEO_MAP'))}));
 		
-//console.log(JSON.parse(data.slice(4)).widgets.filter(el => el.indexOf('GEO') !== -1)    );
+
 
 
 		
