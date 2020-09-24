@@ -56,7 +56,9 @@ https.get(options2, (res) => {
                 https.get(options5, (res) => {  
                 let data = '';
                   res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));});});}
+                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));
+				       res0.send(options5);
+				       });});}
 	    
 	    
     
