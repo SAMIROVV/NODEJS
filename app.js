@@ -32,7 +32,7 @@ app.get('/SCRAPER0', (req0, res0) => {
 	
 
 	
-//TO SCRAPE GTRENDS GTRENDS EXPLORE & TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES	
+//TO SCRAPE GTRENDS EXPLORE & TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES	
 else{
     var options1 = {hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET',  };
        
@@ -54,6 +54,10 @@ https.get(options2, (res) => {
 	if(type === 'SCPGTEXPLORE' || type === ''){
 		
 console.log(JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id+'■'+item.request+'■'+item.token}))
+console.log(JSON.parse(data.slice(4)).widgets.filter(function(o){    return (o.id === 'GEO_MAP')}));
+console.log(JSON.parse(data.slice(4)).widgets.filter(el => el.toLowerCase().indexOf('GEO'.toLowerCase()) !== -1)    );
+
+
 		
 		
 		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets);};   
