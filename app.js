@@ -66,7 +66,7 @@ https.get(options2, (res) => {
     }
 		
 		
-		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets);console.log(JSON.parse(data.slice(4)).widgets[].token);};   
+		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets);};   
 	    
 	    
         if(type === 'SCPGTTS'){		
