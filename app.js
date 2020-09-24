@@ -33,7 +33,7 @@ https.get(options2, (res) => {
 	
 	if(type === 'SCPGTEXPLORE'){
 	
-		res0.send(JSON.parse(data.slice(4)).widgets);
+		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets);
 console.log(JSON.parse(data.slice(4)).widgets.map((item) => { item.id , item.token }));
 for(i = 0; i < JSON.parse(data.slice(4)).widgets.length; i++){
    console.log("Id is :" + JSON.parse(data.slice(4)).widgets[i].id+"token is : " + JSON.parse(data.slice(4)).widgets[i].token);
@@ -46,7 +46,7 @@ for(i = 0; i < JSON.parse(data.slice(4)).widgets.length; i++){
                 https.get(options3, (res) => {  
 		let data = '';
                   res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(data.replace(')]}','').replace(/'/g, '').replace(',',''));});});}
+                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));    });});}
 		    
     
     
