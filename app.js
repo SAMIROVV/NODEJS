@@ -34,9 +34,9 @@ https.get(options2, (res) => {
 	if(type === 'SCPGTEXPLORE'){
 let rObj ={};
 //res0.header('Content-Type', 'application/json').send(data.replace(')]}','').replace(/'/g, ''));console.log(JSON.parse(data.slice(4)))}
-	 var reformattedArray = JSON.parse(data.slice(4)).widgets.map(obj => {rObj[obj.token] = obj.id})
+	 var reformattedArray = JSON.parse(data.slice(4)).widgets.request.map(obj => {rObj[obj.token] = obj.id})
 		
-		res0.send(JSON.parse(data.slice(4)).widgets);
+		res0.send(JSON.parse(data.slice(4)).widgets.request);
 		
 		
                 console.log(reformattedArray)}
