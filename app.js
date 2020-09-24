@@ -47,7 +47,7 @@ https.get(options2, (res) => {
                 let data = '';
                   res.on('data', (chunk) => {data += chunk; });
                   res.on('end', () => {//res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));  
-				      console.log(JSON.stringify(JSON.parse(data.slice(4)).widgets[1].request)); console.log(JSON.parse(data.slice(4)).widgets[1].token);
+				      //console.log(JSON.stringify(JSON.parse(data.slice(4)).widgets[1].request)); console.log(JSON.parse(data.slice(4)).widgets[1].token);
 				      res0.send(options4);
 				      });});}
 	    
