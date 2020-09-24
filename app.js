@@ -28,7 +28,7 @@ app.get('/SCRAPER0', (req0, res0) => {
 	
 	
 	
-	
+else{
 	
 //TO SCRAPE GTRENDS GTRENDS EXPLORE & TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES	
 	
@@ -89,7 +89,7 @@ https.get(options2, (res) => {
 	    
 	    
 	    
-    
+    }
     });
     }); 
     });
