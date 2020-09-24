@@ -28,21 +28,23 @@ https.get(options2, (res) => {
     res.on('end', () => {
             
     
-    var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
-    var tz = req0.query.tz[0];         
+    var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];       
 	
+	    
 	if(type === 'SCPGTEXPLORE'){
 		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets);};   
 	    
+	    
         if(type === 'SCPGTTS'){		
-                var options3 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(JSON.parse(data.slice(4)).widgets[0].request), token: JSON.parse(data.slice(4)).widgets[0].token,tz: tz} })  
+                var options3 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: JSON.stringify(JSON.parse(data.slice(4)).widgets[0].request), token: JSON.parse(data.slice(4)).widgets[0].token,tz: req0.query.tz[0]} })  
                 https.get(options3, (res) => {  
                 let data = '';
                   res.on('data', (chunk) => {data += chunk; });
                   res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));    });});}
 		    
+	    
         if(type === 'SCPGTGEO'){		
-                var options4 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(JSON.parse(data.slice(4)).widgets[1].request), token: JSON.parse(data.slice(4)).widgets[1].token,tz: tz} })  
+                var options4 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: JSON.stringify(JSON.parse(data.slice(4)).widgets[1].request), token: JSON.parse(data.slice(4)).widgets[1].token,tz: req0.query.tz[0]} })  
                 https.get(options4, (res) => {  
                 let data = '';
                   res.on('data', (chunk) => {data += chunk; });
