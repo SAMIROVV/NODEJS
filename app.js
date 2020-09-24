@@ -35,7 +35,9 @@ https.get(options2, (res) => {
 	
 		res0.send(JSON.parse(data.slice(4)).widgets);
 console.log(JSON.parse(data.slice(4)).widgets.map((item) => { item.id , item.token }));
-		
+for(i = 0; i < JSON.parse(data.slice(4)).widgets.length; i++){
+   console.log("Id is :" + JSON.parse(data.slice(4)).widgets[i].id+"token is : " + JSON.parse(data.slice(4)).widgets[i].token);
+}		
 		
 	};   
 	    
