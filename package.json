@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "license": "MIT",
-  "author": "Tobi Sell",
+  "author": "Samir",
   "engines": {
     "node": ">=8.0.0"
   },
@@ -14,15 +14,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "google-trends-api": "^4.9.0",
-    "request": "^2.24.2",
-    "website-scraper": "^4.2.2",
-    "axios": "^0.20.0",
-    "google-trends-api-with-category": "^4.1.1",
-    "mf-google-trends-api": "^1.0.5",
-    "cheerio": "^0.22.0",
-    "phantomjscloud": "^3.5.5",
-    "needle": "^2.5.2",
-    "website-scraper-existing-directory": "^0.1.0"
+    "website-scraper": "^4.2.2"
+    
+    
     
     
   }}
