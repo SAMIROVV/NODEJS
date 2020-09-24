@@ -15,7 +15,23 @@ const app = express();
 
 app.get('/SCRAPER0', (req0, res0) => {
     const https = require('https');
-    const url = require('url'); 
+    const url = require('url');
+    var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
+	
+//TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
+	if(type === 'SCPGTACM'){		
+                https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','')  , (res) => {  
+                let data = '';
+                  res.on('data', (chunk) => {data += chunk; });
+                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(data);});});}  
+	    
+	
+	
+	
+	
+	
+//TO SCRAPE GTRENDS GTRENDS EXPLORE & TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES	
+	
     var options1 = {hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET',  };
        
 https.get(options1, (res) => {
@@ -31,8 +47,7 @@ https.get(options2, (res) => {
     res.on('end', () => {
             
     
-    var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];       
-	
+    
 	    
 	if(type === 'SCPGTEXPLORE'){
 		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets);};   
@@ -70,13 +85,7 @@ https.get(options2, (res) => {
                   res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));});});}
 	    
 	 
-	 if(type === 'SCPGTACM'){		
-                var options7 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','')  
-                https.get(options7, (res) => {  
-                let data = '';
-                  res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(data);});});}  
-	    
+	 
 	    
 	    
 	    
