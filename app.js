@@ -53,11 +53,10 @@ https.get(options2, (res) => {
 	    
 	if(type === 'SCPGTEXPLORE' || type === ''){
 		
-console.log(JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'■'+JSON.stringify(item.request)+'■'+item.token})   );
+console.log(JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'■'+JSON.stringify(item.request)+'■'+item.token}).find(element => element === 'GEO_MAP')   );
 //var dat = if(JSON.parse(data.slice(4)).widgets.filter(function(o){    return (o.id === 'GEO_MAP')})==='[Array]'){JSON.STRINGIFY(JSON.parse(data.slice(4)).widgets.filter(function(o){    return (o.id === 'GEO_MAP')}))}else{JSON.parse(data.slice(4)).widgets.filter(function(o){    return (o.id === 'GEO_MAP')})};
 //console.log(dat);
 		
-
 
 
 		
