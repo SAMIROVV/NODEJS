@@ -41,33 +41,19 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
             let data = '';
             res.on('data', (chunk) => {data += chunk; });
             res.on('end', () => {
-            
+               var td = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'■'+JSON.stringify(item.request)+'■'+item.token})   ;
+               const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)}
+
     
     
 	    
 	if(type === 'SCPGTEXPLORE' || type === ''){
-		
-var td = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'■'+JSON.stringify(item.request)+'■'+item.token})   ;
-const filterItems = (arr, query) => {
-  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)
-}
-
-console.log(filterItems(td, 'geo_map'))
-		
-		
-		
-
-		
-
-
-		
-		
 		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets);};   
 	    
 	    
         if(type === 'SCPGTTS'){		
-                var options3 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: JSON.stringify(JSON.parse(data.slice(4)).widgets[0].request), token: JSON.parse(data.slice(4)).widgets[0].token,tz: req0.query.tz[0]} })  
-                https.get(options3, (res) => {  
+                //var options3 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: JSON.stringify(JSON.parse(data.slice(4)).widgets[0].request), token: JSON.parse(data.slice(4)).widgets[0].token,tz: req0.query.tz[0]} })  
+                https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'timeseries■')[0].split('■')[1], token: filterItems(td, 'timeseries■')[0].split('■')[2],tz: req0.query.tz[0]} })  , (res) => {  
                 let data = '';
                   res.on('data', (chunk) => {data += chunk; });
                   res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));    });});}
