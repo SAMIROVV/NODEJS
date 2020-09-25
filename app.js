@@ -18,35 +18,29 @@ app.get('/SCRAPER0', (req0, res0) => {
     const url = require('url');
     var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
 	
+	
+	
 //TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
 	if(type === 'SCPGTACM'  || type === 'SCPGTDTR'  || type === 'SCPGTRTT'){
  var options0 =decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','');
                 https.get(options0  , (res) => {  
-                let data = '';
-                  res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));
+                    let data = '';
+                    res.on('data', (chunk) => {data += chunk; });
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));
 				      });});}  
 	    
-	
-	
-	
-
-	
+		
 //TO SCRAPE GTRENDS EXPLORE & TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES	
-else{
-    var options1 = {hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET',  };
-       
-https.get(options1, (res) => {
+else{   
+https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET',}, (res) => {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
-    var cookie = res.headers['set-cookie'][0].split(';')[0];    
-    var options2 = {hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET', headers: {'cookie': cookie} };
-       
-https.get(options2, (res) => {
-    let data = '';
-    res.on('data', (chunk) => {data += chunk; });
-    res.on('end', () => {
+        var cookie = res.headers['set-cookie'][0].split(';')[0];
+        https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET', headers: {'cookie': cookie} }, (res) => {
+            let data = '';
+            res.on('data', (chunk) => {data += chunk; });
+            res.on('end', () => {
             
     
     
@@ -62,8 +56,7 @@ console.log(filterItems(td, 'geo_map'))
 		
 		
 		
-//console.log(JSON.parse(data.slice(4)).widgets.filter(function(o){    return (o.id === 'GEO_MAP')}));
-//console.log(td.includes())
+
 		
 
 
