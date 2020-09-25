@@ -73,8 +73,11 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
                   res.on('data', (chunk) => {data += chunk; });
                   res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));});});
 		    
-	    console.log(https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_topics■{')[0].split('■')[1], token: filterItems(td, 'related_topics■{')[0].split('■')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                 );
+	    
+		
+		     console.log(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_topics■{')[0].split('■')[1], token: filterItems(td, 'related_topics■{')[0].split('■')[2]  ,tz: req0.query.tz[0]} }))   
+                
+		
 		    }
 				  
 				  
