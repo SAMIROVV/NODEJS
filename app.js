@@ -58,7 +58,7 @@ const filterItems = (arr, query) => {
   return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)
 }
 
-console.log(filterItems(td, 'geo'))
+console.log(filterItems(td, 'geo_map'))
 		
 		
 		
