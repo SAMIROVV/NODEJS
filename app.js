@@ -74,18 +74,37 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
                
 		   
 	if(type === 'SCPGTQRY'){		
-                https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries■{')[0].split('■')[1], token: filterItems(td, 'related_queries■{')[0].split('■')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
+               // https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries■{')[0].split('■')[1], token: filterItems(td, 'related_queries■{')[0].split('■')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
+                 // let data = '';
+                  //res.on('data', (chunk) => {data += chunk; });
+                  //res.on('end', () => {res0.header('Content-Type', 'application/json').write(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'■'+item.value}));   ;                         
+			            //  });});
+	
+	
+		
+		var i = 0,
+    max = 2;
+
+  //set the appropriate HTTP header
+  res0.setHeader('Content-Type', 'text/html');
+
+  //send multiple responses to the client
+  for (; i <= max; i++) {
+	  
+	https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries■{')[i].split('■')[1], token: filterItems(td, 'related_queries■{')[i].split('■')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
                   let data = '';
                   res.on('data', (chunk) => {data += chunk; });
                   res.on('end', () => {res0.header('Content-Type', 'application/json').write(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'■'+item.value}));   ;                         
 			              });});
-	
-	https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries■{')[1].split('■')[1], token: filterItems(td, 'related_queries■{')[1].split('■')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                  let data = '';
-                  res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {res1.header('Content-Type', 'application/json').write(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'■'+item.value}));   ;                         
-			              });});
-	
+	  
+	  
+	  
+	  
+    //res0.write('<h1>This is the response #: ' + i + '</h1>');
+  }
+
+  //end the response process
+  res0.end();
 	
 	
 	
