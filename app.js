@@ -104,7 +104,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
   }
 
   //end the response process
-  res0.end();
+  
 	
 	
 	
