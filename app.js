@@ -76,21 +76,13 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
               if(filterItems(td, 'related_topics■{')[1] = 'undefined'){res0.send(first);}
 			  else{
 			  		
-					
-	
-				
-				
-				
-				
-				
-				
 				
 				
 				}
 				
 				
 				
-});
+
 			  
 			  
 			  
