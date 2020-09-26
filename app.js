@@ -99,7 +99,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 			     
 			     
 			     
-			     }
+			     
 				      
 				      
 				      
