@@ -80,7 +80,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
                   res.on('end', () => {
                        var first = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'■'+item.value})   ;          
                        res0.header('Content-Type', 'application/json').send(first);
-			  
+console.log('trdes',filterItems(td, 'related_queries■{')[4]);  
 		  
 		  
 		  
