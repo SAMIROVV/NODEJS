@@ -108,7 +108,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
           	res0.send(first+'🔰'+second+'🔰'+third+'🔰'+forth+'🔰'+fifth)
 				
 			
-			
+			});
 			});
 				}
 					});
@@ -122,7 +122,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 					
 			});		
 					
-					
+			});		
 					
 	
 				
