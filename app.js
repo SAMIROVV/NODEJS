@@ -78,7 +78,20 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
                   let data = '';
                   res.on('data', (chunk) => {data += chunk; });
                   res.on('end', () => {
-			  var first = JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'■'+item.value}) ;    
+			      
+var first =  JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'■'+item.value}) ;    
+res0.send(first);
+			  });});}
+			  
+			  
+			 
+		    
+		    
+		    
+		    
+		    
+		    
+			  
 			  //if(filterItems(td, 'related_queries■{')[1] === undefined){res0.header('Content-Type', 'application/json').send(first);console.log(filterItems(td, 'related_queries■{')[1]);}
 			     //else{
 			
@@ -86,7 +99,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 			     
 			     //}
 			
-res0.send(first);
+
 			     
 			     
 			     
@@ -94,14 +107,7 @@ res0.send(first);
 			     
 			     
 			     
-				      
-				      
-				      
-				      
-				      
-				      });});}   
-		   
-			  
+										  
 			  
 			  
 //res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'■'+item.value})   );    
