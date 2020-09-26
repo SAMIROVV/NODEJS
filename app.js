@@ -74,11 +74,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
                   res.on('end', () => {console.log(filterItems(td, 'related_topics■{'))
 			  //var first = JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value}) ;  
               //if(filterItems(td, 'related_topics■{')[1] = 'undefined'){res0.send(first);}
-			  //else{
-			  		
-				
-				
-				}
+			  //else{		}
 				
 				
 				
