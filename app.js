@@ -86,7 +86,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
                   let data = '';
                   res.on('data', (chunk) => {data += chunk; });
                   res.on('end', () => {var fifthK = JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value}) ;         
-				      res0.header('Content-Type', 'application/json').send(firstK+'🔰'+secondK+'🔰'+thirdK+'🔰'+forthK+'🔰'+fifthK+'🔰'+);
+				      res0.header('Content-Type', 'application/json').send(firstK+'🔰'+secondK+'🔰'+thirdK+'🔰'+forthK+'🔰'+fifthK);
 		  
 		  
 		  
