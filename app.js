@@ -75,38 +75,42 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 	
 		
                 https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_topics■{')[1].split('■')[1], token: filterItems(td, 'related_topics■{')[1].split('■')[2]  ,tz: req0.query.tz[0]} })  , (err,res) => {  
-                  if (err)
-    console.log ('error', err.message, err.stack)
-  else
+                  
 			
 			let data = '';
+			if (err)
+    console.log ('error', err.message, err.stack)
+  else
                   res.on('data', (chunk) => {data += chunk; });
                   res.on('end', () => {var second = JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value}) ;res0.send(second); });});
 	 
 			  		  
 		https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_topics■{')[2].split('■')[1], token: filterItems(td, 'related_topics■{')[2].split('■')[2]  ,tz: req0.query.tz[0]} })  , (err,res) => {  
-                  if (err)
+                 let data = '';
+			if (err)
     console.log ('error', err.message, err.stack)
   else
-			let data = '';
+			
                   res.on('data', (chunk) => {data += chunk; });
                   res.on('end', () => {var third = JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value}) ;res0.send(third); });});		  
 				        
 				       			       
 		https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_topics■{')[3].split('■')[1], token: filterItems(td, 'related_topics■{')[3].split('■')[2]  ,tz: req0.query.tz[0]} })  , (err,res) => {  
-                 if (err)
+                let data = '';
+			if (err)
     console.log ('error', err.message, err.stack)
   else
-			let data = '';
+			
                   res.on('data', (chunk) => {data += chunk; });
                   res.on('end', () => {var forth = JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value}) ;res0.send(forth); });});
 	  				       				       
 				       
                 https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_topics■{')[4].split('■')[1], token: filterItems(td, 'related_topics■{')[4].split('■')[2]  ,tz: req0.query.tz[0]} })  , (err,res) => {  
-                  if (err)
+                 let data = '';
+			if (err)
     console.log ('error', err.message, err.stack)
   else
-			let data = '';
+			
                   res.on('data', (chunk) => {data += chunk; });
                   res.on('end', () => {var fifth = JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value}) ; res0.send(fifth);});});
 				       	
