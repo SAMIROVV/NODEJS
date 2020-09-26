@@ -75,54 +75,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 			  var first = JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value}) ;  
               if(filterItems(td, 'related_topics■{')[1] = 'undefined'){res0.send(first);}
 			  else{
-			  https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_topics■{')[1].split('■')[1], token: filterItems(td, 'related_topics■{')[1].split('■')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                 let data = '';
-                  res.on('data', (chunk) => {data += chunk; });
-			res.on('end', () => {
-				var second = JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value}) ;  
-              if(filterItems(td, 'related_topics■{')[2] = 'undefined'){res0.send(first+'🔰'+second);}	
-				
-				else{
-				https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_topics■{')[2].split('■')[1], token: filterItems(td, 'related_topics■{')[2].split('■')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-              let data = '';
-                  res.on('data', (chunk) => {data += chunk; });
-			res.on('end', () => {
-				var third = JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value}) ;  
-              if(filterItems(td, 'related_topics■{')[3] = 'undefined'){res0.send(first+'🔰'+second+'🔰'+third);}	
-				
-				else{
-					https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_topics■{')[3].split('■')[1], token: filterItems(td, 'related_topics■{')[3].split('■')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-            let data = '';
-                  res.on('data', (chunk) => {data += chunk; });
-			res.on('end', () => {
-				
-				var forth = JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value}) ;  
-              if(filterItems(td, 'related_topics■{')[4] = 'undefined'){res0.send(first+'🔰'+second+'🔰'+third+'🔰'+forth);}
-				
-				else{
-				https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_topics■{')[4].split('■')[1], token: filterItems(td, 'related_topics■{')[4].split('■')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-            let data = '';
-                  res.on('data', (chunk) => {data += chunk; });	
-			res.on('end', () => {		
-				var fifth = JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value}) ;  
-          	res0.send(first+'🔰'+second+'🔰'+third+'🔰'+forth+'🔰'+fifth)
-				
-			
-			});
-			});
-				}
-					});
-					});
-					}
-					
-				
-				
-					
-					
-					
-			});		
-					
-			});		
+			  		
 					
 	
 				
@@ -141,11 +94,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 			  
 			  
 			  
-			  });
-			  
-			  
-			  
-			  }
+			 
 			  
 			  
                 
