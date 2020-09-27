@@ -36,8 +36,8 @@ app.get('/SCRAPER0', (req0, res0,res1) => {
                https.get(options0  , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {//res0.send(JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet}) }));
-                                    res0.send(data);  });});}  
+                    res.on('end', () => {res0.send(JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.title+'🍎'+item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})   }));
+                                      });});}  
 	
 	
 	
@@ -171,7 +171,68 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 		    
 		    
 		    
-			  
+	//💔💙💚 AMAZING SCRAPER WITH NEPOCHATAYA 
+    //for google trends autocomplete link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60☆SCPGTACM
+    //for google trends dailytrends  link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?https://trends.google.com/trends/api/dailytrends?hl=en-US&tz=-60&geo=AU&ns=15☆SCPGTDTR
+    //for google real timerends      link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?https://trends.google.com/trends/api/realtimetrends?hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0☆SCPGTRTT
+    //for google trends all          link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆SCPGTQRY
+    //for other websites             link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?url☆SCPURL
+
+app.get('/SCRAPER2', (req0, res0) => {
+const url = require('url'); 
+const Request = require('request');
+  
+	Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?','')  }}, (err, res, body) => {	
+        Request({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
+		
+              var tz = req0.query.tz;
+              var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
+		
+	if(type === 'SCPURL' || type === ''){
+		res0.header('Content-Type', 'application/json').send(body);}
+		
+	if(type === 'SCPGTACM'){
+		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
+	
+	if(type === 'SCPGTDTR'){
+		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
+		
+		
+	if(type === 'SCPGTRTT'){
+		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
+		
+	if(type === 'SCPGTEXPLORE'){
+		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, ''));}	
+		
+		
+		
+		
+	if(type === 'SCPGTTS'){
+		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
+                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} }), json: true,}, (err, res, body) => {  
+                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}
+		
+	if(type === 'SCPGTGEO'){
+		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
+                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[1].request), token: obj.widgets[1].token} }), json: true,}, (err, res, body) => {  
+                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
+		
+	if(type === 'SCPGTTPC'){
+		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
+                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[2].request), token: obj.widgets[2].token} }), json: true,}, (err, res, body) => {  
+                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
+		
+	if(type === 'SCPGTQRY'){
+		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
+                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }), json: true,}, (err, res, body) => {  
+                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}		
+		
+			
+});		
+});
+});
+	
+		  
 			  
 			
 
