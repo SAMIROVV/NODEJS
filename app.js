@@ -33,34 +33,11 @@ app.get('/SCRAPER0', (req0, res0,res1) => {
 	
 	if(type === 'SCPGTDTR'){
  var options0 =decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','');
-               // https.get(options0  , (res) => {  
-                    //let data = '';
-                    //res.on('data', (chunk) => {data += chunk; });
-                    //res.on('end', () => {res0.send(data);//JSON.parse(data.slice(5)).default)//.trendingSearchesDays[0])//.trendingSearches);//.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet}) }));
-                                      //});});
-	
-	
-		const axios = require('axios');
-
-
-axios.get(options0)
-  .then(function(datal){res0.send(data); })
-  
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-	}  
+               https.get(options0  , (res) => {  
+                    let data = '';
+                    res.on('data', (chunk) => {data += chunk; });
+                    res.on('end', () => {res0.send(JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet}) }));
+                                      });});}  
 	
 	
 	
