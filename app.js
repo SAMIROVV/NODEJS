@@ -226,7 +226,7 @@ const Request = require('request');
 	if(type === 'SCPGTQRY'){
 		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})) .end();});}
+                res0.header('Content-Type', 'application/json').send(JSON.parse(body).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(body).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})) .end();});}
 		
 		
 			
