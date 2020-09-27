@@ -40,10 +40,10 @@ app.get('/SCRAPER0', (req0, res0,res1) => {
                                       //});});
 	
 	
-		const fetch = require('node-fetch');
+		const axios = require('axios');
 
 
-fetch(options0)
+axios.get(options0)
   .then(function(datal){res0.send(data); })
   
 		
