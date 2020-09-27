@@ -199,7 +199,9 @@ const Request = require('request');
 		
 		
 	if(type === 'SCPGTRTT'){
-		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).trendingStories    );}
+		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)) )
+		
+		;}
 		
 	if(type === 'SCPGTEXPLORE'){
 		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(4)));}	
