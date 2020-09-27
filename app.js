@@ -98,12 +98,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
                   let data = '';
                   res.on('data', (chunk) => {data += chunk; });
                   res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value}));   ;                         
-				      });});}
-		    
-		    
-					    
-		    
-		    
+				      });});}		    
 		    
 		    
     });
@@ -190,6 +185,9 @@ const Request = require('request');
               var tz = req0.query.tz[0];
               var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 		
+	
+		//TO SCRAPE URL & GTRENDS EXPLORE & AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
+		
 	if(type === 'SCPURL' || type === ''){
 		res0.header('Content-Type', 'application/json').send(body);}
 		
@@ -208,6 +206,7 @@ const Request = require('request');
 		
 		
 		
+		//TO SCRAPE GTRENDS TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES
 		
 	if(type === 'SCPGTTS'){
 		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
@@ -227,7 +226,8 @@ const Request = require('request');
 	if(type === 'SCPGTQRY'){
 		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}		
+                res0.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})) .end();});}
+		
 		
 			
 });		
