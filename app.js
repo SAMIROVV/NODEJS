@@ -98,7 +98,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 
 //💔💙💚 GOOGLE TRENDS SCRAPER API
     //for SCPGTACM Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&hl=en☆SCPGTACM
-    //for SCPGTDTR Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&language=en&time=400☆SCPGTDTR
+    //for SCPGTDTR Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER11?geo=US&hl=en&time=400☆SCPGTDTR
     //for SCPGTRTT Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&language=en&category=all☆SCPGTRTT
     //for SCPGTTS  Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&language=en&category=0&engine=youtube☆SCPGTTS
     //for SCPGTGEO Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&&resolution=&language=en&category=0&engine=youtube☆SCPGGEO
@@ -117,7 +117,7 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 	if(type === 'SCPGTACM'){ googleTrends.autoComplete ({keyword: req.query.keyword, hl: req.query.language ,property: req.query.engine})
            .then(function(data){ res.header('Content-Type', 'application/json').send( JSON.parse(data).default.topics.map(function (item) {  return item.title+'■'+item.type})  ).end();}); }
 	
-	if(type === 'SCPGTDTR'){ googleTrends.dailyTrends ({geo: req.query.geo, hl: req.query.language, trendDate: new Date(Date.now() - (req.query.time * 60 * 60 * 1000)), property: req.query.engine})
+	if(type === 'SCPGTDTR'){ googleTrends.dailyTrends ({geo: req.query.geo, hl: req.query.hl, trendDate: new Date(Date.now() - (req.query.time * 60 * 60 * 1000))})
            .then(function(data){ res.header('Content-Type', 'application/json').send(data).end();}); }
 	
 	if(type === 'SCPGTRTT'){ googleTrends.realTimeTrends ({geo: req.query.geo, hl: req.query.language, category: req.query.category, property: req.query.engine})
