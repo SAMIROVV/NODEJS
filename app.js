@@ -115,7 +115,7 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 	//TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
 	
 	if(type === 'SCPGTACM'){ googleTrends.autoComplete ({keyword: req.query.keyword, hl: req.query.language ,property: req.query.engine})
-           .then(function(results){ res.header('Content-Type', 'application/json').send(results).end();}); }
+           .then(function(data){ res.header('Content-Type', 'application/json').send( JSON.parse(data).default.topics.map(function (item) {  return item.title+'■'+item.type})  ).end();}); }
 	
 	if(type === 'SCPGTDTR'){ googleTrends.dailyTrends ({geo: req.query.geo, hl: req.query.language, trendDate: new Date(Date.now() - (req.query.time * 60 * 60 * 1000)), property: req.query.engine})
            .then(function(results){ res.header('Content-Type', 'application/json').send(results).end();}); }
