@@ -98,8 +98,8 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 
 //💔💙💚 GOOGLE TRENDS SCRAPER API
     //for SCPGTACM Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&hl=en☆SCPGTACM
-    //for SCPGTDTR Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&hl=en&time=400☆SCPGTDTR
-    //for SCPGTRTT Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&language=en&category=all☆SCPGTRTT
+    //for SCPGTDTR Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&language=en&time=400&engine=youtube%E2%98%86SCPGTDTR
+    //for SCPGTRTT Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&language=en&category=&engine=youtube☆SCPGTRTT
     //for SCPGTTS  Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&language=en&category=0&engine=youtube☆SCPGTTS
     //for SCPGTGEO Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&&resolution=&language=en&category=0&engine=youtube☆SCPGGEO
     //for SCPGTTPC Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&language=en&category=0&engine=youtube☆SCPGTTPC
@@ -120,7 +120,7 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 	if(type === 'SCPGTDTR'){ googleTrends.dailyTrends ({geo: req.query.geo, hl: req.query.language, trendDate: new Date(Date.now() - (req.query.time * 60 * 60 * 1000))})
            .then(function(data){ res.header('Content-Type', 'application/json').send(data).end();}); }
 	
-	if(type === 'SCPGTRTT'){ googleTrends.realTimeTrends ({geo: req.query.geo, hl: req.query.language, category: req.query.category, property: req.query.engine})
+	if(type === 'SCPGTRTT'){ googleTrends.realTimeTrends ({geo: req.query.geo, hl: req.query.language, category: req.query.category})
            .then(function(data){ res.header('Content-Type', 'application/json').send(data).end();}); }
 
 
