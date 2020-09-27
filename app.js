@@ -183,58 +183,53 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 app.get('/SCRAPER2', (req0, res0) => {
 const url = require('url'); 
 const https = require('https');
-  
-	https.request({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER2?','')  }}, (err, res, body) => {	
-        https.request({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
+var tz = req0.query.tz[0];
+var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
+var options0 = 	{url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?','')  }}
+
+	https.request(options0  , (res) => {  
+                    let data = '';
+                    res.on('data', (chunk) => {data += chunk; });
+                    res.on('end', () => {
+			    var preview = {url: 'https://scraper.nepochataya.pp.ua'+data.previewPath, json: true,};
+			      
+			           
+			    
+			    
+			    
+			    
+			    console.log(preview);
+			    res0.header('Content-Type', 'application/json').send( data );
+				      });});
+    
+    
+    
+    
+        
 		
-              var tz = req0.query.tz[0];
-              var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 		
-	if(type === 'SCPURL' || type === ''){
-		res0.header('Content-Type', 'application/json').send(body);}
-		
-	if(type === 'SCPGTACM'){
-		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
-	
-	if(type === 'SCPGTDTR'){
-		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
-		
-		
-	if(type === 'SCPGTRTT'){
-		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
-		
-	if(type === 'SCPGTEXPLORE'){
-		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, ''));}	
-		
-		
-		
-		
-	if(type === 'SCPGTTS'){
-		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
-                https.request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}
-		
-	if(type === 'SCPGTGEO'){
-		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
-                https.request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[1].request), token: obj.widgets[1].token} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
-		
-	if(type === 'SCPGTTPC'){
-		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
-                https.request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[2].request), token: obj.widgets[2].token} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
-		
-	if(type === 'SCPGTQRY'){
-		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
-                https.request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}		
-		
-			
-});		
 });
-});
+		
+
+
+
+
+
+
+
+
+
+
+
+		
+		
+		
+              
+		
 	
-		  
+		
+	
+		
 			  
 			
 
