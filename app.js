@@ -81,7 +81,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 				      });});}
 		    
 		    
-	
+					    
 		    
 		    
 		    
@@ -134,18 +134,18 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
            .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.geoMapData.map(function (item) {  return item.geoName+'■'+item.value})).end();});}
 
 	if(type === 'SCPGTTPC'){ googleTrends.relatedTopics ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category ,property: req.query.engine})
-           .then(function(results){ res.header('Content-Type', 'application/json').send(results).end();});}
-	
+           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})   ) .end();});}
+
 	if(type === 'SCPGTQRY'){ googleTrends.relatedQueries ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category, property: req.query.engine})
-           .then(function(results){ res.header('Content-Type', 'application/json').send(results).end();}); }
-	
+           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'■'+item.value})) .end();});}
 	
 
 });
 
-
+				      
+		    
 			  			  
-			  
+		
 		    
 		    
 		    
