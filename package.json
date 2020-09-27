@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "google-trends-api": "^4.9.0",
     "axios": "^0.20.0",
+    "request": "^2.88.2",
     "website-scraper": "^4.2.2"
     
     
