@@ -199,7 +199,7 @@ const Request = require('request');
 		
 		
 	if(type === 'SCPGTRTT'){
-		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).storySummaries.trendingStories )
+		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☉'+item.source+'☉'+item.time+'☉'+item.snippet})}) )
 		
 		;}
 		
