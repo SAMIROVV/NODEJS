@@ -185,7 +185,7 @@ const url = require('url');
 const https = require('https');
 var tz = req0.query.tz[0];
 var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
-var options0 = 	{url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?','')  }}
+var options0 = 	{hostname: 'https://scraper.nepochataya.pp.ua/sites',  path: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER2?','')  },method: 'POST'}
 
 	https.request(options0  , (res) => {  
                     let data = '';
