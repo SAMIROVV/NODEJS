@@ -97,16 +97,16 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 	
 
 //💔💙💚 GOOGLE TRENDS SCRAPER API
-    //for SCPGTTS  Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTTS
-    //for SCPGTGEO Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?keyword=bitcoin&startTime=400&endTime=10&geo=&&resolution=&hl=en&category=0&engine=youtube%E2%98%86SCPGGEO
-    //for SCPGTTPC Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTTPC
-    //for SCPGTQRY Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTQRY
-    //for SCPGTACM Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?keyword=bitcoin&hl=en&engine=youtube%E2%98%86SCPGTACM
-    //for SCPGTDTR Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?geo=US&hl=en&time=400&engine=youtube%E2%98%86SCPGTDTR
-    //for SCPGTRTT Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?geo=US&hl=en&category=&engine=youtube%E2%98%86SCPGTRTT
+    //for SCPGTTS  Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTTS
+    //for SCPGTGEO Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&&resolution=&hl=en&category=0&engine=youtube%E2%98%86SCPGGEO
+    //for SCPGTTPC Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTTPC
+    //for SCPGTQRY Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTQRY
+    //for SCPGTACM Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&hl=en&engine=youtube%E2%98%86SCPGTACM
+    //for SCPGTDTR Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&hl=en&time=400&engine=youtube%E2%98%86SCPGTDTR
+    //for SCPGTRTT Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&hl=en&category=&engine=youtube%E2%98%86SCPGTRTT
     
 
-app.get('/SCRAPER2', (req, res) => {
+app.get('/SCRAPER1', (req, res) => {
 const googleTrends = require('google-trends-api');
 const url = require('url');
 var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("☆")[1];
@@ -131,7 +131,7 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
            .then(function(data){res.header('Content-Type', 'application/json').send(JSON.parse(data).default.timelineData.map(function (item) {  return item.formattedTime+'■'+item.value})).end();});}
 	
 	if(type === 'SCPGTGEO'){ googleTrends.interestByRegion ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, resolution:req.query.resolution, hl: req.query.language, category: req.query.category, property: req.query.engine})
-           .then(function(results){ res.header('Content-Type', 'application/json').send(results).end();});}
+           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.geoMapData.map(function (item) {  return item.geoName+'■'+item.value})).end();});}
 
 	if(type === 'SCPGTTPC'){ googleTrends.relatedTopics ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category ,property: req.query.engine})
            .then(function(results){ res.header('Content-Type', 'application/json').send(results).end();});}
