@@ -83,7 +83,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 		    
 	if(type === 'SCPGTQRYBATCH'){ 
 		var i = 0, max = filterItems(td, 'related_queries■{').length; 
-		for (; i <= max; i++) 
+		for (i = 0; i <= max; i++)
 		{ https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries■{')[i].split('■')[1], token: filterItems(td, 'related_queries■{')[i].split('■')[2] ,tz: req0.query.tz[0]} }) , (res) => 
 			    { let data = ''; 
 			     res.on('data', (chunk) => {data += chunk; }); 
