@@ -177,7 +177,7 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 
 	app.get('/SCRAPER2', (req0, res0) => {
 const url = require('url'); 
-const Request = require('axios');
+const Request = require('needle');
   
 	Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER2?','')  }}, (err, res, body) => {	
         Request.get({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
