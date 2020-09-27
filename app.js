@@ -36,7 +36,7 @@ app.get('/SCRAPER0', (req0, res0,res1) => {
                https.get(options0  , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.send(JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})   }));
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})   }));
                                       });});}  
 	
 	
@@ -192,17 +192,17 @@ const Request = require('request');
 		res0.header('Content-Type', 'application/json').send(body);}
 		
 	if(type === 'SCPGTACM'){
-		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
+		res0.header('Content-Type', 'application/json').send( JSON.parse(body.slice(5)).default.topics.map(function (item) {  return item.title+'☉'+item.type})  );}
 	
 	if(type === 'SCPGTDTR'){
-		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
+		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})   })); }
 		
 		
 	if(type === 'SCPGTRTT'){
-		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));}
+		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)));}
 		
 	if(type === 'SCPGTEXPLORE'){
-		res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, ''));}	
+		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(4)));}	
 		
 		
 		
@@ -211,17 +211,19 @@ const Request = require('request');
 	if(type === 'SCPGTTS'){
 		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}
+                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☉'+item.value})       );    });}
+		    
 		
 	if(type === 'SCPGTGEO'){
 		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[1].request), token: obj.widgets[1].token} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
+                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.geoMapData.map(function (item) {  return item.geoName+'☉'+item.value})       );    });}
+		    	
 		
 	if(type === 'SCPGTTPC'){
 		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[2].request), token: obj.widgets[2].token} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
+                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'☉'+item.topic.type+'☉'+item.value})+'↕'+JSON.parse(body.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'☉'+item.topic.type+'☉'+item.value})   );     });}	
 		
 	if(type === 'SCPGTQRY'){
 		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
