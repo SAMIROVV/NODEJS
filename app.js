@@ -5,7 +5,7 @@ const express = require('express');
 const app = express(); 
 
 
-//💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN
+        //💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN 💚💙💔//
 
     //for Ggle trends(EXPLORE/TS/GEO/TPC/QRY) link ===  https://nodejsgithub.herokuapp.com/SCRAPER0?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆SCPGTQRY
     //for google trends autocomplete link  ===  https://nodejsgithub.herokuapp.com/SCRAPER0?https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60☆SCPGTACM
@@ -36,7 +36,7 @@ app.get('/SCRAPER0', (req0, res0,res1) => {
                https.get(options0  , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.send(JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.title+'🍎'+item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})   }));
+                    res.on('end', () => {res0.send(JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})   }));
                                       });});}  
 	
 	
@@ -116,7 +116,8 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 			  
 	
 
-//💔💙💚 GOOGLE TRENDS SCRAPER API
+         //💔💙💚 GOOGLE TRENDS SCRAPER API 💚💙💔//
+
     //for SCPGTACM Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&hl=en&☆SCPGTACM
     //for SCPGTDTR Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&language=en&time=400&☆SCPGTDTR
     //for SCPGTRTT Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&language=en&category=all&%E2%98%86SCPGTRTT
@@ -138,7 +139,7 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
            .then(function(data){ res.header('Content-Type', 'application/json').send( JSON.parse(data).default.topics.map(function (item) {  return item.title+'☉'+item.type})  ).end();}); }
 	
 	if(type === 'SCPGTDTR'){ googleTrends.dailyTrends ({geo: req.query.geo, hl: req.query.language, trendDate: new Date(Date.now() - (req.query.time * 60 * 60 * 1000))})
-           .then(function(data){res.header('Content-Type', 'application/json').send( JSON.parse(data).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet}) })    ).end();}); }
+           .then(function(data){res.header('Content-Type', 'application/json').send( JSON.parse(data).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet}) })    ).end();}); }
 	
 	if(type === 'SCPGTRTT'){ googleTrends.realTimeTrends ({geo: req.query.geo, hl: req.query.language, category: req.query.category})
            .then(function(data){ res.header('Content-Type', 'application/json').send(data).end();}); }
@@ -171,7 +172,8 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 		    
 		    
 		    
-	//💔💙💚 AMAZING SCRAPER WITH NEPOCHATAYA 
+	//💔💙💚 AMAZING SCRAPER WITH NEPOCHATAYA 💚💙💔//
+
     //for google trends autocomplete link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60☆SCPGTACM
     //for google trends dailytrends  link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?https://trends.google.com/trends/api/dailytrends?hl=en-US&tz=-60&geo=AU&ns=15☆SCPGTDTR
     //for google real timerends      link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?https://trends.google.com/trends/api/realtimetrends?hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0☆SCPGTRTT
@@ -180,12 +182,12 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 
 app.get('/SCRAPER2', (req0, res0) => {
 const url = require('url'); 
-const Request = require('request');
+const https = require('https');
   
-	Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER1?','')  }}, (err, res, body) => {	
-        Request({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
+	https.request({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER2?','')  }}, (err, res, body) => {	
+        https.request({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
 		
-              var tz = req0.query.tz;
+              var tz = req0.query.tz[0];
               var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 		
 	if(type === 'SCPURL' || type === ''){
@@ -209,22 +211,22 @@ const Request = require('request');
 		
 	if(type === 'SCPGTTS'){
 		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
-                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} }), json: true,}, (err, res, body) => {  
+                https.request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} }), json: true,}, (err, res, body) => {  
                 res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}
 		
 	if(type === 'SCPGTGEO'){
 		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
-                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[1].request), token: obj.widgets[1].token} }), json: true,}, (err, res, body) => {  
+                https.request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[1].request), token: obj.widgets[1].token} }), json: true,}, (err, res, body) => {  
                 res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
 		
 	if(type === 'SCPGTTPC'){
 		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
-                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[2].request), token: obj.widgets[2].token} }), json: true,}, (err, res, body) => {  
+                https.request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[2].request), token: obj.widgets[2].token} }), json: true,}, (err, res, body) => {  
                 res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
 		
 	if(type === 'SCPGTQRY'){
 		var obj = JSON.parse(body.replace(')]}','').replace(/'/g, ''));
-                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }), json: true,}, (err, res, body) => {  
+                https.request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }), json: true,}, (err, res, body) => {  
                 res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}		
 		
 			
