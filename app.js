@@ -199,7 +199,7 @@ const Request = require('request');
 		
 		
 	if(type === 'SCPGTRTT'){
-		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)) )
+		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).storySummaries )
 		
 		;}
 		
