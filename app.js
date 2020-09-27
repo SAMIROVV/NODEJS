@@ -21,7 +21,27 @@ app.get('/SCRAPER0', (req0, res0,res1) => {
 	
 	
 //TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
-	if(type === 'SCPGTACM'  || type === 'SCPGTDTR'  || type === 'SCPGTRTT'){
+	if(type === 'SCPGTACM'){
+ var options0 =decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','');
+                https.get(options0  , (res) => {  
+                    let data = '';
+                    res.on('data', (chunk) => {data += chunk; });
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));
+				      });});}  
+	
+	
+	if(type === 'SCPGTDTR'){
+ var options0 =decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','');
+                https.get(options0  , (res) => {  
+                    let data = '';
+                    res.on('data', (chunk) => {data += chunk; });
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})}) ));
+				      });});}  
+	
+	
+	
+	
+	if(type === 'SCPGTRTT'){
  var options0 =decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','');
                 https.get(options0  , (res) => {  
                     let data = '';
@@ -118,7 +138,7 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
            .then(function(data){ res.header('Content-Type', 'application/json').send( JSON.parse(data).default.topics.map(function (item) {  return item.title+'☉'+item.type})  ).end();}); }
 	
 	if(type === 'SCPGTDTR'){ googleTrends.dailyTrends ({geo: req.query.geo, hl: req.query.language, trendDate: new Date(Date.now() - (req.query.time * 60 * 60 * 1000))})
-           .then(function(data){ res.header('Content-Type', 'application/json').send( JSON.parse(data).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})})    ).end();}); }
+           .then(function(data){console.log(data); res.header('Content-Type', 'application/json').send( JSON.parse(data).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})})    ).end();}); }
 	
 	if(type === 'SCPGTRTT'){ googleTrends.realTimeTrends ({geo: req.query.geo, hl: req.query.language, category: req.query.category})
            .then(function(data){ res.header('Content-Type', 'application/json').send(data).end();}); }
