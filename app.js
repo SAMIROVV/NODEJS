@@ -21,12 +21,13 @@ app.get('/SCRAPER0', (req0, res0,res1) => {
 	
 	
 //TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
+	
 	if(type === 'SCPGTACM'){
  var options0 =decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','');
                 https.get(options0  , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)));
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send( JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☉'+item.type})  );
 				      });});}  
 	
 	
@@ -35,9 +36,8 @@ app.get('/SCRAPER0', (req0, res0,res1) => {
                 https.get(options0  , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})}) ));
-				      });});}  
-	
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send( JSON.parse(data.slice5()).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})})    ).end();
+                                      });});}  
 	
 	
 	
