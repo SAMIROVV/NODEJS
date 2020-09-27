@@ -40,10 +40,10 @@ app.get('/SCRAPER0', (req0, res0,res1) => {
                                       //});});
 	
 	
-		const rp = require('request-promise');
+		const fetch = require('node-fetch');
 
 
-rp(options0)
+fetch(options0)
   .then(function(datal){res0.send(data); })
   
 		
