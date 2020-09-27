@@ -180,7 +180,7 @@ const url = require('url');
 const Request = require('axios');
   
 	Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER2?','')  }}, (err, res, body) => {	
-        Request({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
+        Request.get({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
 		
               var tz = req0.query.tz[0];
               var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
