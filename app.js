@@ -41,43 +41,43 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
             let data = '';
             res.on('data', (chunk) => {data += chunk; });
             res.on('end', () => {
-               var td = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'■'+JSON.stringify(item.request)+'■'+item.token})   ;
+               var td = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
                const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)}
 
     
     
 	    
 	if(type === 'SCPGTEXPLORE' || type === ''){
-             res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets); console.log(filterItems(td, 'related_topics■{'))  };
+             res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets); console.log(filterItems(td, 'related_topics☉{'))  };
 		    
 		    
         if(type === 'SCPGTTS'){		
-             https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'timeseries■{')[0].split('■')[1], token: filterItems(td, 'timeseries■{')[0].split('■')[2],tz: req0.query.tz[0]} })  , (res) => {  
+             https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'timeseries☉{')[0].split('☉')[1], token: filterItems(td, 'timeseries☉{')[0].split('☉')[2],tz: req0.query.tz[0]} })  , (res) => {  
                 let data = '';
                 res.on('data', (chunk) => {data += chunk; });
-                res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'■'+item.value})       );    });});}
+                res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☉'+item.value})       );    });});}
 		    
 	    
         if(type === 'SCPGTGEO'){		
-                https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'geo_map■{')[0].split('■')[1], token: filterItems(td, 'geo_map■{')[0].split('■')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
+                https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'geo_map☉{')[0].split('☉')[1], token: filterItems(td, 'geo_map☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
                   let data = '';
                   res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.geoMapData.map(function (item) {  return item.geoName+'■'+item.value})       );    });});}
+                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.geoMapData.map(function (item) {  return item.geoName+'☉'+item.value})       );    });});}
 		    
 	    				
 	if(type === 'SCPGTTPC'){		
-                https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_topics■{')[0].split('■')[1], token: filterItems(td, 'related_topics■{')[0].split('■')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
+                https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_topics☉{')[0].split('☉')[1], token: filterItems(td, 'related_topics☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
                   let data = '';
                   res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})   );    
+                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'☉'+item.topic.type+'☉'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'☉'+item.topic.type+'☉'+item.value})   );    
 				      });});}
                
 		   
 	if(type === 'SCPGTQRY'){		
-                https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries■{')[0].split('■')[1], token: filterItems(td, 'related_queries■{')[0].split('■')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
+                https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[0].split('☉')[1], token: filterItems(td, 'related_queries☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
                   let data = '';
                   res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'■'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'■'+item.value}));   ;                         
+                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value}));   ;                         
 				      });});}
 		    
 		    
@@ -115,10 +115,10 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 	//TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
 	
 	if(type === 'SCPGTACM'){ googleTrends.autoComplete ({keyword: req.query.keyword, hl: req.query.language ,property: req.query.engine})
-           .then(function(data){ res.header('Content-Type', 'application/json').send( JSON.parse(data).default.topics.map(function (item) {  return item.title+'■'+item.type})  ).end();}); }
+           .then(function(data){ res.header('Content-Type', 'application/json').send( JSON.parse(data).default.topics.map(function (item) {  return item.title+'☉'+item.type})  ).end();}); }
 	
 	if(type === 'SCPGTDTR'){ googleTrends.dailyTrends ({geo: req.query.geo, hl: req.query.language, trendDate: new Date(Date.now() - (req.query.time * 60 * 60 * 1000))})
-           .then(function(data){ res.header('Content-Type', 'application/json').send( JSON.parse(data).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'■'+item.formattedTraffic+'■'+item.relatedQueries+'■'+item.articles.map(function (item) {  return item.title+'■'+item.timeAgo})})    ).end();}); }
+           .then(function(data){ res.header('Content-Type', 'application/json').send( JSON.parse(data).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo})})    ).end();}); }
 	
 	if(type === 'SCPGTRTT'){ googleTrends.realTimeTrends ({geo: req.query.geo, hl: req.query.language, category: req.query.category})
            .then(function(data){ res.header('Content-Type', 'application/json').send(data).end();}); }
@@ -129,16 +129,16 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 	//TO SCRAPE GTRENDS TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES
 	
 	if(type === 'SCPGTTS'){googleTrends.interestOverTime ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category, property: req.query.engine})
-           .then(function(data){res.header('Content-Type', 'application/json').send(JSON.parse(data).default.timelineData.map(function (item) {  return item.formattedTime+'■'+item.value})).end();});}
+           .then(function(data){res.header('Content-Type', 'application/json').send(JSON.parse(data).default.timelineData.map(function (item) {  return item.formattedTime+'☉'+item.value})).end();});}
 	
 	if(type === 'SCPGTGEO'){ googleTrends.interestByRegion ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, resolution:req.query.resolution, hl: req.query.language, category: req.query.category, property: req.query.engine})
-           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.geoMapData.map(function (item) {  return item.geoName+'■'+item.value})).end();});}
+           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.geoMapData.map(function (item) {  return item.geoName+'☉'+item.value})).end();});}
 
 	if(type === 'SCPGTTPC'){ googleTrends.relatedTopics ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category ,property: req.query.engine})
-           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})+'↕'+JSON.parse(data).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'■'+item.topic.type+'■'+item.value})   ) .end();});}
+           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'☉'+item.topic.type+'☉'+item.value})+'↕'+JSON.parse(data).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'☉'+item.topic.type+'☉'+item.value})   ) .end();});}
 
 	if(type === 'SCPGTQRY'){ googleTrends.relatedQueries ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category, property: req.query.engine})
-           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'■'+item.value})+'↕'+JSON.parse(data).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'■'+item.value})) .end();});}
+           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})) .end();});}
 	
 
 });
