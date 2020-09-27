@@ -97,13 +97,13 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 	
 
 //💔💙💚 GOOGLE TRENDS SCRAPER API
+    //for SCPGTACM Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&hl=en&engine=youtube%E2%98%86SCPGTACM
+    //for SCPGTDTR Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&hl=en&time=400&engine=youtube%E2%98%86SCPGTDTR
+    //for SCPGTRTT Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&hl=en&category='all'%E2%98%86SCPGTRTT
     //for SCPGTTS  Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTTS
     //for SCPGTGEO Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&&resolution=&hl=en&category=0&engine=youtube%E2%98%86SCPGGEO
     //for SCPGTTPC Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTTPC
     //for SCPGTQRY Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&hl=en&category=0&engine=youtube%E2%98%86SCPGTQRY
-    //for SCPGTACM Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&hl=en&engine=youtube%E2%98%86SCPGTACM
-    //for SCPGTDTR Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&hl=en&time=400&engine=youtube%E2%98%86SCPGTDTR
-    //for SCPGTRTT Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&hl=en&category=&engine=youtube%E2%98%86SCPGTRTT
     
 
 app.get('/SCRAPER1', (req, res) => {
@@ -118,9 +118,9 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
            .then(function(data){ res.header('Content-Type', 'application/json').send( JSON.parse(data).default.topics.map(function (item) {  return item.title+'■'+item.type})  ).end();}); }
 	
 	if(type === 'SCPGTDTR'){ googleTrends.dailyTrends ({geo: req.query.geo, hl: req.query.language, trendDate: new Date(Date.now() - (req.query.time * 60 * 60 * 1000)), property: req.query.engine})
-           .then(function(results){ res.header('Content-Type', 'application/json').send(results).end();}); }
+           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.trendingSearchesDays).end();}); }
 	
-	if(type === 'SCPGTRTT'){ googleTrends.realTimeTrends ({geo: req.query.geo, hl: req.query.language, category: req.query.category, property: req.query.engine})
+	if(type === 'SCPGTRTT'){ googleTrends.realTimeTrends ({geo: req.query.geo, hl: req.query.language, category: req.query.category})
            .then(function(results){ res.header('Content-Type', 'application/json').send(results).end();}); }
 
 	
