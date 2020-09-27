@@ -36,8 +36,12 @@ app.get('/SCRAPER0', (req0, res0,res1) => {
                 https.get(options0  , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(data);//JSON.parse(data.slice(5)).default)//.trendingSearchesDays[0])//.trendingSearches);//.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet}) }));
-                                      });});}  
+                    res.on('end', () => {res0.send(data);//JSON.parse(data.slice(5)).default)//.trendingSearchesDays[0])//.trendingSearches);//.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet}) }));
+                                      });});
+	
+	
+	
+	}  
 	
 	
 	
