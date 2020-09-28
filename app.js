@@ -271,10 +271,10 @@ const https = require('https');
                     	
 			
 			
-			
+var preview = decodeURIComponent(url.format({ pathname: 'https://scraper.nepochataya.pp.ua💔' })).replace('💔',body.previewPath);
 			
 //https.get('https://scraper.nepochataya.pp.ua'+'body.previewPath', (res) => {
-		https.get(decodeURIComponent(url.format({ protocol: 'https', hostname: 'scraper.nepochataya.pp.ua', pathname:body.previewPath})), (res) => {	
+		https.get(preview, (res) => {	
 			
 	let data = '';
                     res.on('data', (chunk) => {data += chunk; });
@@ -289,7 +289,8 @@ const https = require('https');
 		
 	if(type === 'SCPURL' || type === ''){
 		res0.header('Content-Type', 'application/json').send(data);
-
+		
+console.log(preview);
 	}
 		
 	if(type === 'SCPGTACM'){
