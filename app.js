@@ -255,8 +255,14 @@ const options = {
   directory: decodeURIComponent(url.format({protocol: 'https',   host: req0.get('host'),    pathname: req0.originalUrl}))
 };
 	
-console.log(decodeURIComponent(url.format({protocol: 'https',   host: req0.get('host'),    pathname: req0.originalUrl})));
-	scrape(options, (err, res, body) => {res0.send(body).end();});
+	scrape(options, (err, res, body) => {res0.writeHead(200, {
+				'Content-Type': 'application/zip',
+				'Content-disposition': 'attachment; filename=' + params.dirname + '.zip'
+			});
+					    
+					    
+					    
+					    });
 });
 
 
