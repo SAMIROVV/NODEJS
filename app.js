@@ -289,7 +289,7 @@ const https = require('https');
 		
 	if(type === 'SCPURL' || type === ''){
 		res0.header('Content-Type', 'application/json').send(data);
-console.log(preview);console.log(body.previewPath);console.log('body=',body);
+
 	}
 		
 	if(type === 'SCPGTACM'){
