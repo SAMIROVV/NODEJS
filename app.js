@@ -273,8 +273,8 @@ const https = require('https');
 			
 			
 			
-https.get(''https://scraper.nepochataya.pp.ua'+body.previewPath', (res) => {
-			
+//https.get('https://scraper.nepochataya.pp.ua'+'body.previewPath', (res) => {
+		https.get(decodeURIComponent(url.format({ protocol: 'https', hostname: 'scraper.nepochataya.pp.ua', pathname:body.previewPath})), (res) => {	
 			
 	let data = '';
                     res.on('data', (chunk) => {data += chunk; });
