@@ -271,7 +271,7 @@ const https = require('https');
                     	
 			
 			
-var preview = decodeURIComponent(url.format({ pathname: 'https://scraper.nepochataya.pp.ua💔' })).replace('💔',body.previewPath);
+var preview = decodeURIComponent(url.format({ pathname: 'https://scraper.nepochataya.pp.ua💔' })).replace('💔',body.previewPath+'/');
 			
 //https.get('https://scraper.nepochataya.pp.ua'+'body.previewPath', (res) => {
 		https.get(preview, (res) => {	
