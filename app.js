@@ -258,12 +258,28 @@ const Request = require('request');
     //for other websites             link  ===  https://nodejsgithub.herokuapp.com/SCRAPER3?url☆SCPURL
 
 	app.get('/SCRAPER3', (req0, res0) => {
-const url = require('url'); 
-const https = require('https');
-  const Request = require('request');
-                Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }}, (err, res, body) => {	
+           const url = require('url'); 
+           const https = require('https');
+           const Request = require('axios');
+	
+		
+                //Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }}, (err, res, body) => {	
         
-		         			
+		   Request.post('https://scraper.nepochataya.pp.ua/sites',  {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')}   , (err, res, body) => {	
+              
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
                https.get('https://scraper.nepochataya.pp.ua'+body.previewPath+'/', (res) => {		
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
