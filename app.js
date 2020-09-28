@@ -177,13 +177,12 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 
 	app.get('/SCRAPER2', (req0, res0) => {
 const url = require('url'); 
-const Request = require('needle');
+const Request = require('request');
   
-//Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER2?','')  }}, (err, res, body) => {	
-        Request.post('https://scraper.nepochataya.pp.ua/sites',  {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER2?','')  }, (err, res, body) => {	
+                Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER2?','')  }}, (err, res, body) => {	
         
-		//Request.get({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
-	Request.get( 'https://scraper.nepochataya.pp.ua'+body.previewPath, , (err, res, body) => {	
+		Request({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
+	
               var tz = req0.query.tz[0];
               var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 		
