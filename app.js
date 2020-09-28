@@ -253,75 +253,7 @@ const Request = require('request');
     //for google trends all          link  ===  https://nodejsgithub.herokuapp.com/SCRAPER3?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆SCPGTQRY
     //for other websites             link  ===  https://nodejsgithub.herokuapp.com/SCRAPER3?url☆SCPURL
 
-app.get('/SCRAPER3', (req0, res0) => {
-const url = require('url'); 
-const Request = require('request');
-  
-	Request.post({url: 'https://countwordsfree.com/loadweb', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','') }}, (err, res, body) => {	
-   
-		
-        
-	var tz = req0.query.tz;
-        var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
-		
-	if(type === 'SCPURL' || type === ''){
-        var obj = JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, '');
-                //res0.send(JSON.parse(obj1.replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, '')));}
-                res0.header('Content-Type', 'application/json').send(obj);}
 
-		     
-	if(type === 'SCPGTACM'){
-		res0.header('Content-Type', 'application/json').send(JSON.stringify(body).replace(/\\/g, ''));}
-	
-	if(type === 'SCPGTDTR'){
-		res0.header('Content-Type', 'application/json').send(JSON.stringify(body).replace(/\\/g, ''));}
-		
-		
-	if(type === 'SCPGTRTT'){
-		res0.header('Content-Type', 'application/json').send(JSON.stringify(body).replace(/\\/g, ''));}
-		
-	if(type === 'SCPGTEXPLORE'){
-		res0.header('Content-Type', 'application/json').send(JSON.stringify(body).replace(/\\/g, ''));}	
-		
-		
-		
-		
-	if(type === 'SCPGTTS'){
-		var obj = JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, '');
-                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[0].request), token: obj.widgets[0].token,tz: tz} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}
-		
-	if(type === 'SCPGTGEO'){
-		var obj = JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, '');
-                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[1].request), token: obj.widgets[1].token} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
-		
-	if(type === 'SCPGTTPC'){
-		var obj = JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, '');
-                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[2].request), token: obj.widgets[2].token} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}	
-		
-	if(type === 'SCPGTQRY'){
-		var obj = JSON.stringify(body).replace(/\\/g, '').replace('{"Success":true,"Text":")]}','').replace('n{"widgets"','{"widgets').replace(/'/g, '');
-                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: JSON.stringify(obj.widgets[3].request), token: obj.widgets[3].token} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(body.replace(')]}','').replace(/'/g, '').replace(',',''));});}		
-			
-	});});
-
-
-
-
-
-		
-		
-		
-              
-		
-	
-		
-	
-		
-			  
 			
 
 			     
