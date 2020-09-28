@@ -264,14 +264,14 @@ const https = require('https');
                 Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }}, (err, res, body) => {	
         
 		
+var preview = 'https://scraper.nepochataya.pp.ua'+body.previewPath
 			
 			
 			
 			
 			
 			
-			
-			https.get('https://scraper.nepochataya.pp.ua'+body.previewPath, (res) => {
+			https.get(preview, (res) => {
 	let data = '';
                     res.on('data', (chunk) => {data += chunk; });
 			res.on('end', () => {	
@@ -284,7 +284,9 @@ const https = require('https');
 		//TO SCRAPE URL & GTRENDS EXPLORE & AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
 		
 	if(type === 'SCPURL' || type === ''){
-		res0.header('Content-Type', 'application/json').send(data);}
+		res0.header('Content-Type', 'application/json').send(data);
+console.log(preview);
+	}
 		
 	if(type === 'SCPGTACM'){
 		res0.header('Content-Type', 'application/json').send( JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☉'+item.type})  );}
