@@ -256,7 +256,7 @@ const options = {
 };
 	
 console.log(decodeURIComponent(url.format({protocol: 'https',   host: req0.get('host'),    pathname: req0.originalUrl})));
-	scrape(options, (err, res, body) => {res0.json(body).end();});
+	scrape(options, (err, res, body) => {res0.send(body).end();});
 });
 
 
