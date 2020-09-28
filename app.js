@@ -260,13 +260,15 @@ const Request = require('request');
 	app.get('/SCRAPER3', (req0, res0) => {
            const url = require('url'); 
            const https = require('https');
-           const Request = require('request');
-	
+           const Request = require('needle');
+//const body = JSON.stringify(  {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')} ;	
+           //const options = {  hostname: 'https://scraper.nepochataya.pp.ua',    path: '/sites',  method: 'POST',  headers: {    'Content-Type': 'application/json',    'Content-Length': body.length  }}
+		   
 		
-                Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }}, (err, res, body) => {	
+                //Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }}, (err, res, body) => {	
         
-		  
-		
+		  Request.post('https://scraper.nepochataya.pp.ua/sites', {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }, (err, res, body) => {	
+        
 					      
 					      
 					      
