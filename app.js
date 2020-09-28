@@ -264,7 +264,7 @@ const https = require('https');
                 Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }}, (err, res, body) => {	
         
 		
-var preview =  decodeURIComponent('https://scraper.nepochataya.pp.ua'+body.previewPath)  
+var preview =  body.previewPath; 
 //'https://scraper.nepochataya.pp.ua/static/files/trends.google.com-1601301740780/'
 			
 			
@@ -272,7 +272,7 @@ var preview =  decodeURIComponent('https://scraper.nepochataya.pp.ua'+body.previ
 			
 			
 			
-			https.get(preview, (res) => {
+			https.get('https://scraper.nepochataya.pp.ua'+preview, (res) => {
 	let data = '';
                     res.on('data', (chunk) => {data += chunk; });
 			res.on('end', () => {	
@@ -286,7 +286,7 @@ var preview =  decodeURIComponent('https://scraper.nepochataya.pp.ua'+body.previ
 		
 	if(type === 'SCPURL' || type === ''){
 		res0.header('Content-Type', 'application/json').send(data);
-console.log(preview);console.log(body.previewPath);
+console.log(preview);console.log(body.previewPath);console.log('body=',body);
 	}
 		
 	if(type === 'SCPGTACM'){
