@@ -212,7 +212,7 @@ const Request = require('request');
 	if(type === 'SCPGTTS'){
 		var td = JSON.parse(body.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
                 const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)};
-                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'timeseries☉{')[0].split('☉')[1], token: filterItems(td, 'timeseries☉{')[0].split('☉')[2]  .token,tz: tz} }), json: true,}, (err, res, body) => {  
+                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'timeseries☉{')[0].split('☉')[1], token: filterItems(td, 'timeseries☉{')[0].split('☉')[2]  ,tz: tz} }), json: true,}, (err, res, body) => {  
                 res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☉'+item.value})       );    });}
 		    
 		
