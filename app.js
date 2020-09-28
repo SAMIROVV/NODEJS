@@ -259,7 +259,7 @@ const Request = require('request');
 
 	app.get('/SCRAPER3', (req0, res0) => {
 const url = require('url'); 
-const Request = require('request');
+const https = require('https');
   
                 Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }}, (err, res, body) => {	
         
