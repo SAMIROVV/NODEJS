@@ -242,7 +242,22 @@ const Request = require('request');
 
 
 
+           //💔💙💚 SCRAPER NORMAL WITH WEBSITE_SCRAPER 💔💙💚
 
+   //for websites link  ===  https://nodejs1server1.herokuapp.com/SCRAPER3?url
+
+app.get(('/SCRAPER3'),(req0, res0) => {
+const scrape = require('website-scraper');
+const url = require('url');
+	
+const options = {
+  urls: [decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')],
+  directory: decodeURIComponent(url.format({protocol: 'https',   host: req0.get('host'),    pathname: req0.originalUrl}))
+};
+	
+console.log(decodeURIComponent(url.format({protocol: 'https',   host: req0.get('host'),    pathname: req0.originalUrl})));
+	scrape(options, (err, res, body) => {res0.json(body).end();});
+});
 
 
 
