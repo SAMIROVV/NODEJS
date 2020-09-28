@@ -264,15 +264,18 @@ const https = require('https');
                 Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }}, (err, res, body) => {	
         
 		
-var preview =  body.previewPath; 
+
 //'https://scraper.nepochataya.pp.ua/static/files/trends.google.com-1601301740780/'
 			
+		         
+                    	
 			
 			
 			
 			
+//https.get('https://scraper.nepochataya.pp.ua'+preview, (res) => {
 			
-			https.get('https://scraper.nepochataya.pp.ua'+preview, (res) => {
+			https.get(url.format({ protocol: 'https', hostname: 'scraper.nepochataya.pp.ua', pathname:body.previewPath}), (res) => {
 	let data = '';
                     res.on('data', (chunk) => {data += chunk; });
 			res.on('end', () => {	
