@@ -264,7 +264,7 @@ const https = require('https');
                 Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }}, (err, res, body) => {	
         
 		
-var preview = 'https://scraper.nepochataya.pp.ua'+body.previewPath
+var preview = 'https://scraper.nepochataya.pp.ua/static/files/trends.google.com-1601301740780/'
 			
 			
 			
