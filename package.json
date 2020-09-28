@@ -16,7 +16,7 @@
     "google-trends-api": "^4.9.0",
     "axios": "^0.20.0",
     "request": "^2.88.2",
-    "needle": "^2.5.2",
+    "website-scraper": "^4.2.3",
     "website-scraper": "^4.2.2"
     
     
