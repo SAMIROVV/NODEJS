@@ -263,39 +263,25 @@ const https = require('https');
   const Request = require('request');
                 Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }}, (err, res, body) => {	
         
-		
-
-//'https://scraper.nepochataya.pp.ua/static/files/trends.google.com-1601301740780/'
-			
-		         
-                    	
-			
-			
-var preview = decodeURIComponent(url.format({ pathname: 'https://scraper.nepochataya.pp.ua💔' })).replace('💔',body.previewPath+'/');
-			
-//https.get('https://scraper.nepochataya.pp.ua'+'body.previewPath', (res) => {
-		https.get(preview, (res) => {	
-			
-	let data = '';
+		         			
+               https.get('https://scraper.nepochataya.pp.ua'+body.previewPath+'/', (res) => {		
+                    let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-			res.on('end', () => {	
-				
-				
-              var tz = req0.query.tz[0];
-              var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
+			res.on('end', () => {					
+                         var tz = req0.query.tz[0];
+                         var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 		
 	
 		//TO SCRAPE URL & GTRENDS EXPLORE & AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
 		
 	if(type === 'SCPURL' || type === ''){
-		res0.header('Content-Type', 'application/json').send(data);
-		
-console.log(preview);
-	}
+		res0.header('Content-Type', 'application/json').send(data);}
+				
 		
 	if(type === 'SCPGTACM'){
 		res0.header('Content-Type', 'application/json').send( JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☉'+item.type})  );}
 	
+				
 	if(type === 'SCPGTDTR'){
 		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})   })); }
 		
@@ -303,6 +289,7 @@ console.log(preview);
 	if(type === 'SCPGTRTT'){
 		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☉'+item.source+'☉'+item.time+'☉'+item.snippet})}) )	;}
 		
+				
 	if(type === 'SCPGTEXPLORE'){
 		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)));}	
 		
