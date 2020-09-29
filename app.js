@@ -263,13 +263,13 @@ const Request = require('request');
            const Request = require('request');
 
 		
-             Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }      }).then((res) => {
+             Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }      },(err, res, body) => {
         
 		  
 //needle,,Request('post', 'https://scraper.nepochataya.pp.ua/sites', {url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }).then (  (res) => {		      
 					      
 //axios,,Request.post('https://scraper.nepochataya.pp.ua/sites', {url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }).then((res) => { 		      
-					      
+//var body =res.data;				      
 			
 			
 			
@@ -278,7 +278,7 @@ const Request = require('request');
 			
 	
 					
-               https.get('https://scraper.nepochataya.pp.ua'+res.data.previewPath+'/', (res) => {		
+               https.get('https://scraper.nepochataya.pp.ua'+body.previewPath+'/', (res) => {		
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
 			res.on('end', () => {					
