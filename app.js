@@ -276,10 +276,9 @@ Request.post('https://scraper.nepochataya.pp.ua/sites', {url:decodeURIComponent(
 			
 			
 			
-			
-			
-			
-               https.get('https://scraper.nepochataya.pp.ua'+res.body.previewPath+'/', (res) => {		
+	console.log(res.body);
+		https.get('https://scraper.nepochataya.pp.ua', (res) => {			
+               //https.get('https://scraper.nepochataya.pp.ua'+res.body.previewPath+'/', (res) => {		
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
 			res.on('end', () => {					
