@@ -96,7 +96,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 		    
 		  if(type === 'SCPGTDTR'){
  
-                    res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})   }));
+                    res0.header('Content-Type', 'application/json').JSON.stringify(JSON.parse(data.slice(5)));//send(JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})   }));
                                       }  
 	  
 		    
