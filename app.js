@@ -290,7 +290,7 @@ Request('https://scraper.nepochataya.pp.ua/sites', {url:decodeURIComponent(url.f
 		//TO SCRAPE URL & GTRENDS EXPLORE & AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
 		
 	if(type === 'SCPURL' || type === ''){
-		res0.header('Content-Type', 'application/json').send(data);}
+		res0.header('Content-Type', 'application/json').send(data);console.log(res.body)}
 				
 		
 	if(type === 'SCPGTACM'){
