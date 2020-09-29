@@ -41,26 +41,13 @@ app.get('/SCRAPER0', (req0, res0,res1) => {
 	
 	
 	if(type === 'SCPGTRTT'){
-                //https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','')  , (res) => {  
-                    //let data = '';
-                    //res.on('data', (chunk) => {data += chunk; });
-                   // res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☉'+item.source+'☉'+item.time+'☉'+item.snippet})}) )
-				     // });});
-		
-		const Request = require('request');
-	
-	Request({url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','') }   , (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)))//.default.timelineData.map(function (item) {  return item.formattedTime+'☉'+item.value})       );   
-	
-	});
-		    
+                https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','')  , (res) => {  
+                    let data = '';
+                    res.on('data', (chunk) => {data += chunk; });
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☉'+item.source+'☉'+item.time+'☉'+item.snippet})}) )
+				      });});}
 		
 		
-		
-	
-	
-	
-	}  
 	    
 		
 //TO SCRAPE GTRENDS EXPLORE & TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES	
