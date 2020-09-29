@@ -34,8 +34,22 @@ app.get('/SCRAPER0', (req0, res0,res1) => {
                https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?',''),'utf-8'  , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.send(res.data)//JSON.parse(data.slice(5).replace(/^\ufeff/g,"")).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})   }));
-                                      });});}  
+                    res.on('end', () => { try { res0.send(JSON.stringify(JSON.parse(data.slice(5))));} catch (e) {res0.send(data);}             //res0.send(res.data)//JSON.parse(data.slice(5).replace(/^\ufeff/g,"")).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})   }));
+                                      });});
+	
+	
+		
+      
+    
+		
+		
+		
+		
+		
+	
+	
+	
+	}  
 	
 	
 	
