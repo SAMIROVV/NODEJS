@@ -224,8 +224,39 @@ const Request = require('request');
 		           
     
     
+
+
+
+//💔💙💚 AMAZING SCRAPER WITH NEPOCHATAYA WITH HTTPS💚💙💔//
+
+    //for google trends autocomplete link  ===  https://nodejsgithub.herokuapp.com/SCRAPER3?https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60☆SCPGTACM
+    //for google trends dailytrends  link  ===  https://nodejsgithub.herokuapp.com/SCRAPER3?https://trends.google.com/trends/api/dailytrends?hl=en-US&tz=-60&geo=AU&ns=15☆SCPGTDTR
+    //for google real timerends      link  ===  https://nodejsgithub.herokuapp.com/SCRAPER3?https://trends.google.com/trends/api/realtimetrends?hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0☆SCPGTRTT
+    //for google trends all          link  ===  https://nodejsgithub.herokuapp.com/SCRAPER3?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆SCPGTQRY
+    //for other websites             link  ===  https://nodejsgithub.herokuapp.com/SCRAPER3?url☆SCPURL
+
+	app.get('/SCRAPER3', (req0, res0) => {
+           const url = require('url'); 
+           const https = require('https');
+           const Request = require('axios');
+
+		
+             //Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }      },(err, res, body) => {
+        
+		  
+//needle,,Request('post', 'https://scraper.nepochataya.pp.ua/sites', {url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }).then (  (res) => {		      
+					      
+//axios,,
+		Request.post('https://scraper.nepochataya.pp.ua/sites', {url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }).then((res) => { 		      
+console.log(res.data);				
     
     
+});});
+
+
+
+
+
     
     
          //💔💙💚 Start the server
