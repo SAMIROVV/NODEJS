@@ -268,7 +268,7 @@ const Request = require('request');
 		  
 //Request('post', 'https://scraper.nepochataya.pp.ua/sites', {url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }).then (  (res) => {		      
 					      
-Request.post('https://scraper.nepochataya.pp.ua/sites', {url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  },  (err, res, body) => {		      
+Request.post('https://scraper.nepochataya.pp.ua/sites', {url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }).then((res) => { 		      
 					      
 			
 			
@@ -276,9 +276,9 @@ Request.post('https://scraper.nepochataya.pp.ua/sites', {url:decodeURIComponent(
 			
 			
 			
-	console.log(body);
-		https.get('https://scraper.nepochataya.pp.ua', (res) => {			
-               //https.get('https://scraper.nepochataya.pp.ua'+res.body.previewPath+'/', (res) => {		
+	
+					
+               https.get('https://scraper.nepochataya.pp.ua'+res.data.previewPath+'/', (res) => {		
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
 			res.on('end', () => {					
@@ -289,7 +289,7 @@ Request.post('https://scraper.nepochataya.pp.ua/sites', {url:decodeURIComponent(
 		//TO SCRAPE URL & GTRENDS EXPLORE & AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
 		
 	if(type === 'SCPURL' || type === ''){
-		res0.header('Content-Type', 'application/json').send(data);console.log(res.body)}
+		res0.header('Content-Type', 'application/json').send(data)}
 				
 		
 	if(type === 'SCPGTACM'){
