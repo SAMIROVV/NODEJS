@@ -23,8 +23,7 @@ app.get('/SCRAPER0', (req0, res0,res1) => {
 //TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
 	
 	if(type === 'SCPGTACM'){
- var options0 =decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','');
-                https.get(options0  , (res) => {  
+                https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', () => {res0.header('Content-Type', 'application/json').send( JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☉'+item.type})  );
@@ -32,8 +31,7 @@ app.get('/SCRAPER0', (req0, res0,res1) => {
 	
 	
 	if(type === 'SCPGTDTR'){
- var options0 =decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','');
-               https.get(options0  , (res) => {  
+               https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','')  , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', () => {res0.send(data);//send(JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})   }));
@@ -43,12 +41,25 @@ app.get('/SCRAPER0', (req0, res0,res1) => {
 	
 	
 	if(type === 'SCPGTRTT'){
- var options0 =decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','');
-                https.get(options0  , (res) => {  
-                    let data = '';
-                    res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☉'+item.source+'☉'+item.time+'☉'+item.snippet})}) )
-				      });});}  
+                //https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?','')  , (res) => {  
+                    //let data = '';
+                    //res.on('data', (chunk) => {data += chunk; });
+                    //res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☉'+item.source+'☉'+item.time+'☉'+item.snippet})}) )
+				     // });});
+	
+	const axios = require('axios');
+axios.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?',''))
+  .then(function (response) {
+    res0.send(response.data);
+  })
+	
+		
+		
+		
+	
+	
+	
+	}  
 	    
 		
 //TO SCRAPE GTRENDS EXPLORE & TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES	
