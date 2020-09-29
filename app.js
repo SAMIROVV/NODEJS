@@ -271,12 +271,6 @@ const Request = require('request');
 //axios,,Request.post('https://scraper.nepochataya.pp.ua/sites', {url:decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER3?','')  }).then((res) => { 		      
 //var body =res.data;				      
 			
-			
-			
-			
-			
-			
-	
 					
                https.get('https://scraper.nepochataya.pp.ua'+body.previewPath+'/', (res) => {		
                     let data = '';
