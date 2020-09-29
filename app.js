@@ -126,9 +126,7 @@ const googleTrends = require('google-trends-api');
 const url = require('url');
 var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("☆")[1];
 
-	  var startTime = new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000));
-var endTime = new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000))
-    		
+	  
 
 	//TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
 	
@@ -150,13 +148,15 @@ var endTime = new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000))
            .then(function(data){res.header('Content-Type', 'application/json').send(JSON.parse(data).default.timelineData.map(function (item) {  return item.formattedTime+'☉'+item.value})).end();});}
 	
 	if(type === 'SCPGTGEO'){ googleTrends.interestByRegion ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, resolution:req.query.resolution, hl: req.query.language, category: req.query.category, property: req.query.engine})
-           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.geoMapData.map(function (item) {  return item.geoName+'☉'+item.value})).end();});}
-
+           .then(function(results){ res.header('Content-Type', 'application/json').send(data).end();});}
+ 
+	    
+	
 	if(type === 'SCPGTTPC'){ googleTrends.relatedTopics ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category ,property: req.query.engine})
            .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'☉'+item.topic.type+'☉'+item.value})+'↕'+JSON.parse(data).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'☉'+item.topic.type+'☉'+item.value})   ) .end();});}
 
 	if(type === 'SCPGTQRY'){ googleTrends.relatedQueries ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category, property: req.query.engine})
-           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})) .end();console.log(startTime);console.log(endTime)});}
+           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})) .end());}
 	
 
 });
