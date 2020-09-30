@@ -356,12 +356,12 @@ app.get('/SCRAPER4', (req0, res0) => {
 
 
 
-Object.keys(obj).forEach(function(key){
-    var value = obj[key];
-    console.log(key + ':' + value);
-});
-forEach({ name: 'Todd', location: 'UK' }, function (value, prop, obj) {
-	console.log(value); // Todd, UKp
+//Object.keys(obj).forEach(function(key){
+    //var value = obj[key];
+   // console.log(key + ':' + value);
+//});
+//forEach({ name: 'Todd', location: 'UK' }, function (value, prop, obj) {
+//console.log(value); // Todd, UKp
 
 
     
