@@ -335,7 +335,7 @@ const Request = require('request');
 app.get('/SCRAPER4', (req0, res0) => {
     const https = require('https');
     const url = require('url');
-    var keyword1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
+    var keywords = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','').replace('[','').replace(']','');    
 	var keyword2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[2];    
 	var keyword3 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[3];    
 	var keyword4 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[4];    
@@ -344,7 +344,7 @@ app.get('/SCRAPER4', (req0, res0) => {
                 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data).req0.keyword1.trends);console.log(keyword1);console.log(keyword2);console.log(keyword3);
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data).req0.keyword2.trends);console.log(keywords);console.log(keyword2);console.log(keyword3);
 				      });});
 			
 		});
