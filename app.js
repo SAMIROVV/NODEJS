@@ -335,16 +335,16 @@ const Request = require('request');
 app.get('/SCRAPER4', (req0, res0) => {
     const https = require('https');
     const url = require('url');
-    var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
-	
-	
-	
-	
+    var keyword1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
+	var keyword2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[2];    
+	var keyword3 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[3];    
+	var keyword4 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[4];    
+	var keyword5 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[5];    
 	
                 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data).req0.query.keyword[0].trends);
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data).req0.query.keyword2.trends);
 				      });});
 			
 		});
