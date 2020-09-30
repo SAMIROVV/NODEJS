@@ -348,7 +348,7 @@ app.get('/SCRAPER4', (req0, res0) => {
                 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☉'+item.value})       )  ;console.log(JSON.parse(data)[keyword1].topics[0]   );console.log(JSON.parse(data)[keyword1].topics[1]) ;console.log(JSON.parse(data)[keyword1].trends) ; console.log(JSON.parse(data)[keyword1].region)  //       
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+JSON.parse(data)[keyword1].topics[0]       )  ;console.log(  JSON.parse(data)[keyword1].topics[0]   );console.log(JSON.parse(data)[keyword1].topics[1]) ;console.log(JSON.parse(data)[keyword1].trends) ; console.log(JSON.parse(data)[keyword1].region)  //       
 				      });});
 			
 		});
