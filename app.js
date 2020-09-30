@@ -13,7 +13,7 @@ const app = express();
     //for google real timerends      link  ===  https://nodejsgithub.herokuapp.com/SCRAPER0?https://trends.google.com/trends/api/realtimetrends?hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0☆SCPGTRTT
   
 
-app.get('/SCRAPER0', (req0, res0,res1) => {
+app.get('/SCRAPER0', (req0, res0) => {
     const https = require('https');
     const url = require('url');
     var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
@@ -313,17 +313,43 @@ const Request = require('request');
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value}));     });});}	                           
-				      	    		
-				
-				
-				
-	
+				      	    			
 				
 				
 });			
 });		
 });
 });
+
+
+
+
+
+
+
+//💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH ZENSERP 💚💙💔//
+
+    //for google trends autocomplete link  ===  https://nodejsgithub.herokuapp.com/SCRAPER4?https://app.zenserp.com/api/v1/trends?apikey=d6e89390-e001-11ea-bf40-1d4910d948b2&keyword%5B%5D=Bitcoin&keyword%5B%5D=Etherum
+
+
+app.get('/SCRAPER4', (req0, res0) => {
+    const https = require('https');
+    const url = require('url');
+    var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
+	
+	
+	
+	
+	
+                https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
+                    let data = '';
+                    res.on('data', (chunk) => {data += chunk; });
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send( data)//JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☉'+item.type})  );
+				      });});
+			
+		});
+	
+
 
 
 
