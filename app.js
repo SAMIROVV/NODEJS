@@ -340,7 +340,7 @@ app.get('/SCRAPER4', (req0, res0) => {
                 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data).req0.keyword2.trends);console.log('keywords:',keywords);
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(keywords)//send(JSON.parse(data).req0.keyword2.trends);console.log('keywords:',keywords);
 				      });});
 			
 		});
