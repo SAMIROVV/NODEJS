@@ -337,7 +337,7 @@ app.get('/SCRAPER4', (req0, res0) => {
     const url = require('url');
        
 	var keyword1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
-//var keyword2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i] ;
+var keyword2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i] ;
 //var keyword3 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[3];
 //var keyword4 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[4];
 //var keyword5 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[5];
@@ -353,19 +353,21 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 });});
 
  }
-else{
- for(var i = 1; i < length; i++) { 
-var keyword2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i] 	 
+if(length === 3){
+ //for(var i = 1; i < length; i++) { 
+//var keyword = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i] 	 
 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.send('💚'+JSON.parse(data)[keyword2].queries[keyword2].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword2].queries[keyword2].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword2].trends)   .map(function (item) {  return item[keyword2]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword2].region)+'↕'+Object.values(JSON.parse(data)[keyword2].region).map(function (item) {  return item[keyword2]})     )       
+                    res.on('end', () => {res0.send(JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword1].trends)   .map(function (item) {  return item[keyword1]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword1].region)+'↕'+Object.values(JSON.parse(data)[keyword1].region).map(function (item) {  return item[keyword1]})+            
 				    
+			    '💚'+JSON.parse(data)[keyword2].queries[keyword2].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword2].queries[keyword2].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword2].trends)   .map(function (item) {  return item[keyword2]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword2].region)+'↕'+Object.values(JSON.parse(data)[keyword2].region).map(function (item) {  return item[keyword2]})     )       
+				   
 });});
 
 
 
-}
+//}
 
 }
 		
