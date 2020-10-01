@@ -359,7 +359,7 @@ var keyword2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).sp
 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send('💚'+JSON.parse(data)[keyword2].queries[keyword2].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword2].queries[keyword2].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword2].trends)   .map(function (item) {  return item[keyword2]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword2].region)+'↕'+Object.values(JSON.parse(data)[keyword2].region).map(function (item) {  return item[keyword2]})     )       
+                    res.on('end', () => {res0.send('💚'+JSON.parse(data)[keyword2].queries[keyword2].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword2].queries[keyword2].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword2].trends)   .map(function (item) {  return item[keyword2]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword2].region)+'↕'+Object.values(JSON.parse(data)[keyword2].region).map(function (item) {  return item[keyword2]})     )       
 				    
 });});
 
