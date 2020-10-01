@@ -336,20 +336,24 @@ app.get('/SCRAPER4', (req0, res0) => {
     const https = require('https');
     const url = require('url');
        
-	var keyword1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
-	var keyword2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[2];
+	var keyword0 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
+	var keyword2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i];
 	var keyword3 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[3];
 	var keyword4 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[4];
 	var keyword5 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[5];
 			
 	
-	
-	
+	for(var i = 0; i <=2 ; i++) { 
+var keyword1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i]
+
                 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword1].topics[0]).map(function (item) {  return item.topic_title+'☉'+item.topic_type+'☉'+item.value})+'↕'+Object.values(JSON.parse(data)[keyword1].topics[1]).map(function (item) {  return item.topic_title+'☉'+item.topic_type+'☉'+item.value})   +'🔰'+Object.values(JSON.parse(data)[keyword1].trends)   .map(function (item) {  return item[keyword1]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword1].region)+'↕'+Object.values(JSON.parse(data)[keyword1].region).map(function (item) {  return item[keyword1]})     )       
-				      });});
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send('💚'+JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword1].topics[0]).map(function (item) {  return item.topic_title+'☉'+item.topic_type+'☉'+item.value})+'↕'+Object.values(JSON.parse(data)[keyword1].topics[1]).map(function (item) {  return item.topic_title+'☉'+item.topic_type+'☉'+item.value})   +'🔰'+Object.values(JSON.parse(data)[keyword1].trends)   .map(function (item) {  return item[keyword1]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword1].region)+'↕'+Object.values(JSON.parse(data)[keyword1].region).map(function (item) {  return item[keyword1]})     )       
+				    
+					
+					
+					});}); }
 			
 		});
 	
