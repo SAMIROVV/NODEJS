@@ -356,11 +356,7 @@ app.get('/SCRAPER4', (req0, res0) => {
 
 
 
-Object.keys(obj).map(function (key) { 
-          
-        // Using Number() to convert key to number type 
-        // Using obj[key] to retrieve key value 
-        return [Number(key), obj[key]]; 
+
 
 
     
