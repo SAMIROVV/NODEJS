@@ -397,9 +397,6 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 		
 	
 	
-	
-	
-	
 		});
 	
 
@@ -407,6 +404,24 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 
 
 
+
+
+
+//💔💙💚 YOUTUBE SCRAPING TOOLS NO APIKEY 💚💙💔//
+app.get('/SCRAPER4', (req0, res0) => {
+const miniget = require('miniget');
+
+var response = await miniget(      'https://www.youtube.com/results?search_query=goo'    ).text();
+    var line = response.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)[0];
+    var json = JSON.parse(line.substring(line.indexOf('{'), line.length - 2));
+    var result = json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']
+        ['contents'][0]['itemSectionRenderer']['contents'];
+        
+
+res0.header('Content-Type', 'application/json').send(result);
+
+
+});
 
     
     
