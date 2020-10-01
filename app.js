@@ -337,13 +337,13 @@ app.get('/SCRAPER4', (req0, res0) => {
     const url = require('url');
        
 	var keyword0 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
-	var keyword2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i];
+	var keyword2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[2];
 	var keyword3 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[3];
 	var keyword4 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[4];
 	var keyword5 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[5];
-			
+	var length = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆").length
 	
-	for(var i = 0; i <=2 ; i++) { 
+	for(var i = 0; i < length ; i++) { 
 var keyword1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i]
 
                 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
