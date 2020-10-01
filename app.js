@@ -337,14 +337,14 @@ app.get('/SCRAPER4', (req0, res0) => {
     const url = require('url');
        
 	var keyword1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
-//var keyword2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[2];
+var keyword2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[2];
 //var keyword3 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[3];
 //var keyword4 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[4];
 //var keyword5 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[5];
 	var length = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆").length
 	
 	
-	if(length === 2){
+	
 
 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
                     let data = '';
@@ -352,23 +352,8 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
                     res.on('end', () => {res0.header('Content-Type', 'application/json').send('💚'+JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword1].topics[0]).map(function (item) {  return item.topic_title+'☉'+item.topic_type+'☉'+item.value})+'↕'+Object.values(JSON.parse(data)[keyword1].topics[1]).map(function (item) {  return item.topic_title+'☉'+item.topic_type+'☉'+item.value})   +'🔰'+Object.values(JSON.parse(data)[keyword1].trends)   .map(function (item) {  return item[keyword1]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword1].region)+'↕'+Object.values(JSON.parse(data)[keyword1].region).map(function (item) {  return item[keyword1]})     )       
 				    
 });});
-}
-   else{
-	
-	
-	
-	
-	
-	
-	
-	for(var i = 1; i < length ; i++) { 
-		
-                https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
-                    let data = '';
-                    res.on('data', (chunk) => {data += chunk; });                 
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send('💚'+JSON.parse(data).Etherum)//[decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[2]])//.queries[decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i]].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i]].queries[decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i]].rising.map(function (item) {  return item.query+'☉'+item.value}))//+'🔰'+ Object.values(JSON.parse(data)[decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i]].trends)   .map(function (item) {  return item[decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i]]})      +'🔰'+ Object.keys(JSON.parse(data)[decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i]].region)+'↕'+Object.values(JSON.parse(data)[decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i]].region).map(function (item) {  return item[decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i]]})     )       		
-					});}); }
-   }
+
+   
 		
 	
 	
