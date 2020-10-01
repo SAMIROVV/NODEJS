@@ -348,7 +348,7 @@ app.get('/SCRAPER4', (req0, res0) => {
                 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Array.from(JSON.parse(data)[keyword1].topics[0]).forEach(iterate)    );        ;//console.log(  JSON.parse(data)[keyword1].topics[0]);console.log(JSON.parse(data)[keyword1].topics[1]) ;console.log(JSON.parse(data)[keyword1].trends[1]) ; console.log(JSON.parse(data)[keyword1].region)         
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.keys(JSON.parse(data)[keyword1].topics[0]).map(function (key) {  return key.value });       );        ;//console.log(  JSON.parse(data)[keyword1].topics[0]);console.log(JSON.parse(data)[keyword1].topics[1]) ;console.log(JSON.parse(data)[keyword1].trends[1]) ; console.log(JSON.parse(data)[keyword1].region)         
 				      });});
 			
 		});
@@ -356,12 +356,11 @@ app.get('/SCRAPER4', (req0, res0) => {
 
 
 
-//Object.keys(obj).forEach(function(key){
-    //var value = obj[key];
-   // console.log(key + ':' + value);
-//});
-//forEach({ name: 'Todd', location: 'UK' }, function (value, prop, obj) {
-//console.log(value); // Todd, UKp
+Object.keys(obj).map(function (key) { 
+          
+        // Using Number() to convert key to number type 
+        // Using obj[key] to retrieve key value 
+        return [Number(key), obj[key]]; 
 
 
     
