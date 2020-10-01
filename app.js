@@ -336,7 +336,7 @@ app.get('/SCRAPER4', (req0, res0) => {
     const https = require('https');
     const url = require('url');
        
-	var keyword = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
+	var keyword1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 var keyword2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[2];
 //var keyword3 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[3];
 //var keyword4 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[4];
