@@ -343,7 +343,7 @@ app.get('/SCRAPER4', (req0, res0) => {
 	var keyword5 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[5];
 	var length = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆").length
 	
-	for(var i = 0; i < length ; i++) { 
+	for(var i = 1; i < length ; i++) { 
 var keyword1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[i]
 
                 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
@@ -351,7 +351,8 @@ var keyword1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).sp
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', () => {res0.header('Content-Type', 'application/json').send('💚'+JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword1].topics[0]).map(function (item) {  return item.topic_title+'☉'+item.topic_type+'☉'+item.value})+'↕'+Object.values(JSON.parse(data)[keyword1].topics[1]).map(function (item) {  return item.topic_title+'☉'+item.topic_type+'☉'+item.value})   +'🔰'+Object.values(JSON.parse(data)[keyword1].trends)   .map(function (item) {  return item[keyword1]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword1].region)+'↕'+Object.values(JSON.parse(data)[keyword1].region).map(function (item) {  return item[keyword1]})     )       
 				    
-					
+		
+		
 					
 					});}); }
 			
