@@ -448,10 +448,10 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
                 identifier: identifier,
                 uri: 'https://www.youtube.com/watch?v=' + identifier,
                 title: data['title']['runs'][0]['text'],
-//description : data['descriptionSnippet']['runs'][0]['text'],
-//publishedTime: data['publishedTimeText'],//['simpleText'],
-//viewCount : data['viewCountText'],//['simpleText'],   
-//duration :  data['lengthText'],//['simpleText'],    
+description : data['descriptionSnippet']['runs'][0]['text'],
+publishedTime: data['publishedTimeText'],//['simpleText'],
+viewCount : data['viewCountText'],//['simpleText'],   
+duration :  data['lengthText'],//['simpleText'],    
                 author: {
                     name: data['ownerText']['runs'][0]['text'],
                     profile: data['channelThumbnailSupportedRenderers']['channelThumbnailWithLinkRenderer']
@@ -485,7 +485,7 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 			      			    
 			    res0.header('Content-Type', 'application/json').send(kind.map(function (item) {  return item.type+'☉'+item.identifier+'☉'+item.uri+'☉'+
 								 item.title+'☉'+item.author.name+'☉'+item.thumbnails.url  
-				           +'☉'+item.description+'☉'+Object.values(item.publishedTime)//+'☉'+Object.values(item.viewCount)+'☉'+item.duration
+				           +'☉'+item.description+'☉'+Object.values(JSON.parse(item.publishedTime))//+'☉'+Object.values(item.viewCount)+'☉'+item.duration
 													  
 													  })
 													  					
