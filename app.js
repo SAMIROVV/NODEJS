@@ -446,8 +446,8 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
                 title: data['title']['runs'][0]['text'],
 description : data['descriptionSnippet']['runs'][0]['text'],
 publishedTime: data['publishedTimeText'],//['simpleText'],
-viewCount : data['viewCountText']['simpleText'],   
-duration :  data['lengthText']['simpleText'],    
+viewCount : data['viewCountText'],//['simpleText'],   
+duration :  data['lengthText'],//['simpleText'],    
                 author: {
                     name: data['ownerText']['runs'][0]['text'],
                     profile: data['channelThumbnailSupportedRenderers']['channelThumbnailWithLinkRenderer']
