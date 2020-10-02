@@ -408,6 +408,7 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 
 
 //💔💙💚 YOUTUBE SCRAPING TOOLS NO APIKEY Based ON SIMPLEYT NPM💚💙💔//
+    // LINK === https://nodejsgithub.herokuapp.com/YTSCRAPER0?https://www.youtube.com/results?search_query=good&sp=CAASBAgFEAE%253D☆video (video or playlist or both)
 
 app.get('/YTSCRAPER0', (req0, res0) => {
 //const miniget = require('miniget');
@@ -483,8 +484,10 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 			    
 			      			    
 			    res0.header('Content-Type', 'application/json').send(kind.map(function (item) {  return item.type+'☉'+item.identifier+'☉'+item.uri+'☉'+
-								 item.title+'☉'+item.author.name+'☉'+item.thumbnails.url  })
-				           //+'☉'+item.description+'☉'+Object.values(item.publishedTime)+'☉'+Object.values(item.viewCount)+'☉'+item.duration
+								 item.title+'☉'+item.author.name+'☉'+item.thumbnails.url  
+				           +'☉'+item.description+'☉'+Object.values(item.publishedTime)//+'☉'+Object.values(item.viewCount)+'☉'+item.duration
+													  
+													  })
 													  					
 			    );
 				      });});
