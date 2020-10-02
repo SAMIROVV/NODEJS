@@ -407,7 +407,8 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 
 
 
-//💔💙💚 YOUTUBE SCRAPING TOOLS NO APIKEY 💚💙💔//
+//💔💙💚 YOUTUBE SCRAPING TOOLS NO APIKEY Based ON SIMPLEYT NPM💚💙💔//
+
 app.get('/YTSCRAPER0', (req0, res0) => {
 //const miniget = require('miniget');
 const https = require('https');
@@ -443,10 +444,10 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
                 identifier: identifier,
                 uri: 'https://www.youtube.com/watch?v=' + identifier,
                 title: data['title']['runs'][0]['text'],
-		description1 : data['descriptionSnippet']['runs'][0]['text'],
-		 publishedTimeText: data['publishedTimeText']['simpleText'],
-                viewCountText : data['viewCountText']['simpleText'],   
-		    
+		description : data['descriptionSnippet']['runs'][0]['text'],
+		publishedTime: data['publishedTimeText']['simpleText'],
+                viewCount : data['viewCountText']['simpleText'],   
+                duration :  data['lengthText']['simpleText'],    
                 author: {
                     name: data['ownerText']['runs'][0]['text'],
                     profile: data['channelThumbnailSupportedRenderers']['channelThumbnailWithLinkRenderer']
@@ -459,17 +460,13 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
                     sec: length
                 },
                 isStream: isStream,
-                thumbnails: data['thumbnail']['thumbnails']
+                thumbnails: data['thumbnail']['thumbnails'.length - 1]
             }
         } else return {
             type: type,
             identifier: identifier,
             uri: 'https://www.youtube.com/playlist?list=' + identifier,
-            title: data['title']['simpleText'],
-		descriptionSnippet: data['descriptionSnippet']['runs'][0]['text'],
-		publishedTimeText: data['publishedTimeText']['simpleText'],
-                viewCountText : data['viewCountText']['simpleText'],
-		
+            title: data['title']['simpleText'],	
             author: {
                 name: data['longBylineText']['runs'][0]['text'],
                 uri: 'https://www.youtube.com' + data['longBylineText']['runs'][0]['navigationEndpoint']
