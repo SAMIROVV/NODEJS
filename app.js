@@ -457,7 +457,7 @@ axios.get('https://www.youtube.com/results?search_query=good')
   const $ = cheerio.load(data);
   res
             .status(200)
-            .header('Content-Type', 'text/html')
+            .header('Content-Type', 'application/json')
 	
             .send(data)
             .end();
