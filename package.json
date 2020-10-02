@@ -17,6 +17,7 @@
     "miniget": "^2.0.1",
     "request": "^2.88.2",
     "axios": "^0.20.0",
+    "cheerio": "^0.22.0",
     "website-scraper": "^4.2.3"
     
     
