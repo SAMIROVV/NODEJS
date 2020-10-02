@@ -443,7 +443,10 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
                 identifier: identifier,
                 uri: 'https://www.youtube.com/watch?v=' + identifier,
                 title: data['title']['runs'][0]['text'],
-		description : data['descriptionSnippet']['runs'][0]['text'],
+		description1 : data['descriptionSnippet']['runs'][0]['text'],
+		 publishedTimeText: data['publishedTimeText']['simpleText'],
+                viewCountText : data['viewCountText']['simpleText'],   
+		    
                 author: {
                     name: data['ownerText']['runs'][0]['text'],
                     profile: data['channelThumbnailSupportedRenderers']['channelThumbnailWithLinkRenderer']
