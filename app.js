@@ -485,7 +485,7 @@ duration :  data['lengthText'],//.simpleText,
 			      			    
 			    res0.header('Content-Type', 'application/json').send(kind.map(function (item) {  return item.type+'☉'+item.identifier+'☉'+item.uri+'☉'+
 								 item.title+'☉'+item.author.name+'☉'+item.thumbnails.url  
-				           +'☉'+item.description+'☉'+JSON.parse(JSON.stringify(item.publishedTime)).simpleText+'☉'+item.viewCount+'☉'+item.duration
+				           +'☉'+item.description+'☉'+JSON.parse(item.publishedTime).simpleText+'☉'+JSON.stringify(item.viewCount)+'☉'+JSON.stringify(item.duration)
 													  
 													  })
 													  					
