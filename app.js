@@ -460,7 +460,7 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
                     sec: length
                 },
                 isStream: isStream,
-		    thumbnails: data['thumbnail']['thumbnails'],
+		    thumbnails1: data['thumbnail']['thumbnails'],
                 thumbnails: data['thumbnail']['thumbnails'].slice(-1)[0]
             }
         } else return {
