@@ -418,7 +418,7 @@ var response =  miniget(      'https://www.youtube.com/results?search_query=goo'
        // ['contents'][0]['itemSectionRenderer']['contents'];
         
 
-res0.header('Content-Type', 'application/json').send(response);
+res0.send(response);
 
 
 });
