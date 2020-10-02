@@ -449,9 +449,9 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
                 uri: 'https://www.youtube.com/watch?v=' + identifier,
                 title: data['title']['runs'][0]['text'],
 description : data['descriptionSnippet']['runs'][0]['text'],
-publishedTime: data['publishedTimeText'],//['simpleText'],
-viewCount : data['viewCountText'],//['simpleText'],   
-duration :  data['lengthText'],//['simpleText'],    
+publishedTime: data['publishedTimeText'],['simpleText '],
+viewCount : data['viewCountText'],['simpleText '],   
+duration :  data['lengthText'],['simpleText '],    
                 author: {
                     name: data['ownerText']['runs'][0]['text'],
                     profile: data['channelThumbnailSupportedRenderers']['channelThumbnailWithLinkRenderer']
@@ -485,7 +485,7 @@ duration :  data['lengthText'],//['simpleText'],
 			      			    
 			    res0.header('Content-Type', 'application/json').send(kind.map(function (item) {  return item.type+'☉'+item.identifier+'☉'+item.uri+'☉'+
 								 item.title+'☉'+item.author.name+'☉'+item.thumbnails.url  
-				           +'☉'+item.description+'☉'+item.publishedTime+'☉'+JSON.stringify(item.viewCount)+'☉'+JSON.stringify(item.duration)
+				           +'☉'+item.description+'☉'+item.publishedTime+'☉'+item.viewCount+'☉'+item.duration
 													  
 													  })
 													  					
