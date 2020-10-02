@@ -411,7 +411,7 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 app.get('/YTSCRAPER0', (req0, res0) => {
 const miniget = require('miniget');
 
-var response =  miniget(      'https://www.youtube.com/results?search_query=goo'    ).text();
+var response =  miniget(      'https://www.youtube.com/results?search_query=goo'    );
     //var line = response.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)[0];
     //var json = JSON.parse(line.substring(line.indexOf('{'), line.length - 2));
     //var result = json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']
