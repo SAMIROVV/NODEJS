@@ -464,6 +464,8 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
             uri: 'https://www.youtube.com/playlist?list=' + identifier,
             title: data['title']['simpleText'],
 		descriptionSnippet: data['descriptionSnippet']['runs'][0]['text'],
+		publishedTimeText: data['publishedTimeText']['simpleText'],
+                viewCountText : data['viewCountText']['simpleText'],
 		
             author: {
                 name: data['longBylineText']['runs'][0]['text'],
@@ -471,9 +473,8 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
                     ['commandMetadata']['webCommandMetadata']['url']
             },
             count: Number(data['videoCount']),
-            thumbnails: data['thumbnails'], 
-	publishedTimeText: data['publishedTimeText']['simpleText'],
-	viewCountText : data['viewCountText']['simpleText']
+            thumbnails: data['thumbnails']
+	
         }
     })
 			    
