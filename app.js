@@ -449,7 +449,7 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
                 uri: 'https://www.youtube.com/watch?v=' + identifier,
                 title: data['title']['runs'][0]['text'],
 description : data['descriptionSnippet']['runs'][0]['text'],
-publishedTime: data.publishedTimeText.simpleText,
+publishedTime: data['publishedTimeText'],
 viewCount : data['viewCountText'],//.simpleText,   
 duration :  data['lengthText'],//.simpleText,    
                 author: {
@@ -487,7 +487,7 @@ duration :  data['lengthText'],//.simpleText,
 								 item.title+'☉'+item.author.name+'☉'+item.thumbnails.url  
 				           +'☉'+item.description+'☉'+JSON.stringify(item.publishedTime)+'☉'+JSON.stringify(item.viewCount)+'☉'+JSON.stringify(item.duration)
 													  
-													  })
+													  })console.log(data)
 													  					
 			    );
 				      });});
