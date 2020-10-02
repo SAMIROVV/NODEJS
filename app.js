@@ -481,8 +481,8 @@ duration :  data['lengthText'],//['simpleText'],
 			      
 			    
 			    
-			    res0.header('Content-Type', 'application/json').send(kind.map(function (item) {  return item.type+'☉'+item.identifier+'☉'+item.uri})//+'☉'+
-								 //item.title+'☉'+item.author+'☉'+item.thumbnails.url+'☉'+item.description
+			    res0.header('Content-Type', 'application/json').send(kind.map(function (item) {  return item.type+'☉'+item.identifier+'☉'+item.uri+'☉'+
+								 item.title+'☉'+item.author+'☉'+item.thumbnails.url})//+'☉'+item.description
 				                                 //+'☉'+item.publishedTime+'☉'+item.viewCount+'☉'+item.duration})
 										
 										
