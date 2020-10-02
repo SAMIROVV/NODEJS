@@ -412,7 +412,10 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 app.get('/YTSCRAPER0', (req0, res0) => {
 //const miniget = require('miniget');
 const https = require('https');
-https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {  
+const url = require('url');
+var typeYT = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
+	
+https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/YTSCRAPER0?','')  , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', () => {
@@ -422,8 +425,8 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
 			    
 			    const kind = result.filter(video => {
         const type = Object.keys(video)[0].replace('Renderer', '')
-        if ('video' === 'video') return type === 'video'
-        else if ('playlis' === 'playlist') return type === 'playlist'
+        if (typeYT === 'video') return type === 'video'
+        else if (typeYT === 'playlist') return type === 'playlist'
         else return ['video', 'playlist'].includes(type)   })
 .map(video => {
         const type = Object.keys(video)[0].replace('Renderer', '')
@@ -478,9 +481,7 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
         }
     })
 			    
-			      
-			    
-			    
+			      			    
 			    res0.header('Content-Type', 'application/json').send(kind.map(function (item) {  return item.type+'☉'+item.identifier+'☉'+item.uri+'☉'+
 								 item.title+'☉'+item.author.name+'☉'+item.thumbnails.url  })
 				           //+'☉'+item.description+'☉'+Object.values(item.publishedTime)+'☉'+Object.values(item.viewCount)+'☉'+item.duration
@@ -494,11 +495,6 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
 
 
     
-	
-	
-
-	
-	
 	
 
     
