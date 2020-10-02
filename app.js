@@ -445,7 +445,7 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
                 uri: 'https://www.youtube.com/watch?v=' + identifier,
                 title: data['title']['runs'][0]['text'],
 description : data['descriptionSnippet']['runs'][0]['text'],
-publishedTime: data['publishedTimeText']['simpleText'],
+publishedTime: data['publishedTimeText'],//['simpleText'],
 viewCount : data['viewCountText']['simpleText'],   
 duration :  data['lengthText']['simpleText'],    
                 author: {
