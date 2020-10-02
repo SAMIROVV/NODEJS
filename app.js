@@ -487,7 +487,7 @@ duration :  data['lengthText'],//.simpleText,
 								 item.title+'☉'+item.author.name+'☉'+item.thumbnails.url  
 				           +'☉'+item.description+'☉'+item.publishedTime+'☉'+JSON.stringify(item.viewCount)+'☉'+JSON.stringify(item.duration)
 													  
-													  })console.log(data)
+													  })
 													  					
 			    );
 				      });});
