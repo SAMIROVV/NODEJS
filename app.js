@@ -408,7 +408,7 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 
 
 //💔💙💚 YOUTUBE SCRAPING TOOLS NO APIKEY 💚💙💔//
-app.get('/SCRAPER4', (req0, res0) => {
+app.get('/YTSCRAPER0', (req0, res0) => {
 const miniget = require('miniget');
 
 var response = await miniget(      'https://www.youtube.com/results?search_query=goo'    ).text();
