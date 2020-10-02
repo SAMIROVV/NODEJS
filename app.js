@@ -444,10 +444,10 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
                 identifier: identifier,
                 uri: 'https://www.youtube.com/watch?v=' + identifier,
                 title: data['title']['runs'][0]['text'],
-		description : data['descriptionSnippet']['runs'][0]['text'],
-		publishedTime: data['publishedTimeText']['simpleText'],
-                viewCount : data['viewCountText']['simpleText'],   
-                duration :  data['lengthText']['simpleText'],    
+//description : data['descriptionSnippet']['runs'][0]['text'],
+//publishedTime: data['publishedTimeText']['simpleText'],
+//viewCount : data['viewCountText']['simpleText'],   
+//duration :  data['lengthText']['simpleText'],    
                 author: {
                     name: data['ownerText']['runs'][0]['text'],
                     profile: data['channelThumbnailSupportedRenderers']['channelThumbnailWithLinkRenderer']
@@ -483,10 +483,8 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
 			    
 			    res0.header('Content-Type', 'application/json').send(kind.map(function (item) {  return item.type
 				                                                           +'☉'+item.identifier+'☉'+item.uri
-				                                                           +'☉'+item.title+'☉'+item.description
-				                                                           +'☉'+item.publishedTime+'☉'+item.viewCount
-				                                                           +'☉'+item.duration+'☉'+item.author
-													  +'☉'+item.thumbnails})    );
+				                                                           +'☉'+item.title+'☉'+item.author
+													  +'☉'+item.thumbnails        })    );
 				      });});
 	
 });
