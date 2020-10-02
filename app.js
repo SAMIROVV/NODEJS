@@ -5,7 +5,7 @@ const express = require('express');
 const app = express(); 
 
 
-        //💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN 💚💙💔//
+        //💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FROM GOOGLETRENDSAPI NPM💚💙💔//
 
     //for Ggle trends(EXPLORE/TS/GEO/TPC/QRY) link ===  https://nodejsgithub.herokuapp.com/SCRAPER0?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆SCPGTQRY
     //for google trends autocomplete link  ===  https://nodejsgithub.herokuapp.com/SCRAPER0?https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60☆SCPGTACM
@@ -460,6 +460,7 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
                     sec: length
                 },
                 isStream: isStream,
+		    thumbnails: data['thumbnail']['thumbnails'],
                 thumbnails: data['thumbnail']['thumbnails'].slice(-1)[0]
             }
         } else return {
@@ -478,14 +479,7 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
         }
     })
 			    
-			    
-			    
-			    
-			    
-			    
-			    
-			    
-			    
+			      
 			    
 			    
 			    res0.header('Content-Type', 'application/json').send(kind);
