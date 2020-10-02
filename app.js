@@ -443,6 +443,7 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
                 identifier: identifier,
                 uri: 'https://www.youtube.com/watch?v=' + identifier,
                 title: data['title']['runs'][0]['text'],
+		description : data['descriptionSnippet']['runs'][0]['text'],
                 author: {
                     name: data['ownerText']['runs'][0]['text'],
                     profile: data['channelThumbnailSupportedRenderers']['channelThumbnailWithLinkRenderer']
@@ -462,6 +463,8 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
             identifier: identifier,
             uri: 'https://www.youtube.com/playlist?list=' + identifier,
             title: data['title']['simpleText'],
+		descriptionSnippet: data['descriptionSnippet']['runs'][0]['text'],
+		
             author: {
                 name: data['longBylineText']['runs'][0]['text'],
                 uri: 'https://www.youtube.com' + data['longBylineText']['runs'][0]['navigationEndpoint']
