@@ -468,7 +468,9 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
                     ['commandMetadata']['webCommandMetadata']['url']
             },
             count: Number(data['videoCount']),
-            thumbnails: data['thumbnails']
+            thumbnails: data['thumbnails'], 
+	publishedTimeText: data['publishedTimeText']['simpleText']
+	
         }
     })
 			    
