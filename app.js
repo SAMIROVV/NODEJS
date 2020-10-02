@@ -460,8 +460,7 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
                     sec: length
                 },
                 isStream: isStream,
-		    thumbnails1: data['thumbnail']['thumbnails'],
-                thumbnails: data['thumbnail']['thumbnails'].slice(-1)[0]
+		thumbnails: data['thumbnail']['thumbnails'].slice(-1)[0]
             }
         } else return {
             type: type,
@@ -482,7 +481,12 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
 			      
 			    
 			    
-			    res0.header('Content-Type', 'application/json').send(kind);
+			    res0.header('Content-Type', 'application/json').send(kind.map(function (item) {  return item.type
+				                                                           +'☉'+item.identifier+'☉'+item.uri
+				                                                           +'☉'+item.title+'☉'+item.description
+				                                                           +'☉'+item.publishedTime+'☉'+item.viewCount
+				                                                           +'☉'+item.duration+'☉'+item.author
+													  +'☉'+item.thumbnails})    );
 				      });});
 	
 });
