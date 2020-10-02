@@ -482,7 +482,7 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
 			    
 			    
 			    
-			    res0.header('Content-Type', 'application/json').send(kind);
+			    res0.header('Content-Type', 'application/json').send(result);
 				      });});
 	
 });
