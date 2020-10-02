@@ -414,7 +414,12 @@ const https = require('https');
 https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send( data);
+                    res.on('end', () => {
+			    const line = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)[0]
+			    
+			    
+			    
+			    res0.header('Content-Type', 'application/json').send( line);
 				      });});
 	
 });
