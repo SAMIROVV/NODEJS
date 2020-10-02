@@ -460,7 +460,7 @@ axios.get('https://www.youtube.com/results?search_query=good')
             .header('Content-Type', 'application/json')
 	
             .send(JSON.parse(data)['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']
-       // ['contents'][0]['itemSectionRenderer']['contents'])
+       ['contents'][0]['itemSectionRenderer']['contents'])
             .end();
         
   
