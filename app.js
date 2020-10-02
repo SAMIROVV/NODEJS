@@ -469,8 +469,8 @@ https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {
             },
             count: Number(data['videoCount']),
             thumbnails: data['thumbnails'], 
-	publishedTimeText: data['publishedTimeText']['simpleText']
-	
+	publishedTimeText: data['publishedTimeText']['simpleText'],
+	viewCountText : data['viewCountText']['simpleText']
         }
     })
 			    
