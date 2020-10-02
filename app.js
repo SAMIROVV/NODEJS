@@ -485,9 +485,7 @@ duration :  data['lengthText'],//.simpleText,
 			      			    
 			    res0.header('Content-Type', 'application/json').send(kind.map(function (item) {  return item.type+'☉'+item.identifier+'☉'+item.uri+'☉'+
 								 item.title+'☉'+item.author.name+'☉'+item.thumbnails.url  
-				           +'☉'+item.description+'☉'+JSON.stringify(item.publishedTime).replace(/\//g, '\\/')+'☉'+JSON.stringify(item.viewCount).replace(/\//g, '\\/')+'☉'+JSON.stringify(item.duration).replace(/\//g, '\\/')
-													  
-													  })
+				           +'☉'+item.description+'☉'+JSON.stringify(item.publishedTime)+'☉'+JSON.stringify(item.viewCount)+'☉'+JSON.stringify(item.duration)}).replace(/\\/g, '')
 													  					
 			    );
 				      });});
