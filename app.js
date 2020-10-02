@@ -412,13 +412,13 @@ app.get('/YTSCRAPER0', (req0, res0) => {
 const miniget = require('miniget');
 
 var response =  miniget(      'https://www.youtube.com/results?search_query=goo'    ).text();
-    var line = response.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)[0];
-    var json = JSON.parse(line.substring(line.indexOf('{'), line.length - 2));
-    var result = json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']
-        ['contents'][0]['itemSectionRenderer']['contents'];
+    //var line = response.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)[0];
+    //var json = JSON.parse(line.substring(line.indexOf('{'), line.length - 2));
+    //var result = json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']
+       // ['contents'][0]['itemSectionRenderer']['contents'];
         
 
-res0.header('Content-Type', 'application/json').send(result);
+res0.header('Content-Type', 'application/json').send(response);
 
 
 });
