@@ -408,7 +408,7 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 
 
 //💔💙💚 YOUTUBE SCRAPING TOOLS NO APIKEY 💚💙💔//
-app.get('/YTSCRAPER0', (req0, res0) => {
+//app.get('/YTSCRAPER0', (req0, res0) => {
 //const miniget = require('miniget');
 
 //var response =  miniget(      'https://www.youtube.com/results?search_query=goo'    );
@@ -420,29 +420,29 @@ app.get('/YTSCRAPER0', (req0, res0) => {
 	
 	
 	
-	const phantomJsCloud = require("phantomjscloud")
-var browser = new phantomJsCloud.BrowserApi(req.query.key)
+//const phantomJsCloud = require("phantomjscloud")
+//var browser = new phantomJsCloud.BrowserApi(req.query.key)
         
-        browser.requestSingle({ url: 'https://www.youtube.com/results?search_query=good', renderType: "plainText" })
+       // browser.requestSingle({ url: 'https://www.youtube.com/results?search_query=good', renderType: "plainText" })
 	
-	.then(function(results){
-        res0
-            .status(200)
-            .header('Content-Type', 'application/json')
-            .send(results)
-            .end();
+//.then(function(results){
+       // res0
+            //.status(200)
+            //.header('Content-Type', 'application/json')
+            //.send(results)
+            //.end();
        
         
 
-res0.send(response);
+//res0.send(response);
 
 
-});
+//});
 
     
 	
 	
-//
+//trf
 	
 	
 	app.get('/YTSEARCH2', (req, res) => {
@@ -457,7 +457,7 @@ axios.get('https://www.youtube.com/results?search_query=good')
   const $ = cheerio.load(data);
   res
             .status(200)
-            .header('Content-Type', 'application/json')
+            //.header('Content-Type', 'application/json')
 	
             .send(data)
             .end();
