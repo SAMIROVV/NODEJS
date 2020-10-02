@@ -410,14 +410,19 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 //💔💙💚 YOUTUBE SCRAPING TOOLS NO APIKEY 💚💙💔//
 app.get('/YTSCRAPER0', (req0, res0) => {
 const miniget = require('miniget');
-
+const https = require('https');
+https.get('https://www.youtube.com/results?search_query=goo'   , (res) => {  
+                    let data = '';
+                    res.on('data', (chunk) => {data += chunk; });
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send( data);
+				      });});
 
 	
-	const response = miniget('https://www.youtube.com/results?search_query=goo' ).text()
-	const line = response.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)[0]
-        const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 2))
-        const result = json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']
-                       ['contents'][0]['itemSectionRenderer']['contents']
+//const response = miniget('https://www.youtube.com/results?search_query=goo' ).text()
+//const line = response.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)[0]
+        //const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 2))
+       //const result = json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']
+                      // ['contents'][0]['itemSectionRenderer']['contents']
     
 	
 	
@@ -425,10 +430,10 @@ const miniget = require('miniget');
        
         
 
-res0.send(result);
+//res0.send(result);
 
 
-});
+//});
 
     
 	
