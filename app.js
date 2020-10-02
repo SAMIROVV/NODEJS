@@ -449,7 +449,7 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
                 uri: 'https://www.youtube.com/watch?v=' + identifier,
                 title: data['title']['runs'][0]['text'],
 description : data['descriptionSnippet']['runs'][0]['text'],
-publishedTime: JSON.stringify(data['publishedTimeText']['simpleText']),
+publishedTime: JSON.stringify(data['publishedTimeText']),
 viewCount : data['viewCountText'],//.simpleText,   
 duration :  data['lengthText'],//.simpleText,    
                 author: {
