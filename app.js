@@ -415,7 +415,9 @@ app.get('/YTSCRAPER0', (req0, res0) => {
 const https = require('https');
 const url = require('url');
 var typeYT = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
+var pages = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[2];
 	
+if(pages=== 'one page'){
 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/YTSCRAPER0?','')  , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
@@ -480,14 +482,27 @@ duration :  data['lengthText'],//.simpleText,
             thumbnails: data['thumbnails']
 	
         }
-    })
+    }) 
+			    
+			    var datapage1= kind.map(function (item) {  return item.type+'☉'+item.identifier+'☉'+item.uri+'☉'+
+					item.title+'☉'+item.author.name+'☉'+item.thumbnails.url  
+				        +'☉'+item.description+'☉'+JSON.stringify(item.publishedTime)+'☉'+JSON.stringify(item.viewCount)+'☉'+JSON.stringify(item.duration)})
+	
+			    
 			    
 			      			    
-			    res0.header('Content-Type', 'application/json').send(kind.map(function (item) {  return item.type+'☉'+item.identifier+'☉'+item.uri+'☉'+
-								 item.title+'☉'+item.author.name+'☉'+item.thumbnails.url  
-				           +'☉'+item.description+'☉'+JSON.stringify(item.publishedTime)+'☉'+JSON.stringify(item.viewCount)+'☉'+JSON.stringify(item.duration)})						  					
-			    );
+			    res0.header('Content-Type', 'application/json').send(datapage1);
 				      });});
+}else{
+
+
+
+
+}
+	
+
+	
+	
 	
 });
 
