@@ -408,7 +408,7 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 
 
 //💔💙💚 YOUTUBE SCRAPING TOOLS NO APIKEY Based ON SIMPLEYT NPM💚💙💔//
-    // LINK === https://nodejsgithub.herokuapp.com/YTSCRAPER0?https://www.youtube.com/results?search_query=good&sp=CAASBAgFEAE%253D☆video (video or playlist or both)
+    // LINK === https://nodejsgithub.herokuapp.com/YTSCRAPER0?https://www.youtube.com/results?search_query=good%E2%98%86video%E2%98%86onepage (video or playlist or both) and (onepage or twopages)
 
 app.get('/YTSCRAPER0', (req0, res0) => {
 //const miniget = require('miniget');
@@ -493,9 +493,179 @@ duration :  data['lengthText'],//.simpleText,
 			      			    
 			    res0.header('Content-Type', 'application/json').send(datapage1);
 				      });});
-}else{
+}
+	
+	
+	
+	else{
+if(pages=== 'twopages'){
+//first pages
+	https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/YTSCRAPER0?','')  , (res) => {  
+                    let data = '';
+                    res.on('data', (chunk) => {data += chunk; });
+                    res.on('end', () => {
+			    const line = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)[0]
+			    const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 2))			    
+			    const result = json ['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer'] ['contents'][0]['itemSectionRenderer']['contents']
+			    
+			    const amazing = result.filter(video => {
+        const type = Object.keys(video)[0].replace('Renderer', '')
+        if (typeYT === 'video') return type === 'video'
+        else if (typeYT === 'playlist') return type === 'playlist'
+        else return ['video', 'playlist'].includes(type)   })
+.map(video => {
+        const type = Object.keys(video)[0].replace('Renderer', '')
+        const data = video[type + 'Renderer']
+        const identifier = data[type + 'Id']
+        if (type === 'video') {
+            const isStream = !Object.keys(data).includes('lengthText')
+            let length = Number.MAX_VALUE
+            if (!isStream) {
+                length = 0
+                data['lengthText']['simpleText'].split(':').reverse().forEach((value, index) => {
+                    const i = Number(value)
+                    length += (index === 0 ? i : i * (60 ** index))
+                })
+            }
+            return {
+                type: type,
+                identifier: identifier,
+                uri: 'https://www.youtube.com/watch?v=' + identifier,
+                title: data['title']['runs'][0]['text'],
+description : data['descriptionSnippet']['runs'][0]['text'],
+publishedTime: JSON.stringify(data['publishedTimeText']),
+viewCount : data['viewCountText'],//.simpleText,   
+duration :  data['lengthText'],//.simpleText,    
+                author: {
+                    name: data['ownerText']['runs'][0]['text'],
+                    profile: data['channelThumbnailSupportedRenderers']['channelThumbnailWithLinkRenderer']
+                        ['thumbnail']['thumbnails'][0]['url'],
+                    uri: 'https://www.youtube.com' + data['ownerText']['runs'][0]['navigationEndpoint']
+                        ['commandMetadata']['webCommandMetadata']['url']
+                },
+                length: {
+                    ms: isStream ? length : length * 1000,
+                    sec: length
+                },
+                isStream: isStream,
+		thumbnails: data['thumbnail']['thumbnails'].slice(-1)[0]
+            }
+        } else return {
+            type: type,
+            identifier: identifier,
+            uri: 'https://www.youtube.com/playlist?list=' + identifier,
+            title: data['title']['simpleText'],	
+            author: {
+                name: data['longBylineText']['runs'][0]['text'],
+                uri: 'https://www.youtube.com' + data['longBylineText']['runs'][0]['navigationEndpoint']
+                    ['commandMetadata']['webCommandMetadata']['url']
+            },
+            count: Number(data['videoCount']),
+            thumbnails: data['thumbnails']
+	
+        }
+    }) 
+			    
+			    var datapage1= amazing.map(function (item) {  return item.type+'☉'+item.identifier+'☉'+item.uri+'☉'+
+					item.title+'☉'+item.author.name+'☉'+item.thumbnails.url  
+				        +'☉'+item.description+'☉'+JSON.stringify(item.publishedTime)+'☉'+JSON.stringify(item.viewCount)+'☉'+JSON.stringify(item.duration)})
+	
+			    
+			    
+			      			    
+			 
+				      
 
+	
+	
+	
+	
+	
+	
+//second pages
+https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/YTSCRAPER0?','')+'&page=2'  , (res) => {  
+                    let data = '';
+                    res.on('data', (chunk) => {data += chunk; });
+                    res.on('end', () => {
+			    const line = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)[0]
+			    const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 2))			    
+			    const result = json ['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer'] ['contents'][0]['itemSectionRenderer']['contents']
+			    
+			    const amazing = result.filter(video => {
+        const type = Object.keys(video)[0].replace('Renderer', '')
+        if (typeYT === 'video') return type === 'video'
+        else if (typeYT === 'playlist') return type === 'playlist'
+        else return ['video', 'playlist'].includes(type)   })
+.map(video => {
+        const type = Object.keys(video)[0].replace('Renderer', '')
+        const data = video[type + 'Renderer']
+        const identifier = data[type + 'Id']
+        if (type === 'video') {
+            const isStream = !Object.keys(data).includes('lengthText')
+            let length = Number.MAX_VALUE
+            if (!isStream) {
+                length = 0
+                data['lengthText']['simpleText'].split(':').reverse().forEach((value, index) => {
+                    const i = Number(value)
+                    length += (index === 0 ? i : i * (60 ** index))
+                })
+            }
+            return {
+                type: type,
+                identifier: identifier,
+                uri: 'https://www.youtube.com/watch?v=' + identifier,
+                title: data['title']['runs'][0]['text'],
+description : data['descriptionSnippet']['runs'][0]['text'],
+publishedTime: JSON.stringify(data['publishedTimeText']),
+viewCount : data['viewCountText'],//.simpleText,   
+duration :  data['lengthText'],//.simpleText,    
+                author: {
+                    name: data['ownerText']['runs'][0]['text'],
+                    profile: data['channelThumbnailSupportedRenderers']['channelThumbnailWithLinkRenderer']
+                        ['thumbnail']['thumbnails'][0]['url'],
+                    uri: 'https://www.youtube.com' + data['ownerText']['runs'][0]['navigationEndpoint']
+                        ['commandMetadata']['webCommandMetadata']['url']
+                },
+                length: {
+                    ms: isStream ? length : length * 1000,
+                    sec: length
+                },
+                isStream: isStream,
+		thumbnails: data['thumbnail']['thumbnails'].slice(-1)[0]
+            }
+        } 
+else return {
+            type: type,
+            identifier: identifier,
+            uri: 'https://www.youtube.com/playlist?list=' + identifier,
+            title: data['title']['simpleText'],	
+            author: {
+                name: data['longBylineText']['runs'][0]['text'],
+                uri: 'https://www.youtube.com' + data['longBylineText']['runs'][0]['navigationEndpoint']
+                    ['commandMetadata']['webCommandMetadata']['url']
+            },
+            count: Number(data['videoCount']),
+            thumbnails: data['thumbnails']
+	
+        }
+    }) 
+			    
+			    var datapage2= amazing.map(function (item) {  return item.type+'☉'+item.identifier+'☉'+item.uri+'☉'+
+					item.title+'☉'+item.author.name+'☉'+item.thumbnails.url  
+				        +'☉'+item.description+'☉'+JSON.stringify(item.publishedTime)+'☉'+JSON.stringify(item.viewCount)+'☉'+JSON.stringify(item.duration)})
+	
+			    
+			    
+			      			    
+			    res0.header('Content-Type', 'application/json').send(datapage1+'💚'+datapage2);
+				      });});});});
 
+		    
+		    }
+		
+		
+		
+		
 
 
 }
