@@ -657,7 +657,7 @@ else return {
 			    
 			    
 			      			    
-			    res0.header('Content-Type', 'application/json').send(datapage1+'💚'+datapage2);console.log(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/YTSCRAPER0?','')  +'&page=2'):
+			    res0.header('Content-Type', 'application/json').send(datapage1+'💚'+datapage2);console.log(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/YTSCRAPER0?','')  +'&page=2')
 				      });});});});
 
 		    
