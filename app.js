@@ -688,7 +688,7 @@ else return {
 app.get('/YTSCRAPER1', (req0, res0) => {
 
 const yts = require( 'yt-search' )
-const r = await yts( 'superman theme' )
+const r = yts( 'superman theme' )
  
 const videos = r.videos.slice( 0, 3 )
 videos.forEach( function ( v ) {
