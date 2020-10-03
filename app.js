@@ -688,15 +688,17 @@ else return {
 app.get('/YTSCRAPER1', (req0, res0) => {
 
 const yts = require( 'yt-search' )
-const r = yts( 'superman theme' )
- 
-const videos = r.videos.slice( 0, 3 )
-videos.forEach( function ( v ) {
-    const views = String( v.views ).padStart( 10, ' ' )
-    console.log( `${ views } | ${ v.title } (${ v.timestamp }) | ${ v.author.name }` )
+var opts = { query: 'superman theme' }
+yts( opts, function ( err, r ) {
+    if ( err ) throw err
+    console.log( r.videos ) // video results
+    console.log( r.playlists ) // playlist results
+    console.log( r.channels ) // channel results
+    console.log( r.live ) // live stream results
+	res0.header('Content-Type', 'application/json').send(r.videos)
 } )
     
-res0.header('Content-Type', 'application/json').send(datapage1+'💚'+datapage2)
+
 				      });
 
 	
