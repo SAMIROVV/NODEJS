@@ -417,7 +417,7 @@ const url = require('url');
 var typeYT = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
 var pages = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[2];
 	
-if(pages=== 'one page'){
+if(pages=== 'onepage'){
 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/YTSCRAPER0?','')  , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
@@ -426,7 +426,7 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
 			    const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 2))			    
 			    const result = json ['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer'] ['contents'][0]['itemSectionRenderer']['contents']
 			    
-			    const kind = result.filter(video => {
+			    const amazing = result.filter(video => {
         const type = Object.keys(video)[0].replace('Renderer', '')
         if (typeYT === 'video') return type === 'video'
         else if (typeYT === 'playlist') return type === 'playlist'
@@ -484,7 +484,7 @@ duration :  data['lengthText'],//.simpleText,
         }
     }) 
 			    
-			    var datapage1= kind.map(function (item) {  return item.type+'☉'+item.identifier+'☉'+item.uri+'☉'+
+			    var datapage1= amazing.map(function (item) {  return item.type+'☉'+item.identifier+'☉'+item.uri+'☉'+
 					item.title+'☉'+item.author.name+'☉'+item.thumbnails.url  
 				        +'☉'+item.description+'☉'+JSON.stringify(item.publishedTime)+'☉'+JSON.stringify(item.viewCount)+'☉'+JSON.stringify(item.duration)})
 	
