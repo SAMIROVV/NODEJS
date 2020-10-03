@@ -1,5 +1,5 @@
 'use strict';
-                                                      //🔴♼♼♼♼♼      TO SCRAPE GOOGLE TRENDS      ♼♼♼♼♼🔴//
+              //🔴♼♼♼♼♼POST REQUEST : https://attacomsian.com/blog/node-http-post-request  & GET REQUEST : https://attacomsian.com/blog/node-http-requests-using-request-module     ♼♼♼♼♼🔴//
 
 const express = require('express');
 const app = express(); 
