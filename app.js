@@ -680,8 +680,24 @@ else return {
 
 
 
-    
 
+
+//💔💙💚 YOUTUBE SCRAPING TOOLS NO APIKEY Based ON SIMPLEYT NPM💚💙💔//
+    // LINK === https://nodejsgithub.herokuapp.com/YTSCRAPER0?https://www.youtube.com/results?search_query=good%E2%98%86video%E2%98%86onepage (video or playlist or both) and (onepage or twopages)
+
+app.get('/YTSCRAPER1', (req0, res0) => {
+
+const yts = require( 'yt-search' )
+const r = await yts( 'superman theme' )
+ 
+const videos = r.videos.slice( 0, 3 )
+videos.forEach( function ( v ) {
+    const views = String( v.views ).padStart( 10, ' ' )
+    console.log( `${ views } | ${ v.title } (${ v.timestamp }) | ${ v.author.name }` )
+} )
+    
+res0.header('Content-Type', 'application/json').send(datapage1+'💚'+datapage2)
+				      });
 
 	
 
