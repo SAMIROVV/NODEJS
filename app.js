@@ -583,7 +583,7 @@ duration :  data['lengthText'],//.simpleText,
 	
 	
 //second pages
-https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/YTSCRAPER0?','')+'&page=2'  , (res) => {  
+https.get('https://www.youtube.com/results?search_query=girl&sp=EgIQAQ%253D%253D'  , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', () => {
