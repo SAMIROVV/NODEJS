@@ -328,7 +328,7 @@ const Request = require('request');
 
 //💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH ZENSERP 💚💙💔//
 
-    //for google trends autocomplete link  ===  https://nodejsgithub.herokuapp.com/SCRAPER4?https://app.zenserp.com/api/v1/trends?apikey=d6e89390-e001-11ea-bf40-1d4910d948b2&keyword%5B%5D=Bitcoin&keyword%5B%5D=Etherum
+    //for google trends autocomplete link  ===  https://nodejsgithub.herokuapp.com/SCRAPER4?https://app.zenserp.com/api/v1/trends?apikey=f382b000-0691-11eb-9d7a-5796244c1a8c&keyword[]=Bitcoin&keyword[]=Etherum☆Bitcoin☆Etherum
 
 
 app.get('/SCRAPER4', (req0, res0) => {
@@ -348,7 +348,7 @@ if(length === 2){
 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔹🔸'+   Object.values(JSON.parse(data)[keyword1].topics[0]).map(function (item) {  return item.topic_title+'☔☉'+item.topic_type+'☔☉'+item.value+'💙💔'})+'🔰↕'+Object.values(JSON.parse(data)[keyword1].topics[1]).map(function (item) {  return item.topic_title+'☔☉'+item.topic_type+'☔☉'+item.value+'💙💔'})   +'🔹🔸'+Object.values(JSON.parse(data)[keyword1].trends)   .map(function (item) {  return item[keyword1]+'💙💔'})      +'🔹🔸'+ Object.keys(JSON.parse(data)[keyword1].region+'💙💔')+'🔹🔸'+Object.values(JSON.parse(data)[keyword1].region).map(function (item) {  return item[keyword1]+'💙💔'})     )       				    
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔹🔸'+   Object.values(JSON.parse(data)[keyword1].topics[0]).map(function (item) {  return item.topic_title+'☔☉'+item.topic_type+'☔☉'+item.value+'💙💔'})+'🔰↕'+Object.values(JSON.parse(data)[keyword1].topics[1]).map(function (item) {  return item.topic_title+'☔☉'+item.topic_type+'☔☉'+item.value+'💙💔'})   +'🔹🔸'+Object.values(JSON.parse(data)[keyword1].trends)   .map(function (item) {  return item[keyword1]+'💙💔'})      +'🔹🔸'+ Object.keys(JSON.parse(data)[keyword1].region)+'🔹🔸'+Object.values(JSON.parse(data)[keyword1].region).map(function (item) {  return item[keyword1]+'💙💔'})     )       				    
 });}); }
 	
 	
