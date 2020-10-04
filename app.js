@@ -98,7 +98,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 
     //for SCPGTACM Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&hl=en&☆SCPGTACM
     //for SCPGTDTR Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&language=en&time=400&☆SCPGTDTR
-    //for SCPGTRTT Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&language=en&category=all&%E2%98%86SCPGTRTT
+    //for SCPGTRTT Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?geo=US&language=en&category=all☆SCPGTRTT
     //for SCPGTTS  Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&language=en&category=0&engine=youtube&☆SCPGTTS
     //for SCPGTGEO Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&&resolution=&language=en&category=0&engine=youtube&☆SCPGGEO
     //for SCPGTTPC Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&language=en&category=0&engine=youtube&☆SCPGTTPC
@@ -278,7 +278,7 @@ const Request = require('request');
 		//TO SCRAPE GTRENDS TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES
 		
 	
-		if(type === 'SCPGTTS'){
+	if(type === 'SCPGTTS'){
 		var td = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
                 const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)};	
                   https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'timeseries☉{')[0].split('☉')[1], token: filterItems(td, 'timeseries☉{')[0].split('☉')[2]  ,tz: tz} })       , (res) => {  
@@ -311,7 +311,7 @@ const Request = require('request');
                    https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'related_queries☉{')[0].split('☉')[1], token: filterItems(td, 'related_queries☉{')[0].split('☉')[2]  } })  , (res) => {
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'}));     });});}	                           
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'}));     });});}	                           
 				      	    			
 				
 				
