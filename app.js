@@ -83,8 +83,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 				      });});}		
 		    
 		    
-		  		    
-		    
+		  		   		    
     });
     }); 
     });
@@ -114,13 +113,13 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 	//TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
 	
 	if(type === 'SCPGTACM'){ googleTrends.autoComplete ({keyword: req.query.keyword, hl: req.query.language ,property: req.query.engine})
-           .then(function(data){ res.header('Content-Type', 'application/json').send( JSON.parse(data).default.topics.map(function (item) {  return item.title+'☉'+item.type})  ).end();}); }
+           .then(function(data){ res.header('Content-Type', 'application/json').send( JSON.parse(data).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  ).end();}); }
 	
 	if(type === 'SCPGTDTR'){ googleTrends.dailyTrends ({geo: req.query.geo, hl: req.query.language, trendDate: new Date(Date.now() - (req.query.time * 60 * 60 * 1000))})
-           .then(function(data){res.header('Content-Type', 'application/json').send( JSON.parse(data).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet}) })    ).end();}); }
+           .then(function(data){res.header('Content-Type', 'application/json').send( JSON.parse(data).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query})+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet+'💙💔'}) })    ).end();}); }
 	
 	if(type === 'SCPGTRTT'){ googleTrends.realTimeTrends ({geo: req.query.geo, hl: req.query.language, category: req.query.category})
-           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☉'+item.source+'☉'+item.time+'☉'+item.snippet})}) ).end();}); }
+           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet+'💙💔'})}) ).end();}); }
 
 
 	
@@ -128,16 +127,16 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 	//TO SCRAPE GTRENDS TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES
 	
 	if(type === 'SCPGTTS'){googleTrends.interestOverTime ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category, property: req.query.engine})
-           .then(function(data){res.header('Content-Type', 'application/json').send(JSON.parse(data).default.timelineData.map(function (item) {  return item.formattedTime+'☉'+item.value})).end();});}
+           .then(function(data){res.header('Content-Type', 'application/json').send(JSON.parse(data).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value+'💙💔'})).end();});}
 	
 	if(type === 'SCPGTGEO'){ googleTrends.interestByRegion ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, resolution:req.query.resolution, hl: req.query.language, category: req.query.category, property: req.query.engine})
-           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.geoMapData.map(function (item) {  return item.geoName+'☉'+item.value})).end();});}
+           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.geoMapData.map(function (item) {  return item.geoName+'☔☉'+item.value+'💙💔'})).end();});}
 
 	if(type === 'SCPGTTPC'){ googleTrends.relatedTopics ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category ,property: req.query.engine})
-           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'☉'+item.topic.type+'☉'+item.value})+'↕'+JSON.parse(data).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'☉'+item.topic.type+'☉'+item.value})   ) .end();});}
+           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'☔☉'+item.topic.type+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'☔☉'+item.topic.type+'☔☉'+item.value+'💙💔'})   ) .end();});}
 
 	if(type === 'SCPGTQRY'){ googleTrends.relatedQueries ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category, property: req.query.engine})
-           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})) .end();});}
+           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})) .end();});}
 	
 
 });
@@ -173,17 +172,17 @@ const Request = require('request');
 		res0.header('Content-Type', 'application/json').send(body);}
 		
 	if(type === 'SCPGTACM'){
-		res0.header('Content-Type', 'application/json').send( JSON.parse(body.slice(5)).default.topics.map(function (item) {  return item.title+'☉'+item.type})  );}
+		res0.header('Content-Type', 'application/json').send( JSON.parse(body.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  );}
 	
 	if(type === 'SCPGTDTR'){
-		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})   })); }
+		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query})+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet+'💙💔'})   })); }
 		
 		
 	if(type === 'SCPGTRTT'){
-		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☉'+item.source+'☉'+item.time+'☉'+item.snippet})}) )	;}
+		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet+'💙💔'})}) )	;}
 		
 	if(type === 'SCPGTEXPLORE'){
-		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(4)));}	
+		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(4)).widgets+'💙💔');}	
 		
 		
 		
@@ -193,27 +192,27 @@ const Request = require('request');
 		var td = JSON.parse(body.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
                 const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)};
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'timeseries☉{')[0].split('☉')[1], token: filterItems(td, 'timeseries☉{')[0].split('☉')[2]  ,tz: tz} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☉'+item.value})       );    });}
+                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value+'💙💔'})       );    });}
 		    
 		
 	if(type === 'SCPGTGEO'){
 		var td = JSON.parse(body.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
                 const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)};
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'geo_map☉{')[0].split('☉')[1], token: filterItems(td, 'geo_map☉{')[0].split('☉')[2]  } }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.geoMapData.map(function (item) {  return item.geoName+'☉'+item.value})       );    });}
+                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.geoMapData.map(function (item) {  return item.geoName+'☔☉'+item.value+'💙💔'})       );    });}
 		    	
 		
 	if(type === 'SCPGTTPC'){
 		var td = JSON.parse(body.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
                 const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)};
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'related_topics☉{')[0].split('☉')[1], token: filterItems(td, 'related_topics☉{')[0].split('☉')[2]  } }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'☉'+item.topic.type+'☉'+item.value})+'↕'+JSON.parse(body.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'☉'+item.topic.type+'☉'+item.value})   );     });}	
+                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'☔☉'+item.topic.type+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(body.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'☔☉'+item.topic.type+'☔☉'+item.value+'💙💔'})   );     });}	
 		
 	if(type === 'SCPGTQRY'){
 		var td = JSON.parse(body.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
                 const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)};              
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'related_queries☉{')[0].split('☉')[1], token: filterItems(td, 'related_queries☉{')[0].split('☉')[2]  } }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(body.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})); });}	                           
+                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(body.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})); });}	                           
 				      	    
 		
 			
@@ -260,19 +259,19 @@ const Request = require('request');
 				
 		
 	if(type === 'SCPGTACM'){
-		res0.header('Content-Type', 'application/json').send( JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☉'+item.type})  );}
+		res0.header('Content-Type', 'application/json').send( JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  );}
 	
 				
 	if(type === 'SCPGTDTR'){
-		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☉'+item.formattedTraffic+'☉'+item.relatedQueries.map(function (item) {  return item.query})+'☉'+item.articles.map(function (item) {  return item.title+'🍎'+item.timeAgo+'🍎'+item.snippet})   })); }
+		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query})+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet+'💙💔'})   })); }
 		
 		
 	if(type === 'SCPGTRTT'){
-		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☉'+item.source+'☉'+item.time+'☉'+item.snippet})}) )	;}
+		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet+'💙💔'})}) )	;}
 		
 				
 	if(type === 'SCPGTEXPLORE'){
-		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)));}	
+		res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets+'💙💔');}	
 		
 		
 		
@@ -285,7 +284,7 @@ const Request = require('request');
                   https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'timeseries☉{')[0].split('☉')[1], token: filterItems(td, 'timeseries☉{')[0].split('☉')[2]  ,tz: tz} })       , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☉'+item.value})  );    });});}
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value+'💙💔'})  );    });});}
 		    
 		
 	if(type === 'SCPGTGEO'){
@@ -294,7 +293,7 @@ const Request = require('request');
                   https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'geo_map☉{')[0].split('☉')[1], token: filterItems(td, 'geo_map☉{')[0].split('☉')[2]  } })  , (res) => {
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.geoMapData.map(function (item) {  return item.geoName+'☉'+item.value})       );    });});}
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.geoMapData.map(function (item) {  return item.geoName+'☔☉'+item.value+'💙💔'})       );    });});}
 		    					
 		
 	if(type === 'SCPGTTPC'){
@@ -303,7 +302,7 @@ const Request = require('request');
                   https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'related_topics☉{')[0].split('☉')[1], token: filterItems(td, 'related_topics☉{')[0].split('☉')[2]  } }) , (res) => {
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'☉'+item.topic.type+'☉'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'☉'+item.topic.type+'☉'+item.value})   );   });});}	
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'☔☉'+item.topic.type+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'☔☉'+item.topic.type+'☔☉'+item.value+'💙💔'})   );   });});}	
 		
 				
 	if(type === 'SCPGTQRY'){
@@ -312,7 +311,7 @@ const Request = require('request');
                    https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'related_queries☉{')[0].split('☉')[1], token: filterItems(td, 'related_queries☉{')[0].split('☉')[2]  } })  , (res) => {
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value}));     });});}	                           
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'}));     });});}	                           
 				      	    			
 				
 				
@@ -349,7 +348,7 @@ if(length === 2){
 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword1].topics[0]).map(function (item) {  return item.topic_title+'☉'+item.topic_type+'☉'+item.value})+'↕'+Object.values(JSON.parse(data)[keyword1].topics[1]).map(function (item) {  return item.topic_title+'☉'+item.topic_type+'☉'+item.value})   +'🔰'+Object.values(JSON.parse(data)[keyword1].trends)   .map(function (item) {  return item[keyword1]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword1].region)+'↕'+Object.values(JSON.parse(data)[keyword1].region).map(function (item) {  return item[keyword1]})     )       				    
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔹🔸'+   Object.values(JSON.parse(data)[keyword1].topics[0]).map(function (item) {  return item.topic_title+'☔☉'+item.topic_type+'☔☉'+item.value+'💙💔'})+'🔰↕'+Object.values(JSON.parse(data)[keyword1].topics[1]).map(function (item) {  return item.topic_title+'☔☉'+item.topic_type+'☔☉'+item.value+'💙💔'})   +'🔹🔸'+Object.values(JSON.parse(data)[keyword1].trends)   .map(function (item) {  return item[keyword1]+'💙💔'})      +'🔹🔸'+ Object.keys(JSON.parse(data)[keyword1].region+'💙💔')+'🔹🔸'+Object.values(JSON.parse(data)[keyword1].region).map(function (item) {  return item[keyword1]+'💙💔'})     )       				    
 });}); }
 	
 	
@@ -357,8 +356,8 @@ if(length === 3){
 https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER4?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword1].trends)   .map(function (item) {  return item[keyword1]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword1].region)+'↕'+Object.values(JSON.parse(data)[keyword1].region).map(function (item) {  return item[keyword1]})+            			    
-			                  '💚'+JSON.parse(data)[keyword2].queries[keyword2].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword2].queries[keyword2].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword2].trends)   .map(function (item) {  return item[keyword2]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword2].region)+'↕'+Object.values(JSON.parse(data)[keyword2].region).map(function (item) {  return item[keyword2]})     )       
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔹🔸'+   Object.values(JSON.parse(data)[keyword1].trends)   .map(function (item) {  return item[keyword1]+'💙💔'})      +'🔹🔸'+ Object.keys(JSON.parse(data)[keyword1].region+'💙💔')+'🔹🔸'+Object.values(JSON.parse(data)[keyword1].region).map(function (item) {  return item[keyword1]+'💙💔'})+            			    
+			                                                                 '💚'+JSON.parse(data)[keyword2].queries[keyword2].top.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data)[keyword2].queries[keyword2].rising.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔹🔸'+   Object.values(JSON.parse(data)[keyword2].trends)   .map(function (item) {  return item[keyword2]+'💙💔'})      +'🔹🔸'+ Object.keys(JSON.parse(data)[keyword2].region+'💙💔')+'🔹🔸'+Object.values(JSON.parse(data)[keyword2].region).map(function (item) {  return item[keyword2]+'💙💔'})     )       
 });});}
 	
 	
@@ -367,8 +366,8 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data)[keyword1].queries[keyword1].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword1].queries[keyword1].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword1].trends)   .map(function (item) {  return item[keyword1]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword1].region)+'↕'+Object.values(JSON.parse(data)[keyword1].region).map(function (item) {  return item[keyword1]})         			    
-			                  +'💚'+JSON.parse(data)[keyword2].queries[keyword2].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword2].queries[keyword2].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword2].trends)   .map(function (item) {  return item[keyword2]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword2].region)+'↕'+Object.values(JSON.parse(data)[keyword2].region).map(function (item) {  return item[keyword2]})         
-                                          +'💚'+JSON.parse(data)[keyword3].queries[keyword3].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword3].queries[keyword3].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword3].trends)   .map(function (item) {  return item[keyword3]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword3].region)+'↕'+Object.values(JSON.parse(data)[keyword3].region).map(function (item) {  return item[keyword3]})     )     
+			                                                                +'💚'+JSON.parse(data)[keyword2].queries[keyword2].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword2].queries[keyword2].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword2].trends)   .map(function (item) {  return item[keyword2]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword2].region)+'↕'+Object.values(JSON.parse(data)[keyword2].region).map(function (item) {  return item[keyword2]})         
+                                                                                        +'💚'+JSON.parse(data)[keyword3].queries[keyword3].top.map(function (item) {  return item.query+'☉'+item.value})+'↕'+JSON.parse(data)[keyword3].queries[keyword3].rising.map(function (item) {  return item.query+'☉'+item.value})+'🔰'+   Object.values(JSON.parse(data)[keyword3].trends)   .map(function (item) {  return item[keyword3]})      +'🔰'+ Object.keys(JSON.parse(data)[keyword3].region)+'↕'+Object.values(JSON.parse(data)[keyword3].region).map(function (item) {  return item[keyword3]})     )     
 });});}
 		
 	  
