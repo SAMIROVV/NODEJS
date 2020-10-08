@@ -328,7 +328,7 @@ const Request = require('request');
 
 //💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH ZENSERP 💚💙💔//
 
-    //for google trends autocomplete link  ===  https://nodejsgithub.herokuapp.com/SCRAPER4?https://app.zenserp.com/api/v1/trends?apikey=f382b000-0691-11eb-9d7a-5796244c1a8c&keyword[]=Bitcoin&keyword[]=Etherum☆Bitcoin☆Etherum
+    //for google trends autocomplete link  ===  https://nodejsgithub.herokuapp.com/SCRAPER4?https://app.zenserp.com/api/v1/trends?apikey=YOUR-API-KEY&keyword[]=Bitcoin&keyword[]=Etherum&type=youtube&cat=1219&timeframe=now 7-d&hl=it&geo=GB☆Bitcoin☆Etherum
 
 
 app.get('/SCRAPER4', (req0, res0) => {
