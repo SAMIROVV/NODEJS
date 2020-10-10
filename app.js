@@ -454,9 +454,9 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
                 uri: 'https://www.youtube.com/watch?v=' + identifier,
                 title: data['title']['runs'][0]['text'],
 description : data['descriptionSnippet']['runs'][0]['text'],
-publishedTime: JSON.stringify(data['publishedTimeText']),
-viewCount : data['viewCountText'],//.simpleText,   
-duration :  data['lengthText'],//.simpleText,    
+publishedTime: JSON.stringify(JSON.parse(data['publishedTimeText'])),
+viewCount : JSON.stringify(data['viewCountText']),//.simpleText,   
+duration :  JSON.stringify(data['lengthText']),//.simpleText,    
                 author: {
                     name: data['ownerText']['runs'][0]['text'],
                     profile: data['channelThumbnailSupportedRenderers']['channelThumbnailWithLinkRenderer']
@@ -487,9 +487,9 @@ duration :  data['lengthText'],//.simpleText,
         }
     }) 
 			    
-			    var datapage1= JSON.stringify(amazing.map(function (item) {  return '🔰🐲'+item.type+'☔☉'+item.identifier+'☔☉'+item.uri+'☔☉'+
+			    var datapage1= amazing.map(function (item) {  return '🔰🐲'+item.type+'☔☉'+item.identifier+'☔☉'+item.uri+'☔☉'+
 					item.title+'☔☉'+item.author.name+'☔☉'+item.thumbnails.url  
-				        +'☔☉'+item.description+'☔☉'+item.publishedTime+'☔☉'+item.viewCount+'☔☉'+item.duration  })   ) 
+				        +'☔☉'+item.description+'☔☉'+item.publishedTime+'☔☉'+item.viewCount+'☔☉'+item.duration  })    
 	
 			    
 			    
