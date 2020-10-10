@@ -487,9 +487,9 @@ duration :  data['lengthText'],//.simpleText,
         }
     }) 
 			    
-			    var datapage1= JSON.parse(amazing).map(function (item) {  return '🔰🐲'+item.type+'☔☉'+item.identifier+'☔☉'+item.uri+'☔☉'+
+			    var datapage1=JSON.stringify( JSON.parse(amazing).map(function (item) {  return '🔰🐲'+item.type+'☔☉'+item.identifier+'☔☉'+item.uri+'☔☉'+
 					item.title+'☔☉'+item.author.name+'☔☉'+item.thumbnails.url  
-				        +'☔☉'+item.description+'☔☉'+item.publishedTime+'☔☉'+JSON.stringify(item.viewCount)+'☔☉'+JSON.stringify(item.duration)})
+				        +'☔☉'+item.description+'☔☉'+item.publishedTime+'☔☉'+item.viewCount+'☔☉'+item.duration  }))
 	
 			    
 			    
