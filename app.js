@@ -436,7 +436,7 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
         else return ['video', 'playlist'].includes(type)   })
 .map(video => {
         const type = Object.keys(video)[0].replace('Renderer', '')
-        const data = video[type + 'Renderer']
+        const data = JSON.parse(video[type + 'Renderer'])
         const identifier = data[type + 'Id']
         if (type === 'video') {
             const isStream = !Object.keys(data).includes('lengthText')
@@ -454,7 +454,7 @@ https.get(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("
                 uri: 'https://www.youtube.com/watch?v=' + identifier,
                 title: data['title']['runs'][0]['text'],
 description : data['descriptionSnippet']['runs'][0]['text'],
-publishedTime: JSON.parse(data).publishedTimeText,//.simpleText ,
+publishedTime: data['publishedTimeText'].simpleText ,
 viewCount : JSON.stringify(data['viewCountText']),//.simpleText,   
 duration :  JSON.stringify(data['lengthText']),//.simpleText,    
                 author: {
