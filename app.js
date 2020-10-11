@@ -39,7 +39,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
         var cookie = res.headers['set-cookie'][0].split(';')[0];
-        https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET', headers: {'cookie': cookie} }, (res) => {
+        https.get({hostname: 'trends.google.com', path: encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[0].replace('/SCRAPER0?https://trends.google.com','')), method: 'GET', headers: {'cookie': cookie} }, (res) => {
             let data = '';
             res.on('data', (chunk) => {data += chunk; });
             res.on('end', () => {
