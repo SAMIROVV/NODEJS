@@ -160,7 +160,7 @@ if(length === 3){
 				     
 				     const map = {
       'Auto complete': {
-        path: `/trends/api/autocomplete/${encodeURIComponent(obj.keyword)}`,
+        path: `/trends/api/autocomplete/${encodeURIComponent(data.keyword)}`,
       },
       'Interest over time': {
         path: '/trends/api/widgetdata/multiline',
@@ -182,7 +182,7 @@ if(length === 3){
     };
 				     
 				     res0.send(map);
-				     
+				     console.log('first:',first);
 				     
 				    // https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'timeseries☉{')[0].split('☉')[1].replace([keyword1],[keyword2]), token: filterItems(td, 'timeseries☉{')[0].split('☉')[2],tz: req0.query.tz[0]} })  , (res) => {  
                                     // let data = '';
