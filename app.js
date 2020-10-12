@@ -249,7 +249,7 @@ const Request = require('request');
                     res.on('data', (chunk) => {data += chunk; });
 			res.on('end', () => {					
                          var tz = req0.query.tz[0];
-                         var type = decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[1];
+                         var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 		
 	
 		//TO SCRAPE URL & GTRENDS EXPLORE & AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
