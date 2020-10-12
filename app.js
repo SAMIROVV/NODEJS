@@ -134,7 +134,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
     
 	    
 	if(type === 'SCPGTEXPLORE' || type === ''){
-             res0.header('Content-Type', 'application/json').send(td);//JSON.parse(data.slice(4)).widgets+'💙💔');// console.log(td) 
+             res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)));//.widgets+'💙💔');// console.log(td) 
 	} ;
 		    
 		    
