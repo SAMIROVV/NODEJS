@@ -16,7 +16,7 @@ const app = express();
 app.get('/SCRAPER0', (req0, res0) => {
     const https = require('https');
     const url = require('url');
-    var type = decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[1];    
+    var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
 	
 	
 	
@@ -107,7 +107,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
     app.get('/SCRAPER1', (req, res) => {
 const googleTrends = require('google-trends-api');
 const url = require('url');
-var type = decodeURIComponent(url.format({ pathname: encodeURI(req.originalUrl) })).split("☆")[1];
+var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("☆")[1];
 		
 
 	//TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
@@ -163,7 +163,7 @@ const Request = require('request');
 		Request({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
 	
               var tz = req0.query.tz[0];
-              var type = decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[1];
+              var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
 		
 	
 		//TO SCRAPE URL & GTRENDS EXPLORE & AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
@@ -335,13 +335,13 @@ app.get('/SCRAPER4', (req0, res0) => {
     const https = require('https');
     const url = require('url');
        
-var keyword1 = decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[1];
-var keyword2 = decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[2];
-var keyword3 = decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[3];
-var keyword4 = decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[4];
-var keyword5 = decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[5];
+var keyword1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
+var keyword2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[2];
+var keyword3 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[3];
+var keyword4 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[4];
+var keyword5 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[5];
 	
-var length = decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆").length
+var length = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆").length
 
 	
 if(length === 2){
