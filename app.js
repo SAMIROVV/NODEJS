@@ -161,16 +161,20 @@ if(length === 3){
 				     
 				     
 				     var req2 = filterItems(td, 'timeseries☉{')[0].split('☉')[1].replace([keyword1],[keyword2])
-				     //res0.send(req2);
+				    var url1 = url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'timeseries☉{')[0].split('☉')[1].replace([keyword1],[keyword2]), token: filterItems(td, 'timeseries☉{')[0].split('☉')[2],tz: req0.query.tz[0]} })  
+                                 
+				     
+				     
+				     res0.send(url1);
 				     //console.log('first:',first);
 				     
-				    https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'timeseries☉{')[0].split('☉')[1].replace([keyword1],[keyword2]), token: filterItems(td, 'timeseries☉{')[0].split('☉')[2],tz: req0.query.tz[0]} })  , (res) => {  
-                                    let data = '';
-                                    res.on('data', (chunk) => {data += chunk; });
-                                    res.on('end', () => {   
-				   var second = JSON.parse(data.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value+'💙💔'});      
-res0.header('Content-Type', 'application/json').send(first+'🐸💚'+second);
-				    });	});
+				    //https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'timeseries☉{')[0].split('☉')[1].replace([keyword1],[keyword2]), token: filterItems(td, 'timeseries☉{')[0].split('☉')[2],tz: req0.query.tz[0]} })  , (res) => {  
+                                    //let data = '';
+                                    //res.on('data', (chunk) => {data += chunk; });
+                                    //res.on('end', () => {   
+				   //var second = JSON.parse(data.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value+'💙💔'});      
+//res0.header('Content-Type', 'application/json').send(first+'🐸💚'+second);
+				   // });	});
 				    });	});
 			
 
