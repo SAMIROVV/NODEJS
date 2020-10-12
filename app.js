@@ -157,31 +157,10 @@ if(length === 3){
                 res.on('data', (chunk) => {data += chunk; });
                 res.on('end', () => {var first = JSON.parse(data.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value+'💙💔'});      
 				
+			var req2 = filterItems(td, 'timeseries☉{')[0].split('☉')[1].replace('[keyword1]','[keyword2]')	     
 				     
-				     const map = {
-      'Auto complete': {
-        path: `/trends/api/autocomplete/${encodeURIComponent(data.keyword)}`,
-      },
-      'Interest over time': {
-        path: '/trends/api/widgetdata/multiline',
-        _id: 'TIMESERIES',
-      },
-      'Interest by region': {
-        path: '/trends/api/widgetdata/comparedgeo',
-        
-        _id: 'GEO_MAP',
-      },
-      'Related topics': {
-        path: '/trends/api/widgetdata/relatedsearches',
-        _id: 'RELATED_TOPICS',
-      },
-      'Related queries': {
-        path: '/trends/api/widgetdata/relatedsearches',
-        _id: 'RELATED_QUERIES',
-      },
-    };
 				     
-				     res0.send(map);
+				     res0.send(req2);
 				     console.log('first:',first);
 				     
 				    // https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'timeseries☉{')[0].split('☉')[1].replace([keyword1],[keyword2]), token: filterItems(td, 'timeseries☉{')[0].split('☉')[2],tz: req0.query.tz[0]} })  , (res) => {  
