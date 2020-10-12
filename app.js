@@ -168,7 +168,7 @@ if(length === 3){
       },
       'Interest by region': {
         path: '/trends/api/widgetdata/comparedgeo',
-        resolution: formatResolution(obj.resolution),
+        
         _id: 'GEO_MAP',
       },
       'Related topics': {
