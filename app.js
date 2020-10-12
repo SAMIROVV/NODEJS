@@ -127,14 +127,14 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
             let data = '';
             res.on('data', (chunk) => {data += chunk; });
             res.on('end', () => {
-               var td = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
+               var td = JSON.stringify(JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id+'☉'+JSON.stringify(item.request)+'☉'+item.token}) )  ;
                const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)}
 
     
     
 	    
 	if(type === 'SCPGTEXPLORE' || type === ''){
-             res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets+'💙💔');// console.log(td) 
+             res0.header('Content-Type', 'application/json').send(td);//JSON.parse(data.slice(4)).widgets+'💙💔');// console.log(td) 
 	} ;
 		    
 		    
