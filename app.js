@@ -157,7 +157,7 @@ if(length === 3){
                 res.on('data', (chunk) => {data += chunk; });
                 res.on('end', () => {var first = JSON.parse(data.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value+'💙💔'});      
 				
-			var req2 = filterItems(td, 'timeseries☉{')[0].split('☉')[1].replace('[keyword1]','[keyword2]')	     
+			var req2 = filterItems(td, 'timeseries☉{')[0].split('☉')[1].replace([keyword1],[keyword2])	     
 				     
 				     
 				     res0.send(req2);
