@@ -97,7 +97,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 
 //💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FOR 5KEYWORDS FROM GOOGLETRENDSAPI NPM💚💙💔//
 
-    //for Ggle trends(EXPLORE/TS/GEO/TPC/QRY) link ===  https://nodejsgithub.herokuapp.com/SCRAPER05K?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"},{"keyword":"girl","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆SCPGTQRY☆bitcoin☆girl
+    //for Ggle trends(EXPLORE/TS/GEO/TPC/QRY) link ===  https://nodejsgithub.herokuapp.com/SCRAPER05K?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"},{"keyword":"girl","geo":"","time":"today+5-y"},{"keyword":"boy","geo":"","time":"today+5-y"},{"keyword":"girly","geo":"","time":"today+5-y"},{"keyword":"good","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆SCPGTQRY☆bitcoin☆girl☆boy☆girly☆good
     
     
 
