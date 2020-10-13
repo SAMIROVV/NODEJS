@@ -19,7 +19,7 @@ app.get('/SCRAPER0', (req0, res0) => {
     const https = require('https');
     const url = require('url');
     var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
-    var length = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆").length
+     length = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆").length
 	
 	
 //TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
@@ -201,182 +201,8 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 
 
 
-//💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FOR 5KEYWORDS FROM GOOGLETRENDSAPI NPM💚💙💔//
 
-    //for Ggle trends(EXPLORE/TS/GEO/TPC/QRY) link ===  https://nodejsgithub.herokuapp.com/SCRAPER05K?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"},{"keyword":"girl","geo":"","time":"today+5-y"},{"keyword":"boy","geo":"","time":"today+5-y"},{"keyword":"girly","geo":"","time":"today+5-y"},{"keyword":"good","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆SCPGTQRY☆bitcoin☆girl☆boy☆girly☆good
-    
-    
-
-app.get('/SCRAPER05K', (req0, res0) => {
-    const https = require('https');
-    const url = require('url');
-    var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    	
-    var length = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆").length
-	
-			
-		
-	    
-		
-//TO SCRAPE GTRENDS EXPLORE & TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES	
-
-https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[0].replace('/SCRAPER05K?https://trends.google.com',''), method: 'GET',}, (res) => {
-    let data = '';
-    res.on('data', (chunk) => {data += chunk; });
-    res.on('end', () => {
-        var cookie = res.headers['set-cookie'][0].split(';')[0];
-        https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[0].replace('/SCRAPER05K?https://trends.google.com',''), method: 'GET', headers: {'cookie': cookie} }, (res) => {
-            let data = '';
-            res.on('data', (chunk) => {data += chunk; });
-            res.on('end', () => {
-               var td = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
-              const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)}
-
-    
-    
-	    
-	if(type === 'SCPGTEXPLORE' || type === ''){
-             res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id+'☉'+JSON.stringify(item.request)+'☉'+item.token})    );//+'💙💔');// console.log(td) 
-	} ;
-		    
-		    
-        if(type === 'SCPGTTS'){		
-             
-		https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'timeseries☉{')[0].split('☉')[1], token: filterItems(td, 'timeseries☉{')[0].split('☉')[2],tz: req0.query.tz[0]} })  , (res) => {  
-                let data = '';
-                res.on('data', (chunk) => {data += chunk; });
-                res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉['+item.value+']💙💔'})       );       });});                       				
-	}
-		    
-	
-		    
-        if(type === 'SCPGTGEO'){		
-                https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'geo_map☉{')[0].split('☉')[1], token: filterItems(td, 'geo_map☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                  let data = '';
-                  res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.geoMapData.map(function (item) {  return item.geoName+'☔☉['+item.value+']💙💔'})       );    });});}
-	
-		        				          		    
-		   
-	if(type === 'SCPGTQRY'){
-		
-		if(length === 3){
-                https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[0].split('☉')[1], token: filterItems(td, 'related_queries☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                  let data = '';
-                  res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'}));                            
-				      });});};
-		
-
-		
-		if(length === 4){
-                https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[0].split('☉')[1], token: filterItems(td, 'related_queries☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                  let data = '';
-                  res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {
-				   var first = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});                            
-				   https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[1].split('☉')[1], token: filterItems(td, 'related_queries☉{')[1].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                                   let data = '';
-                                   res.on('data', (chunk) => {data += chunk; });
-                                   res.on('end', () => { 
-				   var second = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});                            
-				   res0.header('Content-Type', 'application/json').send(first+'🍎💚'+second);				      
-				      });}); });});};
-		
-		
-		
-		
-		if(length === 5){
-                https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[0].split('☉')[1], token: filterItems(td, 'related_queries☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                  let data = '';
-                  res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {
-				   var first = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});                            
-				   https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[1].split('☉')[1], token: filterItems(td, 'related_queries☉{')[1].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                                   let data = '';
-                                   res.on('data', (chunk) => {data += chunk; });
-                                   res.on('end', () => { 
-				   var second = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});                            
-				   https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[2].split('☉')[1], token: filterItems(td, 'related_queries☉{')[2].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                                   let data = '';
-                                   res.on('data', (chunk) => {data += chunk; });
-                                   res.on('end', () => { 
-				   var third = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});                               
-		                   res0.header('Content-Type', 'application/json').send(first+'🍎💚'+second+'🍎💚'+third);		    
-				      });}); });}); });});};
-		
-		
-		
-		
-		
-		if(length === 6){
-                https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[0].split('☉')[1], token: filterItems(td, 'related_queries☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                  let data = '';
-                  res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {
-				   var first = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});                            
-				   https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[1].split('☉')[1], token: filterItems(td, 'related_queries☉{')[1].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                                   let data = '';
-                                   res.on('data', (chunk) => {data += chunk; });
-                                   res.on('end', () => { 
-				   var second = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});                            
-				   https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[2].split('☉')[1], token: filterItems(td, 'related_queries☉{')[2].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                                   let data = '';
-                                   res.on('data', (chunk) => {data += chunk; });
-                                   res.on('end', () => { 
-				   var third = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});                               
-		                   https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[3].split('☉')[1], token: filterItems(td, 'related_queries☉{')[3].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                                   let data = '';
-                                   res.on('data', (chunk) => {data += chunk; });
-                                   res.on('end', () => { 
-				   var forth = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});                               			 
-			           res0.header('Content-Type', 'application/json').send(first+'🍎💚'+second+'🍎💚'+third+'🍎💚'+forth);		    
-				 });}); });}); });});});});};
-		
-		
-		
-				
-		
-		if(length === 7){
-                https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[0].split('☉')[1], token: filterItems(td, 'related_queries☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                  let data = '';
-                  res.on('data', (chunk) => {data += chunk; });
-                  res.on('end', () => {
-				   var first = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});                            
-				   https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[1].split('☉')[1], token: filterItems(td, 'related_queries☉{')[1].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                                   let data = '';
-                                   res.on('data', (chunk) => {data += chunk; });
-                                   res.on('end', () => { 
-				   var second = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});                            
-				   https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[2].split('☉')[1], token: filterItems(td, 'related_queries☉{')[2].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                                   let data = '';
-                                   res.on('data', (chunk) => {data += chunk; });
-                                   res.on('end', () => { 
-				   var third = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});                               
-			           https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[3].split('☉')[1], token: filterItems(td, 'related_queries☉{')[3].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                                   let data = '';
-                                   res.on('data', (chunk) => {data += chunk; });
-                                   res.on('end', () => { 
-				   var forth = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});                               			 
-		                   https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[4].split('☉')[1], token: filterItems(td, 'related_queries☉{')[4].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                                   let data = '';
-                                   res.on('data', (chunk) => {data += chunk; });
-                                   res.on('end', () => { 
-				   var fifth = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});                               			 
-		                   res0.header('Content-Type', 'application/json').send(first+'🍎💚'+second+'🍎💚'+third+'🍎💚'+forth+'🍎💚'+fifth);					  											   					   
-				});}) });});  });});  });}); });});};
-		
-	
-	}		
-		    
-		    
-		  		   		    
-    });
-    }); 
-    });
-    });
-    });
-			  
-
+   
 
 
 	
@@ -442,16 +268,17 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
     //for other websites             link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?url☆SCPURL
 
 	app.get('/SCRAPER2', (req0, res0) => {
-const url = require('url'); 
-const Request = require('request');
-  
-                Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[0].replace('/SCRAPER2?','')  }}, (err, res, body) => {	
-        
+           
+		const url = require('url'); 
+                const Request = require('request');
+                
+		
+                Request.post({url: 'https://scraper.nepochataya.pp.ua/sites', json: true, body: {"url":decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[0].replace('/SCRAPER2?','')  }}, (err, res, body) => {	     
 		Request({url: 'https://scraper.nepochataya.pp.ua'+body.previewPath, json: true,}, (err, res, body) => {
 	
               var tz = req0.query.tz[0];
               var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];
-		
+	var length = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆").length;
 	
 		//TO SCRAPE URL & GTRENDS EXPLORE & AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
 		
@@ -479,14 +306,14 @@ const Request = require('request');
 		var td = JSON.parse(body.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
                 const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)};
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'timeseries☉{')[0].split('☉')[1], token: filterItems(td, 'timeseries☉{')[0].split('☉')[2]  ,tz: tz} }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value+'💙💔'})       );    });}
+                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉['+item.value+']💙💔'})       );    });}
 		    
 		
 	if(type === 'SCPGTGEO'){
 		var td = JSON.parse(body.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
                 const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)};
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'geo_map☉{')[0].split('☉')[1], token: filterItems(td, 'geo_map☉{')[0].split('☉')[2]  } }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.geoMapData.map(function (item) {  return item.geoName+'☔☉'+item.value+'💙💔'})       );    });}
+                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.geoMapData.map(function (item) {  return item.geoName+'☔☉['+item.value+']💙💔'})       );    });}
 		    	
 		
 	if(type === 'SCPGTTPC'){
@@ -497,9 +324,45 @@ const Request = require('request');
 		
 	if(type === 'SCPGTQRY'){
 		var td = JSON.parse(body.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
-                const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)};              
+                const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)};
+		
+		if(length === 3){	                      
                 Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'related_queries☉{')[0].split('☉')[1], token: filterItems(td, 'related_queries☉{')[0].split('☉')[2]  } }), json: true,}, (err, res, body) => {  
-                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(body.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})); });}	                           
+                res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(body.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})); });
+                    };
+		
+		
+		if(length === 4){	                      
+                Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'related_queries☉{')[0].split('☉')[1], token: filterItems(td, 'related_queries☉{')[0].split('☉')[2]  } }), json: true,}, (err, res, body) => {  
+                var first = JSON.parse(body.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(body.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'}); 
+		Request({url:url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: tz, req: filterItems(td, 'related_queries☉{')[1].split('☉')[1], token: filterItems(td, 'related_queries☉{')[1].split('☉')[2]  } }), json: true,}, (err, res, body) => {  
+                var second = JSON.parse(body.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(body.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'}); 
+		res0.header('Content-Type', 'application/json').send(first+'🍎💚'+second);	
+		});});
+                    		
+		
+		};
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+		
+		
+		
+		
+	
+	
+	}	               
+			
+			
+			
 				      	    
 		
 			
