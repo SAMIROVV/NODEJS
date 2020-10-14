@@ -21,14 +21,16 @@ const app = express();
 app.get('/SCRAPER0', (req0, res0) => {
     const https = require('https');
     const url   = require('url');
-    var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
-    var length = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆").length;
+    var type    = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
+    var nbrurls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
+    var length1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆").length;
+    var length2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆").length;
     
 	
 //TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
 	
 	if(type === 'SCPGTACM'){
-                https.get(decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[0].replace('/SCRAPER0?','')   , (res) => {  
+                https.get(decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[0].split("☆")[0].replace('/SCRAPER0?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', () => {res0.header('Content-Type', 'application/json').send( JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  );
@@ -39,12 +41,12 @@ app.get('/SCRAPER0', (req0, res0) => {
 		
 //TO SCRAPE GTRENDS EXPLORE & TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES	
 else{   
-https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET',}, (res) => {
+https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[0].split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET',}, (res) => {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
         var cookie = res.headers['set-cookie'][0].split(';')[0];
-        https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET', headers: {'cookie': cookie} }, (res) => {
+        https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[0].split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET', headers: {'cookie': cookie} }, (res) => {
             let data = '';
             res.on('data', (chunk) => {data += chunk; });
             res.on('end', () => {
