@@ -509,7 +509,7 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', () => {
 			    var second = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});          
-			    res0.header('Content-Type', 'application/json').send(first+'💚🍎'+second);
+			    res0.header('Content-Type', 'application/json').send(first+'🍎💚'+second);
 				    });})	    
 			    ;});});
 				
@@ -535,7 +535,7 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', () => {
 			    var third = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});          
-			    res0.header('Content-Type', 'application/json').send(first+'💚🍎'+second+'💚🍎'+third);
+			    res0.header('Content-Type', 'application/json').send(first+'🍎💚'+second+'🍎💚'+third);
 				    });})	    
 				    });})	    
 			    ;});});
@@ -566,7 +566,7 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', () => {
 			    var forth = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});          
-			    res0.header('Content-Type', 'application/json').send(first+'💚🍎'+second+'💚🍎'+third+'💚🍎'+forth);
+			    res0.header('Content-Type', 'application/json').send(first+'🍎💚'+second+'🍎💚'+third+'🍎💚'+forth);
 				    });})	    
 				    });})	    
 				    });})	    
@@ -603,7 +603,7 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', () => {
 			    var fifth = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value+'💙💔'});          
-			    res0.header('Content-Type', 'application/json').send(first+'💚🍎'+second+'💚🍎'+third+'💚🍎'+forth+'💚🍎'+fifth);
+			    res0.header('Content-Type', 'application/json').send(first+'🍎💚'+second+'🍎💚'+third+'🍎💚'+forth+'🍎💚'+fifth);
 				    });})	    
 				    });})	    
 				    });})	    
