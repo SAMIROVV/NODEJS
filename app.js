@@ -19,7 +19,7 @@ app.get('/SCRAPER0', (req0, res0) => {
     const https = require('https');
     const url = require('url');
     var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆")[1];    
-     length = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆").length
+    var length = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("☆").length
 	
 	
 //TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
