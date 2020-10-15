@@ -63,12 +63,12 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 		if (nbrurls === 1)      {res0.header('Content-Type', 'application/json').send(data1)};
 		
 		if (nbrurls === 2)      {		    
-		    https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[1].split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET',}, (res) => {
+		    https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET',}, (res) => {
                        let data = '';
                        res.on('data', (chunk) => {data += chunk; });
                        res.on('end', () => {
                        var cookie = res.headers['set-cookie'][0].split(';')[0];
-                    https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[1].split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET', headers: {'cookie': cookie} }, (res) => {
+                    https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET', headers: {'cookie': cookie} }, (res) => {
                        let data = '';
                        res.on('data', (chunk) => {data += chunk; });
                        res.on('end', () => {
