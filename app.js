@@ -60,9 +60,9 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 		
             var data1 = JSON.parse(data.slice(4)).widgets+'💙💔';
 		
-		(if nbrurls === 1)      {res0.header('Content-Type', 'application/json').send(data1)};
+		if (nbrurls === 1)      {res0.header('Content-Type', 'application/json').send(data1)};
 		
-		(if nbrurls === 2)      {		    
+		if (nbrurls === 2)      {		    
 		    https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[1].split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET',}, (res) => {
                        let data = '';
                        res.on('data', (chunk) => {data += chunk; });
