@@ -19,7 +19,7 @@ const app = express();
   
 
 app.get('/SCRAPER0', (req0, res0) => {
-    const https = require('https');
+   const https = require('https');
    const url   = require('url');
    var type    = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
    var nbrurls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
@@ -29,7 +29,7 @@ app.get('/SCRAPER0', (req0, res0) => {
 	
 //TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
 	
-if(type === 'SCPGTEXPLORE'){
+if(type === 'SCPGTACM'){
                 https.get(decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[0].replace('/SCRAPER0?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
@@ -56,7 +56,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
     
     
 	    
-	if(type === 'SCPGTEXPLORE1' || type === ''){
+	if(type === 'SCPGTEXPLORE' || type === ''){
 		
             var data1 = JSON.parse(data.slice(4)).widgets+'💙💔';
 		
