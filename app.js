@@ -24,7 +24,7 @@ app.get('/SCRAPER0', (req0, res0) => {
    var type    = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
    var nbrurls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
    var length1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆").length;
-   var length2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆").length;
+   //var length2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆").length;
     
 	
 //TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
