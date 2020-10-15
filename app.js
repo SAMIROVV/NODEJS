@@ -21,19 +21,19 @@ const app = express();
 app.get('/SCRAPER0', (req0, res0) => {
     const https = require('https');
     const url   = require('url');
-    var type    = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
-    var nbrurls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
-    var length1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆").length;
-    var length2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆").length;
+    //var type    = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
+   // var nbrurls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
+   // var length1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆").length;
+   // var length2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆").length;
     
 	
 //TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
 	
-	if(type === 'SCPGTACM'){
+	if'(SCPGTACM' === 'SCPGTACM'){
                 https.get(decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[0].replace('/SCRAPER0?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send( JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  );
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(decodeURIComponent(url.format({ pathname: req0.originalUrl })) );//JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  );
 				      });});}  
 			
 		
