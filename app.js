@@ -8,7 +8,7 @@ const app = express();
    const https   = require('https');
    const url     = require('url');
    var   type    = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
-   var   nbrurls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
+   const nbrurls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
    
    
 nbrurls.forEach(element => { 
