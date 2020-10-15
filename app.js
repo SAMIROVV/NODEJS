@@ -24,7 +24,7 @@ app.get('/SCRAPER0', (req0, res0) => {
    var type    = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
    var nbrurls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
    var length1 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆").length;
-   //var length2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆").length;
+   
     
 	
 //TO SCRAPE GTRENDS AUTOCOMPLETE & DAILY TRENDS & REAL TIME TRENDS
@@ -41,12 +41,12 @@ if(type === 'SCPGTACM'){
 		
 //TO SCRAPE GTRENDS EXPLORE & TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES	
 else{   
-https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[0].split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET',}, (res) => {
+https.get({hostname: 'trends.google.com', path: encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[0].replace('/SCRAPER0?https://trends.google.com','')), method: 'GET',}, (res) => {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
         var cookie = res.headers['set-cookie'][0].split(';')[0];
-        https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[0].split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET', headers: {'cookie': cookie} }, (res) => {
+        https.get({hostname: 'trends.google.com', path: encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[0].replace('/SCRAPER0?https://trends.google.com','')), method: 'GET', headers: {'cookie': cookie} }, (res) => {
             let data = '';
             res.on('data', (chunk) => {data += chunk; });
             res.on('end', () => {
@@ -62,13 +62,14 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 		
 		if (nbrurls === 1)      {res0.header('Content-Type', 'application/json').send(td1)};
 		
-		if (nbrurls === 2)      {		    
-		    https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET',}, (res) => {
+		if (nbrurls === 2)      {
+			var length2 = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆").length;
+		    https.get({hostname: 'trends.google.com', path: encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆")[0].replace('/SCRAPER0?https://trends.google.com','')), method: 'GET',}, (res) => {
                        let data = '';
                        res.on('data', (chunk) => {data += chunk; });
                        res.on('end', () => {
                        var cookie = res.headers['set-cookie'][0].split(';')[0];
-                    https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET', headers: {'cookie': cookie} }, (res) => {
+                    https.get({hostname: 'trends.google.com', path: encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆")[0].replace('/SCRAPER0?https://trends.google.com','')), method: 'GET', headers: {'cookie': cookie} }, (res) => {
                        let data = '';
                        res.on('data', (chunk) => {data += chunk; });
                        res.on('end', () => {
