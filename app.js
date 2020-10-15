@@ -33,7 +33,7 @@ if(type === 'SCPGTEXPLORE'){
                 https.get(decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[0].replace('/SCRAPER0?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆")[0] );//JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  );
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1] );//JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  );
 				      });});}  
 			
 		
