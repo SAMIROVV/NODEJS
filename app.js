@@ -33,7 +33,7 @@ if(type === 'SCPGTACM'){
                 https.get(decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[0].replace('/SCRAPER0?','')   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆")[0].replace('/SCRAPER0?https://trends.google.com','') );//JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  );
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  );
 				      });});}  
 			
 		
@@ -60,7 +60,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
 		
             var data1 = JSON.parse(data.slice(4)).widgets+'💙💔';
 		
-		if (nbrurls === 1)      {res0.header('Content-Type', 'application/json').send(data1)};
+		if (nbrurls === 1)      {res0.header('Content-Type', 'application/json').send(td1)};
 		
 		if (nbrurls === 2)      {		    
 		    https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆")[0].replace('/SCRAPER0?https://trends.google.com',''), method: 'GET',}, (res) => {
@@ -75,7 +75,7 @@ https.get({hostname: 'trends.google.com', path: decodeURIComponent(url.format({ 
                        var td2 = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
                        var data2 = JSON.parse(data.slice(4)).widgets+'💙💔';
 			       
-			       res0.header('Content-Type', 'application/json').send(data1+'🌻🍉'+data2);console.log(td1+'🌻🍉'+td2);
+			       res0.header('Content-Type', 'application/json').send(td1+'🌻🍉'+td2);
 		    });}); });});
 		  	    
 		    
