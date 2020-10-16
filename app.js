@@ -14,7 +14,7 @@ function httpGet(url, callback) {
 	let data = '';
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', function () {
-             return callback(err, body);
+             return callback(data);
          });
   
   });
