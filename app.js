@@ -23,7 +23,7 @@ urls.forEach(function(url) {
   var responses = [];
   https.get(url, function(res) {
     res.on('data', function(chunk){     responses.push(chunk);    });
-res.setHeader('Content-Type', 'application/json');
+res.Header('Content-Type', 'application/json');
     res.on('end', function(){
       //if (completed_requests++ == urls.length - 1) { 
 	      console.log('body:', responses.join()); res0.send(responses.join()) 
