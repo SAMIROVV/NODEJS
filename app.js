@@ -10,23 +10,36 @@ const app = express();
    var   type    = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
    const nbrurls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
    
-var urls = [decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[0].split("☆")[0].replace('/SCRAPER10?','')]//,'"'+decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[1].split("☆")[0].replace('/SCRAPER10?','')+'"'];
-var responses = [];
+
+	     
+	     
+	  var https = require('http');
+//var urls = ['http://adrianmejia.com/atom.xml', 'http://twitrss.me/twitter_user_to_rss/?user=amejiarosario'];
+	     var urls = [decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[0].split("☆")[0].replace('/SCRAPER10?','')]//,'"'+decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[1].split("☆")[0].replace('/SCRAPER10?','')+'"'];
+
 var completed_requests = 0;
-var i;
-for (i in urls) {
-    https.get(urls[i], function(res) {
-        responses.push(res);
-        completed_requests++;
-        if (completed_requests == urls.length) {
-            // All download done, process responses array
-            console.log(responses);res0.send(responses);
-        }
+
+urls.forEach(function(url) {
+  var responses = [];
+  https.get(url, function(res) {
+    res.on('data', function(chunk){
+      responses.push(chunk);
     });
-}
 
-
-
+    res.on('end', function(){
+      if (completed_requests++ == urls.length - 1) {
+        // All downloads are completed
+        console.log('body:', responses.join());
+      }      
+    });
+  });
+})   
+	     
+	     
+	     
+	     
+	     
+	     
 
 
 
@@ -42,7 +55,10 @@ for (i in urls) {
 
 
 
-
+https.get(decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[0].replace('/SCRAPER0?','')   ,  
+                    
+                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(decodeURIComponent(url.format({ pathname: req0.originalUrl })))//.split("☆")[0]);//JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  );
+				      });})
 
 
 
