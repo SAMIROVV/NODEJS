@@ -13,7 +13,11 @@ function httpGet(url, callback) {
     function(err, res, body) {
 	let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {callback(err, body)});});
+                    res.on('end', function () {
+             return callback(err, body);
+         });
+  
+  });
 	
 	
     }
