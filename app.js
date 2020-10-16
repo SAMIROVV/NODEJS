@@ -28,7 +28,7 @@ urls.forEach(function(url) {
       if (completed_requests++ == urls.length - 1) {  console.log('body:', responses.join());  }      
     });
   });
-}
+});
 	     
 	     
 	     
@@ -49,11 +49,6 @@ urls.forEach(function(url) {
 
 
 
-
-https.get(decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("☆")[0].replace('/SCRAPER0?','')   ,  
-                    
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(decodeURIComponent(url.format({ pathname: req0.originalUrl })))//.split("☆")[0]);//JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  );
-				      });})
 
 
 
