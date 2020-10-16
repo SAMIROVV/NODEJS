@@ -22,18 +22,13 @@ var completed_requests = 0;
 urls.forEach(function(url) {
   var responses = [];
   https.get(url, function(res) {
-    res.on('data', function(chunk){
-      responses.push(chunk);
-    });
+    res.on('data', function(chunk){     responses.push(chunk);    });
 
     res.on('end', function(){
-      if (completed_requests++ == urls.length - 1) {
-        // All downloads are completed
-        console.log('body:', responses.join());
-      }      
+      if (completed_requests++ == urls.length - 1) {  console.log('body:', responses.join());  }      
     });
   });
-})   
+}
 	     
 	     
 	     
