@@ -13,7 +13,7 @@ const app = express();
 var urls = ['"'+decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[0].split("☆")[0].replace('/SCRAPER10?','')+'"']//,'"'+decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[1].split("☆")[0].replace('/SCRAPER10?','')+'"'];
 var responses = [];
 var completed_requests = 0;
-
+var i;
 for (i in urls) {
     https.get(urls[i], function(res) {
         responses.push(res);
