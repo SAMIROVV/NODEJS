@@ -10,11 +10,11 @@ const app = express();
    var   type    = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
    const nbrurls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
    var i;
-   for (i = 0; i <= nbrurls; i++) {
+   for (i = 0; i < nbrurls; i++) {
   https.get(encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[i].split("☆")[0].replace('/SCRAPER10?',''))   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  );
+                    res.on('end', () => {res0.send(JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  );
 				      });})
 	     
 }; 
