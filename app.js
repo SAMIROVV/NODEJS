@@ -10,7 +10,7 @@ const app = express();
    var   type    = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
    const nbrurls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
    
-var urls = [decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[0].split("☆")[0].replace('/SCRAPER10?',''), decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[1].split("☆")[0].replace('/SCRAPER0?','')];
+var urls = [decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[0].split("☆")[0].replace('/SCRAPER10?',''), decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[1].split("☆")[0].replace('/SCRAPER10?','')];
 var responses = [];
 var completed_requests = 0;
 
