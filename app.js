@@ -14,7 +14,7 @@ const app = express();
 	     
 	     
 	  
-var urls = ['https://trends.google.com/trends/api/autocomplete/sexy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60'];
+var urls = ['https://trends.google.com/trends/api/autocomplete/sexy?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/boy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60'];
 	     //var urls = [encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[0].replace('/SCRAPER10?','')), encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆")[0].replace('/SCRAPER10?',''))];
 
 var completed_requests = 0;
@@ -26,7 +26,7 @@ urls.forEach(function(url) {
 
     res.on('end', function(){
       //if (completed_requests++ == urls.length - 1) { 
-	      console.log('body:', responses.join()); res0.json(responses.join()) 
+	      console.log('body:', responses.join()); res0.send(responses.join()) 
       //}      
     });
   });
