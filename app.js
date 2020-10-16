@@ -9,16 +9,21 @@ const app = express();
    const url     = require('url');
    var   type    = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
    const nbrurls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
-   var i;
-   for (i = 0; i < nbrurls; i++) {
-  https.get(encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[i].split("☆")[0].replace('/SCRAPER10?',''))   , (res) => {  
-                    let data = '';
-                    res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  ).end();
-				      });})
-	     
-}; 
    
+var urls = [decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[0].split("☆")[0].replace('/SCRAPER10?',''), decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[1].split("☆")[0].replace('/SCRAPER0?','')];
+var responses = [];
+var completed_requests = 0;
+
+for (i in urls) {
+    https.get(urls[i], function(res) {
+        responses.push(res);
+        completed_requests++;
+        if (completed_requests == urls.length) {
+            // All download done, process responses array
+            console.log(responses);res0.send(responses);
+        }
+    });
+}
 
 
 
