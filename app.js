@@ -17,7 +17,7 @@ const app = express();
                     res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  );
 				      });})
 	     
-}); 
+}; 
    
 
 
