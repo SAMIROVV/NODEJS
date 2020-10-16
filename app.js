@@ -25,7 +25,7 @@ urls.forEach(function(url) {
     res.on('data', function(chunk){     responses.push(chunk);    });
 
     res.on('end', function(){
-      if (completed_requests++ == urls.length - 1) { 
+      if (completed_requests++ == urls.length) { 
 	      console.log('body:', responses.join()); res0.send(responses.join()) 
       }      
     });
