@@ -14,7 +14,7 @@ const app = express();
 	     
 	     
 	  
-//var urls = ['http://adrianmejia.com/atom.xml', 'http://twitrss.me/twitter_user_to_rss/?user=amejiarosario'];
+//var urls = ['https://adrianmejia.com/atom.xml', 'https://twitrss.me/twitter_user_to_rss/?user=amejiarosario'];
 	     var urls = [encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[0].replace('/SCRAPER10?','')), encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆")[0].replace('/SCRAPER10?',''))];
 
 var completed_requests = 0;
@@ -25,7 +25,7 @@ urls.forEach(function(url) {
     res.on('data', function(chunk){     responses.push(chunk);    });
 
     res.on('end', function(){
-      if (completed_requests++ == urls.length - 1) {  console.log('body:', responses.join()); res0.send(responses.join('🍯')) }      
+      if (completed_requests++ == urls.length - 1) {  console.log('body:', responses.join()); res0.send(responses.join('🐘')) }      
     });
   });
 });
