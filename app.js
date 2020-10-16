@@ -9,10 +9,9 @@ const app = express();
    const url     = require('url');
    var   type    = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
    const nbrurls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
-   
-   
-nbrurls.forEach(element => { 
-  https.get(encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[element].split("☆")[0].replace('/SCRAPER10?',''))   , (res) => {  
+   var i;
+   for (i = 0; i <= nbrurls; i++) {
+  https.get(encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[i].split("☆")[0].replace('/SCRAPER10?',''))   , (res) => {  
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})  );
