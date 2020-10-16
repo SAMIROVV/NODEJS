@@ -13,7 +13,7 @@ const app = express();
 
 	     
 	     
-	  var https = require('https');
+	  
 //var urls = ['http://adrianmejia.com/atom.xml', 'http://twitrss.me/twitter_user_to_rss/?user=amejiarosario'];
 	     var urls = [decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[0].split("☆")[0].replace('/SCRAPER10?','')]//,'"'+decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) })).split("■")[1].split("☆")[0].replace('/SCRAPER10?','')+'"'];
 
