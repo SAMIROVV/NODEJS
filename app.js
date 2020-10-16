@@ -21,13 +21,13 @@ var completed_requests = 0;
 
 urls.forEach(function(url) {
   var responses = [];
-  https.get(url, function(res) {
+  https.get(url, function(res) {let data = '';
     res.on('data', function(chunk){     responses.push(chunk);    });
 
     res.on('end', function(){
-      if (completed_requests++ == urls.length - 1) { 
-	      console.log('body:', responses.join()); res0.send({data:responses}) 
-      }      
+      //if (completed_requests++ == urls.length - 1) { 
+	      console.log('body:', responses); res0.send(data) 
+      //}      
     });
   });
 });
