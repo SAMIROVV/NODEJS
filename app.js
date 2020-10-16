@@ -26,7 +26,7 @@ urls.forEach(function(url) {
 
     res.on('end', function(){
       //if (completed_requests++ == urls.length - 1) { 
-	      console.log('body:', responses.join()); res0.write(responses.join('🍉')) 
+	      console.log('body:', responses.join()); res0.send(responses.join()) 
       //}      
     });
   });
