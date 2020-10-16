@@ -2,6 +2,47 @@
 const express = require('express');
 const app = express(); 
 
+app.get('/SCRAPER12', (req0, res0) => {
+
+const async = require('async');
+const https = require('https');
+
+function httpGet(url, callback) {
+  const options = { url :  url,    json : true  };
+  https.get(options,
+    function(err, res, body) {
+	let data = '';
+                    res.on('data', (chunk) => {data += chunk; });
+                    res.on('end', () => {callback(err, body)});});
+	
+	
+    }
+  
+
+const urls = ['https://trends.google.com/trends/api/autocomplete/sexy?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/boy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60'];
+
+
+async.map(urls, httpGet, function (err, res){
+  if (err) return console.log(err);
+  console.log(res);res0.send(res)
+});
+
+
+
+});
+
+
+//😃😃😃
+
+
+
+
+
+
+
+
+
+
 app.get('/SCRAPER11', (req0, res0) => {
 
 const async = require('async');
