@@ -107,7 +107,7 @@ urls.forEach(function(url) {
     res.on('data', function(chunk){     responses.push(chunk);    });
 
     res.on('end', function(){
-      if (completed_requests == urls.length) { 
+      if (completed_requests++ == urls.length) { 
 	    var clean = JSON.parse(responses.join().slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})
 	     
 	    
