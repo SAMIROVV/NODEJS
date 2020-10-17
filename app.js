@@ -75,7 +75,7 @@ const urls = ['https://trends.google.com/trends/api/autocomplete/sexy?hl=en-US&t
 
 async.map(urls, httpGet, function (err, res){
   if (err) return console.log(err);
-  console.log(res);res0.send(res)
+  console.log(res);res0.send(JSON.stingify(res))
 });
 
 
