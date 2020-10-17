@@ -118,7 +118,7 @@ urls.forEach(function(url) {
 	     
 	     
 	     
-	res0.send(data);     
+	     
 	     
 
 
