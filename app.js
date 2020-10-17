@@ -65,7 +65,7 @@ function httpGet(url, callback) {
   };
   request(options,
     function(err, res, body) {
-    var jsonclean=   JSON.stingify(JSON.parse(body.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'}))
+    var jsonclean=   JSON.parse(body.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})+'💚🐌'
       callback(err, jsonclean);
     }
   );
