@@ -8,30 +8,24 @@ const async = require('async');
 const https = require('https');
 
 	
-function httpGet(url){	
-function (callback){
 
     var https = require('https');
-    var str = '';
     const options = {
     url :  url,
     json : true
   };
 
-    var req = https.get(options, function (res) {
-
-         res.on('data', function (body) {
-             str += body;
-         });
-
-         res.on('end', function () {
-             return callback(str);
-         });
-    });
-    req.end();
-
-}}
-	
+    function httpGet(url, callback) {
+  const options = {
+    url :  url,
+    json : true
+  };
+  https.get(options,
+    function(err, res, body) {
+      callback(err, body);
+    }
+  );
+}
 	
 	
 
@@ -113,7 +107,7 @@ urls.forEach(function(url) {
 
     res.on('end', function(){
       //if (completed_requests++ == urls.length - 1) { 
-	      console.log('body:', responses.join()); res0.send(responses.join()) 
+	      console.log('body:', responses.join()); res0.write(responses.join()).end(); 
       //}      
     });
   });
