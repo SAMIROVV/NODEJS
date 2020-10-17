@@ -9,7 +9,7 @@ const https = require('https');
 
 	
 
-    var https = require('https');
+    
     const options = {
     url :  url,
     json : true
