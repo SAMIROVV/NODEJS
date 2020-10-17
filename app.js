@@ -7,21 +7,33 @@ app.get('/SCRAPER12', (req0, res0) => {
 const async = require('async');
 const https = require('https');
 
-function httpGet(url, callback) {
-  const options = { url :  url,    json : true  };
-  https.get(options,
-    function(err, res, body) {
-	let data = '';
-                    res.on('data', (chunk) => {data += chunk; });
-                    res.on('end', function () {
-             return callback(data);
+	
+function httpGet(url){	
+function (callback){
+
+    var https = require('https');
+    var str = '';
+    const options = {
+    url :  url,
+    json : true
+  };
+
+    var req = https.get(options, function (res) {
+
+         res.on('data', function (body) {
+             str += body;
          });
-  
-  });
+
+         res.on('end', function () {
+             return callback(str);
+         });
+    });
+    req.end();
+
+}}
 	
 	
-    }
-  
+	
 
 const urls = ['https://trends.google.com/trends/api/autocomplete/sexy?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/boy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60'];
 
