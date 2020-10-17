@@ -65,7 +65,7 @@ function httpGet(url, callback) {
   };
   request(options,
     function(err, res, body) {
-    var jsonclean=   JSON.parse(body.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})
+    var jsonclean=   JSON.stingify(JSON.parse(body.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'}))
       callback(err, jsonclean);
     }
   );
@@ -76,7 +76,7 @@ const urls = ['https://trends.google.com/trends/api/autocomplete/sexy?hl=en-US&t
 
 async.map(urls, httpGet, function (err, res){
   if (err) return console.log(err);
-  console.log(res);res0.send(JSON.stingify(res))
+  console.log(res);res0.send(res)
 });
 
 
