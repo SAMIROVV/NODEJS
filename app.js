@@ -103,19 +103,19 @@ var completed_requests = 0;
 
 urls.forEach(function(url) {
   var responses = [];
-  https.get(url, function(res) {
+  const requests = https.get(url, function(res) {
     res.on('data', function(chunk){     responses.push(chunk);    });
 
     res.on('end', function(){
       //if (completed_requests++ == urls.length - 2) { 
 	    var clean = JSON.parse(responses.join().slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})
 	     
-	    Promise.all(clean.join()).then(values => {   console.log(values);  });
+	    //Promise.all(clean.join()).then(values => {   console.log(values); res0.send(values) });
 	    
 	    //console.log('body:', clean.join());  res0.json(clean.join());
       //}      
     });
-  });
+  });return Promise.all(requests)
 });
 	     
 	     
