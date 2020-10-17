@@ -109,7 +109,7 @@ urls.forEach(function(url) {
     res.on('end', function(){
       //if (completed_requests++ == urls.length - 1) { 
 	    var clean = JSON.parse(responses.join().slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})
-	      console.log('body:', clean.join()); res0.send(clean.join()); 
+	      console.log('body:', clean.join());  return res0.json(clean.join());
       //}      
     });
   });
@@ -118,7 +118,7 @@ urls.forEach(function(url) {
 	     
 	     
 	     
-	     
+	res0.send(data);     
 	     
 
 
