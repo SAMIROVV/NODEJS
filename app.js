@@ -109,7 +109,7 @@ urls.forEach(function(url) {
     res.on('end', function(){
       //if (completed_requests++ == urls.length - 1) { 
 	    var clean = JSON.parse(responses.join().slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})
-	      console.log('body:', clean);  res0.send(Promise.all(responses)));
+	      console.log('body:', clean);  res0.send(Promise.all(responses));
       //}      
     });
   });
