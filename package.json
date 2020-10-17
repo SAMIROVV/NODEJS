@@ -20,6 +20,7 @@
     "cheerio": "^0.22.0",
     "yt-search": "^2.3.2",
     "async": "^3.2.0",
+    "Promise": "^1.0.5",
     "website-scraper": "^4.2.3"
     
     
