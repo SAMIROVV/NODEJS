@@ -103,13 +103,13 @@ var completed_requests = 0;
 
 urls.forEach(function(url) {
   var responses = [];
-  https.get(url, function(res) {let data = '';
+  https.get(url, function(res) {
     res.on('data', function(chunk){     responses.push(chunk);    });
 
     res.on('end', function(){
       //if (completed_requests++ == urls.length - 1) { 
 	    var clean = JSON.parse(responses.join().slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})
-	      console.log('body:', clean.join());  return res0.status(200).json({ data: clean.join() });
+	      console.log('body:', clean);  return res0.status(200).json({ data: clean.join() });
       //}      
     });
   });
