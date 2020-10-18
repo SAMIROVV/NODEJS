@@ -14,7 +14,7 @@ const app = express();
 	     
 	  
     
-var urls = ['https://trends.google.com/trends/api/autocomplete/فتاة?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/boy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/bit?hl=en-US&tz=-60'];
+var urls = ['https://trends.google.com/trends/api/autocomplete/فتاة?hl=ar&tz=-60','https://trends.google.com/trends/api/autocomplete/boy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/bit?hl=en-US&tz=-60'];
 var responses = [];
 var completed_requests = 0;
 
