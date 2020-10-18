@@ -87,34 +87,34 @@ async.map(urls, httpGet, function (err, res){
 
 //💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FROM BASED ON GOOGLE_TRENDS_API NPM💚💙💔//
      app.get('/SCRAPER10', (req0, res0) => {
-   const https   = require('https');
+   
    const url     = require('url');
    var   type    = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
    const nbrurls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
-   const Promise = require("Promise")
-
+   
 	     
 	     
 	  
+var https = require('https');    
 var urls = ['https://trends.google.com/trends/api/autocomplete/sexy?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/boy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/bit?hl=en-US&tz=-60'];
-	     //var urls = [encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[0].replace('/SCRAPER10?','')), encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆")[0].replace('/SCRAPER10?',''))];
-
+var responses = [];
 var completed_requests = 0;
-console.log(
-urls.map(function(url,callback) {
-  var responses = [];
-   https.get(url, function(res) {
-    res.on('data', function(chunk){     responses.push(chunk);    });
 
-    res.on('end', function(){
-      //if (completed_requests == urls.length) { 
-	     JSON.parse(responses.join().slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})
-	     //resolve(clean);
-	    //console.log('body:', clean.join());  //res0.json(clean.join());
-      //}      
-    });
-  });  
-}).join('💚'));
+for (i in urls) {
+    https.get(urls[i], function(res) {
+    let data = '';
+    res.on('data', (chunk) => {data += chunk; });
+    res.on('end', () => {
+    var clean= JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})
+    
+        responses.push(clean);
+        completed_requests++;
+        if (completed_requests == urls.length) {
+            // All download done, process responses array
+            console.log(responses);res0.send(responses);
+        }
+    });});
+}
 	     
 	     
 	
