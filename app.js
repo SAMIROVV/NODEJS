@@ -101,7 +101,7 @@ var urls = ['https://trends.google.com/trends/api/autocomplete/sexy?hl=en-US&tz=
 
 var completed_requests = 0;
 
-urls.forEach(function(url) {
+urls.map(function(url) {
   var responses = [];
    https.get(url, function(res) {
     res.on('data', function(chunk){     responses.push(chunk);    });
