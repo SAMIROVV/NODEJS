@@ -2,47 +2,58 @@
 const express = require('express');
 const app = express(); 
 
-app.get('/SCRAPER12', (req0, res0) => {
+//💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FROM BASED ON GOOGLE_TRENDS_API NPM💚💙💔//
 
-const async = require('async');
-const https = require('https');
-
-	
-
+     app.get('/SCRAPER10', (req0, res0) => {
+   const https  = require('https');
+   const url    = require('url');
+   var type     = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
+   const nbrurls  = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
+   var i;
+	     
+	     
+	  
     
-    const options = {
-    url :  url,
-    json : true
-  };
+var urls = ['https://trends.google.com/trends/api/autocomplete/فتاة?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/boy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/bit?hl=en-US&tz=-60'];
+var responses = [];
+var completed_requests = 0;
 
-    function httpGet(url, callback) {
-  const options = {
-    url :  url,
-    json : true
-  };
-  https.get(options,
-    function(err, res, body) {
-      callback(err, body);
-    }
-  );
+for (i in urls) {
+    https.get(urls[i], function(res) {
+    let data = '';
+    res.on('data', (chunk) => {data += chunk; });
+    res.on('end', () => {
+    var clean= JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})
+    
+        responses.push(clean);
+        completed_requests++;
+        if (completed_requests == urls.length) {
+            // All download done, process responses array
+            console.log(responses);res0.send(responses);
+        }
+    });});
 }
+	     
+	     
 	
-	
-
-const urls = ['https://trends.google.com/trends/api/autocomplete/sexy?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/boy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60'];
-
-
-async.map(urls, httpGet, function (err, res){
-  if (err) return console.log(err);
-  console.log(res);res0.send(res)
-});
+     
+	     
+	     
+	     
 
 
 
-});
+	     
+	     });
 
 
-//😃😃😃
+
+
+
+
+
+
+
 
 
 
@@ -85,48 +96,6 @@ async.map(urls, httpGet, function (err, res){
 
 
 
-//💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FROM BASED ON GOOGLE_TRENDS_API NPM💚💙💔//
-     app.get('/SCRAPER10', (req0, res0) => {
-   
-   const url     = require('url');
-   var   type    = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
-   const nbrurls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
-   var i;
-	     
-	     
-	  
-var https = require('https');    
-var urls = ['https://trends.google.com/trends/api/autocomplete/sexy?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/boy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/bit?hl=en-US&tz=-60'];
-var responses = [];
-var completed_requests = 0;
-
-for (i in urls) {
-    https.get(urls[i], function(res) {
-    let data = '';
-    res.on('data', (chunk) => {data += chunk; });
-    res.on('end', () => {
-    var clean= JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})
-    
-        responses.push(clean);
-        completed_requests++;
-        if (completed_requests == urls.length) {
-            // All download done, process responses array
-            console.log(responses);res0.send(responses);
-        }
-    });});
-}
-	     
-	     
-	
-     
-	     
-	     
-	     
-
-
-
-	     
-	     });
 
 
 
