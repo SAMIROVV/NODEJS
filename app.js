@@ -19,7 +19,7 @@ var responses = [];
 var completed_requests = 0;
 
 for (i in urls) {
-    https.get(urls[i], function(res) {
+    https.get(encodeURI(urls[i]), function(res) {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
