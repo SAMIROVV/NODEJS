@@ -100,7 +100,7 @@ var urls = ['https://trends.google.com/trends/api/autocomplete/sexy?hl=en-US&tz=
 	     //var urls = [encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[0].replace('/SCRAPER10?','')), encodeURI(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[1].split("☆")[0].replace('/SCRAPER10?',''))];
 
 var completed_requests = 0;
-res0.send(
+console.log(
 urls.map(function(url,callback) {
   var responses = [];
    https.get(url, function(res) {
@@ -108,9 +108,9 @@ urls.map(function(url,callback) {
 
     res.on('end', function(){
       //if (completed_requests == urls.length) { 
-	    var clean = JSON.parse(responses.join().slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})
-	     resolve(clean);
-	    console.log('body:', clean.join());  //res0.json(clean.join());
+	     JSON.parse(responses.join().slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})
+	     //resolve(clean);
+	    //console.log('body:', clean.join());  //res0.json(clean.join());
       //}      
     });
   });  
