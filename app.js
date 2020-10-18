@@ -109,12 +109,12 @@ urls.map(function(url) {
     res.on('end', function(){
       //if (completed_requests == urls.length) { 
 	    var clean = JSON.parse(responses.join().slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})
-	     res0.send(clean)
-	    //console.log('body:', clean.join());  //res0.json(clean.join());
+	     callback(clean);
+	    console.log('body:', clean.join());  //res0.json(clean.join());
       //}      
     });
   });  
-}).join(' '));
+}).join('💚'));
 	     
 	     
 	
