@@ -4,7 +4,7 @@ const app = express();
 
 //💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FROM BASED ON GOOGLE_TRENDS_API NPM💚💙💔//
 
-//for google trends autocomplete                 link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=bitcoin?hl=en-US&tz=-60↕Data=فتاة?hl=ar&tz=-60↕Data=fille?hl=fr&tz=-60↕Data=film?hl=fr&tz=-60↕Data=fin?hl=fr&tz=-60🔰https://trends.google.com/trends/api/autocomplete/
+//for google trends autocomplete                 link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Keyword=bitcoin🔸Data=bitcoin?hl=en-US&tz=-60↕Keyword=فتاة🔸Data=فتاة?hl=ar&tz=-60↕Keyword=fille🔸Data=fille?hl=fr&tz=-60↕Keyword=film🔸Data=film?hl=fr&tz=-60↕Keyword=boy🔸Data=boy?hl=fr&tz=-60🔰https://trends.google.com/trends/api/autocomplete/
     
 app.get('/SCRAPER10', (req0, res0) => {
    const https  = require('https');
@@ -16,12 +16,12 @@ app.get('/SCRAPER10', (req0, res0) => {
 
 for (i in urls) {
 	(function(i){
-    https.get(encodeURI(urls[i]), function(res) {
+    https.get(encodeURI(urls[i].split('🔸')[1]), function(res) {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
     var clean = JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})    
-        responses.push(urls[i].replace(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2],'')+'💚'+clean);
+        responses.push(urls[i].split('🔸')[0].replace('keyword=',''))+'💚'+clean);
         completed_requests++;
         if (completed_requests == urls.length) {          
             res0.send(responses);  }
