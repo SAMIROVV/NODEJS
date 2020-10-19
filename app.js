@@ -4,35 +4,27 @@ const app = express();
 
 //💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FROM BASED ON GOOGLE_TRENDS_API NPM💚💙💔//
 
-//for google trends autocomplete                 link ===  https://nodejsgithub.herokuapp.com/SCRAPER0?🔰Data=bitcoin?hl=en-US&tz=-60↕Data=فتاة?hl=ar&tz=-60↕Data=fille?hl=fr&tz=-60🔰SCPGTACM
+//for google trends autocomplete                 link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=bitcoin?hl=en-US&tz=-60↕Data=فتاة?hl=ar&tz=-60↕Data=fille?hl=fr&tz=-60↕Data=film?hl=fr&tz=-60↕Data=fin?hl=fr&tz=-60🔰https://trends.google.com/trends/api/autocomplete/
     
 
      app.get('/SCRAPER10', (req0, res0) => {
    const https  = require('https');
    const url    = require('url');
-   var urls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', 'https://trends.google.com/trends/api/autocomplete/')});
-
+  // var typeurl = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2];         
+	     var urls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2])});
+   
 	     
 	     
-	     
-	     
-	     
-	     
-	     
-	     
-   var type     = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2];    
+	     	    
    var i;
 	     
 
     	     
-	  
-
-//var urls = ['https://trends.google.com/trends/api/autocomplete/فتاة?hl=ar&tz=-60','https://trends.google.com/trends/api/autocomplete/boy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/bit?hl=en-US&tz=-60'];
+	 
 var responses = [];
 var completed_requests = 0;
 
 for (i in urls) {
-	//	https.get(encodeURI('https://trends.google.com/trends/api/autocomplete/'+DataUrl[i]), function(res) {
     https.get(encodeURI(urls[i]), function(res) {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
