@@ -4,26 +4,27 @@ const app = express();
 
 //💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FROM BASED ON GOOGLE_TRENDS_API NPM💚💙💔//
 
-//for google trends autocomplete                 link ===  https://nodejsgithub.herokuapp.com/SCRAPER0?🔰↕Data=bitcoin?hl=en-US&tz=-60↕Data=bitcoin?hl=en-US&tz=-60↕Data=bitcoin?hl=en-US&tz=-60🔰SCPGTACM
+//for google trends autocomplete                 link ===  https://nodejsgithub.herokuapp.com/SCRAPER0?🔰Data=bitcoin?hl=en-US&tz=-60↕Data=bitcoin?hl=en-US&tz=-60↕Data=bitcoin?hl=en-US&tz=-60🔰SCPGTACM
     
 
      app.get('/SCRAPER10', (req0, res0) => {
    const https  = require('https');
    const url    = require('url');
-   var type     = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■")[0].split("☆")[1];    
-   const nbrurls  = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
+   var Data = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").replace('Data=','');
+   var type     = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2];    
    var i;
 	     
 
     	     
 	  
-var Data = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕Data=");
+
 var urls = ['https://trends.google.com/trends/api/autocomplete/فتاة?hl=ar&tz=-60','https://trends.google.com/trends/api/autocomplete/boy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/bit?hl=en-US&tz=-60'];
 var responses = [];
 var completed_requests = 0;
 
-for (i in urls) {
-    https.get(encodeURI(urls[i]), function(res) {
+for (i in Data) {
+	https.get(encodeURI('https://trends.google.com/trends/api/autocomplete/'+Data[i]), function(res) {
+    //https.get(encodeURI(urls[i]), function(res) {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
