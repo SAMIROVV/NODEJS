@@ -23,8 +23,8 @@ for (i in urls) {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
-    var clean= JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})+'🐘'+urls[i]    
-        responses.push(clean);
+    var clean= JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})    
+        responses.push(clean+'🐘'+urls[i]);
         completed_requests++;
         if (completed_requests == urls.length) {          
             res0.send(responses);
