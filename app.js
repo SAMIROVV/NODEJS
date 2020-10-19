@@ -10,7 +10,7 @@ const app = express();
      app.get('/SCRAPER10', (req0, res0) => {
    const https  = require('https');
    const url    = require('url');
-   var Data = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").replace('Data=','');
+   var DataUrl = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").replace('Data=','');
    var type     = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2];    
    var i;
 	     
@@ -22,8 +22,8 @@ var urls = ['https://trends.google.com/trends/api/autocomplete/فتاة?hl=ar&tz
 var responses = [];
 var completed_requests = 0;
 
-for (i in Data) {
-	https.get(encodeURI('https://trends.google.com/trends/api/autocomplete/'+Data[i]), function(res) {
+for (i in DataUrl) {
+	https.get(encodeURI('https://trends.google.com/trends/api/autocomplete/'+DataUrl[i]), function(res) {
     //https.get(encodeURI(urls[i]), function(res) {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
