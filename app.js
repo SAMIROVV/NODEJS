@@ -21,7 +21,7 @@ for (i in urls) {
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
     var clean = JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})    
-        responses.push(urls[i].split('🔸')[0].replace('keyword=',''))+'💚'+clean);
+        responses.push(urls[i].split('🔸')[0].replace('keyword=','')+'💚'+clean);
         completed_requests++;
         if (completed_requests == urls.length) {          
             res0.send(responses);  }
