@@ -6,31 +6,21 @@ const app = express();
 
 //for google trends autocomplete                 link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=bitcoin?hl=en-US&tz=-60↕Data=فتاة?hl=ar&tz=-60↕Data=fille?hl=fr&tz=-60↕Data=film?hl=fr&tz=-60↕Data=fin?hl=fr&tz=-60🔰https://trends.google.com/trends/api/autocomplete/
     
-
-     app.get('/SCRAPER10', (req0, res0) => {
+app.get('/SCRAPER10', (req0, res0) => {
    const https  = require('https');
-   const url    = require('url');
-  // var typeurl = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2];         
-	     var urls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2])});
-   
-	     
-	     
-	     	    
-   var i;
-	     
-
-    	     
-	 
-var responses = [];
-var completed_requests = 0;
+   const url    = require('url');          
+	 var urls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2])});  	    
+         var i;
+	 var responses = [];
+         var completed_requests = 0; 
 
 for (i in urls) {
     https.get(encodeURI(urls[i]), function(res) {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
-    var clean= JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})    
-        responses.push(clean+'🐘'+i);
+    var clean[i]= JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})+'💚'+[i]    
+        responses.push(clean[i]);
         completed_requests++;
         if (completed_requests == urls.length) {          
             res0.send(responses);
