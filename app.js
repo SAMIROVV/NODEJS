@@ -19,8 +19,8 @@ for (i in urls) {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
-    var clean[i]= JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})+'💚'+[i]    
-        responses.push(clean[i]);
+    var clean[i]= JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})    
+        responses.push(clean);
         completed_requests++;
         if (completed_requests == urls.length) {          
             res0.send(responses);
