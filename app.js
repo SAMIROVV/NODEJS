@@ -10,7 +10,19 @@ const app = express();
      app.get('/SCRAPER10', (req0, res0) => {
    const https  = require('https');
    const url    = require('url');
-   var DataUrl = decodeURIComponent(url.format({ pathname: req0.originalUrl })).replace('Data=','m💚').split("🔰")[1].split("↕");
+   var arr = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕");
+	const index = arr.findIndex((el) => el === 'Data=');
+        arr[index] = 'https://trends.google.com/trends/api/autocomplete/';
+        arr;     
+
+
+	     
+	     
+	     
+	     
+	     
+	     
+	     
    var type     = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2];    
    var i;
 	     
@@ -32,7 +44,7 @@ for (i in urls) {
         responses.push(clean+'🐘'+i);
         completed_requests++;
         if (completed_requests == urls.length) {          
-            res0.send(responses);console.log(DataUrl)
+            res0.send(responses);console.log(arr)
         }
     });});
 }});
