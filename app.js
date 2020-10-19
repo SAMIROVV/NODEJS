@@ -24,7 +24,7 @@ for (i in urls) {
         responses.push(clean);
         completed_requests++;
         if (completed_requests == urls.length) {          
-            res0.send(urls[i]+'💚'+responses);  }
+            res0.send(i+'💚'+responses);  }
     });});})(i)   ;}
 	 });
 
