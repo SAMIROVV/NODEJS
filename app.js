@@ -23,28 +23,14 @@ for (i in urls) {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
-    var clean= JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})
-    
+    var clean= JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})+'🐘'+urls[i]    
         responses.push(clean);
         completed_requests++;
-        if (completed_requests == urls.length) {
-            // All download done, process responses array
-            console.log(responses);res0.send(responses);
+        if (completed_requests == urls.length) {          
+            res0.send(responses);
         }
     });});
-}
-	     
-	     
-	
-     
-	     
-	     
-	     
-
-
-
-	     
-	     });
+}});
 
 
 
