@@ -4,7 +4,7 @@ const app = express();
 
 //💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FROM BASED ON GOOGLE_TRENDS_API NPM💚💙💔//
 
-//for google trends autocomplete                 link ===  https://nodejsgithub.herokuapp.com/SCRAPER0?🔰Data=bitcoin?hl=en-US&tz=-60↕Data=bitcoin?hl=en-US&tz=-60↕Data=bitcoin?hl=en-US&tz=-60🔰SCPGTACM
+//for google trends autocomplete                 link ===  https://nodejsgithub.herokuapp.com/SCRAPER0?🔰Data=bitcoin?hl=en-US&tz=-60↕Data=فتاة?hl=ar&tz=-60↕Data=fille?hl=fr&tz=-60🔰SCPGTACM
     
 
      app.get('/SCRAPER10', (req0, res0) => {
@@ -41,7 +41,7 @@ for (i in urls) {
         responses.push(clean+'🐘'+i);
         completed_requests++;
         if (completed_requests == urls.length) {          
-            res0.send(responses);console.log(arr)
+            res0.send(responses);
         }
     });});
 }});
