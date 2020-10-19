@@ -10,12 +10,9 @@ const app = express();
      app.get('/SCRAPER10', (req0, res0) => {
    const https  = require('https');
    const url    = require('url');
-   var arr = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕");
-	const index = arr.findIndex((el) => el === 'Data=');
-        arr[index] = 'https://trends.google.com/trends/api/autocomplete/';
-        arr;     
+   var arr = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', 'https://trends.google.com/trends/api/autocomplete/');});
 
-
+	     
 	     
 	     
 	     
