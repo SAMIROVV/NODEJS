@@ -9,7 +9,7 @@ const app = express();
 app.get('/SCRAPER10', (req0, res0) => {
    const https  = require('https');
    const url    = require('url');          
-	 var urls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2])});  	    
+	 var urls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2]) });  	    
          var i;
 	 var responses = [];
          var completed_requests = 0; 
@@ -21,10 +21,10 @@ for (i in urls) {
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
     var clean = JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})    
-        responses.push(clean);
+        responses.push(urls[i].replace(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2]),'')+'💚'+clean);
         completed_requests++;
         if (completed_requests == urls.length) {          
-            res0.send(i+'💚'+responses);  }
+            res0.send(responses);  }
     });});})(i)   ;}
 	 });
 
