@@ -4,7 +4,7 @@ const app = express();
 
 //💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FROM BASED ON GOOGLE_TRENDS_API NPM💚💙💔//
 
-//for google trends autocomplete                 link ===  https://nodejsgithub.herokuapp.com/SCRAPER0?   https://trends.google.com/trends/api/autocomplete/      bitcoin?hl=en-US&tz=-60☆SCPGTACM
+//for google trends autocomplete                 link ===  https://nodejsgithub.herokuapp.com/SCRAPER0?🔰↕Data=bitcoin?hl=en-US&tz=-60↕Data=bitcoin?hl=en-US&tz=-60↕Data=bitcoin?hl=en-US&tz=-60🔰SCPGTACM
     
 
      app.get('/SCRAPER10', (req0, res0) => {
@@ -14,9 +14,10 @@ const app = express();
    const nbrurls  = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("■").length;
    var i;
 	     
-	     
+
+    	     
 	  
-var Data = req0.query.Data;
+var Data = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕Data=");
 var urls = ['https://trends.google.com/trends/api/autocomplete/فتاة?hl=ar&tz=-60','https://trends.google.com/trends/api/autocomplete/boy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/bit?hl=en-US&tz=-60'];
 var responses = [];
 var completed_requests = 0;
