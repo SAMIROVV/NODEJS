@@ -10,7 +10,7 @@ const app = express();
      app.get('/SCRAPER10', (req0, res0) => {
    const https  = require('https');
    const url    = require('url');
-   var arr = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', 'https://trends.google.com/trends/api/autocomplete/');});
+   var urls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', 'https://trends.google.com/trends/api/autocomplete/')});
 
 	     
 	     
@@ -27,7 +27,7 @@ const app = express();
     	     
 	  
 
-var urls = ['https://trends.google.com/trends/api/autocomplete/فتاة?hl=ar&tz=-60','https://trends.google.com/trends/api/autocomplete/boy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/bit?hl=en-US&tz=-60'];
+//var urls = ['https://trends.google.com/trends/api/autocomplete/فتاة?hl=ar&tz=-60','https://trends.google.com/trends/api/autocomplete/boy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/bit?hl=en-US&tz=-60'];
 var responses = [];
 var completed_requests = 0;
 
