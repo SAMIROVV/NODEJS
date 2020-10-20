@@ -7,7 +7,7 @@ const app = express();
 //for google trends autocomplete            link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=bitcoin?hl=en-US&tz=-60🔸Marker=bitcoin↕Data=فتاة?hl=ar&tz=-60🔸Marker=فتاة↕Data=fille?hl=fr&tz=-60🔸Marker=fille↕Data=film?hl=fr&tz=-60🔸Marker=film↕Data=boy?hl=fr&tz=-60🔸Marker=boy🔰https://trends.google.com/trends/api/autocomplete/
 //for google trends Dailt Trends            link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=hl=en-US&tz=-60&geo=AU&ns=15🔸Marker=AU↕Data=hl=fr&tz=-60&geo=FR&ns=15🔸Marker=FR🔰https://trends.google.com/trends/api/dailytrends?
 //for google trends Realtimerend            link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0🔸Marker=AU↕Data=hl=fr&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0🔸Marker=FR🔰https://trends.google.com/trends/api/realtimetrends?
-//for google trends Real  by1K              link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60🔸Marker=bitcoin↕Data=hl=fr&tz=-60&req={"comparisonItem":[{"keyword":"fille","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60🔸Marker=fille🔰https://trends.google.com/trends/api/explore?
+//for google trends Real  by1K              link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60🔸Marker=bitcoin↕Data=hl=fr&tz=-60&req={"comparisonItem":[{"keyword":"fille","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60🔸Marker=fille🔰https://trends.google.com/trends/api/explore?🔰SCPGTTS
     
 
 app.get('/SCRAPER10', (req0, res0) => {
@@ -17,8 +17,8 @@ app.get('/SCRAPER10', (req0, res0) => {
          var i;
 	 var responses = [];
          var completed_requests = 0; 
-         var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2]
-	 
+         var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2];
+	 var kind = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[3]
 	 
 var htmlEntities = {
     nbsp: ' ',
@@ -84,11 +84,17 @@ for (i in urls) {
 											      https.get({hostname: 'trends.google.com', path: encodeURI(urls[i].split('🔸')[0]).replace('trends.google.com',''), method: 'GET', headers: {'cookie': cookie} }, (res) => {
                                                                                               let data = '';
                                                                                               res.on('data', (chunk) => {data += chunk; });
-                                                                                              res.on('end', () => { var td = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+item.request+'☉'+item.token})   ;
+                                                                                              res.on('end', () => { var td = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
                                                                                                                         responses.push(urls[i].split('🔸')[1]+'💚'+td);
 														        completed_requests++;
-											                                if (completed_requests == urls.length) { res0.send(responses);  }
-											
+											                                if (completed_requests == urls.length) { 
+																if(kind === 'SCPGTEXPLORE' || kind === ''){ res0.send(responses); }
+																if(kind === 'SCPGTTS')              { res0.send(responses); }
+																
+															
+															
+															
+															}						
 });});
 	      }   
 	    
