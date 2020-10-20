@@ -30,7 +30,7 @@ for (i in urls) {
 
 		   }
     
-	    var clean = test();
+	    var clean = JSON.stringify(test());
 	    
         responses.push(urls[i].split('🔸')[1].replace('Keyword=','')+'💚'+clean);
         completed_requests++;
