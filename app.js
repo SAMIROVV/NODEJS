@@ -93,10 +93,17 @@ for (i in urls) {
 														       }
 														  
 														  
-														  
-														   
-														   
-														   
+														        if(kind === 'SCPGTTS'){		
+                                                                                                                               https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'timeseries☉{')[0].split('☉')[1], token: filterItems(td, 'timeseries☉{')[0].split('☉')[2],tz: req0.query.tz[0]} })  , (res) => {  
+                                                                                                                               let data = '';
+															       res.on('data', (chunk) => {data += chunk; });
+														               res.on('end', () => {var clean = JSON.parse(data.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉['+item.value+']💙💔'})
+														                                        responses.push(urls[i].split('🔸')[1]+'💚'+clean);
+														                                        completed_requests++;
+															                                if (completed_requests == urls.length) {res0.send(responses); }
+														                                    });});
+															
+															}
 											                                 
 																								
 																
@@ -273,7 +280,7 @@ https.get({hostname: 'trends.google.com', path: encodeURI(decodeURIComponent(url
              https.get(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'timeseries☉{')[0].split('☉')[1], token: filterItems(td, 'timeseries☉{')[0].split('☉')[2],tz: req0.query.tz[0]} })  , (res) => {  
                 let data = '';
                 res.on('data', (chunk) => {data += chunk; });
-                res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉['+item.value+']💙💔'})       );    });});}
+                res.on('end', () => {res0.header('Content-Type', 'application/json').send(JSON.parse(data.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉['+item.value+']💙💔'})         );         });});}
 		    
 	    
         if(type === 'SCPGTGEO'){		
