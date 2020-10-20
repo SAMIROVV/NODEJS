@@ -64,10 +64,13 @@ for (i in urls) {
 	   
 		   if(type === 'https://trends.google.com/trends/api/autocomplete/')    { var clean = JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type}).join('💙💔');
 										              responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+											      completed_requests++;
+											      if (completed_requests == urls.length) { res0.send(responses);  }
 	      }
 	    
 	           if(type === 'https://trends.google.com/trends/api/dailytrends?')     { var clean  = JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return '🐸🐲'+item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query}).join('💙💔')+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet}).join('💙💔')   }) ;
 										              responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+											      completed_requests++;
 	      }
 	    
 	           if(type === 'https://trends.google.com/trends/api/realtimetrends?')  { var clean  = JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet}).join('💙💔')})       		
@@ -87,9 +90,8 @@ for (i in urls) {
 	    
 	    
 	   
-        completed_requests++;
-        if (completed_requests == urls.length) {          
-            res0.send(responses);  }
+        //completed_requests++;
+        //if (completed_requests == urls.length) { res0.send(responses);  }
     });});})(i)   ;}
 	 });
 
