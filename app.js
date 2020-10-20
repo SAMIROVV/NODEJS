@@ -18,18 +18,18 @@ app.get('/SCRAPER10', (req0, res0) => {
          var completed_requests = 0; 
          var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2]
 	 
-	 function escapeHtml(text) {
-  var map = {
-    '&amp;' : '&',
-    '&lt;'  : '<',
-    '&gt;'  : '>',
-    '&quot;': '"',
-    '&#039;': "'"
-  };
-  
-  return text.replace(/[&amp;&lt;&gt;&quot;&#039;]/g, function(m) { return map[m]; });
+	 function decodeHtml(str)
+{
+    var map =
+    {
+        '&amp;': '&',
+        '&lt;': '<',
+        '&gt;': '>',
+        '&quot;': '"',
+        '&#039;': "'"
+    };
+    return str.replace(/&amp;|&lt;|&gt;|&quot;|&#039;/g, function(m) {return map[m];});
 }
-	 
 	 
 	 
 	 
@@ -42,7 +42,7 @@ for (i in urls) {
 	
 	   
 		   if(type === 'https://trends.google.com/trends/api/autocomplete/'){ var clean = JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});
-										      responses.push(urls[i].split('🔸')[1]+'💚'+escapeHtml(clean));
+										      responses.push(urls[i].split('🔸')[1]+'💚'+decodeHtml(clean));
 	      }
 	    
 	           if(type === 'https://trends.google.com/trends/api/dailytrends?'){ var clean  = JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return '🐸🐲'+item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query+'💙💔'})+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet+'💙💔'})   }) ;
@@ -50,7 +50,7 @@ for (i in urls) {
 	      }
 	    
 	           if(type === 'https://trends.google.com/trends/api/realtimetrends?'){ var clean  = JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet+'💙💔'})})       		
-										      responses.push(urls[i].split('🔸')[1]+'💚'+escapeHtml(clean));
+										      responses.push(urls[i].split('🔸')[1]+'💚'+decodeHtml(clean));
 	      }
 		   
 		   
