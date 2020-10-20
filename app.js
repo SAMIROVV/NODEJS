@@ -74,12 +74,13 @@ for (i in urls) {
 										              responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 	      }   
 	    
-	           if(type === 'https://trends.google.com/trends/api/explore?')         { var cookie = res.headers['set-cookie'][0].split(';')[0];			   
+	           if(type === 'https://trends.google.com/trends/api/explore?')         { var cookie = res.headers['set-cookie'][0].split(';')[0];
+											 var urll = {hostname: 'trends.google.com', path: encodeURI(urls[i].split('🔸')[0]).replace('trends.google.com',''), method: 'GET', headers: {'cookie': cookie} }
 			                                                                      //https.get({hostname: 'trends.google.com', path: encodeURI(urls[i].split('🔸')[0]).replace('trends.google.com',''), method: 'GET', headers: {'cookie': cookie} }, (res) => {
                                                                                               //let data = '';
                                                                                              // res.on('data', (chunk) => {data += chunk; });
                                                                                               //res.on('end', () => { var td = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
-                                                                                                                        responses.push(urls[i].split('🔸')[1]+'💚'+cookie);
+                                                                                                                        responses.push(urls[i].split('🔸')[1]+'💚'+urll);
 											
 //});});
 	      }   
