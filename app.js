@@ -6,7 +6,7 @@ const app = express();
 
 //for google trends autocomplete            link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=bitcoin?hl=en-US&tz=-60🔸Marker=bitcoin↕Data=فتاة?hl=ar&tz=-60🔸Marker=فتاة↕Data=fille?hl=fr&tz=-60🔸Marker=fille↕Data=film?hl=fr&tz=-60🔸Marker=film↕Data=boy?hl=fr&tz=-60🔸Marker=boy🔰https://trends.google.com/trends/api/autocomplete/
 //for google trends Dailt Trends            link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=hl=en-US&tz=-60&geo=AU&ns=15🔸Marker=AU↕Data=hl=fr&tz=-60&geo=FR&ns=15🔸Marker=FR🔰https://trends.google.com/trends/api/dailytrends?
-//for google trends Realtimerend            link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0🔸Marker=AU🔰https://trends.google.com/trends/api/realtimetrends?
+//for google trends Realtimerend            link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0🔸Marker=AU↕Data=hl=fr&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0🔸Marker=FR🔰https://trends.google.com/trends/api/realtimetrends?
   
 
 app.get('/SCRAPER10', (req0, res0) => {
