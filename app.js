@@ -19,27 +19,21 @@ app.get('/SCRAPER10', (req0, res0) => {
          var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2]
 	 
 	 
-
-
-	
-
-	
-	function decodeHtml (input) {
-  var entities= {
-    "&amp;": "&",
-    "&lt;": "<",
-    "&gt;": ">",
-	 "&#039;": "'" 
-    //....
+function decodeHtml(text) {
+  var map = {
+    "&amp;"  : "&",
+    "&lt;"   : "<",
+    "&gt;"   : ">",
+    "&#039;" : "'",
+    "&quot;" : "'",       
   };
-
-  for (var prop in entities) {
-    if (entities.hasOwnProperty(prop)) {
-      input = input.toString().replace(new RegExp(prop, "g"), entities[prop]);
-    }
-  }
-  return input;
+  
+  return text.toString().replace(/&#039;/g, function(m) { return map[m]; });
 }
+
+	
+
+	
 	
 	 
 for (i in urls) {
