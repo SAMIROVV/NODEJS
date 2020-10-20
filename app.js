@@ -21,7 +21,7 @@ for (i in urls) {
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
 	    
-    var clean =    JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});  
+    var clean =    JSON.parse(data.slice(5))//.default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});  
 	    
 	    
 	    
