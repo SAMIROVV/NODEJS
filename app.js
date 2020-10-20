@@ -71,7 +71,6 @@ for (i in urls) {
 	           if(type === 'https://trends.google.com/trends/api/dailytrends?')     { var clean  = JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return '🐸🐲'+item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query}).join('💙💔')+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet}).join('💙💔')   }) ;
 										              responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 											      completed_requests++;
-											      completed_requests++;
 											      if (completed_requests == urls.length) { res0.send(responses);  }
 	      }
 	    
