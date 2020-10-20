@@ -35,7 +35,7 @@ app.get('/SCRAPER10', (req0, res0) => {
 
   for (var prop in entities) {
     if (entities.hasOwnProperty(prop)) {
-      input = input.replace(new RegExp(prop, "g"), entities[prop]);
+      input = input.toString().replace(new RegExp(prop, "g"), entities[prop]);
     }
   }
   return input;
