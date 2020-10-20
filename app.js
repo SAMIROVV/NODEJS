@@ -4,8 +4,11 @@ const app = express();
 
 //💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FROM BASED ON GOOGLE_TRENDS_API NPM💚💙💔//
 
-//for google trends autocomplete                 link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=bitcoin?hl=en-US&tz=-60🔸Keyword=bitcoin↕Data=فتاة?hl=ar&tz=-60🔸Keyword=فتاة↕Data=fille?hl=fr&tz=-60🔸Keyword=fille↕Data=film?hl=fr&tz=-60🔸Keyword=film↕Data=boy?hl=fr&tz=-60🔸Keyword=boy🔰https://trends.google.com/trends/api/autocomplete/
-    
+//for google trends autocomplete            link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=bitcoin?hl=en-US&tz=-60🔸Marker=bitcoin↕Data=فتاة?hl=ar&tz=-60🔸Marker=فتاة↕Data=fille?hl=fr&tz=-60🔸Marker=fille↕Data=film?hl=fr&tz=-60🔸Marker=film↕Data=boy?hl=fr&tz=-60🔸Marker=boy🔰https://trends.google.com/trends/api/autocomplete/
+//for google trends Dailt Trends            link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=hl=en-US&tz=-60&geo=AU&ns=15🔸Marker=AU↕Data=hl=fr&tz=-60&geo=FR&ns=15🔸Marker=FR🔰https://trends.google.com/trends/api/dailytrends?
+//for google trends Realtimerend            link ===  https://nodejsgithub.herokuapp.com/SCRAPER10?🔰Data=hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0🔸Marker=AU🔰https://trends.google.com/trends/api/realtimetrends?
+  
+
 app.get('/SCRAPER10', (req0, res0) => {
    const https  = require('https');
    const url    = require('url');          
@@ -23,11 +26,15 @@ for (i in urls) {
 	
 	   
 		   if(type === 'https://trends.google.com/trends/api/autocomplete/'){ var clean = JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});
-										      responses.push(urls[i].split('🔸')[1].replace('Keyword=','')+'💚'+clean);
+										      responses.push(urls[i].split('🔸')[1].replace('Marker=','')+'💚'+clean);
 	      }
 	    
 	           if(type === 'https://trends.google.com/trends/api/dailytrends?'){ var clean  = JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return '🐸🐲'+item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query+'💙💔'})+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet+'💙💔'})   }) ;
-										      responses.push(urls[i].split('🔸')[1].replace('Keyword=','')+'💚'+clean);
+										      responses.push(urls[i].split('🔸')[1].replace('Marker=','')+'💚'+clean);
+	      }
+	    
+	           if(type === 'https://trends.google.com/trends/api/realtimetrends?'){ var clean  = JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet+'💙💔'})})       		
+										      responses.push(urls[i].split('🔸')[1].replace('Marker=','')+'💚'+clean);
 	      }
 		   
 		   
@@ -438,7 +445,7 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 		
 		
 	if(type === 'SCPGTRTT'){
-		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet+'💙💔'})}) )	;}
+		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet+'💙💔'})})        )	;}
 		
 	if(type === 'SCPGTEXPLORE'){
 		res0.header('Content-Type', 'application/json').send(JSON.parse(body.slice(4)).widgets+'💙💔');}	
