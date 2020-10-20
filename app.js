@@ -52,8 +52,8 @@ for (i in urls) {
 										      responses.push(urls[i].split('🔸')[1]+'💚'+clean);
 	      }
 	    
-	           if(type === 'https://trends.google.com/trends/api/realtimetrends?'){ var clean  = JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet+'💙💔'})})       		
-										      responses.push(urls[i].split('🔸')[1]+'💚'+decodeHtml(clean));
+	           if(type === 'https://trends.google.com/trends/api/realtimetrends?'){ var clean  = JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet.replace('&#039;','🍉')+'💙💔'})})       		
+										      responses.push(urls[i].split('🔸')[1]+'💚'+clean);
 	      }
 		   
 		   
