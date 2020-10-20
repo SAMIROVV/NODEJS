@@ -21,11 +21,11 @@ app.get('/SCRAPER10', (req0, res0) => {
 	 
 function decodeHtml(text) {
   var map = {
-    "&amp;"  : "&",
-    "&lt;"   : "<",
-    "&gt;"   : ">",
-    '&#039;' : "'",
-    "&quot;" : "'",       
+    '&amp;'  : '&',
+    '&lt;'   : '<',
+    '&gt;'   : '>',
+    '&#039;' : "🍉",
+    '&quot;' : '"',       
   };
   
   return text.toString().replace(/[&#039;]/g, function(m) { return map[m]; });
