@@ -24,11 +24,11 @@ function decodeHtml(text) {
     "&amp;"  : "&",
     "&lt;"   : "<",
     "&gt;"   : ">",
-    "&#039;" : "'",
+    '&#039;' : "'",
     "&quot;" : "'",       
   };
   
-  return text.toString().replace(/&#039;/g, function(m) { return map[m]; });
+  return text.toString().replace(/[&#039;]/g, function(m) { return map[m]; });
 }
 
 	
