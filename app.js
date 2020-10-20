@@ -13,14 +13,18 @@ app.get('/SCRAPER10', (req0, res0) => {
          var i;
 	 var responses = [];
          var completed_requests = 0; 
-
+         var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2]
 for (i in urls) {
 	(function(i){
     https.get(encodeURI(urls[i].split('🔸')[0]), function(res) {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
-    var clean = JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})    
+	    
+    var clean =    JSON.parse(data)//.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});  
+	    
+	    
+	    
         responses.push(urls[i].split('🔸')[1].replace('Keyword=','')+'💚'+clean);
         completed_requests++;
         if (completed_requests == urls.length) {          
