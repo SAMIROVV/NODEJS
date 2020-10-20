@@ -91,17 +91,19 @@ for (i in urls) {
 														               completed_requests++;
 															       if (completed_requests == urls.length) {res0.send(responses); }
 														       }
+														  
+														  
+														  
 														   
 														   
 														   
 											                                 
-																
-																
+																								
 																
 															
 															
 															
-															}						
+																			
 });});
 	      }   
 	    
