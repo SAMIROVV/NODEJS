@@ -81,7 +81,7 @@ for (i in urls) {
                                                                                               res.on('end', () => { var td = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
                                                                                                                         responses.push(urls[i].split('🔸')[1]+'💚'+td);
 											
-//});});
+});});
 	      }   
 	    
 	    
