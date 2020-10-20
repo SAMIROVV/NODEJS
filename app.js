@@ -62,20 +62,24 @@ for (i in urls) {
     res.on('end', () => {
 	
 	   
-		   if(type === 'https://trends.google.com/trends/api/autocomplete/'){ var clean = JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type}).join('💙💔');
-										      responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+		   if(type === 'https://trends.google.com/trends/api/autocomplete/')    { var clean = JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type}).join('💙💔');
+										              responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 	      }
 	    
-	           if(type === 'https://trends.google.com/trends/api/dailytrends?'){ var clean  = JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return '🐸🐲'+item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query}).join('💙💔')+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet}).join('💙💔')   }) ;
-										      responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+	           if(type === 'https://trends.google.com/trends/api/dailytrends?')     { var clean  = JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return '🐸🐲'+item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query}).join('💙💔')+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet}).join('💙💔')   }) ;
+										              responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 	      }
 	    
-	           if(type === 'https://trends.google.com/trends/api/realtimetrends?'){ var clean  = JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet}).join('💙💔')})       		
-										      responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+	           if(type === 'https://trends.google.com/trends/api/realtimetrends?')  { var clean  = JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet}).join('💙💔')})       		
+										              responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 	      }   
 	    
-	           if(type === 'https://trends.google.com/trends/api/explore?'){ var clean  = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
-                                                                                      responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+	           if(type === 'https://trends.google.com/trends/api/explore?')         { var cookie = res.headers['set-cookie'][0].split(';')[0];			   
+			                                                                      https.get({hostname: 'trends.google.com', path: encodeURI(urls[i].split('🔸')[0]).replace('trends.google.com',''), method: 'GET', headers: {'cookie': cookie} }, (res) => {
+                                                                                              let data = '';
+                                                                                              res.on('data', (chunk) => {data += chunk; });
+                                                                                              res.on('end', () => { var td = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
+                                                                                                                        responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(td));
 	      }   
 	    
 	    
