@@ -17,6 +17,22 @@ app.get('/SCRAPER10', (req0, res0) => {
 	 var responses = [];
          var completed_requests = 0; 
          var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2]
+	 
+	 function escapeHtml(text) {
+  var map = {
+    '&amp;' : '&',
+    '&lt;'  : '<',
+    '&gt;'  : '>',
+    '&quot;': '"',
+    '&#039;': "'"
+  };
+  
+  return text.replace(/[&amp;&lt;&gt;&quot;&#039;]/g, function(m) { return map[m]; });
+}
+	 
+	 
+	 
+	 
 for (i in urls) {
 	(function(i){
     https.get(encodeURI(urls[i].split('🔸')[0]), function(res) {
@@ -25,16 +41,16 @@ for (i in urls) {
     res.on('end', () => {
 	
 	   
-		   if(type === 'https://trends.google.com/trends/api/autocomplete/'){ var clean = JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title.replace("&#39;","'")+'☔☉'+item.type.replace("&#39;","'")+'💙💔'});
+		   if(type === 'https://trends.google.com/trends/api/autocomplete/'){ var clean = JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});
+										      responses.push(urls[i].split('🔸')[1]+'💚'+escapeHtml(clean));
+	      }
+	    
+	           if(type === 'https://trends.google.com/trends/api/dailytrends?'){ var clean  = JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return '🐸🐲'+item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query+'💙💔'})+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet+'💙💔'})   }) ;
 										      responses.push(urls[i].split('🔸')[1]+'💚'+clean);
 	      }
 	    
-	           if(type === 'https://trends.google.com/trends/api/dailytrends?'){ var clean  = JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return '🐸🐲'+item.title.query.replace("&#39;","'")+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query.replace("&#39;","'")+'💙💔'})+'☔☉'+item.articles.map(function (item) {  return item.title.replace("&#39;","'")+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet.replace("&#39;","'")+'💙💔'})   }) ;
-										      responses.push(urls[i].split('🔸')[1]+'💚'+clean);
-	      }
-	    
-	           if(type === 'https://trends.google.com/trends/api/realtimetrends?'){ var clean  = JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle.replace('&#39;',/'/g)+'☔☉'+item.source.replace('&#39;',/'/g)+'☔☉'+item.time+'☔☉'+item.snippet.replace('&#39;',/'/g)+'💙💔'})})       		
-										      responses.push(urls[i].split('🔸')[1]+'💚'+clean);
+	           if(type === 'https://trends.google.com/trends/api/realtimetrends?'){ var clean  = JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet+'💙💔'})})       		
+										      responses.push(urls[i].split('🔸')[1]+'💚'+escapeHtml(clean));
 	      }
 		   
 		   
