@@ -19,7 +19,8 @@ app.get('/SCRAPER10', (req0, res0) => {
          var completed_requests = 0; 
          var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2];
 	 var kind = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[3]
-	 
+	 const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)}
+
 var htmlEntities = {
     nbsp: ' ',
     cent: '¢',
@@ -85,11 +86,17 @@ for (i in urls) {
                                                                                               let data = '';
                                                                                               res.on('data', (chunk) => {data += chunk; });
                                                                                               res.on('end', () => { var td = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
-                                                                                                                        responses.push(urls[i].split('🔸')[1]+'💚'+td);
-														        completed_requests++;
-											                                if (completed_requests == urls.length) { 
-																if(kind === 'SCPGTEXPLORE' || kind === ''){ res0.send(responses); }
-																if(kind === 'SCPGTTS')              { res0.send(responses); }
+                                                                                                                       if(kind === 'SCPGTEXPLORE' || kind === ''){ 
+															       responses.push(urls[i].split('🔸')[1]+'💚'+td);
+														               completed_requests++;
+															       if (completed_requests == urls.length) {res0.send(responses); }
+														       }
+														   
+														   
+														   
+											                                 
+																
+																
 																
 															
 															
