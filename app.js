@@ -20,15 +20,26 @@ app.get('/SCRAPER10', (req0, res0) => {
 	 
 	 
 
-function decodeHtml (input) {
-  return input.replace(/&amp;/g, "&")
-              .replace(/&lt;/g, "<")
-	      .replace(/&gt;/g, ">")
-	      .replace(/&quot;/g, '"')
-	      .replace(/&#039;/g, "'");       
-              }	
+
 	
+
 	
+	function decodeHtml (input) {
+  var entities= {
+    "&amp;": "&",
+    "&lt;": "<",
+    "&gt;": ">",
+	 "&#039;": "'" 
+    //....
+  };
+
+  for (var prop in entities) {
+    if (entities.hasOwnProperty(prop)) {
+      input = input.replace(new RegExp(prop, "g"), entities[prop]);
+    }
+  }
+  return input;
+}
 	
 	 
 for (i in urls) {
