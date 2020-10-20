@@ -30,9 +30,9 @@ for (i in urls) {
 
 		   }
     
+	    var clean = test();
 	    
-	    
-        responses.push(urls[i].split('🔸')[1].replace('Keyword=','')+'💚'+test());
+        responses.push(urls[i].split('🔸')[1].replace('Keyword=','')+'💚'+clean);
         completed_requests++;
         if (completed_requests == urls.length) {          
             res0.send(responses);  console.log(urls)}
