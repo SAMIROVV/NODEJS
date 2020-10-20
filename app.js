@@ -28,7 +28,7 @@ function decodeHtml(text) {
     '&quot;' : '"',       
   };
   
-  return text.toString().replace(/[&#039;]/g, function(m) { return map[m]; });
+  return text.toString().replace(/[&#039;&amp;&lt;&gt;&quot;]/g, function(m) { return map[m]; });
 }
 
 	
