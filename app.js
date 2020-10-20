@@ -20,9 +20,16 @@ for (i in urls) {
     let data = '';
     res.on('data', (chunk) => {data += chunk; });
     res.on('end', () => {
-	    
-    var clean =    JSON.parse(data.slice(5))//.default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});  
-	    
+	
+	   function test() {
+		   if(type === 'https://trends.google.com/trends/api/autocomplete/'){  var clean =    JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});  
+	      }
+		   
+		   else{var clean =    JSON.parse(data.slice(5))//.default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});  
+	    }
+
+		   }
+    
 	    
 	    
         responses.push(urls[i].split('🔸')[1].replace('Keyword=','')+'💚'+clean);
