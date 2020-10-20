@@ -22,17 +22,17 @@ for (i in urls) {
     res.on('end', () => {
 	
 	   function test() {
-		   if(type === 'https://trends.google.com/trends/api/autocomplete/'){  var clean =    JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});  
+		   if(type === 'https://trends.google.com/trends/api/autocomplete/'){      JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});  
 	      }
 		   
-		   else{var clean =    JSON.parse(data.slice(5))//.default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});  
+		   else{    JSON.parse(data.slice(5))//.default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});  
 	    }
 
 		   }
     
 	    
 	    
-        responses.push(urls[i].split('🔸')[1].replace('Keyword=','')+'💚'+clean);
+        responses.push(urls[i].split('🔸')[1].replace('Keyword=','')+'💚'+test());
         completed_requests++;
         if (completed_requests == urls.length) {          
             res0.send(responses);  console.log(urls)}
