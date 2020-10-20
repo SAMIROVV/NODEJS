@@ -45,14 +45,14 @@ for (i in urls) {
 	
 	   
 		   if(type === 'https://trends.google.com/trends/api/autocomplete/'){ var clean = JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});
-										      responses.push(urls[i].split('🔸')[1]+'💚'+decodeHtml(clean));
+										      responses.push(urls[i].split('🔸')[1]+'💚'+clean);
 	      }
 	    
 	           if(type === 'https://trends.google.com/trends/api/dailytrends?'){ var clean  = JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return '🐸🐲'+item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query+'💙💔'})+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet+'💙💔'})   }) ;
 										      responses.push(urls[i].split('🔸')[1]+'💚'+clean);
 	      }
 	    
-	           if(type === 'https://trends.google.com/trends/api/realtimetrends?'){ var clean  = JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return decodeHtml(item.articleTitle)+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+decodeHtml(item.snippet)+'💙💔'})})       		
+	           if(type === 'https://trends.google.com/trends/api/realtimetrends?'){ var clean  = JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle.replace('&#039;',"🍉",)+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet.replace('&#039;',"🍉",)+'💙💔'})})       		
 										      responses.push(urls[i].split('🔸')[1]+'💚'+clean);
 	      }
 		   
