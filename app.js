@@ -19,17 +19,38 @@ app.get('/SCRAPER10', (req0, res0) => {
          var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2]
 	 
 	 
-function decodeHtml(text) {
-  var map = {
-    '&amp;'  : '&',
-    '&lt;'   : '<',
-    '&gt;'   : '>',
-    '&#039;' : "🍉",
-    '&quot;' : '"',       
-  };
-  
-  return text.toString().replace(/[&#039;&amp;&lt;&gt;&quot;]/g, function(m) { return map[m]; });
-}
+var htmlEntities = {
+    nbsp: ' ',
+    cent: '¢',
+    pound: '£',
+    yen: '¥',
+    euro: '€',
+    copy: '©',
+    reg: '®',
+    lt: '<',
+    gt: '>',
+    quot: '"',
+    amp: '&',
+    apos: '\''
+};
+
+function unescapeHTML(str) {
+    return str.replace(/\&([^;]+);/g, function (entity, entityCode) {
+        var match;
+
+        if (entityCode in htmlEntities) {
+            return htmlEntities[entityCode];
+            /*eslint no-cond-assign: 0*/
+        } else if (match = entityCode.match(/^#x([\da-fA-F]+)$/)) {
+            return String.fromCharCode(parseInt(match[1], 16));
+            /*eslint no-cond-assign: 0*/
+        } else if (match = entityCode.match(/^#(\d+)$/)) {
+            return String.fromCharCode(~~match[1]);
+        } else {
+            return entity;
+        }
+    });
+};
 
 	
 
@@ -52,8 +73,8 @@ for (i in urls) {
 										      responses.push(urls[i].split('🔸')[1]+'💚'+clean);
 	      }
 	    
-	           if(type === 'https://trends.google.com/trends/api/realtimetrends?'){ var clean  = JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle.replace([&#39;],"🍉",)+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet.replace('&#39;',"🍉",)+'💙💔'})})       		
-										      responses.push(urls[i].split('🔸')[1]+'💚'+clean);
+	           if(type === 'https://trends.google.com/trends/api/realtimetrends?'){ var clean  = JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet+'💙💔'})})       		
+										      responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 	      }
 		   
 		   
