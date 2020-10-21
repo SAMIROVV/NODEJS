@@ -154,16 +154,15 @@ for (i in urls) {
 
 //💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FROM BASED ON GOOGLE_TRENDS_API NPM USING MINIGET💚💙💔//
 
-//for google trends autocomplete            link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=bitcoin?hl=en-US&tz=-60🔸Marker=bitcoin↕Data=فتاة?hl=ar&tz=-60🔸Marker=فتاة↕Data=fille?hl=fr&tz=-60🔸Marker=fille↕Data=film?hl=fr&tz=-60🔸Marker=film↕Data=boy?hl=fr&tz=-60🔸Marker=boy🔰https://trends.google.com/trends/api/autocomplete/🔰🔰request🔰.get or emptu
+//for google trends autocomplete            link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=bitcoin?hl=en-US&tz=-60🔸Marker=bitcoin↕Data=فتاة?hl=ar&tz=-60🔸Marker=فتاة↕Data=fille?hl=fr&tz=-60🔸Marker=fille↕Data=film?hl=fr&tz=-60🔸Marker=film↕Data=boy?hl=fr&tz=-60🔸Marker=boy🔰https://trends.google.com/trends/api/autocomplete/🔰🔰request
 //for google trends Daily Trends            link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=hl=en-US&tz=-60&geo=AU&ns=15🔸Marker=AU↕Data=hl=fr&tz=-60&geo=FR&ns=15🔸Marker=FR🔰https://trends.google.com/trends/api/dailytrends?🔰🔰request🔰request
-//for google trends Realtimerend            link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0🔸Marker=AU↕Data=hl=fr&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0🔸Marker=FR🔰https://trends.google.com/trends/api/realtimetrends?🔰🔰.get or emptu
+//for google trends Realtimerend            link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0🔸Marker=AU↕Data=hl=fr&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0🔸Marker=FR🔰https://trends.google.com/trends/api/realtimetrends?🔰🔰request
 //multiple 1K   for TS/GEO/TPC/QRY/EXPLORE  link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60🔸Marker=bitcoin↕Data=hl=fr&tz=-60&req={"comparisonItem":[{"keyword":"fille","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60🔸Marker=fille🔰https://trends.google.com/trends/api/explore?🔰SCPGTTS🔰request
 //multiple 5K   for TS/GEO                  link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"},{"keyword":"boy","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60🔸Marker=1stfive↕Data=hl=fr&tz=-60&req={"comparisonItem":[{"keyword":"fille","geo":"","time":"today+5-y"},{"keyword":"belle","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60🔸Marker=2ndfive🔰https://trends.google.com/trends/api/explore?🔰SCPGTTS🔰request
 
 app.get('/SCRAPER1', (req0, res0) => {
    const url    = require('url');  
-   const mynpm  = require(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[4]);
-	const get  = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[5];
+   const mynpm  = require(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[4]);	
          var urls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2]) });  	    
          var i;
 	 var responses = [];
@@ -208,7 +207,7 @@ function unescapeHTML(str) {
 
 for (i in urls) {
 	(function(i){      
-      mynpm+''+get(encodeURI(urls[i].split('🔸')[0]) , (err, res, data) => {
+      mynpm(encodeURI(urls[i].split('🔸')[0]) , (err, res, data) => {
 		     
 		
 	if(type === 'https://trends.google.com/trends/api/autocomplete/')    { var clean = JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type}).join('💙💔');
