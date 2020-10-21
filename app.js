@@ -151,7 +151,14 @@ for (i in urls) {
 										              responses.push(urls[i].split('🔸')[1]+'💚'+data);
 											      completed_requests++;
 											      if (completed_requests == urls.length) { res0.send(responses);  }
-	      }   														
+	      }
+														   
+	if(kind === 'SCPURL')  { //var clean  = JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet}).join('💙💔')})       		
+										              responses.push(urls[i].split('🔸')[1]+'💚'+data);
+											      completed_requests++;
+											      if (completed_requests == urls.length) { res0.send(responses);  }
+	      }													   
+														  
 															
 																			
 });});
