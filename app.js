@@ -163,7 +163,7 @@ for (i in urls) {
 app.get('/SCRAPER1', (req0, res0) => {
    const url    = require('url');  
    const mynpm  = require(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[4]);
-	const get  = require(decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[5]);
+	const get  = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[5];
          var urls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2]) });  	    
          var i;
 	 var responses = [];
