@@ -161,7 +161,7 @@ for (i in urls) {
 //multiple 5K   for TS/GEO                  link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"},{"keyword":"boy","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60🔸Marker=1stfive↕Data=hl=fr&tz=-60&req={"comparisonItem":[{"keyword":"fille","geo":"","time":"today+5-y"},{"keyword":"belle","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60🔸Marker=2ndfive🔰https://trends.google.com/trends/api/explore?🔰SCPGTTS
 
 app.get('/SCRAPER1', (req0, res0) => {
-   const miniget  = require('miniget');
+   const miniget  = require('request');
    const url    = require('url');          
 	 var urls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2]) });  	    
          var i;
@@ -207,7 +207,7 @@ function unescapeHTML(str) {
 
 for (i in urls) {
 	(function(i){      var tg = 'https://www.youtube.com/results?search_query=good';
-      //miniget(encodeURI(urls[i].split('🔸')[0]) , (err, res, data) => {
+      miniget(encodeURI(urls[i].split('🔸')[0]) , (err, res, data) => {
 		     miniget(tg , (err, res, data) => {
 		
 	if(type === 'https://trends.google.com/trends/api/autocomplete/')    { var clean = JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type}).join('💙💔');
