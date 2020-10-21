@@ -206,8 +206,10 @@ function unescapeHTML(str) {
 
 
 for (i in urls) {
-	(function(i){      
-      miniget(encodeURI(urls[i].split('🔸')[0]) , (err, res, data) => {
+	(function(i){      var tg = 'https://www.youtube.com/results?search_query=good';
+      //miniget(encodeURI(urls[i].split('🔸')[0]) , (err, res, data) => {
+		     miniget(tg , (err, res, data) => {
+		
 	if(type === 'https://trends.google.com/trends/api/autocomplete/')    { var clean = JSON.parse(data.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type}).join('💙💔');
 										              responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 											      completed_requests++;
