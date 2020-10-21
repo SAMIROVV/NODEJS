@@ -274,7 +274,7 @@ for (i in urls) {
 															                                if (completed_requests == urls.length) {res0.send(responses); }											
 															 });}	
 												   				
-												     )};}
+												     });}
 												     
 												     
 												     
