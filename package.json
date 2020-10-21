@@ -16,6 +16,7 @@
     "google-trends-api": "^4.9.0",
     "miniget": "^2.0.1",
     "request": "^2.88.2",
+    "needle": "^2.5.2",
     "axios": "^0.20.0",
     "cheerio": "^0.22.0",
     "yt-search": "^2.3.2",
