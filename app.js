@@ -147,10 +147,14 @@ for (i in urls) {
 		
 														   
 															
-	if(type === 'https://www.youtube.com/results?search_query=')  {const line = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)[0]
-			                                               const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 2))			    
-			                                               const result = json ['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer'] ['contents'][0]['itemSectionRenderer']['contents']
-	                                                               responses.push(urls[i].split('🔸')[1]+'💚'+result);
+	if(type === 'https://www.youtube.com/results?search_query=')  {let match = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)
+                                                                       if (!match) match = response.match(/var\s*ytInitialData\s*=\s*(.*);\s*\n/)
+                                                                       const line = match[0].trim()
+								       const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 1))
+								       const result = json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']['contents'][0]['itemSectionRenderer']['contents']
+    
+    
+                                                                                              responses.push(urls[i].split('🔸')[1]+'💚'+result);
 											      completed_requests++;
 											      if (completed_requests == urls.length) { res0.send(responses);  }
 	      }
