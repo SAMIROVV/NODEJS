@@ -244,7 +244,7 @@ for (i in urls) {
 														                                        responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 														                                        completed_requests++;
 															                                if (completed_requests == urls.length) {res0.send(responses); }											                                   	
-															}
+															});}
 														   
 														   
 														        if(kind === 'SCPGTGEO'){		
@@ -254,7 +254,7 @@ for (i in urls) {
 														                                        completed_requests++;
 															                                if (completed_requests == urls.length) {res0.send(responses); }													                                    
 															
-															}
+															});}
 														   
 														   
 														   if(kind === 'SCPGTTPC'){		
@@ -263,7 +263,7 @@ for (i in urls) {
 											                                                                responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 														                                        completed_requests++;
 															                                if (completed_requests == urls.length) {res0.send(responses); }    														
-															} 
+															});} 
 												     
 												     
 												                     if(kind === 'SCPGTQRY'){		
@@ -271,9 +271,8 @@ for (i in urls) {
                           												       var clean = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value}).join('💙💔')+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value}).join('💙💔')
 											                                                                responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 														                                        completed_requests++;
-															                                if (completed_requests == urls.length) {res0.send(responses); }								                                    
-															
-															 };	
+															                                if (completed_requests == urls.length) {res0.send(responses); }											
+															 });}	
 												   				
 												     )};}
 												     
