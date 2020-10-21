@@ -229,7 +229,7 @@ for (i in urls) {
 	      }   
 	    
 	           if(type === 'https://trends.google.com/trends/api/explore?')         { var cookie = res.headers['set-cookie'][0].split(';')[0];
-											     mynpm ({hostname: 'trends.google.com', path: encodeURI(urls[i].split('🔸')[0]).replace('trends.google.com',''), method: 'GET', headers: {'cookie': cookie} }, (res) => {
+											     mynpm ({method: 'GET', uri: encodeURI(urls[i].split('🔸')[0]), headers: {'cookie': cookie} }, (res) => {
                                                                                                 var td = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
                                                                                                                        if(kind === 'SCPGTEXPLORE' || kind === ''){ 
 															       responses.push(urls[i].split('🔸')[1]+'💚'+td);
