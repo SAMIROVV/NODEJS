@@ -147,8 +147,10 @@ for (i in urls) {
 		
 														   
 															
-	if(type === 'https://www.youtube.com/results?search_query=')  { //var clean  = JSON.parse(data.slice(5)).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet}).join('💙💔')})       		
-										              responses.push(urls[i].split('🔸')[1]+'💚'+data);
+	if(type === 'https://www.youtube.com/results?search_query=')  {const line = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)[0]
+			                                               const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 2))			    
+			                                               const result = json ['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer'] ['contents'][0]['itemSectionRenderer']['contents']
+	                                                               responses.push(urls[i].split('🔸')[1]+'💚'+result);
 											      completed_requests++;
 											      if (completed_requests == urls.length) { res0.send(responses);  }
 	      }
