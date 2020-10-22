@@ -350,7 +350,7 @@ for (i in urls) {
 									       
 									       
 									       
-									       responses.push(urls[i].split('🔸')[1]+'💚'+amazing);
+									       responses.push(urls[i].split('🔸')[1]+'💚'+result);
 									            completed_requests++;
 											      if (completed_requests == urls.length) { res0.send(responses);  }
 	      }   
