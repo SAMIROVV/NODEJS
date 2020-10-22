@@ -512,7 +512,6 @@ for (i in urls) {
 
 
 app.get('/SCRAPER2', (req0, res0) => {
-   const https  = require('https');
    const url    = require('url');
    const googleTrends = require('google-trends-api');
 	 var Datas = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', ''   )  });  	    
@@ -520,8 +519,7 @@ app.get('/SCRAPER2', (req0, res0) => {
 	 var responses = [];
          var completed_requests = 0; 
          var kind = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[3]
-	 const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)}
-
+	 
 var htmlEntities = {
     nbsp: ' ',
     cent: '¢',
@@ -559,9 +557,9 @@ function unescapeHTML(str) {
 for (i in Datas) {
 	(function(i){
 
-	if(kind === 'SCPGTACM'){ googleTrends.autoComplete (Datas[i].split('🔸')[0])
-           .then(function(data){ var clean = JSON.parse(data).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});    
-			         responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+	if(kind === 'SCPGTACM'){ googleTrends.autoComplete (Datas[i].split('🔸')[0] , (err, res, data) => {  
+           var clean = JSON.parse(data).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});    
+			         responses.push(Datas[i].split('🔸')[1]+'💚'+clean);
 			 completed_requests++;
 			if (completed_requests == Datas.length) { res0.send(responses);  }
 			       }); }
