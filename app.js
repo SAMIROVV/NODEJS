@@ -279,23 +279,19 @@ for (i in urls) {
 												     });}
 	      
 												     
-		if(type === 'https://www.youtube.com/results?search_query=')  { //let match = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/);
-									        //if (!match) match = data.match(/var\s*ytInitialData\s*=\s*(.*);\s*\n/);
-									        //const line = match[0].trim();
+		if(type === 'https://www.youtube.com/results?search_query=')  { let match = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/);
+									        if (!match) match = data.match(/var\s*ytInitialData\s*=\s*(.*);\s*\n/);
+									        const line = match[0].trim();
 									        const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 1));
 									        const result = json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']['contents'][0]['itemSectionRenderer']['contents'];
-									            const amazing = result.filter(video => {
-        const typeYT = Object.keys(video)[0].replace('Renderer', '')
-        if (typeYT === 'video') return type === 'video'
-        else if (typeYT === 'playlist') return type === 'playlist'
-        else return ['video', 'playlist'].includes(type)   })
-.map(video => {
-        const type = Object.keys(video)[0].replace('Renderer', '')
-        const data = video[type + 'Renderer']
-        const identifier = data[type + 'Id']
+									            const amazing = result.filter(video => {											    
+											    return ['video', 'playlist'].includes(type);   }).map(video => {
+        const type = Object.keys(video)[0].replace('Renderer', '');
+        const data = video[type + 'Renderer'];
+        const identifier = data[type + 'Id'];
         if (type === 'video') {
-            const isStream = !Object.keys(data).includes('lengthText')
-            let length = Number.MAX_VALUE
+            const isStream = !Object.keys(data).includes('lengthText');
+            let length = Number.MAX_VALUE;
             if (!isStream) {
                 length = 0
                 data['lengthText']['simpleText'].split(':').reverse().forEach((value, index) => {
