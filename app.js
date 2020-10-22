@@ -292,9 +292,7 @@ for (i in urls) {
         ['contents'][0]['itemSectionRenderer']['contents']
     const amazing = result.filter(video => {
         const type = Object.keys(video)[0].replace('Renderer', '')
-        if (options.filter === 'video') return type === 'video'
-        else if (options.filter === 'playlist') return type === 'playlist'
-        else return ['video', 'playlist'].includes(type)
+         return ['video', 'playlist'].includes(type)
     }).map(video => {
         const type = Object.keys(video)[0].replace('Renderer', '')
         const data = video[type + 'Renderer']
