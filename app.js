@@ -592,7 +592,7 @@ for (i in Datas) {
     //for SCPGTTPC Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&language=en&category=0&engine=youtube&☆SCPGTTPC
     //for SCPGTQRY Link  ===  https://nodejsgithub.herokuapp.com/SCRAPER1?keyword=bitcoin&startTime=400&endTime=10&geo=&language=en&category=0&engine=youtube&☆SCPGTQRY
     
-    app.get('/SCRAPER1', (req, res) => {
+    app.get('/SCRAPER01', (req, res) => {
 const googleTrends = require('google-trends-api');
 const url = require('url');
 var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("☆")[1];
