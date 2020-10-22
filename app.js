@@ -210,35 +210,13 @@ duration :  JSON.stringify(data['lengthText']),//.simpleText,
         }
     }) 
 			    
-			    var clean= amazing.map(function (item) {  return '🔰🐲'+item.type+'☔☉'+item.identifier+'☔☉'+item.uri+'☔☉'+
-					item.title+'☔☉'+item.author.name+'☔☉'+item.thumbnails.url  
-				        +'☔☉'+item.description+'☔☉'+item.publishedTime+'☔☉'+item.viewCount+'☔☉'+item.duration  })    							       
-									       
-									       
-									       
-									       
-									       
-									       
-									       
-									       
-									       
-									       
-									       
-									       
-									       responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
-									            completed_requests++;
-											      if (completed_requests == urls.length) { res0.send(responses);  }
+			    var clean= amazing.map(function (item) {  return '🔰🐲'+item.type+'☔☉'+item.identifier+'☔☉'+item.uri+'☔☉'+item.title+'☔☉'+item.author.name+'☔☉'+item.thumbnails.url +'☔☉'+item.description+'☔☉'+item.publishedTime+'☔☉'+item.viewCount+'☔☉'+item.duration  })    	   									            								       									       
+		               responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+			 completed_requests++;
+			if (completed_requests == urls.length) { res0.send(responses);  }
 	      }   
 		
-		
-		
-		
-		
-	    
-	    
-	    
-	    
-	    
+    
     });});})(i)   ;}
 	 });
 
@@ -246,7 +224,7 @@ duration :  JSON.stringify(data['lengthText']),//.simpleText,
 
 
 
-//💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FROM BASED ON GOOGLE_TRENDS_API NPM USING REQUEST & NEEDLE💚💙💔//
+//💔💙💚BATCH URLS AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FROM BASED ON GOOGLE_TRENDS_API NPM USING REQUEST & NEEDLE💚💙💔//
 
 //for google trends autocomplete              (Rq & Ndle)    link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=bitcoin?hl=en-US&tz=-60🔸Marker=bitcoin↕Data=فتاة?hl=ar&tz=-60🔸Marker=فتاة↕Data=fille?hl=fr&tz=-60🔸Marker=fille↕Data=film?hl=fr&tz=-60🔸Marker=film↕Data=boy?hl=fr&tz=-60🔸Marker=boy🔰https://trends.google.com/trends/api/autocomplete/🔰🔰request
 //for google trends Daily Trends              (Rq & Ndle)    link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=hl=en-US&tz=-60&geo=AU&ns=15🔸Marker=AU↕Data=hl=fr&tz=-60&geo=FR&ns=15🔸Marker=FR🔰https://trends.google.com/trends/api/dailytrends?🔰🔰request🔰request
@@ -441,35 +419,15 @@ duration :  JSON.stringify(data['lengthText']),//.simpleText,
         }
     }) 
 			    
-			    var clean= amazing.map(function (item) {  return '🔰🐲'+item.type+'☔☉'+item.identifier+'☔☉'+item.uri+'☔☉'+
-					item.title+'☔☉'+item.author.name+'☔☉'+item.thumbnails.url  
-				        +'☔☉'+item.description+'☔☉'+item.publishedTime+'☔☉'+item.viewCount+'☔☉'+item.duration  })    							       
-									       
-									       
-									       
-									       
-									       
-									       
-									       
-									       
-									       
-									       
-									       
-									       
-									       responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
-									            completed_requests++;
-											      if (completed_requests == urls.length) { res0.send(responses);  }
+			    var clean= amazing.map(function (item) {  return '🔰🐲'+item.type+'☔☉'+item.identifier+'☔☉'+item.uri+'☔☉'+item.title+'☔☉'+item.author.name+'☔☉'+item.thumbnails.url       +'☔☉'+item.description+'☔☉'+item.publishedTime+'☔☉'+item.viewCount+'☔☉'+item.duration  })    							       
+			     responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+			 completed_requests++;
+			if (completed_requests == urls.length) { res0.send(responses);  }
 	      }   
 		
     
     
-    
-    
-		
-		
-											      
-	      
-	      										     
+      										     
 												     
 												     
 	});
@@ -487,49 +445,139 @@ duration :  JSON.stringify(data['lengthText']),//.simpleText,
 
 
 
+//💔💙💚 BATCH GOOGLE TRENDS SCRAPER API 💚💙💔//
+
+app.get('/SCRAPER2', (req0, res0) => {
+   const https  = require('https');
+   const url    = require('url');          
+	 var urls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2]) });  	    
+         var i;
+	 var responses = [];
+         var completed_requests = 0; 
+         var type = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2];
+	 var kind = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[3]
+	 const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)}
+
+var htmlEntities = {
+    nbsp: ' ',
+    cent: '¢',
+    pound: '£',
+    yen: '¥',
+    euro: '€',
+    copy: '©',
+    reg: '®',
+    lt: '<',
+    gt: '>',
+    quot: '"',
+    amp: '&',
+    apos: '\''
+};
+
+function unescapeHTML(str) {
+    return str.toString().replace(/\&([^;]+);/g, function (entity, entityCode) {
+        var match;
+
+        if (entityCode in htmlEntities) {
+            return htmlEntities[entityCode];
+            /*eslint no-cond-assign: 0*/
+        } else if (match = entityCode.match(/^#x([\da-fA-F]+)$/)) {
+            return String.fromCharCode(parseInt(match[1], 16));
+            /*eslint no-cond-assign: 0*/
+        } else if (match = entityCode.match(/^#(\d+)$/)) {
+            return String.fromCharCode(~~match[1]);
+        } else {
+            return entity;
+        }
+    });
+};
+	
+	 
+for (i in urls) {
+	(function(i){
 
 
 
-
-
-
-
-
-app.get('/SCRAPER11', (req0, res0) => {
-
-const async = require('async');
-const request = require('request');
-
-function httpGet(url, callback) {
-  const options = {
-    url :  url,
-    json : true
-  };
-  request(options,
-    function(err, res, body) {
-    var jsonclean=   JSON.parse(body.slice(5)).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'})+'💚🐌'
-      callback(err, jsonclean);
-    }
-  );
-}
-
-const urls = ['https://trends.google.com/trends/api/autocomplete/sexy?hl=en-US&tz=-60','https://trends.google.com/trends/api/autocomplete/boy?hl=en-US&tz=-60', 'https://trends.google.com/trends/api/autocomplete/bitcoin?hl=en-US&tz=-60'];
-
-
-async.map(urls, httpGet, function (err, res){
-  if (err) return console.log(err);
-  console.log(res);res0.send(res)
+})(i);	
+};
 });
 
 
 
+
+
+
+   //💔💙💚 BATCH GOOGLE TRENDS SCRAPER API 💚💙💔//
+
+  //multiple                               link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data={keyword: bitcoin, hl: en ,property: youtube}🔸Marker=bitcoin↕Data={keyword: fille, hl: fr ,property: youtube}🔸Marker=fille🔰🔰SCPGTACM
+
+
+app.get('/SCRAPER2', (req0, res0) => {
+   const https  = require('https');
+   const url    = require('url');
+   const googleTrends = require('google-trends-api');
+	 var Datas = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', ''   )  });  	    
+         var i;
+	 var responses = [];
+         var completed_requests = 0; 
+         var kind = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[3]
+	 const filterItems = (arr, query) => {  return arr.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) !== -1)}
+
+var htmlEntities = {
+    nbsp: ' ',
+    cent: '¢',
+    pound: '£',
+    yen: '¥',
+    euro: '€',
+    copy: '©',
+    reg: '®',
+    lt: '<',
+    gt: '>',
+    quot: '"',
+    amp: '&',
+    apos: '\''
+};
+
+function unescapeHTML(str) {
+    return str.toString().replace(/\&([^;]+);/g, function (entity, entityCode) {
+        var match;
+
+        if (entityCode in htmlEntities) {
+            return htmlEntities[entityCode];
+            /*eslint no-cond-assign: 0*/
+        } else if (match = entityCode.match(/^#x([\da-fA-F]+)$/)) {
+            return String.fromCharCode(parseInt(match[1], 16));
+            /*eslint no-cond-assign: 0*/
+        } else if (match = entityCode.match(/^#(\d+)$/)) {
+            return String.fromCharCode(~~match[1]);
+        } else {
+            return entity;
+        }
+    });
+};
+	
+	 
+for (i in Datas) {
+	(function(i){
+
+	if(kind === 'SCPGTACM'){ googleTrends.autoComplete (Datas[i].split('🔸')[0])
+           .then(function(data){ var clean = JSON.parse(data).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});    
+			         responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+			 completed_requests++;
+			if (completed_requests == Datas.length) { res0.send(responses);  }
+			       }); }
+		
+		
+		
+		
+		
+
+})(i);	
+};
 });
 
 
 
 
-
-   
 
 
 	
