@@ -1046,10 +1046,13 @@ if(pages=== 'twopages'){
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', () => {
-			    const line = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)[0]
-			    const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 2))			    
-			    const result = json ['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer'] ['contents'][0]['itemSectionRenderer']['contents']
-			    
+			    let match = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)
+    if (!match) match = data.match(/var\s*ytInitialData\s*=\s*(.*);\s*\n/)
+    const line = match[0].trim()
+    const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 1))
+    const result = json
+        ['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']
+        ['contents'][0]['itemSectionRenderer']['contents']
 			    const amazing = result.filter(video => {
         const type = Object.keys(video)[0].replace('Renderer', '')
         if (typeYT === 'video') return type === 'video'
@@ -1129,10 +1132,13 @@ https.get(decodeURIComponent(url.format({ pathname: encodeURI(req0.originalUrl) 
                     let data = '';
                     res.on('data', (chunk) => {data += chunk; });
                     res.on('end', () => {
-			    const line = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)[0]
-			    const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 2))			    
-			    const result = json ['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer'] ['contents'][0]['itemSectionRenderer']['contents']
-			    
+			    let match = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)
+    if (!match) match = data.match(/var\s*ytInitialData\s*=\s*(.*);\s*\n/)
+    const line = match[0].trim()
+    const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 1))
+    const result = json
+        ['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']
+        ['contents'][0]['itemSectionRenderer']['contents']
 			    const amazing = result.filter(video => {
         const type = Object.keys(video)[0].replace('Renderer', '')
         if (typeYT === 'video') return type === 'video'
