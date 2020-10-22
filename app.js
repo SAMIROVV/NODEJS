@@ -259,7 +259,7 @@ for (i in urls) {
 															});}
 														   
 														   
-														   if(kind === 'SCPGTTPC'){		
+														        if(kind === 'SCPGTTPC'){		
                                                                                                                                mynpm(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_topics☉{')[0].split('☉')[1], token: filterItems(td, 'related_topics☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (err, res, body) => {  
                                                                                                                                var clean = JSON.parse(body.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'☔☉'+item.topic.type+'☔☉'+item.value}).join('💙💔')+'🔰↕'+JSON.parse(body.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'☔☉'+item.topic.type+'☔☉'+item.value}).join('💙💔')   
 											                                                                responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
@@ -268,7 +268,7 @@ for (i in urls) {
 															});} 
 												     
 												     
-												                     if(kind === 'SCPGTQRY'){		
+												                        if(kind === 'SCPGTQRY'){		
                                                                                                                                mynpm(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[0].split('☉')[1], token: filterItems(td, 'related_queries☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (err, res, body) => {  
                           												       var clean = JSON.parse(body.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value}).join('💙💔')+'🔰↕'+JSON.parse(body.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value}).join('💙💔')
 											                                                                responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
@@ -286,10 +286,9 @@ for (i in urls) {
 									        if (!match) match = data.match(/var\s*ytInitialData\s*=\s*(.*);\s*\n/);
 									        const line = match[0].trim();
 									        const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 1));									        
-									    const resulta = json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']['contents'][0]['itemSectionRenderer']['contents'];
-									          const result = JSON.stringify(resulta); 
-									     const amazing = result.filter(video => {											    
-											    return ['video', 'playlist'].includes(type);   }).map(video => {
+									    const result = json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']['contents'][0]['itemSectionRenderer']['contents'];
+									          
+									     result.map(video => {
         const type = Object.keys(video)[0].replace('Renderer', '')
         const data = video[type + 'Renderer']
         const identifier = data[type + 'Id']
