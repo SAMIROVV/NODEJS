@@ -514,11 +514,12 @@ for (i in urls) {
 app.get('/SCRAPER2', (req0, res0) => {
    const url    = require('url');
    const googleTrends = require('google-trends-api');
-	 var Datas = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', ''   )  });  	    
+	 //var Datas = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', ''   )  });  	    
          var i;
 	 var responses = [];
          var completed_requests = 0; 
          var kind = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[3]
+	 var Datas = [{keyword: 'bitcoin', hl: 'en' ,property:'youtube'},{keyword: 'bi', hl: 'fr' ,property:'youtube'}]
 	 
 var htmlEntities = {
     nbsp: ' ',
