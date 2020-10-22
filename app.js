@@ -645,7 +645,7 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
     //for Ggle trends(TS&GEO for                 5K)    link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?https://trends.google.com/trends/api/explore?hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"},{"keyword":"girl","geo":"","time":"today+5-y"},{"keyword":"boy","geo":"","time":"today+5-y"},{"keyword":"girly","geo":"","time":"today+5-y"},{"keyword":"good","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60☆SCPGTTS 
     //for other websites                                link  ===  https://nodejsgithub.herokuapp.com/SCRAPER2?url☆SCPURL
 
-	app.get('/SCRAPER2', (req0, res0) => {
+	app.get('/SCRAPER23', (req0, res0) => {
            
 		const url = require('url'); 
                 const Request = require('request');
