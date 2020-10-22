@@ -145,6 +145,100 @@ for (i in urls) {
 															 };            });});    }   
 	    
 	    
+	    if(type === 'https://www.youtube.com/results?search_query=')  { 
+		      let match = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)
+    if (!match) match = data.match(/var\s*ytInitialData\s*=\s*(.*);\s*\n/)
+    const line = match[0].trim()
+    const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 1))
+    const result = json
+        ['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']
+        ['contents'][0]['itemSectionRenderer']['contents']
+    const amazing = result.filter(video => {
+        const type = Object.keys(video)[0].replace('Renderer', '')
+         return ['video', 'playlist'].includes(type)
+    }).map(video => {
+        const type = Object.keys(video)[0].replace('Renderer', '')
+        const data = video[type + 'Renderer']
+        const identifier = data[type + 'Id']
+        if (type === 'video') {
+            const isStream = !Object.keys(data).includes('lengthText')
+            let length = Number.MAX_VALUE
+            if (!isStream) {
+                length = 0
+                data['lengthText']['simpleText'].split(':').reverse().forEach((value, index) => {
+                    const i = Number(value)
+                    length += (index === 0 ? i : i * (60 ** index))
+                })
+            }
+            return {
+                type: type,
+                identifier: identifier,
+                uri: 'https://www.youtube.com/watch?v=' + identifier,
+                title: data['title']['runs'][0]['text'],
+description : data['descriptionSnippet']['runs'][0]['text'],
+publishedTime: JSON.stringify(data['publishedTimeText']),
+viewCount : JSON.stringify(data['viewCountText']),//.simpleText,   
+duration :  JSON.stringify(data['lengthText']),//.simpleText,    
+                author: {
+                    name: data['ownerText']['runs'][0]['text'],
+                    profile: data['channelThumbnailSupportedRenderers']['channelThumbnailWithLinkRenderer']
+                        ['thumbnail']['thumbnails'][0]['url'],
+                    uri: 'https://www.youtube.com' + data['ownerText']['runs'][0]['navigationEndpoint']
+                        ['commandMetadata']['webCommandMetadata']['url']
+                },
+                length: {
+                    ms: isStream ? length : length * 1000,
+                    sec: length
+                },
+                isStream: isStream,
+		thumbnails: data['thumbnail']['thumbnails'].slice(-1)[0]
+            }
+        } 
+        else return {
+            type: type,
+            identifier: identifier,
+            uri: 'https://www.youtube.com/playlist?list=' + identifier,
+            title: data['title']['simpleText'],
+            author: {
+                name: data['longBylineText']['runs'][0]['text'],
+                uri: 'https://www.youtube.com' + data['longBylineText']['runs'][0]['navigationEndpoint']
+                    ['commandMetadata']['webCommandMetadata']['url']
+            },
+            count: Number(data['videoCount']),
+            thumbnails: data['thumbnails']
+	
+        }
+    }) 
+			    
+			    var clean= amazing.map(function (item) {  return '🔰🐲'+item.type+'☔☉'+item.identifier+'☔☉'+item.uri+'☔☉'+
+					item.title+'☔☉'+item.author.name+'☔☉'+item.thumbnails.url  
+				        +'☔☉'+item.description+'☔☉'+item.publishedTime+'☔☉'+item.viewCount+'☔☉'+item.duration  })    							       
+									       
+									       
+									       
+									       
+									       
+									       
+									       
+									       
+									       
+									       
+									       
+									       
+									       responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+									            completed_requests++;
+											      if (completed_requests == urls.length) { res0.send(responses);  }
+	      }   
+		
+		
+		
+		
+		
+	    
+	    
+	    
+	    
+	    
     });});})(i)   ;}
 	 });
 
@@ -362,7 +456,7 @@ duration :  JSON.stringify(data['lengthText']),//.simpleText,
 									       
 									       
 									       
-									       responses.push(urls[i].split('🔸')[1]+'💚'+clean);
+									       responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 									            completed_requests++;
 											      if (completed_requests == urls.length) { res0.send(responses);  }
 	      }   
