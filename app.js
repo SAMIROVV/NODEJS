@@ -312,6 +312,10 @@ for (i in urls) {
                 identifier: identifier,
                 uri: 'https://www.youtube.com/watch?v=' + identifier,
                 title: data['title']['runs'][0]['text'],
+description : data['descriptionSnippet']['runs'][0]['text'],
+publishedTime: JSON.stringify(data['publishedTimeText']),
+viewCount : data['viewCountText'],//.simpleText,   
+duration :  data['lengthText'],//.simpleText,    
                 author: {
                     name: data['ownerText']['runs'][0]['text'],
                     profile: data['channelThumbnailSupportedRenderers']['channelThumbnailWithLinkRenderer']
@@ -324,8 +328,9 @@ for (i in urls) {
                     sec: length
                 },
                 isStream: isStream,
-                thumbnails: data['thumbnail']['thumbnails']
+		thumbnails: data['thumbnail']['thumbnails'].slice(-1)[0]
             }
+        } 
         } else return {
             type: type,
             identifier: identifier,
