@@ -206,7 +206,7 @@ function unescapeHTML(str) {
 
 
 for (i in urls) {
-	(function(i){      var urle = encodeURI(urls[i].split('🔸')[0]);
+	(function(i){      
       mynpm(encodeURI(urls[i].split('🔸')[0]) , (err, res, data) => {
 		     
 		
@@ -229,9 +229,8 @@ for (i in urls) {
 	      }   
 	    
         if(type === 'https://trends.google.com/trends/api/explore?')         { var cookie = res.headers['set-cookie'][0].split(';')[0];console.log(cookie);	
-									      mynpm({url:encodeURI(urls[i].split('🔸')[0]) , method: 'GET', headers: { 'Cookie': cookie } }, (err, res, body) => {
-									      	    //mynpm({url:encodeURI(urls[i].split('🔸')[0]) , method: 'GET', header: { 'Cookie': cookie } }, (err, res, body) => {
-                                                                                                var td = JSON.parse(body.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
+									            mynpm({url:encodeURI(urls[i].split('🔸')[0]) , method: 'GET', headers: { 'Cookie': cookie } }, (err, res, body) => {
+									      	    var td = JSON.parse(body.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
 											     
                                                                                                                        if(kind === 'SCPGTEXPLORE' || kind === ''){ 
 															       responses.push(urls[i].split('🔸')[1]+'💚'+td);
@@ -241,8 +240,8 @@ for (i in urls) {
 														  
 														  
 														        if(kind === 'SCPGTTS'){		
-                                                                                                                              mynpm(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'timeseries☉{')[0].split('☉')[1], token: filterItems(td, 'timeseries☉{')[0].split('☉')[2],tz: req0.query.tz[0]} })  , (res) => {                                                                                                                               					       
-														               var clean = JSON.parse(data.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉['+item.value+']'}).join('💙💔')
+                                                                                                                              mynpm(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/multiline', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'timeseries☉{')[0].split('☉')[1], token: filterItems(td, 'timeseries☉{')[0].split('☉')[2],tz: req0.query.tz[0]} })  , (err, res, body) => {                                                                                                                               					       
+														               var clean = JSON.parse(body.slice(5)).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉['+item.value+']'}).join('💙💔')
 														                                        responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 														                                        completed_requests++;
 															                                if (completed_requests == urls.length) {res0.send(responses); }											                                   	
@@ -250,8 +249,8 @@ for (i in urls) {
 														   
 														   
 														        if(kind === 'SCPGTGEO'){		
-                                                                                                                               mynpm(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'geo_map☉{')[0].split('☉')[1], token: filterItems(td, 'geo_map☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                                                                                                                               var clean = JSON.parse(data.slice(5)).default.geoMapData.map(function (item) {  return item.geoName+'☔☉['+item.value+']'}).join('💙💔')
+                                                                                                                               mynpm(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/comparedgeo', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'geo_map☉{')[0].split('☉')[1], token: filterItems(td, 'geo_map☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (err, res, body) => {  
+                                                                                                                               var clean = JSON.parse(body.slice(5)).default.geoMapData.map(function (item) {  return item.geoName+'☔☉['+item.value+']'}).join('💙💔')
 														                                        responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 														                                        completed_requests++;
 															                                if (completed_requests == urls.length) {res0.send(responses); }													                                    
@@ -260,8 +259,8 @@ for (i in urls) {
 														   
 														   
 														   if(kind === 'SCPGTTPC'){		
-                                                                                                                               mynpm(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_topics☉{')[0].split('☉')[1], token: filterItems(td, 'related_topics☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                                                                                                                               var clean = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'☔☉'+item.topic.type+'☔☉'+item.value}).join('💙💔')+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'☔☉'+item.topic.type+'☔☉'+item.value}).join('💙💔')   
+                                                                                                                               mynpm(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_topics☉{')[0].split('☉')[1], token: filterItems(td, 'related_topics☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (err, res, body) => {  
+                                                                                                                               var clean = JSON.parse(body.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'☔☉'+item.topic.type+'☔☉'+item.value}).join('💙💔')+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'☔☉'+item.topic.type+'☔☉'+item.value}).join('💙💔')   
 											                                                                responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 														                                        completed_requests++;
 															                                if (completed_requests == urls.length) {res0.send(responses); }    														
@@ -269,8 +268,8 @@ for (i in urls) {
 												     
 												     
 												                     if(kind === 'SCPGTQRY'){		
-                                                                                                                               mynpm(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[0].split('☉')[1], token: filterItems(td, 'related_queries☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (res) => {  
-                          												       var clean = JSON.parse(data.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value}).join('💙💔')+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value}).join('💙💔')
+                                                                                                                               mynpm(url.format({ protocol: 'https', hostname: 'trends.google.com/', pathname: 'trends/api/widgetdata/relatedsearches', query: {hl: req0.query.hl, tz: req0.query.tz[0], req: filterItems(td, 'related_queries☉{')[0].split('☉')[1], token: filterItems(td, 'related_queries☉{')[0].split('☉')[2]  ,tz: req0.query.tz[0]} })  , (err, res, body) => {  
+                          												       var clean = JSON.parse(body.slice(5)).default.rankedList[1].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value}).join('💙💔')+'🔰↕'+JSON.parse(data.slice(5)).default.rankedList[0].rankedKeyword.map(function (item) {  return item.query+'☔☉'+item.value}).join('💙💔')
 											                                                                responses.push(urls[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 														                                        completed_requests++;
 															                                if (completed_requests == urls.length) {res0.send(responses); }											
