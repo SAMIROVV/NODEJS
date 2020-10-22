@@ -508,18 +508,18 @@ for (i in urls) {
 
    //💔💙💚 BATCH GOOGLE TRENDS SCRAPER API 💚💙💔//
 
-  //multiple                               link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data={keyword: bitcoin, hl: en ,property: youtube}🔸Marker=bitcoin↕Data={keyword: fille, hl: fr ,property: youtube}🔸Marker=fille🔰🔰SCPGTACM
+  //multiple                               link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data={keyword: bitcoin}🔸Marker=bitcoin↕Data={keyword: fille}🔸Marker=fille🔰🔰SCPGTACM  hl: fr ,property: youtube
 
 
 app.get('/SCRAPER2', (req0, res0) => {
    const url    = require('url');
    const googleTrends = require('google-trends-api');
-	 //var Datas = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', ''   )  });  	    
+	 var Datas = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', ''   )  });  	    
          var i;
 	 var responses = [];
          var completed_requests = 0; 
          var kind = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[3]
-	 var Datas = [{keyword: 'bitcoin', hl: 'en' ,property:'youtube'},{keyword: 'bi', hl: 'fr' ,property:'youtube'}]
+	 //var Datas = [{keyword: 'bitcoin', hl: 'en' ,property:'youtube'},{keyword: 'bi', hl: 'fr' ,property:'youtube'}]
 	 
 var htmlEntities = {
     nbsp: ' ',
