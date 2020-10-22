@@ -228,14 +228,8 @@ for (i in urls) {
 											      if (completed_requests == urls.length) { res0.send(responses);  }
 	      }   
 	    
-        if(type === 'https://trends.google.com/trends/api/explore?')         { var cookie = res.headers['set-cookie'][0].split(';')[0];console.log(cookie)
-									      
-									      const options = { url:encodeURI(urls[i].split('🔸')[0]),headers: {'Content-Type': 'application/json', 'Accept': 'application/json','User-Agent': 'Request','X-platform': 'Node','cookie': cookie }
-};
-									      
-									      
-									      mynpm(options, (res) => {
-											     //mynpm({url:encodeURI(urls[i].split('🔸')[0]) , method: 'GET', headers: {'cookie': cookie} }, (res) => {
+        if(type === 'https://trends.google.com/trends/api/explore?')         { var cookie = res.headers['set-cookie'][0].split(';')[0];console.log(cookie)									      
+									      	     mynpm({url:encodeURI(urls[i].split('🔸')[0]) , method: 'GET', header: { 'Cookie': cookie } }, (res) => {
                                                                                                 var td = JSON.parse(data.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
                                                                                                                        if(kind === 'SCPGTEXPLORE' || kind === ''){ 
 															       responses.push(urls[i].split('🔸')[1]+'💚'+td);
