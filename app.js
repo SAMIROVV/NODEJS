@@ -282,13 +282,20 @@ for (i in urls) {
 		
 	      
 	      
-	      if(type === 'https://www.youtube.com/results?search_query=')  { let match = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/);
-									        if (!match) match = data.match(/var\s*ytInitialData\s*=\s*(.*);\s*\n/);
-									        const line = match[0].trim();
-									        const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 1));									        
-									    const result = json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']['contents'][0]['itemSectionRenderer']['contents'];
-									          
-									     result.map(video => {
+	      if(type === 'https://www.youtube.com/results?search_query=')  { 
+		      let match = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/)
+    if (!match) match = data.match(/var\s*ytInitialData\s*=\s*(.*);\s*\n/)
+    const line = match[0].trim()
+    const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 1))
+    const result = json
+        ['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']
+        ['contents'][0]['itemSectionRenderer']['contents']
+    const amazing = result.filter(video => {
+        const type = Object.keys(video)[0].replace('Renderer', '')
+        if (options.filter === 'video') return type === 'video'
+        else if (options.filter === 'playlist') return type === 'playlist'
+        else return ['video', 'playlist'].includes(type)
+    }).map(video => {
         const type = Object.keys(video)[0].replace('Renderer', '')
         const data = video[type + 'Renderer']
         const identifier = data[type + 'Id']
@@ -325,15 +332,14 @@ for (i in urls) {
             type: type,
             identifier: identifier,
             uri: 'https://www.youtube.com/playlist?list=' + identifier,
-            title: data['title']['simpleText'],	
+            title: data['title']['simpleText'],
             author: {
                 name: data['longBylineText']['runs'][0]['text'],
                 uri: 'https://www.youtube.com' + data['longBylineText']['runs'][0]['navigationEndpoint']
                     ['commandMetadata']['webCommandMetadata']['url']
             },
             count: Number(data['videoCount']),
-									       
-		thumbnails: data['thumbnails']
+            thumbnails: data['thumbnails']
 	
         }
     }) 
