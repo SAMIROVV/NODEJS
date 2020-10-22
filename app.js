@@ -286,12 +286,12 @@ for (i in urls) {
 									        const result = json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']['contents'][0]['itemSectionRenderer']['contents'];
 									            const amazing = result.filter(video => {											    
 											    return ['video', 'playlist'].includes(type);   }).map(video => {
-        const type = Object.keys(video)[0].replace('Renderer', '');
-        const data = video[type + 'Renderer'];
-        const identifier = data[type + 'Id'];
+        const type = Object.keys(video)[0].replace('Renderer', '')
+        const data = video[type + 'Renderer']
+        const identifier = data[type + 'Id']
         if (type === 'video') {
-            const isStream = !Object.keys(data).includes('lengthText');
-            let length = Number.MAX_VALUE;
+            const isStream = !Object.keys(data).includes('lengthText')
+            let length = Number.MAX_VALUE
             if (!isStream) {
                 length = 0
                 data['lengthText']['simpleText'].split(':').reverse().forEach((value, index) => {
@@ -304,10 +304,6 @@ for (i in urls) {
                 identifier: identifier,
                 uri: 'https://www.youtube.com/watch?v=' + identifier,
                 title: data['title']['runs'][0]['text'],
-description : data['descriptionSnippet']['runs'][0]['text'],
-publishedTime: JSON.stringify(data['publishedTimeText']),
-viewCount : JSON.stringify(data['viewCountText']),//.simpleText,   
-duration :  JSON.stringify(data['lengthText']),//.simpleText,    
                 author: {
                     name: data['ownerText']['runs'][0]['text'],
                     profile: data['channelThumbnailSupportedRenderers']['channelThumbnailWithLinkRenderer']
@@ -320,7 +316,7 @@ duration :  JSON.stringify(data['lengthText']),//.simpleText,
                     sec: length
                 },
                 isStream: isStream,
-		thumbnails: data['thumbnail']['thumbnails'].slice(-1)[0]
+                thumbnails: data['thumbnail']['thumbnails']
             }
         } else return {
             type: type,
