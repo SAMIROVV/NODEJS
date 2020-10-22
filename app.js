@@ -229,10 +229,10 @@ for (i in urls) {
 	      }   
 	    
         if(type === 'https://trends.google.com/trends/api/explore?')         { var cookie = res.headers['set-cookie'][0].split(';')[0];console.log(cookie);	
-									      mynpm({url:urle , method: 'GET', headers: { 'Cookie': cookie } }, (err, res, body) => {
+									      mynpm({url:encodeURI(urls[i].split('🔸')[0]) , method: 'GET', headers: { 'Cookie': cookie } }, (err, res, body) => {
 									      	    //mynpm({url:encodeURI(urls[i].split('🔸')[0]) , method: 'GET', header: { 'Cookie': cookie } }, (err, res, body) => {
                                                                                                 var td = JSON.parse(body.slice(4)).widgets.map(function (item) {  return item.id.replace('_0','').replace('_1','').replace('_2','').replace('_3','').replace('_4','')+'☉'+JSON.stringify(item.request)+'☉'+item.token})   ;
-											     console.log(td);
+											     
                                                                                                                        if(kind === 'SCPGTEXPLORE' || kind === ''){ 
 															       responses.push(urls[i].split('🔸')[1]+'💚'+td);
 														               completed_requests++;
