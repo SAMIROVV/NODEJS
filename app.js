@@ -314,8 +314,8 @@ for (i in urls) {
                 title: data['title']['runs'][0]['text'],
 description : data['descriptionSnippet']['runs'][0]['text'],
 publishedTime: JSON.stringify(data['publishedTimeText']),
-viewCount : data['viewCountText'],//.simpleText,   
-duration :  data['lengthText'],//.simpleText,    
+viewCount : JSON.stringify(data['viewCountText']),//.simpleText,   
+duration :  JSON.stringify(data['lengthText']),//.simpleText,    
                 author: {
                     name: data['ownerText']['runs'][0]['text'],
                     profile: data['channelThumbnailSupportedRenderers']['channelThumbnailWithLinkRenderer']
