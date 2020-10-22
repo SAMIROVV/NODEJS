@@ -331,7 +331,7 @@ duration :  data['lengthText'],//.simpleText,
 		thumbnails: data['thumbnail']['thumbnails'].slice(-1)[0]
             }
         } 
-        } else return {
+        else return {
             type: type,
             identifier: identifier,
             uri: 'https://www.youtube.com/playlist?list=' + identifier,
