@@ -279,12 +279,15 @@ for (i in urls) {
 												     });}
 	      
 												     
-		if(type === 'https://www.youtube.com/results?search_query=')  { let match = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/);
+		
+	      
+	      
+	      if(type === 'https://www.youtube.com/results?search_query=')  { let match = data.match(/window\["ytInitialData"]\s*=\s*(.*);+\n/);
 									        if (!match) match = data.match(/var\s*ytInitialData\s*=\s*(.*);\s*\n/);
 									        const line = match[0].trim();
 									        const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 1));
 									        const result = json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']['contents'][0]['itemSectionRenderer']['contents'];
-									            const amazing = result.filter(video => {											    
+									            const amazing = JSON.stringify(result).filter(video => {											    
 											    return ['video', 'playlist'].includes(type);   }).map(video => {
         const type = Object.keys(video)[0].replace('Renderer', '')
         const data = video[type + 'Renderer']
@@ -350,7 +353,7 @@ for (i in urls) {
 									       
 									       
 									       
-									       responses.push(urls[i].split('🔸')[1]+'💚'+result);
+									       responses.push(urls[i].split('🔸')[1]+'💚'+clean);
 									            completed_requests++;
 											      if (completed_requests == urls.length) { res0.send(responses);  }
 	      }   
