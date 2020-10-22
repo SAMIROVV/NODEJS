@@ -354,7 +354,7 @@ duration :  JSON.stringify(data['lengthText']),//.simpleText,
 									       
 									       
 									       
-									       responses.push(urls[i].split('🔸')[1]+'💚'+clean);
+									       responses.push(urls[i].split('🔸')[1]+'💚'+amazing);
 									            completed_requests++;
 											      if (completed_requests == urls.length) { res0.send(responses);  }
 	      }   
