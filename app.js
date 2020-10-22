@@ -447,7 +447,7 @@ duration :  JSON.stringify(data['lengthText']),//.simpleText,
 
 //💔💙💚 BATCH GOOGLE TRENDS SCRAPER API 💚💙💔//
 
-app.get('/SCRAPER2', (req0, res0) => {
+app.get('/SCRAPER22', (req0, res0) => {
    const https  = require('https');
    const url    = require('url');          
 	 var urls = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[2]) });  	    
