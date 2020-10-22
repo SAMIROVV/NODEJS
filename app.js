@@ -557,9 +557,9 @@ function unescapeHTML(str) {
 for (i in Datas) {
 	(function(i){
 
-	if(kind === 'SCPGTACM'){ googleTrends.autoComplete (Datas[i].split('🔸')[0] , (err, res, data) => {  
-           var clean = JSON.parse(data).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});    
-			         responses.push(Datas[i].split('🔸')[1]+'💚'+clean);
+	if(kind === 'SCPGTACM'){ googleTrends.autoComplete (Datas[i].split('🔸')[0] , function(err, results){  
+           var clean = JSON.parse(results).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});    
+			         responses.push(Datas[i].split('🔸')[1]+'💚'+clean);console.log(Datas);
 			 completed_requests++;
 			if (completed_requests == Datas.length) { res0.send(responses);  }
 			       }); }
