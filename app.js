@@ -284,7 +284,7 @@ for (i in urls) {
 									        const line = match[0].trim();
 									        const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 1));
 									        const result = json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']['contents'][0]['itemSectionRenderer']['contents'];
-									            responses.push(urls[i].split('🔸')[1]+'💚'+result);
+									            responses.push(urls[i].split('🔸')[1]+'💚'+JSON.stringify(result));
 									            completed_requests++;
 											      if (completed_requests == urls.length) { res0.send(responses);  }
 	      }   
