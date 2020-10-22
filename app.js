@@ -283,7 +283,7 @@ for (i in urls) {
 									        if (!match) match = data.match(/var\s*ytInitialData\s*=\s*(.*);\s*\n/);
 									        const line = match[0].trim();
 									        const json = JSON.parse(line.substring(line.indexOf('{'), line.length - 1));
-									        const result = json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']['contents'][0]['itemSectionRenderer']['contents'];
+									        const result = JSON.stringify(json['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']['contents'][0]['itemSectionRenderer']['contents']);
 									            const amazing = result.filter(video => {
         const typeYT = Object.keys(video)[0].replace('Renderer', '')
         if (typeYT === 'video') return type === 'video'
