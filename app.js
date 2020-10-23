@@ -515,7 +515,8 @@ app.get('/SCRAPER2', (req0, res0) => {
    const url    = require('url');
    const googleTrends = require('google-trends-api');
 	 var Datas = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', ''   )  });  	    
-         var i;
+         res0.send(Datas)
+	var i;
 	 var responses = [];
          var completed_requests = 0; 
          var kind = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[3]
