@@ -514,7 +514,7 @@ for (i in urls) {
 app.get('/SCRAPER2', (req0, res0) => {
    const url    = require('url');
    const googleTrends = require('google-trends-api');
-	 var Datas = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', ''   )  });  	    
+	 const Dat = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', ''   )  });  	    
          //res0.send(Datas[0])
 	var i;
 	 var responses = [];
@@ -559,11 +559,11 @@ function unescapeHTML(str) {
 for (i in Datas) {
 	(function(i){
 
-	if(kind === 'SCPGTACM'){googleTrends.autoComplete ({Keyword: Datas[i].split('🔸')[0].split('&')[0].replace('Keyword:',''), hl: Datas[i].split('🔸')[0].split('&')[1].replace('hl:','')}  , function(err, results){  
+	if(kind === 'SCPGTACM'){googleTrends.autoComplete ({Keyword: Dat[i].split('🔸')[0].split('&')[0].replace('Keyword:',''), hl: Dat[i].split('🔸')[0].split('&')[1].replace('hl:','')}  , function(err, results){  
            var clean = JSON.parse(results).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});    
-			         responses.push(Datas[i].split('🔸')[1]+'💚'+clean);console.log(Datas);
+			         responses.push(Dat[i].split('🔸')[1]+'💚'+clean);console.log(Dat);
 			 completed_requests++;
-			if (completed_requests == Datas.length) { res0.send(responses);  }
+			if (completed_requests == Dat.length) { res0.send(responses);  }
 			       }); }
 		
 		
