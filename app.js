@@ -508,7 +508,7 @@ for (i in urls) {
 
    //💔💙💚 BATCH GOOGLE TRENDS SCRAPER API 💚💙💔//
 
-  //multiple                               link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data={keyword: 'bitcoin', hl=en}🔸Marker=bitcoin↕Data={keyword: 'fille', hl=fr}🔸Marker=fille🔰🔰SCPGTACM  hl: fr ,property: youtube
+  //multiple                               link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&hl:en🔸Marker=bitcoin↕Data=keyword:fille&hl:fr🔸Marker=fille🔰🔰SCPGTACM  hl: fr ,property: youtube
 
 
 app.get('/SCRAPER2', (req0, res0) => {
@@ -559,7 +559,7 @@ function unescapeHTML(str) {
 for (i in Datas) {
 	(function(i){
 
-	if(kind === 'SCPGTACM'){ googleTrends.autoComplete (Datas[i].split('🔸')[0] , function(err, results){  
+	if(kind === 'SCPGTACM'){googleTrends.autoComplete ({Keyword: Datas[i].split('🔸')[0].split('&')[0].replace('Keyword:',''), hl: Datas[i].split('🔸')[0].split('&')[1].replace('hl:','')}  , function(err, results){  
            var clean = JSON.parse(results).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});    
 			         responses.push(Datas[i].split('🔸')[1]+'💚'+clean);console.log(Datas);
 			 completed_requests++;
