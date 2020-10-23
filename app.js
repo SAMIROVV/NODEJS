@@ -509,7 +509,8 @@ for (i in urls) {
    //💔💙💚 BATCH GOOGLE TRENDS SCRAPER API 💚💙💔//
 
   //For Autocomplete Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&hl:en🔸Marker=bitcoin↕Data=keyword:fille&hl:fr🔸Marker=fille🔰🔰SCPGTACM
-  //For Daily Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&timehour:400🔸Marker=bitcoin↕Data=geo:fr&hl:fr&timehour:100🔸Marker=fille🔰🔰SCPGTDTR
+  //For Daily Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&timehour:400🔸Marker=bitcoin↕Data=geo:FR&hl:fr&timehour:100🔸Marker=fille🔰🔰SCPGTDTR
+  //For RealT Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&category:all🔸Marker=bitcoin↕Data=geo:FR&hl:fr&category:e🔸Marker=fille🔰🔰SCPGTRTT
 
 
 app.get('/SCRAPER2', (req0, res0) => {
@@ -568,8 +569,16 @@ for (i in Datas) {
 		
 		
 	if(kind === 'SCPGTDTR'){googleTrends.dailyTrends ({geo: Datas[i].split('🔸')[0].split('&')[0].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[1].split(':')[1], trendDate: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[2].split(':')[1] * 60 * 60 * 1000))}).then(function(data){    
-           var clean = JSON.parse(data).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return '🐸🐲'+item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query+'💙💔'})+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet+'💙💔'}) })    
+           var clean = JSON.parse(data).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return '🐸🐲'+item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query}).join('💙💔')+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet}).join('💙💔') })    
 	                 responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+			 completed_requests++;
+			if (completed_requests == Datas.length) { res0.send(responses);  console.log(data);}
+			       }); }
+		
+		
+	if(kind === 'SCPGTRTT'){googleTrends.realTimeTrends ({geo: Datas[i].split('🔸')[0].split('&')[0].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[1].split(':')[1], category: Datas[i].split('🔸')[0].split('&')[2].split(':')[1] }).then(function(data){    
+           var clean = JSON.parse(data).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet}).join('💙💔')})           
+			 responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 			 completed_requests++;
 			if (completed_requests == Datas.length) { res0.send(responses);  console.log(data);}
 			       }); }
@@ -615,7 +624,8 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
            .then(function(data){res.header('Content-Type', 'application/json').send( JSON.parse(data).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return '🐸🐲'+item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query+'💙💔'})+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet+'💙💔'}) })    ).end();}); }
 	
 	if(type === 'SCPGTRTT'){ googleTrends.realTimeTrends ({geo: req.query.geo, hl: req.query.language, category: req.query.category})
-           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet+'💙💔'})}) ).end();}); }
+           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).storySummaries.trendingStories.map(function (item) {  return item.articles.map(function (item) {  return item.articleTitle+'☔☉'+item.source+'☔☉'+item.time+'☔☉'+item.snippet+'💙💔'})})           
+										    ).end();}); }
 
 
 	
