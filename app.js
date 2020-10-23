@@ -567,11 +567,11 @@ for (i in Datas) {
 			       }); }
 		
 		
-	if(kind === 'SCPGTDTR'){googleTrends.dailyTrends ({geo: Datas[i].split('🔸')[0].split('&')[0].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[1].split(':')[1], trendDate: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[2].split(':')[1] * 60 * 60 * 1000))}).then(function(data){    console.log('🤗🤗':data);
+	if(kind === 'SCPGTDTR'){googleTrends.dailyTrends ({geo: Datas[i].split('🔸')[0].split('&')[0].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[1].split(':')[1], trendDate: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[2].split(':')[1] * 60 * 60 * 1000))}).then(function(data){    
            var clean = JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return '🐸🐲'+item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query}).join('💙💔')+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet}).join('💙💔')   }) ;
 			 responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 			 completed_requests++;
-			if (completed_requests == Datas.length) { res0.send(responses);  }
+			if (completed_requests == Datas.length) { res0.send(responses);  console.log(data);}
 			       }); }
 		
 		
