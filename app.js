@@ -508,7 +508,8 @@ for (i in urls) {
 
    //💔💙💚 BATCH GOOGLE TRENDS SCRAPER API 💚💙💔//
 
-  //multiple                               link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&hl:en🔸Marker=bitcoin↕Data=keyword:fille&hl:fr🔸Marker=fille🔰🔰SCPGTACM  hl: fr ,property: youtube
+  //For Autocomplete Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&hl:en🔸Marker=bitcoin↕Data=keyword:fille&hl:fr🔸Marker=fille🔰🔰SCPGTACM
+  //For Daily Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&timehour=400🔸Marker=bitcoin↕Data=geo:fr&hl:fr&timehour=100🔸Marker=fille🔰🔰SCPGTDTR
 
 
 app.get('/SCRAPER2', (req0, res0) => {
@@ -558,9 +559,17 @@ function unescapeHTML(str) {
 for (i in Datas) {
 	(function(i){
 
-	if(kind === 'SCPGTACM'){googleTrends.autoComplete ({keyword: Datas[i].split('🔸')[0].split('&')[0].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[1].split(':')[1]}).then(function(results){    
-           var clean = JSON.parse(results).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});    
+	if(kind === 'SCPGTACM'){googleTrends.autoComplete ({keyword: Datas[i].split('🔸')[0].split('&')[0].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[1].split(':')[1]}).then(function(data){    
+           var clean = JSON.parse(data).default.topics.map(function (item) {  return item.title+'☔☉'+item.type}).join('💙💔');    
 			         responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+			 completed_requests++;
+			if (completed_requests == Datas.length) { res0.send(responses);  }
+			       }); }
+		
+		
+	if(kind === 'SCPGTDTR'){googleTrends.dailyTrends ({geo: Datas[i].split('🔸')[0].split('&')[0].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[1].split(':')[1], trendDate: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[2].split(':')[1] * 60 * 60 * 1000))}).then(function(data){    
+           var clean = JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return '🐸🐲'+item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query}).join('💙💔')+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet}).join('💙💔')   }) ;
+			 responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 			 completed_requests++;
 			if (completed_requests == Datas.length) { res0.send(responses);  }
 			       }); }
