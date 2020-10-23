@@ -511,8 +511,9 @@ for (i in urls) {
   //For Autocomplete Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&hl:en🔸Marker=bitcoin↕Data=keyword:fille&hl:fr🔸Marker=fille🔰🔰SCPGTACM
   //For Daily Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&timehour:400🔸Marker=bitcoin↕Data=geo:FR&hl:fr&timehour:100🔸Marker=fille🔰🔰SCPGTDTR
   //For RealT Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&category:all🔸Marker=bitcoin↕Data=geo:FR&hl:fr&category:e🔸Marker=fille🔰🔰SCPGTRTT
-  //multiple 1K   for TS/GEO/TPC/QRY/EXPLORE       Link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&startTime:400&endTime:10&geo:US&language:en&category:0&engine:youtube🔸Marker=bitcoin↕Data=keyword:FILLE&startTime:400&endTime:10&geo:FR&language:en&category:0&engine:youtube🔸Marker=FILLE🔰🔰SCPGTTS
-    //for SCPGTGEO Link  ===  h
+  //multiple 1K   for TS                           Link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&startTime:400&endTime:10&geo:US&language:en&category:0&engine:youtube🔸Marker=bitcoin↕Data=keyword:FILLE&startTime:400&endTime:10&geo:FR&language:en&category:0&engine:youtube🔸Marker=FILLE🔰🔰SCPGTTS
+  //multiple 1K   for GEO                          Link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&startTime:400&endTime:10&geo:US&resolution:&language:en&category:0&engine:youtube🔸Marker=bitcoin↕Data=keyword:FILLE&startTime:400&endTime:10&geo:FR&resolution:&language:en&category:0&engine:youtube🔸Marker=FILLE🔰🔰SCPGTTS
+    
 
 app.get('/SCRAPER2', (req0, res0) => {
    const url    = require('url');
@@ -593,6 +594,14 @@ for (i in Datas) {
 			       }); }
 		
 		
+	if(kind === 'SCPGTGEO'){googleTrends.interestByRegion ({keyword: Datas[i].split('🔸')[0].split('&')[0].split(':')[1], startTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[1].split(':')[1] * 60 * 60 * 1000)),endTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[2].split(':')[1] * 60 * 60 * 1000)), geo: Datas[i].split('🔸')[0].split('&')[3].split(':')[1], resolution: Datas[i].split('🔸')[0].split('&')[4].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[5].split(':')[1], category: Datas[i].split('🔸')[0].split('&')[6].split(':')[1], property: Datas[i].split('🔸')[0].split('&')[7].split(':')[1] }).then(function(data){    
+           var clean = JSON.parse(data).default.geoMapData.map(function (item) {  return item.geoName+'☔☉'+item.value}).join('💙💔')
+	                 responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+			 completed_requests++;
+			if (completed_requests == Datas.length) { res0.send(responses);  console.log(data);}
+			       }); }
+		
+		
 		
 		
 		
@@ -648,7 +657,10 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 										   ).end();});}
 	
 	if(type === 'SCPGTGEO'){ googleTrends.interestByRegion ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, resolution:req.query.resolution, hl: req.query.language, category: req.query.category, property: req.query.engine})
-           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.geoMapData.map(function (item) {  return item.geoName+'☔☉'+item.value+'💙💔'})).end();});}
+           .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.geoMapData.map(function (item) {  return item.geoName+'☔☉'+item.value+'💙💔'})
+										    
+										    
+										    ).end();});}
 
 	if(type === 'SCPGTTPC'){ googleTrends.relatedTopics ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)), endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category ,property: req.query.engine})
            .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.rankedList[1].rankedKeyword.map(function (item) {  return item.topic.title+'☔☉'+item.topic.type+'☔☉'+item.value+'💙💔'})+'🔰↕'+JSON.parse(data).default.rankedList[0].rankedKeyword.map(function (item) {  return item.topic.title+'☔☉'+item.topic.type+'☔☉'+item.value+'💙💔'})   ) .end();});}
