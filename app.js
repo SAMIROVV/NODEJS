@@ -509,7 +509,7 @@ for (i in urls) {
    //💔💙💚 BATCH GOOGLE TRENDS SCRAPER API 💚💙💔//
 
   //For Autocomplete Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&hl:en🔸Marker=bitcoin↕Data=keyword:fille&hl:fr🔸Marker=fille🔰🔰SCPGTACM
-  //For Daily Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&timehour=400🔸Marker=bitcoin↕Data=geo:fr&hl:fr&timehour=100🔸Marker=fille🔰🔰SCPGTDTR
+  //For Daily Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&timehour:400🔸Marker=bitcoin↕Data=geo:fr&hl:fr&timehour:100🔸Marker=fille🔰🔰SCPGTDTR
 
 
 app.get('/SCRAPER2', (req0, res0) => {
@@ -567,7 +567,7 @@ for (i in Datas) {
 			       }); }
 		
 		
-	if(kind === 'SCPGTDTR'){googleTrends.dailyTrends ({geo: Datas[i].split('🔸')[0].split('&')[0].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[1].split(':')[1], trendDate: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[2].split(':')[1] * 60 * 60 * 1000))}).then(function(data){    
+	if(kind === 'SCPGTDTR'){googleTrends.dailyTrends ({geo: Datas[i].split('🔸')[0].split('&')[0].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[1].split(':')[1], trendDate: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[2].split(':')[1] * 60 * 60 * 1000))}).then(function(data){    console.log('🤗🤗':data);
            var clean = JSON.parse(data.slice(5)).default.trendingSearchesDays[0].trendingSearches.map(function (item) {  return '🐸🐲'+item.title.query+'☔☉'+item.formattedTraffic+'☔☉'+item.relatedQueries.map(function (item) {  return item.query}).join('💙💔')+'☔☉'+item.articles.map(function (item) {  return item.title+'🔹🍎'+item.timeAgo+'🔹🍎'+item.snippet}).join('💙💔')   }) ;
 			 responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 			 completed_requests++;
