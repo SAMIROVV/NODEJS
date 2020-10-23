@@ -511,7 +511,8 @@ for (i in urls) {
   //For Autocomplete Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&hl:en🔸Marker=bitcoin↕Data=keyword:fille&hl:fr🔸Marker=fille🔰🔰SCPGTACM
   //For Daily Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&timehour:400🔸Marker=bitcoin↕Data=geo:FR&hl:fr&timehour:100🔸Marker=fille🔰🔰SCPGTDTR
   //For RealT Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&category:all🔸Marker=bitcoin↕Data=geo:FR&hl:fr&category:e🔸Marker=fille🔰🔰SCPGTRTT
-
+  //multiple 1K   for TS/GEO/TPC/QRY/EXPLORE       Link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&startTime:400&endTime:10&geo=&language:en&category:0&engine:youtube↕Data=keyword:bitcoin&startTime:400&endTime:10&geo=&language:en&category:0&engine:youtube🔰🔰SCPGTTS
+    //for SCPGTGEO Link  ===  h
 
 app.get('/SCRAPER2', (req0, res0) => {
    const url    = require('url');
@@ -583,6 +584,14 @@ for (i in Datas) {
 			if (completed_requests == Datas.length) { res0.send(responses);  console.log(data);}
 			       }); }
 		
+	
+	if(kind === 'SCPGTTS'){googleTrends.interestOverTime ({keyword: Datas[i].split('🔸')[0].split('&')[0].split(':')[1], startTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[1].split(':')[1] * 60 * 60 * 1000)), endTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[2].split(':')[1] * 60 * 60 * 1000)), geo: Datas[i].split('🔸')[0].split('&')[3].split(':')[1], category: Datas[i].split('🔸')[0].split('&')[4].split(':')[1], property: Datas[i].split('🔸')[0].split('&')[5].split(':')[1] }).then(function(data){    
+           var clean = JSON.parse(data).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value}).join('💙💔'); 
+	                 responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+			 completed_requests++;
+			if (completed_requests == Datas.length) { res0.send(responses);  console.log(data);}
+			       }); }
+		
 		
 		
 		
@@ -633,7 +642,10 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
 	//TO SCRAPE GTRENDS TIME SERIES & GEO & RELATED TOPICS & RELATED QUERIES
 	
 	if(type === 'SCPGTTS'){googleTrends.interestOverTime ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, hl: req.query.language, category: req.query.category, property: req.query.engine})
-           .then(function(data){res.header('Content-Type', 'application/json').send(JSON.parse(data).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value+'💙💔'})).end();});}
+           .then(function(data){res.header('Content-Type', 'application/json').send(JSON.parse(data).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value+'💙💔'})        
+										   
+										   
+										   ).end();});}
 	
 	if(type === 'SCPGTGEO'){ googleTrends.interestByRegion ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, resolution:req.query.resolution, hl: req.query.language, category: req.query.category, property: req.query.engine})
            .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.geoMapData.map(function (item) {  return item.geoName+'☔☉'+item.value+'💙💔'})).end();});}
