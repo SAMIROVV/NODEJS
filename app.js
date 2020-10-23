@@ -514,13 +514,12 @@ for (i in urls) {
 app.get('/SCRAPER2', (req0, res0) => {
    const url    = require('url');
    const googleTrends = require('google-trends-api');
-	 const Dat = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', ''   )  });  	    
-         res0.send(Dat)
-	var i;
+	 const Datas = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', '' )  });  	    
+         var i;
 	 var responses = [];
          var completed_requests = 0; 
          var kind = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[3]
-	 //var Datas = [{keyword: 'bitcoin', hl: 'en' ,property:'youtube'},{keyword: 'bi', hl: 'fr' ,property:'youtube'}]
+	 
 	 
 var htmlEntities = {
     nbsp: ' ',
@@ -556,14 +555,14 @@ function unescapeHTML(str) {
 };
 	
 	 
-for (i in Dat) {
+for (i in Datas) {
 	(function(i){
 
-	if(kind === 'SCPGTACM'){googleTrends.autoComplete ({Keyword: Dat[i].split('🔸')[0].split('&')[0].replace('Keyword:',''), hl: Dat[i].split('🔸')[0].split('&')[1].replace('hl:','')}  , function(err, results){  
+	if(kind === 'SCPGTACM'){googleTrends.autoComplete ({keyword: Datas[i].split('🔸')[0].split('&')[0].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[1].split(':')[1]}).then(function(results){    
            var clean = JSON.parse(results).default.topics.map(function (item) {  return item.title+'☔☉'+item.type+'💙💔'});    
-			         responses.push(Dat[i].split('🔸')[1]+'💚'+clean);console.log(Dat);
+			         responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 			 completed_requests++;
-			if (completed_requests == Dat.length) { res0.send(responses);  }
+			if (completed_requests == Datas.length) { res0.send(responses);  }
 			       }); }
 		
 		
