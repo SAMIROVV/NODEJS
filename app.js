@@ -556,7 +556,7 @@ function unescapeHTML(str) {
 };
 	
 	 
-for (i in Datas) {
+for (i in Dat) {
 	(function(i){
 
 	if(kind === 'SCPGTACM'){googleTrends.autoComplete ({Keyword: Dat[i].split('🔸')[0].split('&')[0].replace('Keyword:',''), hl: Dat[i].split('🔸')[0].split('&')[1].replace('hl:','')}  , function(err, results){  
