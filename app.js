@@ -624,6 +624,14 @@ for (i in Datas) {
 			       }); }
 		
 		
+	if(kind === '5KSCPGTTS'){console.log(new URL(Urls[i]).searchParams.getAll('keyword'));googleTrends.interestOverTime ({keyword: Datas[i].split('🔸')[0].split('&')[0].split(':')[1], startTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[1].split(':')[1] * 60 * 60 * 1000)),endTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[2].split(':')[1] * 60 * 60 * 1000)), geo: Datas[i].split('🔸')[0].split('&')[3].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[4].split(':')[1], category: Datas[i].split('🔸')[0].split('&')[5].split(':')[1], property: Datas[i].split('🔸')[0].split('&')[6].split(':')[1] }).then(function(data){    
+           var clean = JSON.parse(data).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value}).join('💙💔'); 
+	                 responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
+			 completed_requests++;
+			if (completed_requests == Datas.length) { res0.send(responses);  console.log(data);}
+			       }); }
+		
+		
 		
 		
 		
@@ -676,7 +684,7 @@ var type = decodeURIComponent(url.format({ pathname: req.originalUrl })).split("
            .then(function(data){res.header('Content-Type', 'application/json').send(JSON.parse(data).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value+'💙💔'})        
 										   
 										   
-										   ).end();});}
+										   );console.log(req.query.keyword)});}
 	
 	if(type === 'SCPGTGEO'){ googleTrends.interestByRegion ({keyword: req.query.keyword, startTime: new Date(Date.now() - (req.query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (req.query.endTime * 60 * 60 * 1000)), geo: req.query.geo, resolution:req.query.resolution, hl: req.query.language, category: req.query.category, property: req.query.engine})
            .then(function(data){ res.header('Content-Type', 'application/json').send(JSON.parse(data).default.geoMapData.map(function (item) {  return item.geoName+'☔☉'+item.value+'💙💔'})
