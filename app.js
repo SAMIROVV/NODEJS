@@ -512,14 +512,16 @@ for (i in urls) {
   //For Daily Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&timehour:400🔸Marker=bitcoin↕Data=geo:FR&hl:fr&timehour:100🔸Marker=fille🔰🔰SCPGTDTR
   //For RealT Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&category:all🔸Marker=bitcoin↕Data=geo:FR&hl:fr&category:e🔸Marker=fille🔰🔰SCPGTRTT
   //Batch    1K   for SCPGTTS/SCPGTGEO/TPC/QRY     Link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&startTime:400&endTime:10&geo:US&language:en&category:0&engine:youtube&resolution:🔸Marker=bitcoin↕Data=keyword:FILLE&startTime:400&endTime:10&geo:FR&language:en&category:0&engine:youtube&resolution:🔸Marker=FILLE🔰🔰SCPGTTS
-  //Batch  5K   for GEO and TS                     Link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keywords:wine●peanuts&startTime:400&endTime:10&geo:US&resolution:&language:en&category:0&engine:youtube🔸Marker=bitcoin↕Data=keyword:FILLE&startTime:400&endTime:10&geo:FR&resolution:&language:en&category:0&engine:youtube🔸Marker=FILLE🔰🔰SCPGTTS
+  //Batch  5K   for GEO and TS                     Link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword=wine&keyword=peanuts&startTime:400&endTime:10&geo:US&resolution:&language:en&category:0&engine:youtube🔸Marker=bitcoin↕Data=keyword:FILLE&startTime:400&endTime:10&geo:FR&resolution:&language:en&category:0&engine:youtube🔸Marker=FILLE🔰🔰SCPGTTS
     
 
 app.get('/SCRAPER2', (req0, res0) => {
    const url    = require('url');
    const googleTrends = require('google-trends-api');
 	 const Datas = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', '' )  });  	    
-         var i;
+         const Urls  = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', 'https://myurl.com?' )  });  	    
+        
+	var i;
 	 var responses = [];
          var completed_requests = 0; 
          var kind = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[3]
@@ -585,10 +587,12 @@ for (i in Datas) {
 			if (completed_requests == Datas.length) { res0.send(responses);  console.log(data);}
 			       }); }
 		
-          var arrkeywords =  [];
-	var keywords = arrkeywords.push(Datas[i].split('🔸')[0].split('&')[0].split(':')[1].split('●'))
+          
+	//ar keywords = arrkeywords.push(Datas[i].split('🔸')[0].split('&')[0].split(':')[1].split('●'))
+	
+
 		
-	if(kind === 'SCPGTTS'){googleTrends.interestOverTime ({keyword: arrkeywords.push(Datas[i].split('🔸')[0].split('&')[0].split(':')[1].split('●')), startTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[1].split(':')[1] * 60 * 60 * 1000)),endTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[2].split(':')[1] * 60 * 60 * 1000)), geo: Datas[i].split('🔸')[0].split('&')[3].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[4].split(':')[1], category: Datas[i].split('🔸')[0].split('&')[5].split(':')[1], property: Datas[i].split('🔸')[0].split('&')[6].split(':')[1] }).then(function(data){    
+	if(kind === 'SCPGTTS'){googleTrends.interestOverTime ({keyword: new URL(Urls[i]).searchParams.getAll('keyword'), startTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[1].split(':')[1] * 60 * 60 * 1000)),endTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[2].split(':')[1] * 60 * 60 * 1000)), geo: Datas[i].split('🔸')[0].split('&')[3].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[4].split(':')[1], category: Datas[i].split('🔸')[0].split('&')[5].split(':')[1], property: Datas[i].split('🔸')[0].split('&')[6].split(':')[1] }).then(function(data){    
            var clean = JSON.parse(data).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value}).join('💙💔'); 
 	                 responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 			 completed_requests++;
