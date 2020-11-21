@@ -519,7 +519,7 @@ app.get('/SCRAPER2', (req0, res0) => {
    const url    = require('url');
    const googleTrends = require('google-trends-api');
 	 const Datas = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', '' )  });  	    
-         const Urls  = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', '?' )  });  	    
+         const Datass  = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', '?' )  });  	    
         
 	var i;
 	 var responses = [];
@@ -624,7 +624,7 @@ for (i in Datas) {
 			       }); }
 		
 		
-	if(kind === '5KSCPGTTS'){console.log(new URL(Urls[i]).searchParams.getAll('keyword'));googleTrends.interestOverTime ({keyword: Datas[i].query.keyword, startTime: new Date(Date.now() - (Datas[i].query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (Datas[i].query.endTime * 60 * 60 * 1000)), geo: Datas[i].query.geo, hl: Datas[i].query.language, category: Datas[i].query.category, property: Datas[i].query.engine}).then(function(data){    
+	if(kind === '5KSCPGTTS'){googleTrends.interestOverTime ({keyword: Datass[i].query.keyword, startTime: new Date(Date.now() - (Datass[i].query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (Datass[i].query.endTime * 60 * 60 * 1000)), geo: Datass[i].query.geo, hl: Datass[i].query.language, category: Datass[i].query.category, property: Datass[i].query.engine}).then(function(data){    
            var clean = JSON.parse(data).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value}).join('💙💔'); 
 	                 responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 			 completed_requests++;
