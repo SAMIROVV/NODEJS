@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express(); 
 
-//💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FROM BASED ON GOOGLE_TRENDS_API NPM USING HTTPS💚💙💔//
+//💔💙💚 AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN BASED ON GOOGLE_TRENDS_API NPM USING HTTPS💚💙💔//
 
 //for google trends autocomplete            link ===  https://nodejsgithub.herokuapp.com/SCRAPER0?🔰Data=bitcoin?hl=en-US&tz=-60🔸Marker=bitcoin↕Data=فتاة?hl=ar&tz=-60🔸Marker=فتاة↕Data=fille?hl=fr&tz=-60🔸Marker=fille↕Data=film?hl=fr&tz=-60🔸Marker=film↕Data=boy?hl=fr&tz=-60🔸Marker=boy🔰https://trends.google.com/trends/api/autocomplete/
 //for google trends Dailt Trends            link ===  https://nodejsgithub.herokuapp.com/SCRAPER0?🔰Data=hl=en-US&tz=-60&geo=AU&ns=15🔸Marker=AU↕Data=hl=fr&tz=-60&geo=FR&ns=15🔸Marker=FR🔰https://trends.google.com/trends/api/dailytrends?
@@ -224,11 +224,11 @@ duration :  JSON.stringify(data['lengthText']),//.simpleText,
 
 
 
-//💔💙💚BATCH URLS AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN FROM BASED ON GOOGLE_TRENDS_API NPM USING REQUEST & NEEDLE💚💙💔//
+//💔💙💚AMAZING GOOGLE TRENDS SCRAPER WITH TOKEN BASED ON GOOGLE_TRENDS_API NPM USING REQUEST Or NEEDLE💚💙💔//
 
-//for google trends autocomplete              (Rq & Ndle)    link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=bitcoin?hl=en-US&tz=-60🔸Marker=bitcoin↕Data=فتاة?hl=ar&tz=-60🔸Marker=فتاة↕Data=fille?hl=fr&tz=-60🔸Marker=fille↕Data=film?hl=fr&tz=-60🔸Marker=film↕Data=boy?hl=fr&tz=-60🔸Marker=boy🔰https://trends.google.com/trends/api/autocomplete/🔰🔰request
-//for google trends Daily Trends              (Rq & Ndle)    link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=hl=en-US&tz=-60&geo=AU&ns=15🔸Marker=AU↕Data=hl=fr&tz=-60&geo=FR&ns=15🔸Marker=FR🔰https://trends.google.com/trends/api/dailytrends?🔰🔰request🔰request
-//for google trends Realtimerend              (Rq & Ndle)    link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0🔸Marker=AU↕Data=hl=fr&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0🔸Marker=FR🔰https://trends.google.com/trends/api/realtimetrends?🔰🔰request
+//for google trends autocomplete              (Rq Or Ndle)    link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=bitcoin?hl=en-US&tz=-60🔸Marker=bitcoin↕Data=فتاة?hl=ar&tz=-60🔸Marker=فتاة↕Data=fille?hl=fr&tz=-60🔸Marker=fille↕Data=film?hl=fr&tz=-60🔸Marker=film↕Data=boy?hl=fr&tz=-60🔸Marker=boy🔰https://trends.google.com/trends/api/autocomplete/🔰🔰request
+//for google trends Daily Trends              (Rq Or Ndle)    link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=hl=en-US&tz=-60&geo=AU&ns=15🔸Marker=AU↕Data=hl=fr&tz=-60&geo=FR&ns=15🔸Marker=FR🔰https://trends.google.com/trends/api/dailytrends?🔰🔰request🔰request
+//for google trends Realtimerend              (Rq Or Ndle)    link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=hl=en-US&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0🔸Marker=AU↕Data=hl=fr&tz=-60&cat=all&fi=0&fs=0&geo=AU&ri=300&rs=20&sort=0🔸Marker=FR🔰https://trends.google.com/trends/api/realtimetrends?🔰🔰request
 //multiple 1K   for TS/GEO/TPC/QRY/EXPLORE    (Rq)           link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60🔸Marker=bitcoin↕Data=hl=fr&tz=-60&req={"comparisonItem":[{"keyword":"fille","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60🔸Marker=fille🔰https://trends.google.com/trends/api/explore?🔰SCPGTTS🔰request
 //multiple 5K   for TS/GEO                    (Rq)           link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=hl=en-US&tz=-60&req={"comparisonItem":[{"keyword":"bitcoin","geo":"","time":"today+5-y"},{"keyword":"boy","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60🔸Marker=1stfive↕Data=hl=fr&tz=-60&req={"comparisonItem":[{"keyword":"fille","geo":"","time":"today+5-y"},{"keyword":"belle","geo":"","time":"today+5-y"}],"category":0,"property":"youtube"}&tz=-60🔸Marker=2ndfive🔰https://trends.google.com/trends/api/explore?🔰SCPGTTS🔰request
 //for youtube                                 (Rq)           link ===  https://nodejsgithub.herokuapp.com/SCRAPER1?🔰Data=good&page=1🔸Marker=1st page↕Data=good&page=2🔸Marker=2nd page🔰https://www.youtube.com/results?search_query=🔰🔰request
@@ -506,20 +506,20 @@ for (i in urls) {
 
 
 
-   //💔💙💚 BATCH GOOGLE TRENDS SCRAPER API 💚💙💔//
+   //💔💙💚 AMAZING GOOGLE TRENDS SCRAPER API USING GOOGLE TRENDS API NPM 💚💙💔//
 
   //For Autocomplete Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&hl:en🔸Marker=bitcoin↕Data=keyword:fille&hl:fr🔸Marker=fille🔰🔰SCPGTACM
   //For Daily Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&timehour:400🔸Marker=bitcoin↕Data=geo:FR&hl:fr&timehour:100🔸Marker=fille🔰🔰SCPGTDTR
   //For RealT Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&category:all🔸Marker=bitcoin↕Data=geo:FR&hl:fr&category:e🔸Marker=fille🔰🔰SCPGTRTT
-  //Batch    1K   for SCPGTTS/SCPGTGEO/TPC/QRY     Link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&startTime:400&endTime:10&geo:US&language:en&category:0&engine:youtube&resolution:🔸Marker=bitcoin↕Data=keyword:FILLE&startTime:400&endTime:10&geo:FR&language:en&category:0&engine:youtube&resolution:🔸Marker=FILLE🔰🔰SCPGTTS
-  //Batch  5K   for GEO and TS                     Link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword=wine&keyword=peanuts&#startTime:400#endTime:10#geo:US#resolution:#language:en#category:0#engine:youtube🔸Marker=bitcoin↕Data=keyword=FILLE&#startTime:400#endTime:10#geo:FR#resolution:#language:en#category:0#engine:youtube🔸Marker=FILLE🔰🔰SCPGTTS
+  //Batch  1K   for SCPGTTS/SCPGTGEO/TPC/QRY       Link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&startTime:400&endTime:10&geo:US&language:en&category:0&engine:youtube&resolution:🔸Marker=bitcoin↕Data=keyword:FILLE&startTime:400&endTime:10&geo:FR&language:en&category:0&engine:youtube&resolution:🔸Marker=FILLE🔰🔰SCPGTTS
+  //Batch  5K   for GEO and TS                     Link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword=wine&keyword=peanuts&startTime=400&endTime=10&geo=US&resolution=&language=en&category=0&engine=youtube🔸Marker=bitcoin↕Data=keyword=FILLE&startTime=400&endTime=10&geo=FR&resolution=&language=en&category=0#engine=youtube🔸Marker=FILLE🔰🔰SCPGTTS
     
 
 app.get('/SCRAPER2', (req0, res0) => {
    const url    = require('url');
    const googleTrends = require('google-trends-api');
 	 const Datas = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', '' )  });  	    
-         const Urls  = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', 'https://myurl.com?' )  });  	    
+         const Urls  = decodeURIComponent(url.format({ pathname: req0.originalUrl })).split("🔰")[1].split("↕").map(function(x){return x.replace('Data=', '?' )  });  	    
         
 	var i;
 	 var responses = [];
@@ -624,7 +624,7 @@ for (i in Datas) {
 			       }); }
 		
 		
-	if(kind === '5KSCPGTTS'){console.log(new URL(Urls[i]).searchParams.getAll('keyword'));googleTrends.interestOverTime ({keyword: [ 'bitcoin', 'girl' ], startTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[1].split(':')[1] * 60 * 60 * 1000)),endTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[2].split(':')[1] * 60 * 60 * 1000)), geo: Datas[i].split('🔸')[0].split('&')[3].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[4].split(':')[1], category: Datas[i].split('🔸')[0].split('&')[5].split(':')[1], property: Datas[i].split('🔸')[0].split('&')[6].split(':')[1] }).then(function(data){    
+	if(kind === '5KSCPGTTS'){console.log(new URL(Urls[i]).searchParams.getAll('keyword'));googleTrends.interestOverTime ({keyword: Datas[i].query.keyword, startTime: new Date(Date.now() - (Datas[i].query.startTime * 60 * 60 * 1000)),endTime: new Date(Date.now() - (Datas[i].query.endTime * 60 * 60 * 1000)), geo: Datas[i].query.geo, hl: Datas[i].query.language, category: Datas[i].query.category, property: Datas[i].query.engine}).then(function(data){    
            var clean = JSON.parse(data).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value}).join('💙💔'); 
 	                 responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 			 completed_requests++;
