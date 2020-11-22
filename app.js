@@ -592,7 +592,7 @@ for (i in Datas) {
 	
 
 		
-	if(kind === 'SCPGTTS'){console.log(new URL(Urls[i]).searchParams.getAll('keyword'));googleTrends.interestOverTime ({keyword: Datas[i].split('🔸')[0].split('&')[0].split(':')[1], startTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[1].split(':')[1] * 60 * 60 * 1000)),endTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[2].split(':')[1] * 60 * 60 * 1000)), geo: Datas[i].split('🔸')[0].split('&')[3].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[4].split(':')[1], category: Datas[i].split('🔸')[0].split('&')[5].split(':')[1], property: Datas[i].split('🔸')[0].split('&')[6].split(':')[1] }).then(function(data){    
+	if(kind === 'SCPGTTS'){googleTrends.interestOverTime ({keyword: Datas[i].split('🔸')[0].split('&')[0].split(':')[1], startTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[1].split(':')[1] * 60 * 60 * 1000)),endTime: new Date(Date.now() - (Datas[i].split('🔸')[0].split('&')[2].split(':')[1] * 60 * 60 * 1000)), geo: Datas[i].split('🔸')[0].split('&')[3].split(':')[1], hl: Datas[i].split('🔸')[0].split('&')[4].split(':')[1], category: Datas[i].split('🔸')[0].split('&')[5].split(':')[1], property: Datas[i].split('🔸')[0].split('&')[6].split(':')[1] }).then(function(data){    
            var clean = JSON.parse(data).default.timelineData.map(function (item) {  return item.formattedTime+'☔☉'+item.value}).join('💙💔'); 
 	                 responses.push(Datas[i].split('🔸')[1]+'💚'+unescapeHTML(clean));
 			 completed_requests++;
