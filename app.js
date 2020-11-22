@@ -512,8 +512,7 @@ for (i in urls) {
   //For Daily Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&timehour:400🔸Marker=bitcoin↕Data=geo:FR&hl:fr&timehour:100🔸Marker=fille🔰🔰SCPGTDTR
   //For RealT Trends Google trends                 link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=geo:US&hl:en&category:all🔸Marker=bitcoin↕Data=geo:FR&hl:fr&category:e🔸Marker=fille🔰🔰SCPGTRTT
   //Batch  1K   for SCPGTTS/SCPGTGEO/TPC/QRY       Link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword:bitcoin&startTime:400&endTime:10&geo:US&language:en&category:0&engine:youtube&resolution:🔸Marker=bitcoin↕Data=keyword:FILLE&startTime:400&endTime:10&geo:FR&language:en&category:0&engine:youtube&resolution:🔸Marker=FILLE🔰🔰SCPGTTS
-  //Batch  5K   for GEO and TS                     Link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword=wine&keyword=peanuts&startTime=400&endTime=10&geo=US&resolution=&language=en&category=0&engine=youtube🔸Marker=bitcoin↕Data=keyword=FILLE&startTime=400&endTime=10&geo=FR&resolution=&language=en&category=0#engine=youtube🔸Marker=FILLE🔰🔰SCPGTTS
-    
+  //Batch  5K   for GEO and TS                     Link === https://nodejsgithub.herokuapp.com/SCRAPER2?🔰Data=keyword=wine&keyword=peanuts&startTime=400&endTime=10&geo=US&resolution=&language=en&category=0&engine=youtube🔸Marker=bitcoin↕Data=keyword=FILLE&startTime=400&endTime=10&geo=FR&resolution=&language=en&category=0&engine=youtube🔸Marker=FILLE🔰🔰5KSCPGTTS    
 
 app.get('/SCRAPER2', (req0, res0) => {
    const url    = require('url');
